@@ -19,6 +19,10 @@
 		51326EEB2549408A00C0C273 /* LabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51326EEA2549408A00C0C273 /* LabelListViewController.swift */; };
 		51326EF02549409500C0C273 /* MilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51326EEF2549409500C0C273 /* MilestoneListViewController.swift */; };
 		51326EF5254940A000C0C273 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51326EF4254940A000C0C273 /* SettingViewController.swift */; };
+		51326F0925494E0500C0C273 /* IssueListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51326F0825494E0500C0C273 /* IssueListInteractor.swift */; };
+		51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51326F0D2549594F00C0C273 /* IssueCollectionViewCell.swift */; };
+		51326F14254971FF00C0C273 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51326F13254971FF00C0C273 /* Issue.swift */; };
+		51326F1C2549723000C0C273 /* IssueDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51326F1B2549723000C0C273 /* IssueDataSource.swift */; };
 		ACFD28902EF2C9069AABC467 /* Pods_IssueTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C40AA660A2BF0DB0BFF45D /* Pods_IssueTrackerTests.framework */; };
 		FB34BCA23808D41DE61545BE /* Pods_IssueTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFBEEF6F47ED00855F21BFF /* Pods_IssueTracker.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +63,10 @@
 		51326EEA2549408A00C0C273 /* LabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelListViewController.swift; sourceTree = "<group>"; };
 		51326EEF2549409500C0C273 /* MilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneListViewController.swift; sourceTree = "<group>"; };
 		51326EF4254940A000C0C273 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		51326F0825494E0500C0C273 /* IssueListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueListInteractor.swift; sourceTree = "<group>"; };
+		51326F0D2549594F00C0C273 /* IssueCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCollectionViewCell.swift; sourceTree = "<group>"; };
+		51326F13254971FF00C0C273 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		51326F1B2549723000C0C273 /* IssueDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDataSource.swift; sourceTree = "<group>"; };
 		85C40AA660A2BF0DB0BFF45D /* Pods_IssueTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5F9DE528E49AF31543BA82 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		BED7711D8407FDAFD2F3FE3E /* Pods-IssueTracker-IssueTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker-IssueTrackerUITests.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker-IssueTrackerUITests/Pods-IssueTracker-IssueTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -202,9 +210,21 @@
 		51326EE125493FA900C0C273 /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
+				51326F12254971E300C0C273 /* Models */,
 				51326EE22549407C00C0C273 /* IssueListViewController.swift */,
+				51326F0825494E0500C0C273 /* IssueListInteractor.swift */,
+				51326F0D2549594F00C0C273 /* IssueCollectionViewCell.swift */,
 			);
 			path = IssueList;
+			sourceTree = "<group>";
+		};
+		51326F12254971E300C0C273 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51326F13254971FF00C0C273 /* Issue.swift */,
+				51326F1B2549723000C0C273 /* IssueDataSource.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B5BBE7148BF86F1AFC8672F2 /* Frameworks */ = {
@@ -437,12 +457,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */,
 				51326EE32549407C00C0C273 /* IssueListViewController.swift in Sources */,
 				51326EEB2549408A00C0C273 /* LabelListViewController.swift in Sources */,
 				51326E8025492F3A00C0C273 /* AppDelegate.swift in Sources */,
 				51326E8225492F3A00C0C273 /* SceneDelegate.swift in Sources */,
+				51326F0925494E0500C0C273 /* IssueListInteractor.swift in Sources */,
+				51326F1C2549723000C0C273 /* IssueDataSource.swift in Sources */,
 				51326EF5254940A000C0C273 /* SettingViewController.swift in Sources */,
 				51326EF02549409500C0C273 /* MilestoneListViewController.swift in Sources */,
+				51326F14254971FF00C0C273 /* Issue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

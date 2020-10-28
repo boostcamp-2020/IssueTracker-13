@@ -2,3 +2,5 @@ excluded: # 린트 과정에서 무시할 파일 경로. `included`보다 우선
   - Pods
   - IssueTracker/AppDelegate.swift
   - IssueTracker/SceneDelegate.swift
+  - IssueTrackerTests
+  - IssueTrackerUITests

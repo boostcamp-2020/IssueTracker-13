@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NewIssueButton = () => {
   return (
-    <div>
-      newIssueButton
-    </div>
+    <Link to='/new'>
+      New issue
+    </Link>
   )
 }
 

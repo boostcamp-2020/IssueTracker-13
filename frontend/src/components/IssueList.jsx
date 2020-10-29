@@ -2,9 +2,11 @@ import React from 'react';
 
 import IssueListItem from './IssueListItem';
 
-import { issues } from '../mocks/issues.json';
+import { getIssues } from '../apis/issuesAPI';
 
 const IssueList = () => {
+  const issues = getIssues();
+
   return (
     <div>
       {issues.map((issue, i) => <IssueListItem key={i} issue={issue}/>)}

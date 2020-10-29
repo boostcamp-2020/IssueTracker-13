@@ -222,10 +222,7 @@
 				51326F12254971E300C0C273 /* Models */,
 				51326EE22549407C00C0C273 /* IssueListViewController.swift */,
 				51326F0825494E0500C0C273 /* IssueListInteractor.swift */,
-				51326F0D2549594F00C0C273 /* IssueCollectionViewCell.swift */,
-				51445AA9254A95D600875BA5 /* InsetLabel.swift */,
-				51445AAE254AA11A00875BA5 /* MilestoneBadgeLabel.swift */,
-				51445AB3254AA13000875BA5 /* LabelBadgeLabel.swift */,
+				51445ABF254AAA4F00875BA5 /* Views */,
 			);
 			path = IssueList;
 			sourceTree = "<group>";
@@ -237,6 +234,17 @@
 				51326F1B2549723000C0C273 /* IssueDataSource.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		51445ABF254AAA4F00875BA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51326F0D2549594F00C0C273 /* IssueCollectionViewCell.swift */,
+				51445AA9254A95D600875BA5 /* InsetLabel.swift */,
+				51445AAE254AA11A00875BA5 /* MilestoneBadgeLabel.swift */,
+				51445AB3254AA13000875BA5 /* LabelBadgeLabel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B5BBE7148BF86F1AFC8672F2 /* Frameworks */ = {

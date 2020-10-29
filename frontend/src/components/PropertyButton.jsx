@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const PropertyButton = () => {
+const PropertyButton = ({ route, text, img, count}) => {
   return (
-    <div>
-      propertybutton
-    </div>
+    <Link to={route}>
+      <img src={img}></img>
+      {text}
+      <span>{count}</span>
+    </Link>
   )
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const IssueListNavButton = ({ title }) => {
+const IssueListNavButton = ({ title, handleClick }) => {
   return (
-    <div>
-      [{title}]
-    </div>
+    <button onClick={() => handleClick(title)}>
+      {title}
+    </button>
   )
 }
 

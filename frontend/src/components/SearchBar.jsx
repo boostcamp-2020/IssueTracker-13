@@ -4,12 +4,14 @@ import SearchInput from './SearchInput';
 import PropertyButton from './PropertyButton';
 import NewIssueButton from './NewIssueButton';
 
-const SearchBar = () => {
+
+const SearchBar = ({ labelCount, milestoneCount }) => {
   return (
     <div>
-      <SearchInput/>
-      <PropertyButton/>
-      <NewIssueButton/>
+      <SearchInput />
+      <PropertyButton route='/labels' text='Labels' count={labelCount} />
+      <PropertyButton route='/milestones' text='Milestones' count={milestoneCount} />
+      <NewIssueButton />
     </div>
   )
 }

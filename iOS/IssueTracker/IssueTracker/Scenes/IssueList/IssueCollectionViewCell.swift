@@ -11,14 +11,14 @@ class IssueCollectionViewCell: UICollectionViewListCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var previewLabel: UILabel!
-    @IBOutlet weak var milestoneLabel: UILabel!
-    @IBOutlet weak var labelLabel: UILabel!
+    @IBOutlet weak var milestoneBadgeLabel: MilestoneBadgeLabel!
+    @IBOutlet weak var labelBadgeLabel: LabelBadgeLabel!
     
     func configure(with issue: Issue) {
         titleLabel.text = issue.title
         previewLabel.text = issue.preview
-        milestoneLabel.text = issue.milestone
-        labelLabel.text = issue.label
+        milestoneBadgeLabel.configure(with: issue.milestone)
+        labelBadgeLabel.configure(with: issue.label, color: "", backgroundColor: "")
     }
 
 }

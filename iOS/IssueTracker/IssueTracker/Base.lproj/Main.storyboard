@@ -34,13 +34,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="376" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yX1-FR-vrc">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yX1-FR-vrc">
                                                     <rect key="frame" x="10" y="10" width="286" height="76"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="레이블 목록 보기 구현" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="538-CC-uiL">
-                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="30"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="286" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="tkk-la-CDE"/>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="20" id="tkk-la-CDE"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -49,7 +49,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="레이블 전체 목록을 볼 수" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sww-GY-jZi">
                                                             <rect key="frame" x="0.0" y="30" width="286" height="46"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="46" id="EtI-fK-DGd"/>
+                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="EtI-fK-DGd"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
@@ -57,17 +57,17 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-4S-p6y">
-                                                    <rect key="frame" x="285.5" y="10" width="80.5" height="34"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OB3-4S-p6y">
+                                                    <rect key="frame" x="285.5" y="10" width="80.5" height="39"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스프린트 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvn-b4-v2m">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="스프린트 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvn-b4-v2m" customClass="MilestoneBadgeLabel" customModule="IssueTracker" customModuleProvider="target">
                                                             <rect key="frame" x="19.5" y="0.0" width="61" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그런데 좀 긴것" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spx-up-GzW">
-                                                            <rect key="frame" x="0.0" y="17" width="80.5" height="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그런데 좀 긴것" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spx-up-GzW" customClass="LabelBadgeLabel" customModule="IssueTracker" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="22" width="80.5" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -86,8 +86,8 @@
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="376" height="96"/>
                                         <connections>
-                                            <outlet property="labelLabel" destination="Spx-up-GzW" id="mLf-Ac-m85"/>
-                                            <outlet property="milestoneLabel" destination="Uvn-b4-v2m" id="6IL-AQ-OGs"/>
+                                            <outlet property="labelBadgeLabel" destination="Spx-up-GzW" id="35Z-0W-GwL"/>
+                                            <outlet property="milestoneBadgeLabel" destination="Uvn-b4-v2m" id="8nr-zp-hhg"/>
                                             <outlet property="previewLabel" destination="sww-GY-jZi" id="5SZ-8f-bv0"/>
                                             <outlet property="titleLabel" destination="538-CC-uiL" id="8WS-EF-tKw"/>
                                         </connections>

@@ -21,16 +21,21 @@ class IssueDataSource {
         case main
     }
     
+    private(set) var issues: [Issue]
+        
+    init(issues: [Issue]) {
+        self.issues = issues
+    }
 }
 
 extension IssueDataSource: IssueDataSourceProtocol {
-
+    
     func add(issue: Issue) {
-        
+        issues.append(issue)
     }
 
     func remove(issue: Issue) {
-
+        
     }
 
     func remove(issues: [Issue]) {

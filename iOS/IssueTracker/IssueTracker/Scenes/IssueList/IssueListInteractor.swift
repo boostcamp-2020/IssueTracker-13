@@ -14,17 +14,23 @@ protocol IssueListBusinessLogic: IssueDataSourceProtocol {
 class IssueListInteractor {
 
     weak var viewController: IssueListDisplayLogic?
-    var issueDataSource: IssueDataSourceProtocol?
-
+    var issueDataSource: IssueDataSource?
+    var worker = IssueWorker()
 }
 
 extension IssueListInteractor: IssueListBusinessLogic {
 
     func fetchIssues() {
-        
+        worker.fetchIssues { (dataSource) in
+            self.issueDataSource = dataSource
+            self.viewController?.displayIssueList(with: dataSource.issues, at: .main)
+        }
     }
 
     func add(issue: Issue) {
+        guard let dataSource = issueDataSource else { return }
+        dataSource.add(issue: issue)
+        self.viewController?.displayIssueList(with: dataSource.issues, at: .main)
     }
 
     func remove(issue: Issue) {

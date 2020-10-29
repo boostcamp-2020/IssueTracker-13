@@ -11,45 +11,40 @@ protocol IssueListDisplayLogic: class {
     func displayIssueList(with issues: [Issue], at section: IssueDataSource.Section)
 }
 
-class IssueListViewController: UIViewController {
+class IssueListViewController: BaseCollectionViewController<IssueDataSource.Section, Issue> {
 
     @IBOutlet weak var issueCollectionView: UICollectionView!
 
     let interactor = IssueListInteractor()
 
-    private var dataSource: DataSource! = nil
-    typealias DataSource = UICollectionViewDiffableDataSource<IssueDataSource.Section, Issue>
-    typealias Snapshot = NSDiffableDataSourceSnapshot<IssueDataSource.Section, Issue>
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCollectionView()
         interactor.viewController = self
-        interactor.fetchIssueList()
     }
 
     func configureCollectionView() {
-        configureDataSource()
+        configureDataSource(collectionView: issueCollectionView,
+                            cellProvider: cellProvider(collectionView:indexPath:issue:))
         issueCollectionView.collectionViewLayout = createLayout()
     }
 
-    func configureDataSource() {
-        dataSource = DataSource(collectionView: issueCollectionView,
-                                cellProvider: { (collectionView, indexPath, issue) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "configureDataSource",
-                                                          for: indexPath) as? IssueCollectionViewCell
-                                    cell?.configure(with: issue)
-            return cell
-        })
-    }
-
-    func createLayout() -> UICollectionViewLayout {
-        let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
-        return UICollectionViewCompositionalLayout.list(using: configuration)
+    func cellProvider(collectionView: UICollectionView,
+                      indexPath: IndexPath,
+                      issue: Issue) -> UICollectionViewListCell? {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "configureDataSource",
+                                                      for: indexPath) as? IssueCollectionViewCell
+        cell?.configure(with: issue)
+        return cell
     }
 
 }
 
 extension IssueListViewController: IssueListDisplayLogic {
     func displayIssueList(with issues: [Issue], at section: IssueDataSource.Section) {
+        var snapshot = Snapshot()
+        snapshot.appendSections([section])
+        snapshot.appendItems(issues, toSection: section)
+        dataSource.apply(snapshot)
     }
 }

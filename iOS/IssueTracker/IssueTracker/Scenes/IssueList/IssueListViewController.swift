@@ -21,6 +21,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         super.viewDidLoad()
         configureCollectionView()
         interactor.viewController = self
+        interactor.fetchIssues()
     }
 
     func configureCollectionView() {

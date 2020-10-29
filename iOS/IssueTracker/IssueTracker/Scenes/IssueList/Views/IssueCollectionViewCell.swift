@@ -15,6 +15,10 @@ class IssueCollectionViewCell: UICollectionViewListCell {
     @IBOutlet weak var labelBadgeLabel: LabelBadgeLabel!
     
     func configure(with issue: Issue) {
+        titleLabel.text = issue.title
+        previewLabel.text = issue.preview
+        milestoneBadgeLabel.configure(with: issue.milestone)
+        labelBadgeLabel.configure(with: issue.labels.first?.title ?? "", color: "", backgroundColor: "")
     }
 
 }

@@ -7,20 +7,40 @@
 
 import Foundation
 
-protocol IssueListBusinessLogic {
-    func fetchIssueList()
+protocol IssueListBusinessLogic: IssueDataSourceProtocol {
+    func fetchIssues()
 }
 
 class IssueListInteractor {
 
     weak var viewController: IssueListDisplayLogic?
-    var issueDataSource: IssueDataSource?
+    var issueDataSource: IssueDataSourceProtocol?
 
 }
 
 extension IssueListInteractor: IssueListBusinessLogic {
 
-    func fetchIssueList() {
+    func fetchIssues() {
+        
+    }
+
+    func add(issue: Issue) {
+    }
+
+    func remove(issue: Issue) {
+
+    }
+
+    func remove(issues: [Issue]) {
+
+    }
+
+    func close(issue: Issue) {
+
+    }
+
+    func close(issues: [Issue]) {
+
     }
 
 }

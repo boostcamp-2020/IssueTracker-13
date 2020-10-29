@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IssueCollectionViewCell: UICollectionViewCell {
+class IssueCollectionViewCell: UICollectionViewListCell {
 
     @IBOutlet weak var titleLabel: UILabel!
 

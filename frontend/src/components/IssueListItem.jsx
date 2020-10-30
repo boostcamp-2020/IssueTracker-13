@@ -1,10 +1,12 @@
 import React from 'react';
 
-const IssueListItem = () => {
+const IssueListItem = ({ issue }) => {
+  const { id, title, preview, milestone, labels, author, assignees, isOpen, createAt } = issue;
   return (
-    <div>
-      Issue1
-    </div>
+    <li>
+      {title} {labels.map(label => label.title)} {preview}
+      {id} opened{createAt} by {author} milestone{milestone}
+    </li>
   )
 }
 

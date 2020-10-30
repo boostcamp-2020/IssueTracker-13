@@ -1,14 +1,14 @@
 # IssueTracker-13
 
-## Homepage
+## :house: Homepage
 [이슈트래커](https://kr.object.ncloudstorage.com/issue-tracker-13/index.html)
 
-## 프로젝트 소개
+## :checkered_flag: 프로젝트 소개
 GitHub Repository의 Issue Tracker 기능을 cloning 하고 개선하는 프로젝트 입니다. 이슈관리, 라벨링, 마일스톤 기능을 제공합니다. 
 
-## Demo
+## :iphone: Demo :computer:
 
-## [팀 위키](https://github.com/boostcamp-2020/IssueTracker-13/wiki)
+## :blue_book: [팀 위키](https://github.com/boostcamp-2020/IssueTracker-13/wiki)
 
 ## :arrow_forward: 실행 방법
 

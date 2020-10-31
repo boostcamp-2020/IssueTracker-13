@@ -13,7 +13,7 @@ const SearchBar = ({ labelCount, milestoneCount }) => {
       <PropertyButton route='/milestones' text='Milestones' count={milestoneCount} />
       <NewIssueButton />
     </div>
-  )
-}
+  );
+};
 
 export default SearchBar;

@@ -5,7 +5,7 @@ const IssueListNavButton = ({ title, handleClick }) => {
     <button onClick={() => handleClick(title)}>
       {title}
     </button>
-  )
-}
+  );
+};
 
 export default IssueListNavButton;

@@ -6,7 +6,7 @@ const NewIssueButton = () => {
     <Link to='/new'>
       New issue
     </Link>
-  )
-}
+  );
+};
 
 export default NewIssueButton;

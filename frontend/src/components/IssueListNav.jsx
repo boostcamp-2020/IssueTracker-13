@@ -8,7 +8,7 @@ const IssueListNav = () => {
 
   const handleClick = (title) => {
     setClickedProperty(title);
-  }
+  };
 
   return (
     <div>
@@ -20,7 +20,7 @@ const IssueListNav = () => {
       <IssueListNavButton title={'Milestones'} handleClick={handleClick}/>
       <IssueListNavButton title={'Assignee'} handleClick={handleClick}/>
     </div>
-  )
-}
+  );
+};
 
 export default IssueListNav;

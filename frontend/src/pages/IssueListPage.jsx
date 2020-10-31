@@ -18,6 +18,6 @@ const IssueListPage = () => {
       <IssueList />
     </div>
   );
-}
+};
 
 export default IssueListPage;

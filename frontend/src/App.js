@@ -6,7 +6,7 @@ import MilestonesPage from './pages/MilestonesPage';
 import NewIssuePage from './pages/NewIssuePage';
 import LabelsPage from './pages/LabelsPage';
 
-const App = () => {  
+const App = () => {
   return (
     <div>
       <header>ISSUES</header>
@@ -27,7 +27,7 @@ const App = () => {
         </Switch>
       </Router>
     </div>
-  )
-}
+  );
+};
 
 export default App;

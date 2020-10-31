@@ -2,10 +2,10 @@ import React from 'react';
 
 const IssueListCheckBox = () => {
   return (
-    <input 
+    <input
       type='checkbox'
     />
-  )
-}
+  );
+};
 
 export default IssueListCheckBox;

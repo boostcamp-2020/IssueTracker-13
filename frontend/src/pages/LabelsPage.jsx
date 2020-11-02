@@ -7,7 +7,7 @@ const LabelsPage = () => {
 
   return (
     <div>Labels Page {labels.length}</div>
-  )
-}
+  );
+};
 
 export default LabelsPage;

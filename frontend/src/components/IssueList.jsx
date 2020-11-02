@@ -11,7 +11,7 @@ const IssueList = () => {
     <div>
       {issues.map((issue, i) => <IssueListItem key={i} issue={issue}/>)}
     </div>
-  )
-}
+  );
+};
 
 export default IssueList;

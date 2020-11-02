@@ -5,7 +5,7 @@ const SearchInput = () => {
     <div>
       searchInput
     </div>
-  )
-}
+  );
+};
 
 export default SearchInput;

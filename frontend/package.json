@@ -5,7 +5,8 @@
   "main": ".eslintrc.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "webpack --progress"
+    "build": "webpack --progress",
+    "lint": "eslint src/**/*.js src/**/*.jsx --fix"
   },
   "author": "",
   "license": "ISC",

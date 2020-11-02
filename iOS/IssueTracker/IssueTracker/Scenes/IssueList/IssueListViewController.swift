@@ -27,6 +27,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     }
 
     @IBAction func didTouchSelectedIssuesDeleteButton(_ sender: UIBarButtonItem) {
+        print(issueCollectionView.indexPathsForSelectedItems)
     }
     
     @IBAction func didTouchSelectedIssuesCloseButton(_ sender: UIBarButtonItem) {
@@ -57,12 +58,13 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     @objc func didTouchLeftBarButton() {
         switch issueCollectionView.isEditing {
         case true:
-            //selectAll 함수 구현해야함
-            break
+            let itemCount = dataSource.snapshot().numberOfItems(inSection: .main)
+            for item in 0..<itemCount {
+                let indexPath = IndexPath(item: item, section: 0)
+                issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+            }
         case false:
-            //filter화면으로 이동
             performSegue(withIdentifier: "showFilterViewController", sender: self)
-            break
         }
         updateBarButtonItems()
     }

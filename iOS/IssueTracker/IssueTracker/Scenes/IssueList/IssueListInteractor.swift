@@ -36,7 +36,7 @@ extension IssueListInteractor: IssueListBusinessLogic {
     func remove(issue: Issue) {
         guard let dataSource = issueDataSource else { return }
         dataSource.remove(issue: issue)
-        viewController?.displayIssueList(with: dataSource.issues, at: .main)
+        viewController?.displayIssueList(with: dataSource.openedIssues, at: .main)
     }
 
     func remove(issues: [Issue]) {

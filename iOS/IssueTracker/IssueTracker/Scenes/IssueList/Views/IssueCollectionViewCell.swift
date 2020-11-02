@@ -19,6 +19,8 @@ class IssueCollectionViewCell: UICollectionViewListCell {
         previewLabel.text = issue.preview
         milestoneBadgeLabel.configure(with: issue.milestone)
         labelBadgeLabel.configure(with: issue.labels.first?.title ?? "", color: "", backgroundColor: "")
+        accessories = [.multiselect(displayed: .whenEditing, options: .init())]
+
     }
 
 }

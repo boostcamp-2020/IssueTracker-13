@@ -62,7 +62,6 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         case false:
             //filter화면으로 이동
             performSegue(withIdentifier: "showFilterViewController", sender: self)
-            break
         }
         updateBarButtonItems()
     }
@@ -79,11 +78,39 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
 }
 
 extension IssueListViewController {
+    private func handleSwipe(for action: UIContextualAction, item: Issue) {
+        switch action.title {
+        case "Delete":
+            interactor.remove(issue: item)
+        case "Close":
+            interactor.close(issue: item)
+        default:
+            break
+        }
+    }
     
     private func configureCollectionView() {
         configureDataSource(collectionView: issueCollectionView,
                             cellProvider: cellProvider(collectionView:indexPath:issue:))
-        issueCollectionView.collectionViewLayout = createLayout()
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.trailingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
+            
+            guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else {
+                return nil
+            }
+
+            let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, _, completion) in
+                self?.handleSwipe(for: action, item: item)
+                completion(true)
+            }
+
+            let closeAction = UIContextualAction(style: .normal, title: "Close") { (action, _, completion) in
+                self?.handleSwipe(for: action, item: item)
+                completion(true)
+            }
+            return UISwipeActionsConfiguration(actions: [closeAction, deleteAction])
+        }
+        issueCollectionView.collectionViewLayout = createLayout(using: configuration)
         issueCollectionView.allowsMultipleSelectionDuringEditing = true
     }
 

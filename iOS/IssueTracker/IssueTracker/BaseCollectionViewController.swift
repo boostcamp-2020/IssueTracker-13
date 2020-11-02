@@ -17,8 +17,7 @@ class BaseCollectionViewController<T: Hashable, U: Hashable>: UIViewController {
         super.viewDidLoad()
     }
 
-    func createLayout() -> UICollectionViewLayout {
-        let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+    func createLayout(using configuration: UICollectionLayoutListConfiguration) -> UICollectionViewLayout {
         return UICollectionViewCompositionalLayout.list(using: configuration)
     }
 

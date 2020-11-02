@@ -22,7 +22,10 @@ class IssueDataSource {
     }
     
     private(set) var issues: [Issue]
-        
+    var openedIssues: [Issue] {
+        issues.filter({ $0.isOpen })
+    }
+    
     init(issues: [Issue]) {
         self.issues = issues
     }
@@ -35,7 +38,9 @@ extension IssueDataSource: IssueDataSourceProtocol {
     }
 
     func remove(issue: Issue) {
-        
+        issues.removeAll { (item) -> Bool in
+            item == issue
+        }
     }
 
     func remove(issues: [Issue]) {
@@ -43,7 +48,10 @@ extension IssueDataSource: IssueDataSourceProtocol {
     }
 
     func close(issue: Issue) {
-
+        var item = issue
+        item.isOpen = false
+        guard let index = issues.firstIndex(where: {$0 == issue}) else { return }
+        issues[index] = item
     }
 
     func close(issues: [Issue]) {

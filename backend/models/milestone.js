@@ -5,7 +5,7 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Milestone extends Model {
     static associate(models) {
-      // define association here
+      Milestone.hasMany(models.Issue);
     }
   }
   Milestone.init({

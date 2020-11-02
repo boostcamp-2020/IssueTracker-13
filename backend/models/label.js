@@ -5,7 +5,9 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Label extends Model {
     static associate(models) {
-      // define association here
+      Label.belongsToMany(models.Issue, {
+        through: 'IssueLabels',
+      });
     }
   }
   Label.init({

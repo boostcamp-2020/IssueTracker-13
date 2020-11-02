@@ -27,7 +27,6 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     }
 
     @IBAction func didTouchSelectedIssuesDeleteButton(_ sender: UIBarButtonItem) {
-        print(issueCollectionView.indexPathsForSelectedItems)
     }
     
     @IBAction func didTouchSelectedIssuesCloseButton(_ sender: UIBarButtonItem) {
@@ -45,6 +44,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             leftTitle = "Filter"
             rightTitle = "Edit"
         }
+        setNavigationTitle()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: leftTitle,
                                                            style: .plain,
                                                            target: self,
@@ -77,6 +77,19 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         toolbar.heightAnchor.constraint(equalTo: tabBar.heightAnchor).isActive = true
         updateBarButtonItems()
     }
+    
+    func setNavigationTitle() {
+        var title: String
+        switch issueCollectionView.isEditing {
+        case true:
+            guard let indexPaths = issueCollectionView.indexPathsForSelectedItems else { return }
+            let selectedItemsCount = indexPaths.count
+            title = "\(selectedItemsCount)개 선택"
+        case false:
+            title = "이슈"
+        }
+        navigationItem.title = title
+    }
 
 }
 
@@ -87,6 +100,7 @@ extension IssueListViewController {
                             cellProvider: cellProvider(collectionView:indexPath:issue:))
         issueCollectionView.collectionViewLayout = createLayout()
         issueCollectionView.allowsMultipleSelectionDuringEditing = true
+        issueCollectionView.delegate = self
     }
 
     private func cellProvider(collectionView: UICollectionView,
@@ -96,6 +110,18 @@ extension IssueListViewController {
                                                       for: indexPath) as? IssueCollectionViewCell
         cell?.configure(with: issue)
         return cell
+    }
+    
+}
+
+extension IssueListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        setNavigationTitle()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        setNavigationTitle()
     }
     
 }

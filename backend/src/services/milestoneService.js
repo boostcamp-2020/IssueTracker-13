@@ -13,8 +13,11 @@ const addMilestone = () => {
 
 };
 
-const updateMilestone = () => {
-
+const updateMilestone = async (modifiedContents) => {
+  return await Milestone.update(
+    modifiedContents,
+    { where: { id: modifiedContents.id } },
+  );
 };
 
 const deleteMilestone = async (id) => {

@@ -28,6 +28,8 @@
 		51445AAF254AA11B00875BA5 /* MilestoneBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51445AAE254AA11A00875BA5 /* MilestoneBadgeLabel.swift */; };
 		51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51445AB3254AA13000875BA5 /* LabelBadgeLabel.swift */; };
 		51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FBF8EB255047F000F38CCC /* FloatingButton.swift */; };
+		826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F6306255154E80005D669 /* FilterIssueViewController.swift */; };
+		826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */; };
 		82CF7CB2254A8B3E0061121C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB1254A8B3E0061121C /* Label.swift */; };
 		82CF7CB7254A8B500061121C /* Assignee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB6254A8B500061121C /* Assignee.swift */; };
 		82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CC7254AA4FD0061121C /* IssueWorker.swift */; };
@@ -80,6 +82,8 @@
 		51445AAE254AA11A00875BA5 /* MilestoneBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneBadgeLabel.swift; sourceTree = "<group>"; };
 		51445AB3254AA13000875BA5 /* LabelBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBadgeLabel.swift; sourceTree = "<group>"; };
 		51FBF8EB255047F000F38CCC /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		826F6306255154E80005D669 /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
+		826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueInteractor.swift; sourceTree = "<group>"; };
 		82CF7CB1254A8B3E0061121C /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		82CF7CB6254A8B500061121C /* Assignee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignee.swift; sourceTree = "<group>"; };
 		82CF7CC7254AA4FD0061121C /* IssueWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueWorker.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		51326EC325493DCF00C0C273 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				826F6305255154AB0005D669 /* FilterIssue */,
 				51326EE125493FA900C0C273 /* IssueList */,
 				51326EE025493FA800C0C273 /* LabelList */,
 				51326EDF25493FA600C0C273 /* MilestoneList */,
@@ -257,6 +262,15 @@
 				51FBF8EB255047F000F38CCC /* FloatingButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		826F6305255154AB0005D669 /* FilterIssue */ = {
+			isa = PBXGroup;
+			children = (
+				826F6306255154E80005D669 /* FilterIssueViewController.swift */,
+				826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */,
+			);
+			path = FilterIssue;
 			sourceTree = "<group>";
 		};
 		B5BBE7148BF86F1AFC8672F2 /* Frameworks */ = {
@@ -489,6 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */,
 				51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */,
 				51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */,
 				51326EE32549407C00C0C273 /* IssueListViewController.swift in Sources */,
@@ -497,6 +512,7 @@
 				51326E8025492F3A00C0C273 /* AppDelegate.swift in Sources */,
 				82CF7CB7254A8B500061121C /* Assignee.swift in Sources */,
 				51445AAF254AA11B00875BA5 /* MilestoneBadgeLabel.swift in Sources */,
+				826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */,
 				51326E8225492F3A00C0C273 /* SceneDelegate.swift in Sources */,
 				51326F0925494E0500C0C273 /* IssueListInteractor.swift in Sources */,
 				51326F1C2549723000C0C273 /* IssueDataSource.swift in Sources */,

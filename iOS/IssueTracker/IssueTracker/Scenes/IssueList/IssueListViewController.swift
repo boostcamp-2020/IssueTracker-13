@@ -86,7 +86,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
                 }
             }
         case false:
-            performSegue(withIdentifier: "showFilterViewController", sender: self)
+            performSegue(withIdentifier: "showFilterIssueViewController", sender: self)
         }
         updateBarButtonItems()
     }

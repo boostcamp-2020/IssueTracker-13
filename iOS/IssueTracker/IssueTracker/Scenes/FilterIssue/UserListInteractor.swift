@@ -8,7 +8,7 @@
 import Foundation
 
 protocol UserListDelegate: class {
-    func didSelect(user: User)
+    func didSelect(user: User, mode : UserListInteractor.UserMode)
 }
 
 protocol UserListBusinessLogic {
@@ -53,7 +53,8 @@ extension UserListInteractor: UserListBusinessLogic {
     }
     
     func select(user: User) {
-        delegate?.didSelect(user: user)
+        guard let userMode = userMode else { return }
+        delegate?.didSelect(user: user, mode: userMode)
     }
 
 }

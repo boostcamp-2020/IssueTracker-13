@@ -21,11 +21,11 @@ class FilterIssueViewController: UITableViewController {
         case "showAuthorList":
             guard let userListVC = segue.destination as? UserListViewController else { return }
             userListVC.interactor.userMode = .author
-//            userListVC.interactor.delegate = interactor
+            userListVC.interactor.delegate = interactor
         case "showAssigneeList":
             guard let userListVC = segue.destination as? UserListViewController else { return }
             userListVC.interactor.userMode = .assignee
-
+            userListVC.interactor.delegate = interactor
         default:
             break
         }

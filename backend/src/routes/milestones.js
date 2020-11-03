@@ -1,8 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const createError = require('http-errors');
 
-router.get('/', (req, res) => {
-  res.json();
+const { getMilestones } = require('../services/milestoneService');
+
+router.get('/', async (req, res, next) => {
+  try {
+    const milestones = await getMilestones();
+    res.json(milestones);
+  } catch (error) {
+    next(createError(500));
+  }
 });
 
 router.post('/', (req, res) => {

@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const createError = require('http-errors');
+
 const { getLabels, addLabel, updateLabel, deleteLabel } = require('../services/labelService');
+
+const SUCCESS_MESSAGE = { message: 'success' };
 
 router.get('/', async (req, res, next) => {
   try {
@@ -14,8 +17,9 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    await addLabel(req.body);
-    res.sendStatus(201);
+    const newLabel = req.body;
+    await addLabel(newLabel);
+    res.send(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));
   }
@@ -23,8 +27,9 @@ router.post('/', async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
   try {
-    await updateLabel(req.body);
-    res.sendStatus(204);
+    const modifiedContents = req.body;
+    await updateLabel(modifiedContents);
+    res.send(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));
   }
@@ -32,8 +37,9 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   try {
-    await deleteLabel(req.body);
-    res.sendStatus(204);
+    const { id } = req.body;
+    await deleteLabel(id);
+    res.send(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));
   }

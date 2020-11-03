@@ -12,12 +12,12 @@ const getLabels = async () => {
   return labels;
 };
 
-const addLabel = async (label) => {
-  await Label.create({ ...label, isDeleted: false });
+const addLabel = async (newLabel) => {
+  await Label.create({ ...newLabel, isDeleted: false });
 };
 
-const updateLabel = async (label) => {
-  const { id, ...rest } = label;
+const updateLabel = async (modifiedContents) => {
+  const { id, ...rest } = modifiedContents;
   const [affectedRowCount] = await Label.update(rest, {
     where: { id, isDeleted: false },
   });
@@ -26,8 +26,7 @@ const updateLabel = async (label) => {
   }
 };
 
-const deleteLabel = async (label) => {
-  const { id } = label;
+const deleteLabel = async (id) => {
   const [affectedRowCount] = await Label.update({ isDeleted: true }, {
     where: { id, isDeleted: false },
   });

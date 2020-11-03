@@ -2,15 +2,13 @@ const { Issue } = require('../db/models');
 
 const getIssues = async () => {
   const issues = await Issue.findAll({
-    where: {
-      isDeleted: false,
-    },
+    where: { isDeleted: false },
   });
   return issues;
 };
 
 const addIssue = async (newIssue) => {
-  return await Issue.create(newIssue);
+  await Issue.create(newIssue);
 };
 
 const updateIssues = async (modifiedContents) => {
@@ -18,7 +16,7 @@ const updateIssues = async (modifiedContents) => {
   delete modifiedContents.id;
   return await Issue.update(
     modifiedContents,
-    { where: { id: ids } },
+    { where: { id: ids, isDeleted: false } },
   );
 };
 

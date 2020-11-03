@@ -44,6 +44,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             leftTitle = "Filter"
             rightTitle = "Edit"
         }
+        setNavigationTitle()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: leftTitle,
                                                            style: .plain,
                                                            target: self,
@@ -57,10 +58,12 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     @objc func didTouchLeftBarButton() {
         switch issueCollectionView.isEditing {
         case true:
-            //selectAll 함수 구현해야함
-            break
+            let itemCount = dataSource.snapshot().numberOfItems(inSection: .main)
+            for item in 0..<itemCount {
+                let indexPath = IndexPath(item: item, section: 0)
+                issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+            }
         case false:
-            //filter화면으로 이동
             performSegue(withIdentifier: "showFilterViewController", sender: self)
         }
         updateBarButtonItems()
@@ -73,6 +76,19 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         toolbar.isHidden = !toolbar.isHidden
         toolbar.heightAnchor.constraint(equalTo: tabBar.heightAnchor).isActive = true
         updateBarButtonItems()
+    }
+    
+    func setNavigationTitle() {
+        var title: String
+        switch issueCollectionView.isEditing {
+        case true:
+            guard let indexPaths = issueCollectionView.indexPathsForSelectedItems else { return }
+            let selectedItemsCount = indexPaths.count
+            title = "\(selectedItemsCount)개 선택"
+        case false:
+            title = "이슈"
+        }
+        navigationItem.title = title
     }
 
 }
@@ -112,6 +128,7 @@ extension IssueListViewController {
         }
         issueCollectionView.collectionViewLayout = createLayout(using: configuration)
         issueCollectionView.allowsMultipleSelectionDuringEditing = true
+        issueCollectionView.delegate = self
     }
 
     private func cellProvider(collectionView: UICollectionView,
@@ -121,6 +138,18 @@ extension IssueListViewController {
                                                       for: indexPath) as? IssueCollectionViewCell
         cell?.configure(with: issue)
         return cell
+    }
+    
+}
+
+extension IssueListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        setNavigationTitle()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        setNavigationTitle()
     }
     
 }

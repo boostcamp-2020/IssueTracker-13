@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k72-CT-Zpz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -110,6 +110,21 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nP-cf-veg" customClass="FloatingButton" customModule="IssueTracker" customModuleProvider="target">
+                                <rect key="frame" x="324" y="723" width="70" height="70"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Bn7-b0-Lx1"/>
+                                    <constraint firstAttribute="height" constant="70" id="JBE-Ga-DDW"/>
+                                </constraints>
+                                <color key="tintColor" red="0.97918921709060669" green="0.96389979124069214" blue="0.93314749002456665" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="plus" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <segue destination="XKJ-ov-kud" kind="presentation" identifier="" id="Gq2-Tn-Cta"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -118,7 +133,9 @@
                             <constraint firstAttribute="bottom" secondItem="jvR-Wf-91Z" secondAttribute="bottom" id="eJu-Ce-uAg"/>
                             <constraint firstItem="niz-5h-YtM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gXH-R5-CDT"/>
                             <constraint firstItem="jvR-Wf-91Z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="m1k-0y-75C"/>
+                            <constraint firstItem="niz-5h-YtM" firstAttribute="trailing" secondItem="5nP-cf-veg" secondAttribute="trailing" constant="20" id="pbX-wy-1w2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="niz-5h-YtM" secondAttribute="trailing" id="qlm-Wv-c9n"/>
+                            <constraint firstItem="niz-5h-YtM" firstAttribute="bottom" secondItem="5nP-cf-veg" secondAttribute="bottom" constant="20" id="uqD-Co-4KD"/>
                             <constraint firstItem="niz-5h-YtM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xxq-v4-4eV"/>
                             <constraint firstItem="jvR-Wf-91Z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zxc-uo-PNN"/>
                         </constraints>
@@ -236,15 +253,34 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufq-Bf-9wj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1661" y="794"/>
+            <point key="canvasLocation" x="1271" y="836"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Qy3-Dk-4Tf">
+            <objects>
+                <viewController id="XKJ-ov-kud" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2fa-UC-Ck2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="k8n-ce-cuM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXL-uo-kzR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055" y="836"/>
         </scene>
     </scenes>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

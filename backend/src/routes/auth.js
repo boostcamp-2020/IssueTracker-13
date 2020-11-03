@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.post('/siginIn', (req, res) => {
+  res.json();
+});
+
+router.post('/siginUp', (req, res) => {
   res.json();
 });
 

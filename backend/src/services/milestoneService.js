@@ -9,8 +9,8 @@ const getMilestones = async () => {
   return milestones;
 };
 
-const addMilestone = () => {
-
+const addMilestone = async (newMilestone) => {
+  return await Milestone.create(newMilestone);
 };
 
 const updateMilestone = async (modifiedContents) => {

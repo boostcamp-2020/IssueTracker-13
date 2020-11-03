@@ -27,9 +27,14 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     }
 
     @IBAction func didTouchSelectedIssuesDeleteButton(_ sender: UIBarButtonItem) {
+        guard let indexPaths = issueCollectionView.indexPathsForSelectedItems else { return }
+        let issues = indexPaths.compactMap({ dataSource.itemIdentifier(for: $0)})
+        interactor.remove(issues: issues)
+        setNavigationTitle()
     }
     
     @IBAction func didTouchSelectedIssuesCloseButton(_ sender: UIBarButtonItem) {
+        
     }
     
     private func updateBarButtonItems() {

@@ -20,8 +20,7 @@ class IssueCollectionViewCell: UICollectionViewListCell {
         milestoneBadgeLabel.configure(with: issue.milestone)
         labelBadgeLabel.configure(with: issue.labels.first?.title ?? "", color: "", backgroundColor: "")
 //        contentConfiguration = defaultContentConfiguration()
-        separatorLayoutGuide.leadingAnchor.constraint(equalTo: titleLabel
-                                                        .leadingAnchor).isActive = true
+        separatorLayoutGuide.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         accessories = [.multiselect(displayed: .whenEditing, options: .init())]
     }
 

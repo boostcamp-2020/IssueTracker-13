@@ -6,7 +6,6 @@ const getIssues = async () => {
       isDeleted: false,
     },
   });
-  console.log('issue : ', issues);
   return issues;
 };
 
@@ -14,23 +13,25 @@ const addIssue = async (newIssue) => {
   return await Issue.create(newIssue);
 };
 
-const updateIssue = async (modifiedContents) => {
+const updateIssues = async (modifiedContents) => {
+  const ids = modifiedContents.id;
+  delete modifiedContents.id;
   return await Issue.update(
     modifiedContents,
-    { where: { title: modifiedContents.title } },
+    { where: { id: ids } },
   );
 };
 
-const deleteIssue = async (title) => {
+const deleteIssues = async (id) => {
   return await Issue.update(
     { isDeleted: true },
-    { where: { title: title } },
+    { where: { id: id } },
   );
 };
 
 module.exports = {
   getIssues,
   addIssue,
-  updateIssue,
-  deleteIssue,
+  updateIssues,
+  deleteIssues,
 };

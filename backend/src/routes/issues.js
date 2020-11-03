@@ -5,8 +5,8 @@ const createError = require('http-errors');
 const {
   getIssues,
   addIssue,
-  updateIssue,
-  deleteIssue,
+  updateIssues,
+  deleteIssues,
 } = require('../services/issueService');
 
 const SUCCESS_MESSAGE = { message: 'success' };
@@ -33,7 +33,7 @@ router.post('/', async (req, res, next) => {
 router.put('/', async (req, res, next) => {
   try {
     const modifiedContents = req.body;
-    await updateIssue(modifiedContents);
+    await updateIssues(modifiedContents);
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));
@@ -42,8 +42,8 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   try {
-    const { title } = req.body;
-    await deleteIssue(title);
+    const { id } = req.body;
+    await deleteIssues(id);
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));

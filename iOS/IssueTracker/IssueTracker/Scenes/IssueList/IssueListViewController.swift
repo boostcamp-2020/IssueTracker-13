@@ -26,10 +26,18 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         updateBarButtonItems()
     }
 
-    @IBAction func didTouchSelectedIssuesDeleteButton(_ sender: UIBarButtonItem) {
-    }
-    
-    @IBAction func didTouchSelectedIssuesCloseButton(_ sender: UIBarButtonItem) {
+    @IBAction func didTouchToolbarButton(_ sender: UIBarButtonItem) {
+        guard let indexPaths = issueCollectionView.indexPathsForSelectedItems else { return }
+        let issues = indexPaths.compactMap({ dataSource.itemIdentifier(for: $0)})
+        switch sender.title {
+        case "선택 이슈 삭제":
+            interactor.remove(issues: issues)
+        case "선택 이슈 닫기":
+            interactor.close(issues: issues)
+        default:
+            break
+        }
+        changeEditingMode()
     }
     
     private func updateBarButtonItems() {
@@ -38,7 +46,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         
         switch issueCollectionView.isEditing {
         case true:
-            leftTitle = "Select All"
+            leftTitle = isSelectedAll() ? "Deelect All" : "Select All"
             rightTitle = "Cancel"
         case false:
             leftTitle = "Filter"
@@ -52,24 +60,38 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: rightTitle,
                                                             style: .plain,
                                                             target: self,
-                                                            action: #selector(didTouchRightBarButton))
+                                                            action: #selector(changeEditingMode))
+    }
+    
+    func isSelectedAll() -> Bool {
+        let itemCount = dataSource.snapshot().numberOfItems(inSection: .main)
+        let indexPathCount = issueCollectionView.indexPathsForSelectedItems?.count
+        if indexPathCount == 0 {
+            return false
+        }
+        return itemCount == indexPathCount
     }
     
     @objc func didTouchLeftBarButton() {
         switch issueCollectionView.isEditing {
         case true:
             let itemCount = dataSource.snapshot().numberOfItems(inSection: .main)
+            let flag = isSelectedAll()
             for item in 0..<itemCount {
                 let indexPath = IndexPath(item: item, section: 0)
-                issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+                if !flag {
+                    issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+                } else {
+                    issueCollectionView.deselectItem(at: indexPath, animated: true)
+                }
             }
         case false:
-            performSegue(withIdentifier: "showFilterViewController", sender: self)
+            performSegue(withIdentifier: "showFilterIssueViewController", sender: self)
         }
         updateBarButtonItems()
     }
     
-    @objc func didTouchRightBarButton() {
+    @objc func changeEditingMode() {
         guard let tabBar = tabBarController?.tabBar else { return }
         tabBar.isHidden = !tabBar.isHidden
         tabBar.alpha = isEditing ? 0.0 : 1.0

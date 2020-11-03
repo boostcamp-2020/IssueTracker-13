@@ -40,7 +40,9 @@ extension IssueListInteractor: IssueListBusinessLogic {
     }
 
     func remove(issues: [Issue]) {
-
+        guard let dataSource = issueDataSource else { return }
+        dataSource.remove(issues: issues)
+        viewController?.displayIssueList(with: dataSource.openedIssues, at: .main)
     }
 
     func close(issue: Issue) {
@@ -50,7 +52,9 @@ extension IssueListInteractor: IssueListBusinessLogic {
     }
 
     func close(issues: [Issue]) {
-
+        guard let dataSource = issueDataSource else { return }
+        dataSource.close(issues: issues)
+        viewController?.displayIssueList(with: dataSource.openedIssues, at: .main)
     }
 
 }

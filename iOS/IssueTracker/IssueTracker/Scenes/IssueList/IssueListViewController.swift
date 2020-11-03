@@ -46,7 +46,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         
         switch issueCollectionView.isEditing {
         case true:
-            leftTitle = "Select All"
+            leftTitle = isSelectedAll() ? "Deelect All" : "Select All"
             rightTitle = "Cancel"
         case false:
             leftTitle = "Filter"
@@ -63,13 +63,27 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
                                                             action: #selector(changeEditingMode))
     }
     
+    func isSelectedAll() -> Bool {
+        let itemCount = dataSource.snapshot().numberOfItems(inSection: .main)
+        let indexPathCount = issueCollectionView.indexPathsForSelectedItems?.count
+        if indexPathCount == 0 {
+            return false
+        }
+        return itemCount == indexPathCount
+    }
+    
     @objc func didTouchLeftBarButton() {
         switch issueCollectionView.isEditing {
         case true:
             let itemCount = dataSource.snapshot().numberOfItems(inSection: .main)
+            let flag = isSelectedAll()
             for item in 0..<itemCount {
                 let indexPath = IndexPath(item: item, section: 0)
-                issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+                if !flag {
+                    issueCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+                } else {
+                    issueCollectionView.deselectItem(at: indexPath, animated: true)
+                }
             }
         case false:
             performSegue(withIdentifier: "showFilterViewController", sender: self)

@@ -2,6 +2,7 @@
 const {
   Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Issue extends Model {
     static associate(models) {
@@ -10,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         through: 'Assignees',
       });
       Issue.hasMany(models.Comment);
-      Issue.belongsToMany(models.Label. {
+      Issue.belongsToMany(models.Label, {
         through: 'IssueLabels',
       });
       Issue.belongsTo(models.Milestone);

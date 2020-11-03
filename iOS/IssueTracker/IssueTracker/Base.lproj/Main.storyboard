@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k72-CT-Zpz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -253,7 +253,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXL-uo-kzR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3872.4637681159425" y="835.71428571428567"/>
+            <point key="canvasLocation" x="4442" y="836"/>
         </scene>
         <!--필터 선택-->
         <scene sceneID="ByT-cH-jvS">
@@ -370,6 +370,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="JMT-94-Ir7" kind="show" id="mTX-Lq-j4E"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooa-Ye-CgH" style="IBUITableViewCellStyleDefault" id="Sll-X6-1xe">
                                         <rect key="frame" x="20" y="372.5" width="374" height="43.5"/>
@@ -445,7 +448,54 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QwP-qq-EIB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2139.130434782609" y="785.49107142857144"/>
+            <point key="canvasLocation" x="1916" y="836"/>
+        </scene>
+        <!--작성자-->
+        <scene sceneID="iYY-VC-qZc">
+            <objects>
+                <viewController id="JMT-94-Ir7" customClass="UserListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BCA-i6-hPu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Shd-Zg-pmx">
+                                <rect key="frame" x="0.0" y="108" width="414" height="700"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gi6-Pv-9Ra">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4fN-8y-6tN">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cDF-mW-ken">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wHd-SH-Mwu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Shd-Zg-pmx" firstAttribute="top" secondItem="wHd-SH-Mwu" secondAttribute="top" id="273-gH-cO4"/>
+                            <constraint firstItem="Shd-Zg-pmx" firstAttribute="leading" secondItem="wHd-SH-Mwu" secondAttribute="leading" id="IKo-3d-2aG"/>
+                            <constraint firstItem="wHd-SH-Mwu" firstAttribute="trailing" secondItem="Shd-Zg-pmx" secondAttribute="trailing" id="Og4-rO-nJu"/>
+                            <constraint firstItem="wHd-SH-Mwu" firstAttribute="bottom" secondItem="Shd-Zg-pmx" secondAttribute="bottom" id="uCT-u0-G1O"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="작성자" id="5ZR-MT-v0M"/>
+                    <connections>
+                        <outlet property="userCollectionView" destination="Shd-Zg-pmx" id="TZ9-h4-eja"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qw2-ax-zOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2678" y="836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RRA-zr-ZA1">

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Assignee: Codable {
+struct User: Codable {
     let name: String
     let img: String
 }

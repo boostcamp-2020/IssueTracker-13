@@ -72,9 +72,10 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     @objc func didTouchRightBarButton() {
         guard let tabBar = tabBarController?.tabBar else { return }
         tabBar.isHidden = !tabBar.isHidden
+        tabBar.alpha = isEditing ? 0.0 : 1.0
         issueCollectionView.isEditing = !issueCollectionView.isEditing
         toolbar.isHidden = !toolbar.isHidden
-        toolbar.heightAnchor.constraint(equalTo: tabBar.heightAnchor).isActive = true
+//        toolbar.heightAnchor.constraint(equalTo: tabBar.heightAnchor).isActive = true
         updateBarButtonItems()
     }
     

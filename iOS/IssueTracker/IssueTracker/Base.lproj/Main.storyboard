@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k72-CT-Zpz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -95,7 +95,7 @@
                                 </cells>
                             </collectionView>
                             <toolbar hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvR-Wf-91Z">
-                                <rect key="frame" x="0.0" y="847" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem title="선택 이슈 삭제" id="wvc-rZ-RqV">
                                         <connections>
@@ -130,7 +130,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="niz-5h-YtM" secondAttribute="bottom" id="8W5-dq-lhl"/>
-                            <constraint firstAttribute="bottom" secondItem="jvR-Wf-91Z" secondAttribute="bottom" id="eJu-Ce-uAg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="jvR-Wf-91Z" secondAttribute="top" id="eJu-Ce-uAg"/>
                             <constraint firstItem="niz-5h-YtM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gXH-R5-CDT"/>
                             <constraint firstItem="jvR-Wf-91Z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="m1k-0y-75C"/>
                             <constraint firstItem="niz-5h-YtM" firstAttribute="trailing" secondItem="5nP-cf-veg" secondAttribute="trailing" constant="20" id="pbX-wy-1w2"/>

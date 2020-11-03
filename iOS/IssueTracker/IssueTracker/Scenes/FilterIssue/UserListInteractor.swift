@@ -43,7 +43,7 @@ extension UserListInteractor: UserListBusinessLogic {
                 self?.users = users
             }
         case .assignee:
-            worker.fetchAuthors { [weak self] (users) in
+            worker.fetchAssignees { [weak self] (users) in
                 self?.users = users
             }
         case .none:

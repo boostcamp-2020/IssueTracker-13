@@ -10,20 +10,20 @@ import Foundation
 class FilterWorker {
     
     func fetchAuthors(handler: @escaping ([User]) -> Void) {
-        let users = [User(name: "강병민", img: "temp1.jpg"),
-                     User(name: "박동현", img: "temp2.jpg"),
-                     User(name: "박인서", img: "temp3.jpg"),
-                     User(name: "신준수", img: "temp4.jpg"),
-                     User(name: "전쟁열", img: "temp5.jpg")]
+        let users = [User(name: "강병민1", img: "temp1.jpg"),
+                     User(name: "박동현1", img: "temp2.jpg"),
+                     User(name: "박인서1", img: "temp3.jpg"),
+                     User(name: "신준수1", img: "temp4.jpg"),
+                     User(name: "전쟁열1", img: "temp5.jpg")]
         handler(users)
     }
     
-    func fetchAssignes(handler: @escaping ([User]) -> Void) {
-        let users = [User(name: "강병민", img: "temp1.jpg"),
-                     User(name: "박동현", img: "temp2.jpg"),
-                     User(name: "박인서", img: "temp3.jpg"),
-                     User(name: "신준수", img: "temp4.jpg"),
-                     User(name: "전쟁열", img: "temp5.jpg")]
+    func fetchAssignees(handler: @escaping ([User]) -> Void) {
+        let users = [User(name: "강병민2", img: "temp1.jpg"),
+                     User(name: "박동현2", img: "temp2.jpg"),
+                     User(name: "박인서2", img: "temp3.jpg"),
+                     User(name: "신준수2", img: "temp4.jpg"),
+                     User(name: "전쟁열2", img: "temp5.jpg")]
         handler(users)
     }
     

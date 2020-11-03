@@ -10,7 +10,7 @@ const userRouter = require('./users');
 router.use('/auth', authRouter);
 router.use('/issues', issueRouter);
 router.use('/labels', labelRouter);
-router.use('/milestone', milestoneRouter);
+router.use('/milestones', milestoneRouter);
 router.use('/users', userRouter);
 
 module.exports = router;

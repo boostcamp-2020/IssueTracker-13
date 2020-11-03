@@ -99,13 +99,13 @@
                                 <items>
                                     <barButtonItem title="선택 이슈 삭제" id="wvc-rZ-RqV">
                                         <connections>
-                                            <action selector="didTouchSelectedIssuesDeleteButton:" destination="BYZ-38-t0r" id="WvU-aF-M3i"/>
+                                            <action selector="didTouchToolbarButton:" destination="BYZ-38-t0r" id="WvU-aF-M3i"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="MMR-WE-gdL"/>
                                     <barButtonItem title="선택 이슈 닫기" id="xCp-zz-BQq">
                                         <connections>
-                                            <action selector="didTouchSelectedIssuesCloseButton:" destination="BYZ-38-t0r" id="HTy-SA-knb"/>
+                                            <action selector="didTouchToolbarButton:" destination="BYZ-38-t0r" id="DMV-yS-neb"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>

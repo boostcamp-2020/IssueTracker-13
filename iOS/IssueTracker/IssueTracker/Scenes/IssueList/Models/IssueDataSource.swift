@@ -43,8 +43,8 @@ extension IssueDataSource: IssueDataSourceProtocol {
         }
     }
 
-    func remove(issues items: [Issue]) {
-        items.forEach({ remove(issue: $0) })
+    func remove(issues: [Issue]) {
+        issues.forEach({ remove(issue: $0) })
     }
 
     func close(issue: Issue) {
@@ -55,6 +55,7 @@ extension IssueDataSource: IssueDataSourceProtocol {
     }
 
     func close(issues: [Issue]) {
+        issues.forEach({ close(issue: $0) })
 
     }
 

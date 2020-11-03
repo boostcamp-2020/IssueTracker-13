@@ -26,15 +26,18 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         updateBarButtonItems()
     }
 
-    @IBAction func didTouchSelectedIssuesDeleteButton(_ sender: UIBarButtonItem) {
+    @IBAction func didTouchToolbarButton(_ sender: UIBarButtonItem) {
         guard let indexPaths = issueCollectionView.indexPathsForSelectedItems else { return }
         let issues = indexPaths.compactMap({ dataSource.itemIdentifier(for: $0)})
-        interactor.remove(issues: issues)
-        setNavigationTitle()
-    }
-    
-    @IBAction func didTouchSelectedIssuesCloseButton(_ sender: UIBarButtonItem) {
-        
+        switch sender.title {
+        case "선택 이슈 삭제":
+            interactor.remove(issues: issues)
+        case "선택 이슈 닫기":
+            interactor.close(issues: issues)
+        default:
+            break
+        }
+        changeEditingMode()
     }
     
     private func updateBarButtonItems() {
@@ -57,7 +60,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: rightTitle,
                                                             style: .plain,
                                                             target: self,
-                                                            action: #selector(didTouchRightBarButton))
+                                                            action: #selector(changeEditingMode))
     }
     
     @objc func didTouchLeftBarButton() {
@@ -74,7 +77,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         updateBarButtonItems()
     }
     
-    @objc func didTouchRightBarButton() {
+    @objc func changeEditingMode() {
         guard let tabBar = tabBarController?.tabBar else { return }
         tabBar.isHidden = !tabBar.isHidden
         tabBar.alpha = isEditing ? 0.0 : 1.0

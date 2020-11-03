@@ -371,7 +371,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="JMT-94-Ir7" kind="show" id="mTX-Lq-j4E"/>
+                                            <segue destination="JMT-94-Ir7" kind="show" identifier="showAuthorList" id="mTX-Lq-j4E"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ooa-Ye-CgH" style="IBUITableViewCellStyleDefault" id="Sll-X6-1xe">
@@ -424,6 +424,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="JMT-94-Ir7" kind="show" identifier="showAssigneeList" id="w34-j2-yz5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -450,7 +453,7 @@
             </objects>
             <point key="canvasLocation" x="1916" y="836"/>
         </scene>
-        <!--작성자-->
+        <!--USERS-->
         <scene sceneID="iYY-VC-qZc">
             <objects>
                 <viewController id="JMT-94-Ir7" customClass="UserListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -488,14 +491,14 @@
                             <constraint firstItem="wHd-SH-Mwu" firstAttribute="bottom" secondItem="Shd-Zg-pmx" secondAttribute="bottom" id="uCT-u0-G1O"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="작성자" id="5ZR-MT-v0M"/>
+                    <navigationItem key="navigationItem" title="USERS" id="5ZR-MT-v0M"/>
                     <connections>
                         <outlet property="userCollectionView" destination="Shd-Zg-pmx" id="TZ9-h4-eja"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qw2-ax-zOV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2678" y="836"/>
+            <point key="canvasLocation" x="2687" y="836"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RRA-zr-ZA1">
@@ -516,6 +519,9 @@
             <point key="canvasLocation" x="1226" y="836"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="w34-j2-yz5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">

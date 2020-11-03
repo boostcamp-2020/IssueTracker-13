@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'author',
       });
       User.hasMany(models.Comment);
-      User.belongsToMany(models.issues, {
+      User.belongsToMany(models.Issue, {
         through: 'Assignees',
       });
     }

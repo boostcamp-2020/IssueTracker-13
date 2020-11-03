@@ -15,7 +15,7 @@ struct Issue: Codable {
     let labels: [Label]
     let author: String
     let assignees: [Assignee]
-    let isOpen: Bool
+    var isOpen: Bool
     let createAt: String
 }
 

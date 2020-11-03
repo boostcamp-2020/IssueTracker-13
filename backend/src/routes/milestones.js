@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const createError = require('http-errors');
 
-const { getMilestones } = require('../services/milestoneService');
+const {
+  getMilestones,
+  addMilestone,
+  updateMilestone,
+  deleteMilestone,
+} = require('../services/milestoneService');
 
 router.get('/', async (req, res, next) => {
   try {
@@ -21,8 +26,14 @@ router.put('/', (req, res) => {
   res.json();
 });
 
-router.delete('/', (req, res) => {
-  res.json();
+router.delete('/', async (req, res, next) => {
+  try {
+    const { id } = req.body;
+    await deleteMilestone(id);
+    res.json({ message: 'delete success' });
+  } catch (error) {
+    next(createError(500));
+  }
 });
 
 

@@ -2,7 +2,7 @@ const { Milestone } = require('../db/models');
 
 const getMilestones = async () => {
   const milestones = await Milestone.findAll({
-    whiere: {
+    where: {
       isDeleted: false,
     },
   });
@@ -17,8 +17,16 @@ const updateMilestone = () => {
 
 };
 
-const deleteMilestone = () => {
-  //isDeleted true로 변경
+const deleteMilestone = async (id) => {
+  return await Milestone.update(
+    { isDeleted: true },
+    { where: { id: id } },
+  );
 };
 
-module.exports = { getMilestones };
+module.exports = {
+  getMilestones,
+  addMilestone,
+  updateMilestone,
+  deleteMilestone,
+};

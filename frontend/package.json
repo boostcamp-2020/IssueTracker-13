@@ -2,11 +2,12 @@
   "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "main": ".eslintrc.js",
+  "main": "",
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --progress",
-    "lint": "eslint src/**/*.js src/**/*.jsx --fix"
+    "lint": "eslint --ext js,jsx src",
+    "fix": "eslint src/**/*.js src/**/*.jsx --fix"
   },
   "author": "",
   "license": "ISC",

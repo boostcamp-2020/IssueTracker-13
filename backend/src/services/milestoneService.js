@@ -16,14 +16,14 @@ const addMilestone = async (newMilestone) => {
 const updateMilestone = async (modifiedContents) => {
   return await Milestone.update(
     modifiedContents,
-    { where: { id: modifiedContents.id } },
+    { where: { title: modifiedContents.title } },
   );
 };
 
-const deleteMilestone = async (id) => {
+const deleteMilestone = async (title) => {
   return await Milestone.update(
     { isDeleted: true },
-    { where: { id: id } },
+    { where: { title: title } },
   );
 };
 

@@ -20,6 +20,8 @@
     "morgan": "~1.9.1",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-github2": "^0.1.12",
     "sequelize": "^6.3.5"
   },
   "devDependencies": {

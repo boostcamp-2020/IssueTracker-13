@@ -9,9 +9,29 @@ import UIKit
 
 class FilterIssueViewController: UITableViewController {
 
+    let interactor = FilterIssueInteractor()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueId = segue.identifier else { return }
+        switch segueId {
+        case "showAuthorList":
+            guard let userListVC = segue.destination as? UserListViewController else { return }
+            userListVC.interactor.userMode = .author
+            userListVC.interactor.delegate = interactor
+        case "showAssigneeList":
+            guard let userListVC = segue.destination as? UserListViewController else { return }
+            userListVC.interactor.userMode = .assignee
+            userListVC.interactor.delegate = interactor
+        default:
+            break
+        }
+
+    }
+    
     
     @IBAction func didTouchBarButton(_ sender: UIBarButtonItem) {
         if sender.title == "Done" {

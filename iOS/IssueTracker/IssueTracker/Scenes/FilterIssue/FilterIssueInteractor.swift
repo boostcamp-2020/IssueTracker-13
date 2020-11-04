@@ -15,7 +15,18 @@ protocol FilterIssueBusinessLogic {
     
 }
 
-class FilterIssueInteractor: FilterIssueBusinessLogic {
+class FilterIssueInteractor: FilterIssueBusinessLogic, UserListDelegate{
     
+    var author: User?
+    var assignee: User?
 
+    func didSelect(user: User, mode: UserListInteractor.UserMode) {
+        switch mode {
+        case .author:
+            self.author = user
+        case .assignee:
+            self.assignee = user
+        }
+    }
+    
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FilterUserListDelegate: class {
-    func didSelect(user: User, mode : FilterUserListInteractor.UserMode)
+    func didSelect(user: User, mode: FilterUserListInteractor.UserMode)
 }
 
 protocol FilterUserListBusinessLogic {

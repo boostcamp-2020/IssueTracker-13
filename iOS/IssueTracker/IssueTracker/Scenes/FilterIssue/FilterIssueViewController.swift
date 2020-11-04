@@ -26,12 +26,14 @@ class FilterIssueViewController: UITableViewController {
             guard let userListVC = segue.destination as? UserListViewController else { return }
             userListVC.interactor.userMode = .assignee
             userListVC.interactor.delegate = interactor
+        case "showFilterMilestoneList":
+            guard let filterMilestoneVC = segue.destination as? FilterMilestoneListViewController else { return }
+            filterMilestoneVC.interactor.delegate = interactor
         default:
             break
         }
 
     }
-    
     
     @IBAction func didTouchBarButton(_ sender: UIBarButtonItem) {
         if sender.title == "Done" {

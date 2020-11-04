@@ -411,7 +411,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="jP9-w6-KkU" kind="show" id="L0z-Pq-QIG"/>
+                                            <segue destination="jP9-w6-KkU" kind="show" identifier="showFilterMilestoneList" id="L0z-Pq-QIG"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7d5-Qt-jga" style="IBUITableViewCellStyleDefault" id="b5y-qy-hIL">

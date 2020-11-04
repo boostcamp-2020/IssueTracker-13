@@ -15,11 +15,16 @@ protocol FilterIssueBusinessLogic {
     
 }
 
-class FilterIssueInteractor: FilterIssueBusinessLogic, UserListDelegate{
+class FilterIssueInteractor: FilterIssueBusinessLogic {
     
     var author: User?
     var assignee: User?
+    var milestone: String?
 
+}
+
+extension FilterIssueInteractor: UserListDelegate {
+    
     func didSelect(user: User, mode: UserListInteractor.UserMode) {
         switch mode {
         case .author:
@@ -27,6 +32,14 @@ class FilterIssueInteractor: FilterIssueBusinessLogic, UserListDelegate{
         case .assignee:
             self.assignee = user
         }
+    }
+    
+}
+
+extension FilterIssueInteractor: FilterMilestoneListDelegate {
+    
+    func didSelect(milestone: String) {
+        self.milestone = milestone
     }
     
 }

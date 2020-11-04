@@ -27,6 +27,9 @@
 		51445AAA254A95D700875BA5 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51445AA9254A95D600875BA5 /* InsetLabel.swift */; };
 		51445AAF254AA11B00875BA5 /* MilestoneBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51445AAE254AA11A00875BA5 /* MilestoneBadgeLabel.swift */; };
 		51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51445AB3254AA13000875BA5 /* LabelBadgeLabel.swift */; };
+		51A9F6032552715E0004FB52 /* FilterMilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F6022552715E0004FB52 /* FilterMilestoneListViewController.swift */; };
+		51A9F608255271990004FB52 /* FilterLabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F607255271980004FB52 /* FilterLabelListViewController.swift */; };
+		51A9F610255274180004FB52 /* FilterMilestoneListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F60F255274180004FB52 /* FilterMilestoneListInteractor.swift */; };
 		51DE98F62551898100A2E2C8 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98F52551898100A2E2C8 /* FilterWorker.swift */; };
 		51DE98FE25518DF000A2E2C8 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98FD25518DEF00A2E2C8 /* UserListViewController.swift */; };
 		51DE99032551940700A2E2C8 /* UserListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE99022551940700A2E2C8 /* UserListInteractor.swift */; };
@@ -84,6 +87,9 @@
 		51445AA9254A95D600875BA5 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		51445AAE254AA11A00875BA5 /* MilestoneBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneBadgeLabel.swift; sourceTree = "<group>"; };
 		51445AB3254AA13000875BA5 /* LabelBadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelBadgeLabel.swift; sourceTree = "<group>"; };
+		51A9F6022552715E0004FB52 /* FilterMilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMilestoneListViewController.swift; sourceTree = "<group>"; };
+		51A9F607255271980004FB52 /* FilterLabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLabelListViewController.swift; sourceTree = "<group>"; };
+		51A9F60F255274180004FB52 /* FilterMilestoneListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMilestoneListInteractor.swift; sourceTree = "<group>"; };
 		51DE98F52551898100A2E2C8 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
 		51DE98FD25518DEF00A2E2C8 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		51DE99022551940700A2E2C8 /* UserListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListInteractor.swift; sourceTree = "<group>"; };
@@ -278,6 +284,9 @@
 				51DE98F52551898100A2E2C8 /* FilterWorker.swift */,
 				51DE98FD25518DEF00A2E2C8 /* UserListViewController.swift */,
 				51DE99022551940700A2E2C8 /* UserListInteractor.swift */,
+				51A9F60F255274180004FB52 /* FilterMilestoneListInteractor.swift */,
+				51A9F6022552715E0004FB52 /* FilterMilestoneListViewController.swift */,
+				51A9F607255271980004FB52 /* FilterLabelListViewController.swift */,
 			);
 			path = FilterIssue;
 			sourceTree = "<group>";
@@ -517,6 +526,7 @@
 				51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */,
 				51326EE32549407C00C0C273 /* IssueListViewController.swift in Sources */,
 				51DE98F62551898100A2E2C8 /* FilterWorker.swift in Sources */,
+				51A9F6032552715E0004FB52 /* FilterMilestoneListViewController.swift in Sources */,
 				82CF7CB2254A8B3E0061121C /* Label.swift in Sources */,
 				51326EEB2549408A00C0C273 /* LabelListViewController.swift in Sources */,
 				51326E8025492F3A00C0C273 /* AppDelegate.swift in Sources */,
@@ -526,8 +536,10 @@
 				51326E8225492F3A00C0C273 /* SceneDelegate.swift in Sources */,
 				51326F0925494E0500C0C273 /* IssueListInteractor.swift in Sources */,
 				51DE98FE25518DF000A2E2C8 /* UserListViewController.swift in Sources */,
+				51A9F610255274180004FB52 /* FilterMilestoneListInteractor.swift in Sources */,
 				51326F1C2549723000C0C273 /* IssueDataSource.swift in Sources */,
 				51DE99032551940700A2E2C8 /* UserListInteractor.swift in Sources */,
+				51A9F608255271990004FB52 /* FilterLabelListViewController.swift in Sources */,
 				51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */,
 				82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */,
 				51326EF5254940A000C0C273 /* SettingViewController.swift in Sources */,

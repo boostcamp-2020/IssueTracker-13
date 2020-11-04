@@ -24,6 +24,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         interactor.viewController = self
         interactor.fetchIssues()
         updateBarButtonItems()
+        //tabBarController?.navigationController?.viewControllers.remove(at: 0)
     }
 
     @IBAction func didTouchToolbarButton(_ sender: UIBarButtonItem) {

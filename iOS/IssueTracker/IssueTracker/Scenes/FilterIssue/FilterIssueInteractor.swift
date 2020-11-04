@@ -23,9 +23,9 @@ class FilterIssueInteractor: FilterIssueBusinessLogic {
 
 }
 
-extension FilterIssueInteractor: UserListDelegate {
+extension FilterIssueInteractor: FilterUserListDelegate {
     
-    func didSelect(user: User, mode: UserListInteractor.UserMode) {
+    func didSelect(user: User, mode: FilterUserListInteractor.UserMode) {
         switch mode {
         case .author:
             self.author = user

@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol UserListDisplayLogic: class {
-    func displayUserList(with: [User], at: UserListInteractor.UserSection)
+protocol FilterUserListDisplayLogic: class {
+    func displayUserList(with: [User], at: FilterUserListInteractor.UserSection)
 }
-class UserListViewController: BaseCollectionViewController<UserListInteractor.UserSection, User> {
+class FilterUserListViewController: BaseCollectionViewController<FilterUserListInteractor.UserSection, User> {
     
     @IBOutlet weak var userCollectionView: UICollectionView!
-    let interactor = UserListInteractor()
+    let interactor = FilterUserListInteractor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,9 +48,9 @@ class UserListViewController: BaseCollectionViewController<UserListInteractor.Us
     }
     
 }
-extension UserListViewController: UserListDisplayLogic {
+extension FilterUserListViewController: FilterUserListDisplayLogic {
     
-    func displayUserList(with users: [User], at section: UserListInteractor.UserSection) {
+    func displayUserList(with users: [User], at section: FilterUserListInteractor.UserSection) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(users, toSection: section)
@@ -59,7 +59,7 @@ extension UserListViewController: UserListDisplayLogic {
     
 }
 
-extension UserListViewController: UICollectionViewDelegate {
+extension FilterUserListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedAuthor = dataSource.itemIdentifier(for: indexPath) else { return }

@@ -342,6 +342,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ajb-jV-fn9"/>
+                    <connections>
+                        <outlet property="loginStackView" destination="QNL-1s-snx" id="m1T-Vk-VGd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBJ-Kg-peE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

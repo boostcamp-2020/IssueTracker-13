@@ -33,6 +33,9 @@
 		51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FBF8EB255047F000F38CCC /* FloatingButton.swift */; };
 		826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F6306255154E80005D669 /* FilterIssueViewController.swift */; };
 		826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */; };
+		8298BD632552758400BE3623 /* FilterLabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8298BD612552758400BE3623 /* FilterLabelListViewController.swift */; };
+		8298BD642552758400BE3623 /* FilterMilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8298BD622552758400BE3623 /* FilterMilestoneListViewController.swift */; };
+		8298BD6C255276B800BE3623 /* FitlterLabelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8298BD6B255276B800BE3623 /* FitlterLabelInteractor.swift */; };
 		82CF7CB2254A8B3E0061121C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB1254A8B3E0061121C /* Label.swift */; };
 		82CF7CB7254A8B500061121C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB6254A8B500061121C /* User.swift */; };
 		82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CC7254AA4FD0061121C /* IssueWorker.swift */; };
@@ -90,6 +93,9 @@
 		51FBF8EB255047F000F38CCC /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		826F6306255154E80005D669 /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
 		826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueInteractor.swift; sourceTree = "<group>"; };
+		8298BD612552758400BE3623 /* FilterLabelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterLabelListViewController.swift; sourceTree = "<group>"; };
+		8298BD622552758400BE3623 /* FilterMilestoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterMilestoneListViewController.swift; sourceTree = "<group>"; };
+		8298BD6B255276B800BE3623 /* FitlterLabelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitlterLabelInteractor.swift; sourceTree = "<group>"; };
 		82CF7CB1254A8B3E0061121C /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		82CF7CB6254A8B500061121C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		82CF7CC7254AA4FD0061121C /* IssueWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueWorker.swift; sourceTree = "<group>"; };
@@ -273,11 +279,14 @@
 		826F6305255154AB0005D669 /* FilterIssue */ = {
 			isa = PBXGroup;
 			children = (
+				8298BD612552758400BE3623 /* FilterLabelListViewController.swift */,
+				8298BD622552758400BE3623 /* FilterMilestoneListViewController.swift */,
 				826F6306255154E80005D669 /* FilterIssueViewController.swift */,
 				826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */,
 				51DE98F52551898100A2E2C8 /* FilterWorker.swift */,
 				51DE98FD25518DEF00A2E2C8 /* UserListViewController.swift */,
 				51DE99022551940700A2E2C8 /* UserListInteractor.swift */,
+				8298BD6B255276B800BE3623 /* FitlterLabelInteractor.swift */,
 			);
 			path = FilterIssue;
 			sourceTree = "<group>";
@@ -512,6 +521,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8298BD6C255276B800BE3623 /* FitlterLabelInteractor.swift in Sources */,
 				826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */,
 				51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */,
 				51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */,
@@ -527,6 +537,7 @@
 				51326F0925494E0500C0C273 /* IssueListInteractor.swift in Sources */,
 				51DE98FE25518DF000A2E2C8 /* UserListViewController.swift in Sources */,
 				51326F1C2549723000C0C273 /* IssueDataSource.swift in Sources */,
+				8298BD632552758400BE3623 /* FilterLabelListViewController.swift in Sources */,
 				51DE99032551940700A2E2C8 /* UserListInteractor.swift in Sources */,
 				51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */,
 				82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */,
@@ -534,6 +545,7 @@
 				51445A9F254A609500875BA5 /* BaseCollectionViewController.swift in Sources */,
 				51326EF02549409500C0C273 /* MilestoneListViewController.swift in Sources */,
 				51445AAA254A95D700875BA5 /* InsetLabel.swift in Sources */,
+				8298BD642552758400BE3623 /* FilterMilestoneListViewController.swift in Sources */,
 				51326F14254971FF00C0C273 /* Issue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

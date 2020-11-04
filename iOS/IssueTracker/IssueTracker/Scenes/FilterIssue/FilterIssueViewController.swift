@@ -26,6 +26,9 @@ class FilterIssueViewController: UITableViewController {
             guard let userListVC = segue.destination as? UserListViewController else { return }
             userListVC.interactor.userMode = .assignee
             userListVC.interactor.delegate = interactor
+        case "showFilterLabelList":
+            guard let vc = segue.destination as? FilterLabelListViewController else { return }
+            vc.interactor.delegate = interactor
         default:
             break
         }

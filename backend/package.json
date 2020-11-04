@@ -7,6 +7,7 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "lint": "eslint src/**/*.js",
+    "test": "jest",
     "initDB": "node -e \"require('./src/db/utils/initDatabase')()\""
   },
   "keywords": [],
@@ -28,6 +29,7 @@
   "devDependencies": {
     "eslint": "^7.12.1",
     "sequelize-cli": "^6.2.0",
+    "supertest": "^6.0.1",
     "umzug": "^3.0.0-beta.8"
   }
 }

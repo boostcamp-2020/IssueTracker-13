@@ -9,7 +9,7 @@ module.exports = {
       preview: '레이블 전체 목록을 볼 수 있어야 한다. 2줄까지 보입니다.',
       createdAt: new Date(),
       updatedAt: new Date(),
-      author: 1,
+      authorId: 1,
       milestoneId: 1,
     },
     {
@@ -19,7 +19,7 @@ module.exports = {
       preview: '마일스톤 전체 목록을 볼 수 있어야 한다. 길면 뒷부분이 ... 잘린다',
       createdAt: new Date(),
       updatedAt: new Date(),
-      author: 2,
+      authorId: 2,
       milestoneId: 2,
     }]);
   },

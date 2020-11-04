@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="k72-CT-Zpz">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -391,7 +391,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qgV-Aj-uCz" kind="show" id="WxA-Ry-SEX"/>
+                                            <segue destination="qgV-Aj-uCz" kind="show" identifier="showFilterLabelList" id="WxA-Ry-SEX"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="a96-CS-p9t" style="IBUITableViewCellStyleDefault" id="95K-bu-5pS">
@@ -411,7 +411,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="jP9-w6-KkU" kind="show" id="L0z-Pq-QIG"/>
+                                            <segue destination="jP9-w6-KkU" kind="show" identifier="" id="L0z-Pq-QIG"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7d5-Qt-jga" style="IBUITableViewCellStyleDefault" id="b5y-qy-hIL">
@@ -514,10 +514,41 @@
                     <view key="view" contentMode="scaleToFill" id="cBi-7v-oE5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ReW-Pk-Lio">
+                                <rect key="frame" x="0.0" y="108" width="414" height="700"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u5m-y9-7qn">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4G8-9g-qU9">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KB7-IU-7v4">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="3bD-c1-FfR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3bD-c1-FfR" firstAttribute="bottom" secondItem="ReW-Pk-Lio" secondAttribute="bottom" id="5m3-7S-2Va"/>
+                            <constraint firstItem="3bD-c1-FfR" firstAttribute="trailing" secondItem="ReW-Pk-Lio" secondAttribute="trailing" id="J4n-19-Tf5"/>
+                            <constraint firstItem="ReW-Pk-Lio" firstAttribute="leading" secondItem="3bD-c1-FfR" secondAttribute="leading" id="SCU-kE-PPi"/>
+                            <constraint firstItem="ReW-Pk-Lio" firstAttribute="top" secondItem="3bD-c1-FfR" secondAttribute="top" id="bsW-GJ-47F"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="레이블" id="iSq-9V-vHg"/>
+                    <connections>
+                        <outlet property="labelCollectionView" destination="ReW-Pk-Lio" id="yUq-q3-seH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtj-yU-etk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -559,7 +590,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="w34-j2-yz5"/>
+        <segue reference="mTX-Lq-j4E"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="plus" catalog="system" width="128" height="113"/>

@@ -19,6 +19,7 @@ class FilterIssueInteractor: FilterIssueBusinessLogic, UserListDelegate{
     
     var author: User?
     var assignee: User?
+    var label: Label?
 
     func didSelect(user: User, mode: UserListInteractor.UserMode) {
         switch mode {
@@ -29,4 +30,10 @@ class FilterIssueInteractor: FilterIssueBusinessLogic, UserListDelegate{
         }
     }
     
+}
+
+extension FilterIssueInteractor: FilterLabelListDelegate {
+    func didSelect(label: Label) {
+        self.label = label
+    }
 }

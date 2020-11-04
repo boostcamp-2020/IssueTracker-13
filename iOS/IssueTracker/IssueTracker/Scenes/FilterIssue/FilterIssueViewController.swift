@@ -19,13 +19,16 @@ class FilterIssueViewController: UITableViewController {
         guard let segueId = segue.identifier else { return }
         switch segueId {
         case "showAuthorList":
-            guard let userListVC = segue.destination as? UserListViewController else { return }
+            guard let userListVC = segue.destination as? FilterUserListViewController else { return }
             userListVC.interactor.userMode = .author
             userListVC.interactor.delegate = interactor
         case "showAssigneeList":
-            guard let userListVC = segue.destination as? UserListViewController else { return }
+            guard let userListVC = segue.destination as? FilterUserListViewController else { return }
             userListVC.interactor.userMode = .assignee
             userListVC.interactor.delegate = interactor
+        case "showFilterMilestoneList":
+            guard let filterMilestoneVC = segue.destination as? FilterMilestoneListViewController else { return }
+            filterMilestoneVC.interactor.delegate = interactor
         case "showFilterLabelList":
             guard let vc = segue.destination as? FilterLabelListViewController else { return }
             vc.interactor.delegate = interactor
@@ -34,8 +37,7 @@ class FilterIssueViewController: UITableViewController {
         }
 
     }
-    
-    
+
     @IBAction func didTouchBarButton(_ sender: UIBarButtonItem) {
         if sender.title == "Done" {
             

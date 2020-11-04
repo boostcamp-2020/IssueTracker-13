@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol UserListDelegate: class {
-    func didSelect(user: User, mode : UserListInteractor.UserMode)
+protocol FilterUserListDelegate: class {
+    func didSelect(user: User, mode: FilterUserListInteractor.UserMode)
 }
 
-protocol UserListBusinessLogic {
+protocol FilterUserListBusinessLogic {
     func fetchUsers()
     func select(user: User)
 }
 
-class UserListInteractor {
+class FilterUserListInteractor {
 
     enum UserSection {
         case main, suggest
@@ -25,8 +25,8 @@ class UserListInteractor {
         case author, assignee
     }
     
-    weak var delegate: UserListDelegate?
-    weak var viewController: UserListDisplayLogic?
+    weak var delegate: FilterUserListDelegate?
+    weak var viewController: FilterUserListDisplayLogic?
     
     var userMode: UserMode?
     var users: [User]?
@@ -34,7 +34,7 @@ class UserListInteractor {
     
 }
 
-extension UserListInteractor: UserListBusinessLogic {
+extension FilterUserListInteractor: FilterUserListBusinessLogic {
     
     func fetchUsers() {
         switch userMode {

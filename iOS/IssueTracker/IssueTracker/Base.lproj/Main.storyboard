@@ -411,7 +411,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="jP9-w6-KkU" kind="show" identifier="" id="L0z-Pq-QIG"/>
+                                            <segue destination="jP9-w6-KkU" kind="show" identifier="showFilterMilestoneList" id="L0z-Pq-QIG"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7d5-Qt-jga" style="IBUITableViewCellStyleDefault" id="b5y-qy-hIL">
@@ -462,7 +462,7 @@
         <!--USERS-->
         <scene sceneID="iYY-VC-qZc">
             <objects>
-                <viewController id="JMT-94-Ir7" customClass="UserListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JMT-94-Ir7" customClass="FilterUserListViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BCA-i6-hPu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -561,10 +561,41 @@
                     <view key="view" contentMode="scaleToFill" id="ZNE-Jj-Ohs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AAw-yV-kPc">
+                                <rect key="frame" x="0.0" y="108" width="414" height="700"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="daG-cY-87Z">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sJC-D7-5jV">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0gr-4v-Adz">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="4O8-BU-phr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4O8-BU-phr" firstAttribute="trailing" secondItem="AAw-yV-kPc" secondAttribute="trailing" id="WqF-85-4nz"/>
+                            <constraint firstItem="AAw-yV-kPc" firstAttribute="leading" secondItem="4O8-BU-phr" secondAttribute="leading" id="ZGn-1d-dxX"/>
+                            <constraint firstItem="4O8-BU-phr" firstAttribute="bottom" secondItem="AAw-yV-kPc" secondAttribute="bottom" id="iLk-U4-9Dn"/>
+                            <constraint firstItem="AAw-yV-kPc" firstAttribute="top" secondItem="4O8-BU-phr" secondAttribute="top" id="k6m-Jf-mOm"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="마일스톤" id="Eyd-bS-v17"/>
+                    <connections>
+                        <outlet property="milestoneCollectionView" destination="AAw-yV-kPc" id="NxH-zI-fsj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lEM-UT-TDH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

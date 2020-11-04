@@ -29,6 +29,9 @@ class FilterIssueViewController: UITableViewController {
         case "showFilterMilestoneList":
             guard let filterMilestoneVC = segue.destination as? FilterMilestoneListViewController else { return }
             filterMilestoneVC.interactor.delegate = interactor
+        case "showFilterLabelList":
+            guard let vc = segue.destination as? FilterLabelListViewController else { return }
+            vc.interactor.delegate = interactor
         default:
             break
         }

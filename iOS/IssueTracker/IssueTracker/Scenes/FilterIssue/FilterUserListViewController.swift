@@ -10,6 +10,7 @@ import UIKit
 protocol FilterUserListDisplayLogic: class {
     func displayUserList(with: [User], at: FilterUserListInteractor.UserSection)
 }
+
 class FilterUserListViewController: BaseCollectionViewController<FilterUserListInteractor.UserSection, User> {
     
     @IBOutlet weak var userCollectionView: UICollectionView!

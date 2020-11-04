@@ -20,6 +20,7 @@ class FilterIssueInteractor: FilterIssueBusinessLogic {
     var author: User?
     var assignee: User?
     var milestone: String?
+    var label: Label?
 
 }
 
@@ -42,4 +43,10 @@ extension FilterIssueInteractor: FilterMilestoneListDelegate {
         self.milestone = milestone
     }
     
+}
+
+extension FilterIssueInteractor: FilterLabelListDelegate {
+    func didSelect(label: Label) {
+        self.label = label
+    }
 }

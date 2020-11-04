@@ -13,7 +13,8 @@ const SUCCESS_MESSAGE = { message: 'success' };
 
 router.get('/', async (req, res, next) => {
   try {
-    const issues = await getIssues();
+    const { query } = req;
+    const issues = await getIssues(query);
     res.status(200).json(issues);
   } catch (error) {
     next(createError(500));

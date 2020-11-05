@@ -12,7 +12,7 @@ const Bar = styled.div`
   align-items: center;
 `;
 
-const Propertys = styled.div`
+const Properties = styled.div`
   display: flex;
 `;
 
@@ -23,7 +23,7 @@ export default function SearchBar({ labelCount, milestoneCount }) {
   return (
     <Bar>
       <SearchInput />
-      <Propertys>
+      <Properties>
         <PropertyButton
           route='/labels'
           text='Labels'
@@ -34,7 +34,7 @@ export default function SearchBar({ labelCount, milestoneCount }) {
           text='Milestones'
           count={milestoneCount}
           imgPath={milestoneImgPath}/>
-      </Propertys>
+      </Properties>
       <NewIssueButton />
     </Bar>
   );

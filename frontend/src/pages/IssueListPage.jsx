@@ -7,7 +7,7 @@ import IssueList from '../components/IssueList';
 import { getLabels } from '../apis/labelsAPI';
 import { getMilestones } from '../apis/milestonesAPI';
 
-const IssueListPage = () => {
+export default function IssueListPage() {
   const labels = getLabels();
   const milestones = getMilestones();
 
@@ -18,6 +18,4 @@ const IssueListPage = () => {
       <IssueList />
     </div>
   );
-};
-
-export default IssueListPage;
+}

@@ -1,11 +1,9 @@
 import React from 'react';
 
-const IssueListCheckBox = () => {
+export default function IssueListCheckBox() {
   return (
     <input
       type='checkbox'
     />
   );
-};
-
-export default IssueListCheckBox;
+}

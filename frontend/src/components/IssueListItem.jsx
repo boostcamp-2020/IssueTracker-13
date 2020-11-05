@@ -1,6 +1,6 @@
 import React from 'react';
 
-const IssueListItem = ({ issue }) => {
+export default function IssueListItem({ issue }) {
   const { id, title, preview, milestone, labels, author, createAt } = issue;
 
   return (
@@ -9,6 +9,4 @@ const IssueListItem = ({ issue }) => {
       {id} opened{createAt} by {author} milestone{milestone}
     </li>
   );
-};
-
-export default IssueListItem;
+}

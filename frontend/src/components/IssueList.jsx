@@ -4,7 +4,7 @@ import IssueListItem from './IssueListItem';
 
 import { getIssues } from '../apis/issuesAPI';
 
-const IssueList = () => {
+export default function IssueList() {
   const issues = getIssues();
 
   return (
@@ -12,6 +12,4 @@ const IssueList = () => {
       {issues.map((issue, i) => <IssueListItem key={i} issue={issue}/>)}
     </div>
   );
-};
-
-export default IssueList;
+}

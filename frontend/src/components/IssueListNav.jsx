@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import IssueListNavButton from './IssueListNavButton';
 import IssueListCheckBox from './IssueListCheckBox';
 
-const IssueListNav = () => {
+export default function IssueListNav() {
   const [clickedProperty, setClickedProperty] = useState('null');
 
   const handleClick = (title) => {
@@ -21,6 +21,4 @@ const IssueListNav = () => {
       <IssueListNavButton title={'Assignee'} handleClick={handleClick}/>
     </div>
   );
-};
-
-export default IssueListNav;
+}

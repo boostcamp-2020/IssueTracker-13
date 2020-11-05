@@ -4,8 +4,7 @@ import SearchInput from './SearchInput';
 import PropertyButton from './PropertyButton';
 import NewIssueButton from './NewIssueButton';
 
-
-const SearchBar = ({ labelCount, milestoneCount }) => {
+export default function SearchBar({ labelCount, milestoneCount }) {
   return (
     <div>
       <SearchInput />
@@ -14,6 +13,4 @@ const SearchBar = ({ labelCount, milestoneCount }) => {
       <NewIssueButton />
     </div>
   );
-};
-
-export default SearchBar;
+}

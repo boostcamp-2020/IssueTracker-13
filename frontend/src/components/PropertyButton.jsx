@@ -37,4 +37,3 @@ export default function PropertyButton({ route, text, imgPath, count }) {
     </Link>
   );
 }
-

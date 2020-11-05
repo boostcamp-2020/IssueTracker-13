@@ -4,7 +4,7 @@ import IssueListItem from './IssueListItem';
 
 import { getIssues } from '../apis/issuesAPI';
 
-function IssueList() {
+export default function IssueList() {
   const issues = getIssues();
 
   return (
@@ -13,5 +13,3 @@ function IssueList() {
     </div>
   );
 }
-
-export default IssueList;

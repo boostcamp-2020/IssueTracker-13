@@ -13,12 +13,10 @@ const Button = styled.button`
   font-size: 14px;
 `;
 
-const NewIssueButton = () => {
+export default function NewIssueButton() {
   return (
     <Link to='/new'>
       <Button>New issue</Button>
     </Link>
   );
-};
-
-export default NewIssueButton;
+}

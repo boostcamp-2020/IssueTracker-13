@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -32,6 +32,9 @@
 		51A9F610255274180004FB52 /* FilterMilestoneListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F60F255274180004FB52 /* FilterMilestoneListInteractor.swift */; };
 		51A9F62B2552A8240004FB52 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F62A2552A8240004FB52 /* SignInViewController.swift */; };
 		51A9F6302552A84C0004FB52 /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F62F2552A84C0004FB52 /* SignInInteractor.swift */; };
+		51C95CD22553CFDB00EACB1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CD12553CFDB00EACB1C /* API.swift */; };
+		51C95CD72553D14F00EACB1C /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CD62553D14F00EACB1C /* Milestone.swift */; };
+		51C95CDF2553DE9E00EACB1C /* ReponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */; };
 		51DE98F62551898100A2E2C8 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98F52551898100A2E2C8 /* FilterWorker.swift */; };
 		51DE98FE25518DF000A2E2C8 /* FilterUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98FD25518DEF00A2E2C8 /* FilterUserListViewController.swift */; };
 		51DE99032551940700A2E2C8 /* FilterUserListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE99022551940700A2E2C8 /* FilterUserListInteractor.swift */; };
@@ -97,6 +100,9 @@
 		51A9F62A2552A8240004FB52 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		51A9F62F2552A84C0004FB52 /* SignInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
 		51A9F6382552CFE70004FB52 /* IssueTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IssueTracker.entitlements; sourceTree = "<group>"; };
+		51C95CD12553CFDB00EACB1C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		51C95CD62553D14F00EACB1C /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
+		51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseMessage.swift; sourceTree = "<group>"; };
 		51DE98F52551898100A2E2C8 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
 		51DE98FD25518DEF00A2E2C8 /* FilterUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterUserListViewController.swift; sourceTree = "<group>"; };
 		51DE99022551940700A2E2C8 /* FilterUserListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterUserListInteractor.swift; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 				51326E7F25492F3A00C0C273 /* AppDelegate.swift */,
 				51326E8125492F3A00C0C273 /* SceneDelegate.swift */,
 				51445A9E254A609500875BA5 /* BaseCollectionViewController.swift */,
+				51C95CD12553CFDB00EACB1C /* API.swift */,
+				51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */,
 				51326EC325493DCF00C0C273 /* Scenes */,
 				51326E8525492F3A00C0C273 /* Main.storyboard */,
 				51326E8825492F3E00C0C273 /* Assets.xcassets */,
@@ -270,6 +278,7 @@
 			children = (
 				51326F13254971FF00C0C273 /* Issue.swift */,
 				51326F1B2549723000C0C273 /* IssueDataSource.swift */,
+				51C95CD62553D14F00EACB1C /* Milestone.swift */,
 				82CF7CB1254A8B3E0061121C /* Label.swift */,
 				82CF7CB6254A8B500061121C /* User.swift */,
 			);
@@ -337,6 +346,7 @@
 				51326E7925492F3A00C0C273 /* Frameworks */,
 				51326E7A25492F3A00C0C273 /* Resources */,
 				51326EBC2549359300C0C273 /* ShellScript */,
+				C7A75413EF4B3F4BAA287D48 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,6 +384,7 @@
 				51326E9925492F3E00C0C273 /* Sources */,
 				51326E9A25492F3E00C0C273 /* Frameworks */,
 				51326E9B25492F3E00C0C273 /* Resources */,
+				83A2541F381B691A9738F814 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -516,6 +527,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		83A2541F381B691A9738F814 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker-IssueTrackerUITests/Pods-IssueTracker-IssueTrackerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker-IssueTrackerUITests/Pods-IssueTracker-IssueTrackerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IssueTracker-IssueTrackerUITests/Pods-IssueTracker-IssueTrackerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B2982555FB007B35D9FE2F70 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -538,6 +566,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C7A75413EF4B3F4BAA287D48 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IssueTracker/Pods-IssueTracker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -557,6 +602,7 @@
 				51326E8025492F3A00C0C273 /* AppDelegate.swift in Sources */,
 				51A9F62B2552A8240004FB52 /* SignInViewController.swift in Sources */,
 				82CF7CB7254A8B500061121C /* User.swift in Sources */,
+				51C95CDF2553DE9E00EACB1C /* ReponseMessage.swift in Sources */,
 				51445AAF254AA11B00875BA5 /* MilestoneBadgeLabel.swift in Sources */,
 				826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */,
 				51326E8225492F3A00C0C273 /* SceneDelegate.swift in Sources */,
@@ -568,8 +614,10 @@
 				51DE99032551940700A2E2C8 /* FilterUserListInteractor.swift in Sources */,
 				51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */,
 				82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */,
+				51C95CD22553CFDB00EACB1C /* API.swift in Sources */,
 				51326EF5254940A000C0C273 /* SettingViewController.swift in Sources */,
 				51445A9F254A609500875BA5 /* BaseCollectionViewController.swift in Sources */,
+				51C95CD72553D14F00EACB1C /* Milestone.swift in Sources */,
 				51326EF02549409500C0C273 /* MilestoneListViewController.swift in Sources */,
 				51A9F6302552A84C0004FB52 /* SignInInteractor.swift in Sources */,
 				51445AAA254A95D700875BA5 /* InsetLabel.swift in Sources */,

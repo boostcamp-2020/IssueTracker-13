@@ -25,14 +25,19 @@ export default function IssueListNav() {
     console.log(clickedProperty);
   };
 
+  const menuTypes = ['Author', 'Label', 'Milestones', 'Assignee'];
+
   return (
     <Nav>
       <IssueListCheckBox />
       <Buttons>
-        <IssueListNavButton title={'Author'} handleClick={handleClick}/>
-        <IssueListNavButton title={'Label'} handleClick={handleClick}/>
-        <IssueListNavButton title={'Milestones'} handleClick={handleClick}/>
-        <IssueListNavButton title={'Assignee'} handleClick={handleClick}/>
+        {menuTypes.map((menuType, i) =>
+          <IssueListNavButton
+            key={i}
+            title={menuType}
+            handleClick={handleClick}
+          />,
+        )}
       </Buttons>
     </Nav>
   );

@@ -13,10 +13,6 @@ const getUsers = async () => {
   return users;
 };
 
-const addUser = async (newuser) => {
-  await User.create({ ...newuser, isDeleted: false });
-};
-
 const updateUser = async (modifiedContents) => {
   const { id, ...rest } = modifiedContents;
   const [affectedRowCount] = await User.update(rest, {

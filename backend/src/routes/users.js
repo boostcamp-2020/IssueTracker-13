@@ -15,16 +15,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
-  try {
-    const newUser = req.body;
-    await addUser(newUser);
-    res.send(SUCCESS_MESSAGE);
-  } catch (error) {
-    next(createError(500));
-  }
-});
-
 router.put('/', async (req, res, next) => {
   try {
     const modifiedContents = req.body;

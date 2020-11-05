@@ -13,3 +13,14 @@ struct Milestone: Codable {
     let isDeleted: Bool
     let createdAt, updatedAt: String
 }
+
+struct PostMilestone: Codable {
+    let title, description, dueDate: String
+    let isDeleted: Bool
+}
+
+struct PutMilestone: Codable {
+    let id: Int
+    let title, description, dueDate: String?
+    let isDeleted: Bool
+}

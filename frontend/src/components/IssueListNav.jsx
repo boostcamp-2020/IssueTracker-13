@@ -22,6 +22,7 @@ export default function IssueListNav() {
 
   const handleClick = (title) => {
     setClickedProperty(title);
+    console.log(clickedProperty);
   };
 
   return (

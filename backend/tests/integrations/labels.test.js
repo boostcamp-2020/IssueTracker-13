@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const supertest = require('supertest');
 
 const app = require('../../app');
@@ -6,11 +7,10 @@ const initDatabase = require('../../src/db/utils/initDatabase');
 
 const request = supertest(app);
 
-beforeAll(async (done) => {
+beforeAll(async () => {
   console.log('initializing test database...');
   await initDatabase({ logger: undefined, closeAfter: false });
   db.sequelize.authenticate();
-  done();
 }, 20000);
 
 afterAll(() => {
@@ -63,33 +63,132 @@ const successResponse = {
 };
 
 describe('test labels API CRUD', () => {
-  test('get labels', async () => {
-    const response = await request.get('/api/labels');
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(originalLabels);
+
+  describe('when sending GET request to /api/labels', () => {
+    let response, status, body;
+
+    beforeAll(async () => {
+      response = await request.get('/api/labels');
+      ({ status, body } = response);
+    });
+
+    it('responds with status code 200', () => {
+      expect(status).toBe(200);
+    });
+
+    it('responds with a body matching original labels', () => {
+      expect(body).toEqual(originalLabels);
+    });
   });
-  test('post labels', async () => {
-    const response = await request.post('/api/labels').send(newLabel);
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(successResponse);
-    const deletedResponse = await request.get('/api/labels');
-    expect(deletedResponse.status).toBe(200);
-    expect(deletedResponse.body).toEqual(postedLables);
+
+  describe('when sending POST request to /api/labels', () => {
+
+    describe('on initial POST request', () => {
+      let response, status, body;
+
+      beforeAll(async () => {
+        response = await request.post('/api/labels').send(newLabel);
+        ({ status, body } = response);
+      });
+
+      it('responds with status code 200', () => {
+        expect(status).toBe(200);
+      });
+
+      it('responds with a success message', () => {
+        expect(body).toEqual(successResponse);
+      });
+    });
+
+    describe('on following GET request', () => {
+      let response, status, body;
+
+      beforeAll(async () => {
+        response = await request.get('/api/labels');
+        ({ status, body } = response);
+      });
+
+      it('response with status code 200', () => {
+        expect(status).toBe(200);
+      });
+
+      it('responds with a body with the posted label added', () => {
+        expect(body).toEqual(postedLables);
+      });
+    });
   });
-  test('put labels', async () => {
-    const response = await request.put('/api/labels').send(changedLabel);
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(successResponse);
-    const deletedResponse = await request.get('/api/labels');
-    expect(deletedResponse.status).toBe(200);
-    expect(deletedResponse.body).toEqual(changedLabels);
+
+  describe('when sending PUT request to /api/labels', () => {
+
+    describe('on initial PUT request', () => {
+      let response, status, body;
+
+      beforeAll(async () => {
+        response = await request.put('/api/labels').send(changedLabel);
+        ({ status, body } = response);
+      });
+
+      it('responds with status code 200', () => {
+        expect(status).toBe(200);
+      });
+
+      it('responds with a success message', () => {
+        expect(body).toEqual(successResponse);
+      });
+    });
+
+    describe('on following GET request', () => {
+      let response, status, body;
+
+      beforeAll(async () => {
+        response = await request.get('/api/labels');
+        ({ status, body } = response);
+      });
+
+      it('response with status code 200', () => {
+        expect(status).toBe(200);
+      });
+
+      it('responds with a body with the posted label added', () => {
+        expect(body).toEqual(changedLabels);
+      });
+    });
   });
-  test('delete labels', async () => {
-    const response = await request.delete('/api/labels').send({ id: 4 });
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(successResponse);
-    const deletedResponse = await request.get('/api/labels');
-    expect(deletedResponse.status).toBe(200);
-    expect(deletedResponse.body).toEqual(originalLabels);
+
+  describe('when sending DELETE request to /api/labels', () => {
+
+    describe('on initial DELETE request', () => {
+      let response, status, body;
+
+      beforeAll(async () => {
+        response = await request.delete('/api/labels').send({ id: 4 });
+        ({ status, body } = response);
+      });
+
+      it('responds with status code 200', () => {
+        expect(status).toBe(200);
+      });
+
+      it('responds with a success message', () => {
+        expect(body).toEqual(successResponse);
+      });
+    });
+
+    describe('on following GET request', () => {
+      let response, status, body;
+
+      beforeAll(async () => {
+        response = await request.get('/api/labels');
+        ({ status, body } = response);
+      });
+
+      it('response with status code 200', () => {
+        expect(status).toBe(200);
+      });
+
+      it('responds with a body with the label deleted', () => {
+        expect(body).toEqual(originalLabels);
+      });
+    });
   });
 });

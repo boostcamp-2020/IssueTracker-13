@@ -8,11 +8,9 @@
 import Foundation
 
 struct Label: Codable, Hashable {
-    let title: String
-    let color: String
-    let backgroundColor: String
-}
-
-enum CodingKeys: String, CodingKey {
-    case backgroundColor = "background-color"
+    let id: Int
+    let title: String?
+    let description: String?
+    let color: String?
+    let backgroundColor: String?
 }

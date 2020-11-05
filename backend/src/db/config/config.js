@@ -16,6 +16,7 @@ module.exports = {
     'database': process.env.CI_DB_NAME,
     'host': process.env.CI_DB_HOST,
     'dialect': 'mysql',
+    'logging': false,
   },
   'production': {
     'username': process.env.PROD_DB_USERNAME,
@@ -23,5 +24,6 @@ module.exports = {
     'database': process.env.PROD_DB_NAME,
     'host': process.env.PROD_DB_HOST,
     'dialect': 'mysql',
+    'logging': false,
   },
 };

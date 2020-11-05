@@ -1,11 +1,18 @@
 import React from 'react';
 
-const IssueListCheckBox = () => {
-  return (
-    <input
-      type='checkbox'
-    />
-  );
-};
+import styled from 'styled-components';
 
-export default IssueListCheckBox;
+const Div = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;
+
+export default function IssueListCheckBox() {
+  return (
+    <Div>
+      <input type='checkbox'/>
+    </Div>
+  );
+}
+

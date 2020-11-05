@@ -30,16 +30,20 @@ const SearchInputDiv = styled.div`
   width: 70%;
 `;
 
+const Option = styled.option`
+  width: 300px;
+`;
+
 export default function SearchInput() {
   return (
     <SearchInputDiv>
       <Select>
-        <option>Filters</option>
-        <option value='Open Issues'>Open Issues</option>
-        <option value='Your Issues'>Your Issues</option>
-        <option value='assigned to you'>Everything assigned to you</option>
-        <option value='mentioning you'>Everything mentioning you</option>
-        <option value='Closed issues'>Closed issues</option>
+        <Option>Filters</Option>
+        <Option value='Open Issues'>Open Issues</Option>
+        <Option value='Your Issues'>Your Issues</Option>
+        <Option value='assigned to you'>Everything assigned to you</Option>
+        <Option value='mentioning you'>Everything mentioning you</Option>
+        <Option value='Closed issues'>Closed issues</Option>
       </Select>
       <Input placeholder="Search all issues" />
     </SearchInputDiv>

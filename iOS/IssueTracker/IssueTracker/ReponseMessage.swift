@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct ReponseMessage: Codable {
+    let message: String
+}

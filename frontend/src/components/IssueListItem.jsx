@@ -24,7 +24,7 @@ const Title = styled.span`
 `;
 
 const Label = styled.span`
-  border: 1px solid black;
+  border: 1px solid #000000;
   padding: 1px 4px;
   margin: 0 5px;
 `;

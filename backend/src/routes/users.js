@@ -27,9 +27,9 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   try {
-    const { userName } = req.body;
-    await deleteUser(userName);
-    res.status(200).json(SUCCESS_MESSAGE);
+    const { id } = req.body;
+    await deleteUser(id);
+    res.send(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));
   }

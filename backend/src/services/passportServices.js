@@ -3,8 +3,8 @@ const GitHubStrategy = require('passport-github2').Strategy;
 const { User } = require('../db/models');
 
 passport.use(new GitHubStrategy({
-  clientID: process.env.GITHUB_CLIENT_ID,
-  clientSecret: process.env.GITHUB_CLIENT_SECRET,
+  clientID: process.env.CLIENT_ID_GITHUB,
+  clientSecret: process.env.CLIENT_SECRET_GITHUB,
   callbackURL: 'http://localhost:3000/api/auth/github/callback',
   session: false,
 },

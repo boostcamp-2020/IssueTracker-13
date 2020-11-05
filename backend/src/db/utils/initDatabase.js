@@ -16,8 +16,8 @@ const getMigrations = (logger) => new Umzug({
       const migration = require(path);
       return {
         name,
-        up: async () => migration.up(...context),
-        down: async () => migration.down(...context),
+        up: () => migration.up(...context),
+        down: () => migration.down(...context),
       };
     },
   },
@@ -33,8 +33,8 @@ const getSeeders = (logger) => new Umzug({
       const migration = require(path);
       return {
         name,
-        up: async () => migration.up(...context),
-        down: async () => migration.down(...context),
+        up: () => migration.up(...context),
+        down: () => migration.down(...context),
       };
     },
   },

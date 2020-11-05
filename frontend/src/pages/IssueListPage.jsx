@@ -10,7 +10,7 @@ import { getLabels } from '../apis/labelsAPI';
 import { getMilestones } from '../apis/milestonesAPI';
 
 const Page = styled.div`
-  padding: 48px 36px;
+  padding: 48px 200px;
 `;
 
 export default function IssueListPage() {

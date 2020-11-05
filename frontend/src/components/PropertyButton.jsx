@@ -4,10 +4,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  padding: 8px 12px;
+  padding: 5px 16px;
   background-color: white;
-  font-weight: bold;
+  font-size: 14px;
   border: 1px solid #d1d5da;
+  border-radius: 5px;
+  line-height: 20px;
+  cursor: pointer;
 `;
 
 const Count = styled.span`
@@ -17,11 +20,17 @@ const Count = styled.span`
   border-radius: 50%;
 `;
 
-export default function PropertyButton({ route, text, img, count }) {
+const Svg = styled.svg`
+  margin: 0 10px 0 0;
+`;
+
+export default function PropertyButton({ route, text, imgPath, count }) {
   return (
     <Link to={route}>
       <Button>
-        <img src={img}></img>
+        <Svg viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+          <path fillRule="evenodd" d={imgPath} />
+        </Svg>
         {text}
         <Count>{count}</Count>
       </Button>

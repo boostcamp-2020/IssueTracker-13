@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const createError = require('http-errors');
 
-const { getUsers, addUser, updateUser, deleteUser } = require('../services/userService');
+const { getUsers, updateUser, deleteUser } = require('../services/userService');
 
 const SUCCESS_MESSAGE = { message: 'success' };
 
@@ -27,9 +27,9 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   try {
-    const { id } = req.body;
-    await deleteUser(id);
-    res.send(SUCCESS_MESSAGE);
+    const { userName } = req.body;
+    await deleteUser(userName);
+    res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));
   }

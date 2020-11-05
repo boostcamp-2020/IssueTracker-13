@@ -32,4 +32,4 @@ const deleteUser = async (id) => {
   }
 };
 
-module.exports = { getUsers, addUser, updateUser, deleteUser };
+module.exports = { getUsers, updateUser, deleteUser };

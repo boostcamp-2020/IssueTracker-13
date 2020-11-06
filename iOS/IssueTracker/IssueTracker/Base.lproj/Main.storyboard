@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9XJ-8C-1o0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -377,7 +377,7 @@ G0Rlc2NyaXB0aW9uA
             </objects>
             <point key="canvasLocation" x="5069.5652173913049" y="101.78571428571428"/>
         </scene>
-        <!--Item-->
+        <!--설정-->
         <scene sceneID="4wS-bb-ppF">
             <objects>
                 <viewController id="SST-T4-Kjs" customClass="SettingViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -387,7 +387,7 @@ G0Rlc2NyaXB0aW9uA
                         <viewLayoutGuide key="safeArea" id="gVm-9e-WiG"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="qkO-7c-53K"/>
+                    <tabBarItem key="tabBarItem" title="설정" image="4.circle" catalog="system" selectedImage="4.circle.fill" id="qkO-7c-53K"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q6x-fx-y6r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -565,11 +565,11 @@ G0Rlc2NyaXB0aW9uA
             </objects>
             <point key="canvasLocation" x="2826.0869565217395" y="-702.45535714285711"/>
         </scene>
-        <!--Item-->
+        <!--이슈-->
         <scene sceneID="V7w-PU-QYf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zk7-Fd-5eN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="1kB-FZ-Tpg"/>
+                    <tabBarItem key="tabBarItem" title="이슈" image="1.circle" catalog="system" selectedImage="1.circle.fill" id="1kB-FZ-Tpg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="5Fs-et-l4r">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -868,16 +868,7 @@ G0Rlc2NyaXB0aW9uA
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4G8-9g-qU9">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KB7-IU-7v4">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3bD-c1-FfR"/>
@@ -915,16 +906,7 @@ G0Rlc2NyaXB0aW9uA
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sJC-D7-5jV">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0gr-4v-Adz">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4O8-BU-phr"/>
@@ -1139,11 +1121,11 @@ G0Rlc2NyaXB0aW9uA
             </objects>
             <point key="canvasLocation" x="4636" y="-702"/>
         </scene>
-        <!--Item-->
+        <!--레이블-->
         <scene sceneID="HNE-rf-i3p">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rKa-NY-nxs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5Tc-s2-hK5"/>
+                    <tabBarItem key="tabBarItem" title="레이블" image="2.circle" catalog="system" selectedImage="2.circle.fill" id="5Tc-s2-hK5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Xzp-aZ-39m">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -1158,11 +1140,11 @@ G0Rlc2NyaXB0aW9uA
             </objects>
             <point key="canvasLocation" x="2452.1739130434785" y="101.78571428571428"/>
         </scene>
-        <!--Item-->
+        <!--마일스톤-->
         <scene sceneID="dVI-kC-hST">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fan-bb-jGi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="GCK-4Z-nrj"/>
+                    <tabBarItem key="tabBarItem" title="마일스톤" image="3.circle" catalog="system" selectedImage="3.circle.fill" id="GCK-4Z-nrj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="lPF-0f-gn6">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -1182,6 +1164,14 @@ G0Rlc2NyaXB0aW9uA
         <segue reference="mTX-Lq-j4E"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="1.circle" catalog="system" width="128" height="121"/>
+        <image name="1.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="2.circle" catalog="system" width="128" height="121"/>
+        <image name="2.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="3.circle" catalog="system" width="128" height="121"/>
+        <image name="3.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="4.circle" catalog="system" width="128" height="121"/>
+        <image name="4.circle.fill" catalog="system" width="128" height="121"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="secondaryLabelColor">

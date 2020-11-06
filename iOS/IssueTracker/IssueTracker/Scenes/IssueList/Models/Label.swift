@@ -7,12 +7,28 @@
 
 import Foundation
 
-struct Label: Codable {
-    let title: String
-    let color: String
-    let backgroundColor: String
+protocol Labelable {
 }
 
-enum CodingKeys: String, CodingKey {
-    case backgroundColor = "background-color"
+struct Label: Codable, Hashable {
+    let id: Int
+    let title: String?
+    let description: String?
+    let color: String?
+    let backgroundColor: String?
+}
+
+struct PostLabel: Codable, Labelable {
+    let title: String?
+    let description: String?
+    let color: String?
+    let backgroundColor: String?
+}
+
+struct PutLabel: Codable, Labelable {
+    let id: Int
+    let title: String?
+    let description: String?
+    let color: String?
+    let backgroundColor: String?
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -35,5 +36,5 @@ module.exports = {
     })],
   resolve: {
     extensions: ['.js', '.jsx'],
-  }
+  },
 };

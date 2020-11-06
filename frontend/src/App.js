@@ -6,10 +6,12 @@ import MilestonesPage from './pages/MilestonesPage';
 import NewIssuePage from './pages/NewIssuePage';
 import LabelsPage from './pages/LabelsPage';
 
-const App = () => {  
+import Header from './components/Header';
+
+const App = () => {
   return (
     <div>
-      <header>ISSUES</header>
+      <Header />
       <Router>
         <Switch>
           <Route path='/new'>
@@ -27,7 +29,7 @@ const App = () => {
         </Switch>
       </Router>
     </div>
-  )
-}
+  );
+};
 
 export default App;

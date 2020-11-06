@@ -1,9 +1,7 @@
 import React from 'react';
 
-const MilestonesPage = () => {
+export default function MilestonesPage() {
   return (
     <div>Milestones Page</div>
-  )
+  );
 }
-
-export default MilestonesPage;

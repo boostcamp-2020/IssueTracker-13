@@ -1,18 +1,30 @@
+// eslint-disable-next-line no-undef
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true,
-    'node': true,
+  env: {
+    browser: true,
+    es6: true,
+    jest: true,
   },
-  'extends': 'plugin:react/recommended',
-  plugin: [
-    'react'
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
   ],
-  'parserOptions': {
-    'ecmaVersion': 12,
-    'sourceType': 'module',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    ecmaVersion: 12,
+    sourceType: 'module',
   },
-  'rules': {
+  plugins: [
+    'react',
+  ],
+  settings: {
+    react: {
+      'version': 'detect',
+    },
+  },
+  rules: {
     indent: ['error', 2, { 'SwitchCase': 1 }],
     'semi': ['error', 'always'],
     'no-trailing-spaces': 'error',

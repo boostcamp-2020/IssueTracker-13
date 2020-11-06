@@ -36,7 +36,6 @@ class FilterMilestoneListViewController: BaseCollectionViewController<FilterMile
         return UICollectionView.CellRegistration<UICollectionViewListCell, String> { (cell, _, milestone) in
             var content = cell.defaultContentConfiguration()
             content.text = milestone
-            content.textProperties.alignment = .center
             cell.contentConfiguration = content
         }
     }

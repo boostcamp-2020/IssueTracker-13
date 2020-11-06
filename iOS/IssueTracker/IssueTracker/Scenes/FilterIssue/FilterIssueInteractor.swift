@@ -21,7 +21,7 @@ class FilterIssueInteractor: FilterIssueBusinessLogic {
     var assignee: User?
     var milestone: String?
     var label: Label?
-
+    var selectedFilterIndexPath: IndexPath?
 }
 
 extension FilterIssueInteractor: FilterUserListDelegate {

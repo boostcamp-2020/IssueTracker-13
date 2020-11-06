@@ -36,7 +36,7 @@ class FilterUserListViewController: BaseCollectionViewController<FilterUserListI
             var content = cell.defaultContentConfiguration()
             content.text = user.name
             content.imageProperties.cornerRadius = 3.0
-            content.image = UIImage(systemName: "square.and.pencil") //우선 아무 image나 넣었습니다
+            content.image = UIImage(systemName: "person.circle") //우선 아무 image나 넣었습니다
             cell.contentConfiguration = content
         }
     }

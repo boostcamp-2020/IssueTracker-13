@@ -15,6 +15,15 @@ class FilterIssueViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        guard let indexPath = interactor.selectedFilterIndexPath else { return }
+        
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+        tableView(tableView, didSelectRowAt: indexPath)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let segueId = segue.identifier else { return }
         switch segueId {
@@ -43,5 +52,23 @@ class FilterIssueViewController: UITableViewController {
             
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            return
+        }
+        interactor.selectedFilterIndexPath = indexPath
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            return
+        }
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .none
     }
 }

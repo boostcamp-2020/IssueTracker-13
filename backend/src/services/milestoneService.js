@@ -5,6 +5,7 @@ const getMilestones = async () => {
     where: {
       isDeleted: false,
     },
+    attributes: ['id', 'title', 'description', 'dueDate'],
   });
   return milestones;
 };

@@ -3,7 +3,7 @@
 
 name: BackEnd CI
 
-on: [push, pull_request]
+on: [push, pull_request_target]
 
 jobs:
   build:
@@ -28,12 +28,12 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-      # - name: Test
-      #   run: npm run test
-      #   env:
-      #     CI_DB_HOST: ${{ secrets.CI_DB_HOST }}
-      #     CI_DB_NAME: ${{ secrets.CI_DB_NAME }}
-      #     CI_DB_PASSWORD: ${{ secrets.CI_DB_PASSWORD }}
-      #     CI_DB_USERNAME: ${{ secrets.CI_DB_USERNAME }}
-      #     CLIENT_ID_GITHUB: ${{ secrets.APP_CLIENT_ID }}
-      #     CLIENT_SECRET_GITHUB: ${{ secrets.APP_CLIENT_SECRET }}
+      - name: Test
+        run: npm run test
+        env:
+          CI_DB_HOST: ${{ secrets.CI_DB_HOST }}
+          CI_DB_NAME: ${{ secrets.CI_DB_NAME }}
+          CI_DB_PASSWORD: ${{ secrets.CI_DB_PASSWORD }}
+          CI_DB_USERNAME: ${{ secrets.CI_DB_USERNAME }}
+          CLIENT_ID_GITHUB: ${{ secrets.APP_CLIENT_ID }}
+          CLIENT_SECRET_GITHUB: ${{ secrets.APP_CLIENT_SECRET }}

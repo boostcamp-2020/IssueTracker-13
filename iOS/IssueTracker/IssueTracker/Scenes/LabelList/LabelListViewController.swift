@@ -24,6 +24,13 @@ class LabelListViewController: BaseCollectionViewController<LabelDataSource.Sect
         interactor.fetchLabelList()
     }
 
+    @IBAction func didTouchAddLabelButton(_ sender: Any) {
+        guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LabelAlertViewController") as? LabelAlertViewController else { return }
+        present(alert, animated: true, completion: nil)
+//        alert.delegate = self
+        alert.configure(.add, label: nil)
+    }
+    
 }
 
 extension LabelListViewController {
@@ -32,6 +39,7 @@ extension LabelListViewController {
                             cellProvider: cellProvider(collectionView:indexPath:label:))
         let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         labelCollectionView.collectionViewLayout = createLayout(using: configuration)
+        labelCollectionView.delegate =  self
     }
     
     private func cellProvider(collectionView: UICollectionView,
@@ -50,5 +58,15 @@ extension LabelListViewController: LabelListDisplayLogic {
         snapshot.appendSections([section])
         snapshot.appendItems(labels, toSection: section)
         dataSource.apply(snapshot)
+    }
+}
+
+extension LabelListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let label = dataSource.itemIdentifier(for: indexPath)
+        guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LabelAlertViewController") as? LabelAlertViewController else { return }
+        present(alert, animated: true, completion: nil)
+//        alert.delegate = self
+        alert.configure(.edit, label: label)
     }
 }

@@ -22,6 +22,14 @@ class MilestoneListViewController: BaseCollectionViewController<MilestoneDataSou
         interactor.fetchMilestoneList()
     }
 
+    @IBAction func didTouchAddMilestoneButton(_ sender: Any) {
+        guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MilestoneAlertViewController") as? MilestoneAlertViewController else { return }
+        present(alert, animated: true, completion: nil)
+        //        alert.delegate = self
+        alert.configure(.add, milestone: nil)
+
+    }
+    
 }
 
 extension MilestoneListViewController {
@@ -30,6 +38,7 @@ extension MilestoneListViewController {
                             cellProvider: cellProvider(collectionView:indexPath:milestone:))
         let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         milestoneCollectionView.collectionViewLayout = createLayout(using: configuration)
+        milestoneCollectionView.delegate = self
     }
     
     private func cellProvider(collectionView: UICollectionView,
@@ -48,5 +57,15 @@ extension MilestoneListViewController: MilestoneListDisplayLogic {
         snapshot.appendSections([section])
         snapshot.appendItems(milestones, toSection: section)
         dataSource.apply(snapshot)
+    }
+}
+
+extension MilestoneListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let milestone = dataSource.itemIdentifier(for: indexPath)
+        guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MilestoneAlertViewController") as? MilestoneAlertViewController else { return }
+        present(alert, animated: true, completion: nil)
+//        alert.delegate = self.interactor
+        alert.configure(.edit, milestone: milestone)
     }
 }

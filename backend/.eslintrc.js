@@ -1,17 +1,17 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'es6': true,
-    'node': true,
+  env: {
+    browser: true,
+    es6: true,
+    node: true,
   },
-  'extends': 'eslint:recommended',
-  'parserOptions': {
-    'ecmaVersion': 12,
-    'sourceType': 'module',
+  extends: ['eslint:recommended', 'prettier'],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
   },
-  'rules': {
-    indent: ['error', 2, { 'SwitchCase': 1 }],
-    'semi': ['error', 'always'],
+  rules: {
+    indent: ['error', 2, { SwitchCase: 1 }],
+    semi: ['error', 'always'],
     'no-trailing-spaces': 'error',
     curly: 'error',
     'brace-style': 'error',
@@ -24,7 +24,7 @@ module.exports = {
     'keyword-spacing': ['error', { before: true, after: true }],
     'comma-spacing': ['error', { before: false, after: true }],
     'comma-style': ['error', 'last'],
-    'comma-dangle': ['error', 'always-multiline'],
+    // 'comma-dangle': ['error', 'always-multiline'],
     'space-in-parens': ['error', 'never'],
     'block-spacing': 'error',
     'array-bracket-spacing': ['error', 'never'],

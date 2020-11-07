@@ -27,12 +27,18 @@ const getClosedIssueCountAboutMilestone = async (milestoneId) => {
 
 const addIssueInfoInMilestone = async (milestones) => {
   return await Promise.all(
-    milestones.map(async(milestone) => {
+    milestones.map(async (milestone) => {
       const allIssueCount = await getAllIssueCountAboutMilestone(milestone.id);
-      const closedIssueCount = await getClosedIssueCountAboutMilestone(milestone.id);
+      const closedIssueCount = await getClosedIssueCountAboutMilestone(
+        milestone.id
+      );
 
-      return { ...milestone, allIssueCount: allIssueCount, closedIssueCount: closedIssueCount };
-    }),
+      return {
+        ...milestone,
+        allIssueCount: allIssueCount,
+        closedIssueCount: closedIssueCount,
+      };
+    })
   );
 };
 
@@ -53,16 +59,15 @@ const addMilestone = async (newMilestone) => {
 };
 
 const updateMilestone = async (modifiedContents) => {
-  return await Milestone.update(
-    modifiedContents,
-    { where: { title: modifiedContents.title } },
-  );
+  return await Milestone.update(modifiedContents, {
+    where: { title: modifiedContents.title },
+  });
 };
 
 const deleteMilestone = async (title) => {
   return await Milestone.update(
     { isDeleted: true },
-    { where: { title: title } },
+    { where: { title: title } }
   );
 };
 

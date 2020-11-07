@@ -51,5 +51,4 @@ router.delete('/', async (req, res, next) => {
   }
 });
 
-
 module.exports = router;

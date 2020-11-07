@@ -11,7 +11,14 @@ router.post('/signUp', (req, res) => {
   res.json();
 });
 
-router.get('/github/callback', passport.authenticate('github', { failureRedirect: '/login', session: false }), (req, res) => res.redirect('/'));
+router.get(
+  '/github/callback',
+  passport.authenticate('github', {
+    failureRedirect: '/login',
+    session: false,
+  }),
+  (req, res) => res.redirect('/')
+);
 
 router.get('/github', passport.authenticate('github', { session: false }));
 

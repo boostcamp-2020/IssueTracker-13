@@ -14,7 +14,7 @@ class IssueWorker {
                             title: "이슈 0",
                             preview: "이슈 0 프리뷰 입니다.",
                             milestone: "마일스톤 1",
-                            labels: [Label(id: 1, title: "라벨입니다", description: "이것은 라벨입니다", color: "", backgroundColor: "")],
+                            labels: [Label(id: 1, title: "라벨입니다", description: "이것은 라벨입니다", color: "#000000", backgroundColor: "#a2eeef")],
                             author: "작성자",
                             assignees: [],
                             isOpen: true,

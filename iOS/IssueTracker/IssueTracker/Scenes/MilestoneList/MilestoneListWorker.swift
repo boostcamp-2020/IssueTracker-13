@@ -9,7 +9,15 @@ import Foundation
 
 class MilestoneListWorker {
     func fetchMilestones(handler: @escaping (MilestoneDataSource) -> Void) {
-        let milestones = [Milestone(id: 0, title: "마일스톤 0", description: "마일스톤 입니당", dueDate: "DATE", isDeleted: true, createdAt: "", updatedAt: "")]
-        let dataSource = MilestoneDataSource(with: milestones)
-        handler(dataSource)
-    }}
+        API.shared.getMilestones { (result) in
+            switch result{
+            case .success(let milestones):
+                let dataSource = MilestoneDataSource(with: milestones)
+                handler(dataSource)
+            case .failure:
+                break
+            }
+        }
+    }
+    
+}

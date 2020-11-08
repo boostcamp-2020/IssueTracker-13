@@ -24,7 +24,9 @@ class MilestoneAlertViewController: BaseAlertViewController {
         super.viewDidLoad()
         datePicker.backgroundColor = .none
         datePicker.tintColor = .black
-        addInputAccessoryForTextFields(textFields: [alertView.titleTextField, alertView.descriptionTextField], previousNextable: true)
+        addInputAccessoryForTextFields(textFields: [alertView.titleTextField,
+                                                    alertView.descriptionTextField],
+                                       previousNextable: true)
         alertView.stackView.addArrangedSubview(dateView)
         alertView.closeButton.addTarget(self, action: #selector(didTouchCloseButton), for: .touchUpInside)
         alertView.resetButton.addTarget(self, action: #selector(didTouchResetButton), for: .touchUpInside)
@@ -58,21 +60,19 @@ class MilestoneAlertViewController: BaseAlertViewController {
     @objc func didTouchSaveButton() {
         guard let mode = mode else { return }
         let milestone: Milestonable
-        let title = alertView.titleTextField.text
-        let description = alertView.descriptionTextField.text
+        guard let title = alertView.titleTextField.text else { return }
+        guard let description = alertView.descriptionTextField.text else { return }
         let dateString = datePicker.date.toServerString()
 
         switch mode {
         case .add:
-            print("TODO")
-//            milestone = PostMilestone(title: <#T##String#>, description: <#T##String#>, dueDate: <#T##String#>, isDeleted: <#T##Bool#>)
+            milestone = PostMilestone(title: title, description: description, dueDate: dateString, isDeleted: false)
         case .edit:
-            print("TODO")
-//            milestone = PutMilestone(id: <#T##Int#>, title: <#T##String?#>, description: <#T##String?#>, dueDate: <#T##String?#>, isDeleted: <#T##Bool#>)
-        default:
-            break
+            guard let id = id else { return }
+            milestone = PutMilestone(id: id,
+                                     title: title, description: description, dueDate: dateString, isDeleted: false)
         }
-        milestone = PutMilestone(id: 1, title: "", description: "", dueDate: "", isDeleted: false) // build에러 방지용 (나중에 지워야함)
         delegate?.didTouchSaveButton(milestone: milestone, mode: mode)
+        dismiss(animated: true, completion: nil)
     }
 }

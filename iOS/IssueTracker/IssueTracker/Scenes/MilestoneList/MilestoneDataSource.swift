@@ -17,4 +17,9 @@ class MilestoneDataSource {
     init(with milestones: [Milestone]) {
         self.milestones = milestones
     }
+    
+    func add(milestone: Milestone) {
+        milestones.append(milestone)
+    }
+
 }

@@ -29,6 +29,8 @@ jobs:
           SSH_KEY: ${{ secrets.PROD_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.PROD_HOST }}
 
-      - name: Run Commands
-        run: ssh production 'cd repos/IssueTracker-13 && git checkout master && git pull && npm run build && npm start'
+      - name: Run Install & Build
+        run: ssh production 'cd repos/IssueTracker-13 && git checkout master && git pull && npm run build'
         
+      - name: Restart PM2
+        run: pm2 restart issuetracker

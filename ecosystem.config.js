@@ -1,14 +1,20 @@
 module.exports = {
   apps : [
-      {
-      name: "issuetracker",
-      script: "npm start",
+    {
+      name: 'issuetracker',
+      script: 'npm start',
       env: {
-        NODE_ENV: "development",
+        NODE_ENV: 'production',
+        PORT: 80,
       },
-      env_production: {
-        NODE_ENV: "production",
-      },
+    },
+    {
+      name: 'issuetracker-dev',
+      script: 'npm start',
+      watch: true,
+      env: {
+        NODE_ENV: 'development'
+      }
     },
   ],
 };

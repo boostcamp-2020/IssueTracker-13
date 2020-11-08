@@ -15,13 +15,13 @@ jobs:
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/production.key
-          chmod 600 ~/.ssh/production.key
+          echo "$SSH_KEY" > ~/.ssh/develop.key
+          chmod 600 ~/.ssh/develop.key
           cat >>~/.ssh/config <<END
-          Host production
+          Host develop
             HostName $SSH_HOST
             User $SSH_USER
-            IdentityFile ~/.ssh/production.key
+            IdentityFile ~/.ssh/develop.key
             StrictHostKeyChecking no
           END
         env:
@@ -29,6 +29,8 @@ jobs:
           SSH_KEY: ${{ secrets.DEV_PRIVATE_KEY }}
           SSH_HOST: ${{ secrets.DEV_HOST }}
 
-      - name: Run Commands
-        run: ssh production 'cd repos/IssueTracker-13 && git checkout develop && git pull && npm run build && npm run dev'
+      - name: Run Install & Build
+        run: ssh develop 'cd repos/IssueTracker-13 && git checkout develop && git pull && npm run build'
         
+      - name: Restart PM2
+        run: pm2 restart issuetracker-dev

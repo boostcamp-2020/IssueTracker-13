@@ -19,7 +19,7 @@ protocol LabelAlertBuisnessLogic {
 
 class LabelAlertInteractor {
     
-    weak var delegate : LabelAlertDelegate?
+    weak var delegate: LabelAlertDelegate?
     weak var viewController: LabelAlertDisplayLogic?
     var mode: AlertMode?
     var id: Int?
@@ -75,10 +75,17 @@ extension LabelAlertInteractor: LabelAlertBuisnessLogic {
         let label: Labelable
         switch mode {
         case .add:
-            label = PostLabel(title: title, description: description, color: textColorString, backgroundColor: backgroundColorString)
+            label = PostLabel(title: title,
+                              description: description,
+                              color: textColorString,
+                              backgroundColor: backgroundColorString)
         case .edit:
             guard let id = id else { return }
-            label = PutLabel(id: id, title: title, description: description, color: textColorString, backgroundColor: backgroundColorString)
+            label = PutLabel(id: id,
+                             title: title,
+                             description: description,
+                             color: textColorString,
+                             backgroundColor: backgroundColorString)
         }
         delegate?.didTouchSaveButton(label: label, mode: mode)
     }

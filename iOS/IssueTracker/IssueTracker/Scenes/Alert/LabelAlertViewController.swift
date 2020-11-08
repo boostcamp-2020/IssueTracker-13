@@ -7,12 +7,12 @@
 
 import UIKit
 
-
 protocol LabelAlertDisplayLogic: class {
     func displaySaveButton(as isEnabled: Bool)
     func displayColorTextField(with hexString: String)
     func displayColorPickerView(with color: UIColor)
 }
+
 class LabelAlertViewController: BaseAlertViewController {
 
     @IBOutlet weak var alertView: CustomAlertView!

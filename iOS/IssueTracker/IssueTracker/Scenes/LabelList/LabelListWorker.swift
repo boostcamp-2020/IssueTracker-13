@@ -10,7 +10,7 @@ import Foundation
 class LabelListWorker {
     func fetchLabels(handler: @escaping (LabelDataSource) -> Void) {
         API.shared.getLabels { (result) in
-            switch result{
+            switch result {
             case .success(let labels):
                 let dataSource = LabelDataSource(with: labels)
                 handler(dataSource)

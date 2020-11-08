@@ -25,6 +25,7 @@ class LabelAlertViewController: BaseAlertViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.viewController = self
+        addInputAccessoryForTextFields(textFields: [alertView.titleTextField, alertView.descriptionTextField, colorTextField], previousNextable: true)
         alertView.stackView.addArrangedSubview(colorView)
         alertView.closeButton.addTarget(self, action: #selector(didTouchCloseButton), for: .touchUpInside)
         alertView.resetButton.addTarget(self, action: #selector(didTouchResetButton), for: .touchUpInside)

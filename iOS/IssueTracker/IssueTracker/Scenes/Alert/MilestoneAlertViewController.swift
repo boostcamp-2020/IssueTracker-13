@@ -24,6 +24,7 @@ class MilestoneAlertViewController: BaseAlertViewController {
         super.viewDidLoad()
         datePicker.backgroundColor = .none
         datePicker.tintColor = .black
+        addInputAccessoryForTextFields(textFields: [alertView.titleTextField, alertView.descriptionTextField], previousNextable: true)
         alertView.stackView.addArrangedSubview(dateView)
         alertView.closeButton.addTarget(self, action: #selector(didTouchCloseButton), for: .touchUpInside)
         alertView.resetButton.addTarget(self, action: #selector(didTouchResetButton), for: .touchUpInside)
@@ -31,15 +32,14 @@ class MilestoneAlertViewController: BaseAlertViewController {
     }
 
     func configure(_ mode: AlertMode, milestone: Milestone?) {
+        self.mode = mode
         switch mode {
         case .edit:
             id = milestone?.id
             alertView.titleTextField.text = milestone?.title
             alertView.descriptionTextField.text = milestone?.description
-            
-            //TODO: string에서 date로 바꿔주는것 많들어야함
-//            let date = milestone?.dueDate
-//            datePicker.setDate(date, animated: true)
+            guard let date = milestone?.dueDate.toDate() else { return }
+            datePicker.setDate(date, animated: true)
         default:
             break
         }
@@ -60,8 +60,8 @@ class MilestoneAlertViewController: BaseAlertViewController {
         let milestone: Milestonable
         let title = alertView.titleTextField.text
         let description = alertView.descriptionTextField.text
-        //        DatePicker에서 고른 date를 string으로 변환시켜줘야함
-        //        let date =
+        let dateString = datePicker.date.toServerString()
+
         switch mode {
         case .add:
             print("TODO")
@@ -76,4 +76,3 @@ class MilestoneAlertViewController: BaseAlertViewController {
         delegate?.didTouchSaveButton(milestone: milestone, mode: mode)
     }
 }
-

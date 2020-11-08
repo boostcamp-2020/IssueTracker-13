@@ -14,6 +14,6 @@ class MilestoneCollectionViewCell: UICollectionViewListCell {
     func configure(with milestone: Milestone) {
         titleLabel.configure(with: milestone.title)
         descriptionLabel.text = milestone.description
-        dueDateLabel.text = milestone.dueDate
+        dueDateLabel.text = milestone.dueDate.toDate()?.toCellString()
     }
 }

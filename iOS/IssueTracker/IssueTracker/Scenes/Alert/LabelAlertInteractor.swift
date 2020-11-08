@@ -32,20 +32,6 @@ class LabelAlertInteractor {
         return true
     }
     
-//    func isDarkColor(_ hexString: String) -> Bool {
-//        let color = hexString.dropFirst()
-//        var rgb = parseInt(color, 16);   // convert rrggbb to decimal
-//        var r = (rgb >> 16) & 0xff;  // extract red
-//        var g = (rgb >>  8) & 0xff;  // extract green
-//        var b = (rgb >>  0) & 0xff;  // extract blue
-//
-//        var r, g, b, a: CGFloat
-//        (r, g, b, a) = (0, 0, 0, 0)
-//        self.getRed(&r, green: &g, blue: &b, alpha: &a)
-//        let lum = 0.2126 * r + 0.7152 * g + 0.0722 * b
-//        return  lum < 0.50
-//    }
-    
     func generateRandomColor() -> UIColor {
         return UIColor(red: .random(in: 0...1),
                        green: .random(in: 0...1),

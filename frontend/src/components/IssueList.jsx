@@ -7,13 +7,13 @@ import IssueListItem from './IssueListItem';
 export default function IssueList() {
   const [issues, setIssues] = useState();
 
-  const fetchAPI = async () => {
+  const fetchIssues = async () => {
     const newIssues = await getIssues();
     setIssues(newIssues);
   };
 
   useEffect(() => {
-    fetchAPI();
+    fetchIssues();
   }, []);
 
   return (

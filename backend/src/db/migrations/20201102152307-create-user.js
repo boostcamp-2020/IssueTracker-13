@@ -8,6 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
       userName: {
         type: Sequelize.STRING,
       },
@@ -22,6 +27,9 @@ module.exports = {
       },
       isDeleted: {
         type: Sequelize.BOOLEAN,
+      },
+      oAuthId: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

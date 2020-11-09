@@ -5,9 +5,14 @@ const { createToken } = require('../services/authService');
 require('../services/passportServices');
 
 router.post('/signIn', async (req, res) => {
-  const { userName, password } = req.body;
-  const token = await createToken(userName, password);
-  res.json({ token });
+  const { userName, password, authType } = req.body;
+  if (authType === 'local') {
+    const token = await createToken(userName, password);
+    res.json({ token });
+  }
+  if (authType === 'apple') {
+    // TBD - Apple Oauth 로그인 구현
+  }
 });
 
 router.post('/signUp', (req, res) => {

@@ -41,7 +41,7 @@ const signInAsLocal = async (email, password) => {
   });
   const { id, userName, profile } = user;
   const token = createToken(id);
-  return { userName, profile, token };
+  return { name: userName, profile, token };
 };
 
 module.exports = { loginAsLocal: signInAsLocal };

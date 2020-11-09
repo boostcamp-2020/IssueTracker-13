@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9XJ-8C-1o0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -337,8 +337,11 @@ G0Rlc2NyaXB0aW9uA
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="376" height="96"/>
                                         <connections>
+                                            <outlet property="closedIssuesLabel" destination="JZh-xB-JNp" id="FAi-i5-CLB"/>
                                             <outlet property="descriptionLabel" destination="TiN-bS-yZa" id="eXO-2J-On7"/>
                                             <outlet property="dueDateLabel" destination="7eW-zA-sCn" id="Md9-Eo-E0v"/>
+                                            <outlet property="openedIssuesLabel" destination="aGo-Pm-78R" id="was-Y9-6cV"/>
+                                            <outlet property="percentageLabel" destination="0yd-dj-tdw" id="O2u-v6-xAc"/>
                                             <outlet property="titleLabel" destination="QUj-Kp-HTd" id="W9X-zt-dda"/>
                                         </connections>
                                     </collectionViewCell>

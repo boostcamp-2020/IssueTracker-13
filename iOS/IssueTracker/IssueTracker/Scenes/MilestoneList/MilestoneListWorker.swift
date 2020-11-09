@@ -9,8 +9,8 @@ import Foundation
 
 class MilestoneListWorker {
     func fetchMilestones(handler: @escaping (MilestoneDataSource) -> Void) {
-        API.shared.getMilestones { (result) in
-            switch result{
+        API.shared.get(from: .milestones) { (result: Result<[Milestone], Error>) in
+            switch result {
             case .success(let milestones):
                 let dataSource = MilestoneDataSource(with: milestones)
                 handler(dataSource)

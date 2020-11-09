@@ -11,82 +11,58 @@ import Alamofire
 class API {
     static let shared: API = API()
     
-    func getLabels(completion : @escaping (Result<[Label], Error>) -> Void) {
-        AF.request("http://27.96.130.188:3000/api/labels", method: .get)
+    func get<T: Codable>(with query: String = "", from endpoint: EndPoint, completion : @escaping (Result<[T], Error>) -> Void) {
+        AF.request(endpoint.path + query, method: .get)
             .validate()
-            .responseDecodable(of: [Label].self) { (response) in
+            .responseDecodable(of: [T].self) { (response) in
                 switch response.result {
-                case .success(let labels):
-                    completion(.success(labels))
+                case .success(let result):
+                    completion(.success(result))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
     }
     
-    func postLabel(_ postLabel: PostLabel, completion : @escaping (Result<String, Error>) -> Void) {
-        AF.request("http://27.96.130.188:3000/api/labels", method: .post, parameters: postLabel)
+    func post<T: Codable>(data: T, to endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
+        AF.request(endpoint.path, method: .post, parameters: data)
             .validate()
-            .responseDecodable(of: ReponseMessage.self) { (response) in
+            .responseDecodable(of: Response.self) { (response) in
                 switch response.result {
-                case .success(let message):
-                    completion(.success(message.message))
+                case .success(let result):
+                    completion(.success(result.message))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
     }
     
-    func putLabel(_ putLabel: PutLabel, completion : @escaping (Result<String, Error>) -> Void) {
-        AF.request("http://27.96.130.188:3000/api/labels", method: .put, parameters: putLabel)
+    func put<T: Codable>(data: T, to endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
+        AF.request(endpoint.path, method: .put, parameters: data)
             .validate()
-            .responseDecodable(of: ReponseMessage.self) { (response) in
+            .responseDecodable(of: Response.self) { (response) in
                 switch response.result {
-                case .success(let message):
-                    completion(.success(message.message))
+                case .success(let result):
+                    completion(.success(result.message))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
     }
     
-    func getMilestones(completion : @escaping (Result<[Milestone], Error>) -> Void) {
-        AF.request("http://27.96.130.188:3000/api/milestones")
+    func delete(at id: Int, from endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
+        let parameters: [String: Int] = [
+            "id": id
+        ]
+        AF.request(endpoint.path, method: .delete, parameters: parameters)
             .validate()
-            .responseDecodable(of: [Milestone].self) { (response) in
+            .responseDecodable(of: Response.self) { (response) in
                 switch response.result {
-                case .success(let milestones):
-                    completion(.success(milestones))
+                case .success(let result):
+                    completion(.success(result.message))
                 case .failure(let error):
                     completion(.failure(error))
                 }
             }
     }
-    
-    func postMilestone(_ postMilestone: PostMilestone, completion : @escaping (Result<String, Error>) -> Void) {
-        AF.request("http://27.96.130.188:3000/api/milestones", method: .post, parameters: postMilestone)
-            .validate()
-            .responseDecodable(of: ReponseMessage.self) { (response) in
-                switch response.result {
-                case .success(let message):
-                    completion(.success(message.message))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-    }
-    
-    func putMilestone(_ putMilestone: PutMilestone, completion : @escaping (Result<String, Error>) -> Void) {
-        AF.request("http://27.96.130.188:3000/api/milestones", method: .put, parameters: putMilestone)
-            .validate()
-            .responseDecodable(of: ReponseMessage.self) { (response) in
-                switch response.result {
-                case .success(let message):
-                    completion(.success(message.message))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-    }
-    
 }

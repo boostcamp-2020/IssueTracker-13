@@ -21,5 +21,11 @@ class MilestoneDataSource {
     func add(milestone: Milestone) {
         milestones.append(milestone)
     }
+    
+    func update(milestone: PutMilestone) {
+        guard let index = milestones.firstIndex(where: {$0.id == milestone.id}) else { return }
+        let newMilestone = Milestone(putMilestone: milestone, milestone: milestones[index])
+        milestones[index] = newMilestone
+    }
 
 }

@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const router = express.Router();
 
 const authRouter = require('./auth');
@@ -9,6 +10,7 @@ const userRouter = require('./users');
 const commentRouter = require('./comments');
 
 router.use('/auth', authRouter);
+router.use(passport.authenticate('jwt', { session: false }));
 router.use('/issues', issueRouter);
 router.use('/labels', labelRouter);
 router.use('/milestones', milestoneRouter);

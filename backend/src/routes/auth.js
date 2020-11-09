@@ -1,14 +1,14 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
-const { createToken } = require('../services/authService');
+const { loginAsLocal: signInAsLocal } = require('../services/authService');
 require('../services/passportServices');
 
 router.post('/signIn', async (req, res) => {
-  const { userName, password, authType } = req.body;
+  const { email, password, authType } = req.body;
   if (authType === 'local') {
-    const token = await createToken(userName, password);
-    res.json({ token });
+    const signInResponse = await signInAsLocal(email, password);
+    res.json(signInResponse);
   }
   if (authType === 'apple') {
     // TBD - Apple Oauth 로그인 구현

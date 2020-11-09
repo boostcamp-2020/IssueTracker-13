@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const { User } = require('../db/models');
 
+const jwtPrivateKey = process.env.JWT_SECRET;
+
 const options = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: process.env.JWT_SECRET,
@@ -24,19 +26,22 @@ passport.use(
   })
 );
 
-const privateKey = process.env.JWT_SECRET;
+const createToken = (id) => {
+  return jwt.sign({ id }, jwtPrivateKey);
+};
 
-const createToken = async (userName, password) => {
+const signInAsLocal = async (email, password) => {
   const user = await User.findOne({
     where: {
-      userName,
+      email,
       password,
       authType: 'local',
       isDeleted: false,
     },
   });
-  const token = jwt.sign({ id: user.id }, privateKey);
-  return token;
+  const { id, userName, profile } = user;
+  const token = createToken(id);
+  return { userName, profile, token };
 };
 
-module.exports = { createToken };
+module.exports = { loginAsLocal: signInAsLocal };

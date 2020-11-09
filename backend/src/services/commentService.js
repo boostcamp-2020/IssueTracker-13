@@ -1,8 +1,15 @@
-const { Comment } = require('../db/models');
+const { Comment, User } = require('../db/models');
 
 const getComments = async (issueId) => {
   const comments = await Comment.findAll({
-    where: { issueId: issueId },
+    attributes: {
+      exclude: ['UserId', 'IssueId', 'updatedAt'],
+    },
+    include: {
+      model: User,
+      attributes: ['userName', 'profile'],
+    },
+    where: { issueId },
   });
   return comments;
 };

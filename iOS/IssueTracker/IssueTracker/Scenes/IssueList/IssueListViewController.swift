@@ -27,6 +27,21 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         //tabBarController?.navigationController?.viewControllers.remove(at: 0)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "ShowIssueDetailViewController" {
+            let viewController = segue.destination as? IssueDetailViewController
+            guard let issue = sender as? Issue else { return }
+            viewController?.issue = issue
+        }
+        
+    }
+    
     @IBAction func didTouchToolbarButton(_ sender: UIBarButtonItem) {
         guard let indexPaths = issueCollectionView.indexPathsForSelectedItems else { return }
         let issues = indexPaths.compactMap({ dataSource.itemIdentifier(for: $0)})
@@ -169,11 +184,19 @@ extension IssueListViewController {
 extension IssueListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        setNavigationTitle()
+        if collectionView.isEditing {
+            setNavigationTitle()
+        } else {
+            let issue = dataSource.itemIdentifier(for: indexPath)
+            performSegue(withIdentifier: "ShowIssueDetailViewController", sender: issue)
+            collectionView.deselectItem(at: indexPath, animated: true)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        setNavigationTitle()
+        if collectionView.isEditing {
+            setNavigationTitle()
+        }
     }
     
 }

@@ -45,11 +45,12 @@
 		51B6D5F225577B4D00325952 /* LabelAlertInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5F125577B4D00325952 /* LabelAlertInteractor.swift */; };
 		51C95CD22553CFDB00EACB1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CD12553CFDB00EACB1C /* API.swift */; };
 		51C95CD72553D14F00EACB1C /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CD62553D14F00EACB1C /* Milestone.swift */; };
-		51C95CDF2553DE9E00EACB1C /* ReponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */; };
+		51C95CDF2553DE9E00EACB1C /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CDE2553DE9D00EACB1C /* Response.swift */; };
 		51DE98F62551898100A2E2C8 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98F52551898100A2E2C8 /* FilterWorker.swift */; };
 		51DE98FE25518DF000A2E2C8 /* FilterUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98FD25518DEF00A2E2C8 /* FilterUserListViewController.swift */; };
 		51DE99032551940700A2E2C8 /* FilterUserListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE99022551940700A2E2C8 /* FilterUserListInteractor.swift */; };
 		51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FBF8EB255047F000F38CCC /* FloatingButton.swift */; };
+		820B6323255911A0003FDB5B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B6322255911A0003FDB5B /* EndPoint.swift */; };
 		826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F6306255154E80005D669 /* FilterIssueViewController.swift */; };
 		826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */; };
 		8298BD642552758400BE3623 /* FilterMilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8298BD622552758400BE3623 /* FilterMilestoneListViewController.swift */; };
@@ -132,11 +133,12 @@
 		51B6D5F125577B4D00325952 /* LabelAlertInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlertInteractor.swift; sourceTree = "<group>"; };
 		51C95CD12553CFDB00EACB1C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		51C95CD62553D14F00EACB1C /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
-		51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseMessage.swift; sourceTree = "<group>"; };
+		51C95CDE2553DE9D00EACB1C /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		51DE98F52551898100A2E2C8 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
 		51DE98FD25518DEF00A2E2C8 /* FilterUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterUserListViewController.swift; sourceTree = "<group>"; };
 		51DE99022551940700A2E2C8 /* FilterUserListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterUserListInteractor.swift; sourceTree = "<group>"; };
 		51FBF8EB255047F000F38CCC /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		820B6322255911A0003FDB5B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		826F6306255154E80005D669 /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
 		826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueInteractor.swift; sourceTree = "<group>"; };
 		8298BD612552758400BE3623 /* FilterLabelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterLabelListViewController.swift; sourceTree = "<group>"; };
@@ -233,9 +235,11 @@
 				51326E7F25492F3A00C0C273 /* AppDelegate.swift */,
 				51326E8125492F3A00C0C273 /* SceneDelegate.swift */,
 				51445A9E254A609500875BA5 /* BaseCollectionViewController.swift */,
+				820B6322255911A0003FDB5B /* EndPoint.swift */,
 				51C95CD12553CFDB00EACB1C /* API.swift */,
 				51B6D5DF2556DFF300325952 /* Extensions */,
-				51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */,
+				51C95CDE2553DE9D00EACB1C /* Response.swift */,
+				51326F12254971E300C0C273 /* Models */,
 				51326EC325493DCF00C0C273 /* Scenes */,
 				51326E8525492F3A00C0C273 /* Main.storyboard */,
 				51326E8825492F3E00C0C273 /* Assets.xcassets */,
@@ -312,7 +316,7 @@
 		51326EE125493FA900C0C273 /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
-				51326F12254971E300C0C273 /* Models */,
+				51326F1B2549723000C0C273 /* IssueDataSource.swift */,
 				51326EE22549407C00C0C273 /* IssueListViewController.swift */,
 				82CF7CC7254AA4FD0061121C /* IssueWorker.swift */,
 				51326F0825494E0500C0C273 /* IssueListInteractor.swift */,
@@ -325,7 +329,6 @@
 			isa = PBXGroup;
 			children = (
 				51326F13254971FF00C0C273 /* Issue.swift */,
-				51326F1B2549723000C0C273 /* IssueDataSource.swift */,
 				51C95CD62553D14F00EACB1C /* Milestone.swift */,
 				82CF7CB1254A8B3E0061121C /* Label.swift */,
 				82CF7CB6254A8B500061121C /* User.swift */,
@@ -666,6 +669,7 @@
 			files = (
 				8298BD6C255276B800BE3623 /* FitlterLabelInteractor.swift in Sources */,
 				826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */,
+				820B6323255911A0003FDB5B /* EndPoint.swift in Sources */,
 				51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */,
 				51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */,
 				51326EE32549407C00C0C273 /* IssueListViewController.swift in Sources */,
@@ -687,7 +691,7 @@
 				516BB59725542C270030AFDD /* CustomAlertView.swift in Sources */,
 				82CF7CB7254A8B500061121C /* User.swift in Sources */,
 				51B6D5E32556E00B00325952 /* String+Date.swift in Sources */,
-				51C95CDF2553DE9E00EACB1C /* ReponseMessage.swift in Sources */,
+				51C95CDF2553DE9E00EACB1C /* Response.swift in Sources */,
 				82B3DC032554197600245FCD /* LabelDataSource.swift in Sources */,
 				51445AAF254AA11B00875BA5 /* MilestoneBadgeLabel.swift in Sources */,
 				826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */,

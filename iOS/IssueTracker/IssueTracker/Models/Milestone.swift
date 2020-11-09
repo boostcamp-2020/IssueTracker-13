@@ -13,19 +13,26 @@ protocol Milestonable {
 struct Milestone: Codable, Hashable {
     let id: Int
     let title, description, dueDate: String
-    let isDeleted: Bool
-    let createdAt, updatedAt: String
+    let allIssueCount, closedIssueCount: Int
     
-    init (postMileStone: PostMilestone, id: Int){
+    init (postMileStone: PostMilestone, id: Int) {
         self.id = id
         self.title = postMileStone.title
         self.description = postMileStone.description
         self.dueDate = postMileStone.dueDate
-        self.isDeleted = false
-        self.createdAt = Date().toServerString()
-        self.updatedAt = Date().toServerString()
+        self.allIssueCount = 0
+        self.closedIssueCount = 0
     }
     
+    init (putMilestone: PutMilestone, milestone: Milestone) {
+        self.id = putMilestone.id
+        self.title = putMilestone.title
+        self.description = putMilestone.description
+        self.dueDate = putMilestone.dueDate
+        self.allIssueCount = milestone.allIssueCount
+        self.closedIssueCount = milestone.closedIssueCount
+    }
+
 }
 
 struct PostMilestone: Codable, Milestonable {
@@ -35,6 +42,6 @@ struct PostMilestone: Codable, Milestonable {
 
 struct PutMilestone: Codable, Milestonable {
     let id: Int
-    let title, description, dueDate: String?
+    let title, description, dueDate: String
     let isDeleted: Bool
 }

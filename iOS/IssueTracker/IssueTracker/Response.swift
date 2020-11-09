@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ReponseMessage: Codable {
+struct Response: Codable {
     let message: String
 }

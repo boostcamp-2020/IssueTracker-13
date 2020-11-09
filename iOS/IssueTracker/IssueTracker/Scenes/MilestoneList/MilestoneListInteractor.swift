@@ -33,6 +33,12 @@ class MilestoneListInteractor: MilestoneListBusinessLogic {
         viewController?.displayMilestoneList(with: dataSource.milestones, at: .main)
     }
     
+    func update(milestone: PutMilestone) {
+        guard let dataSource = milestoneDataSource else { return }
+        dataSource.update(milestone: milestone)
+        viewController?.displayMilestoneList(with: dataSource.milestones, at: .main)
+    }
+    
 }
 
 extension MilestoneListInteractor: MilestoneAlertDelegate {
@@ -40,18 +46,27 @@ extension MilestoneListInteractor: MilestoneAlertDelegate {
         switch mode {
         case .add:
             guard let milestone = milestone as? PostMilestone else { return }
-            API.shared.postMilestone(milestone) { (result) in
+
+            API.shared.post(data: milestone, to: .milestones, completion: { (result) in
                 switch result {
                 case .success:
                     self.addMilestone(milestone)
                 case .failure:
                     print("failure")
                 }
-            }
+            })
 
         case .edit:
             guard let milestone = milestone as? PutMilestone else { return }
-            //TODO: put하는것 구현하기
+            API.shared.put(data: milestone, to: .milestones, completion: { (result) in
+                switch result {
+                case .success:
+                    self.update(milestone: milestone)
+                case .failure:
+                    print("failure")
+                }
+            })
+
         }
     }
     

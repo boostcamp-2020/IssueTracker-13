@@ -414,7 +414,7 @@ G0Rlc2NyaXB0aW9uA
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIi-Ur-EeR">
                                 <rect key="frame" x="50" y="212.5" width="314" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-Mw-rCR">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="junsushin-dev@boostcamp.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pcl-Mw-rCR">
                                         <rect key="frame" x="80" y="16" width="224" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -450,7 +450,7 @@ G0Rlc2NyaXB0aW9uA
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLq-aW-Vg9">
                                 <rect key="frame" x="50" y="282.5" width="314" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9U5-nY-qiE">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="junsushin-devpw" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9U5-nY-qiE">
                                         <rect key="frame" x="80" y="16.5" width="224" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -487,13 +487,16 @@ G0Rlc2NyaXB0aW9uA
                                         <rect key="frame" x="0.0" y="0.0" width="52" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="로그인"/>
+                                        <connections>
+                                            <action selector="didTouchLoginButton:" destination="oBe-bR-Ljx" eventType="touchUpInside" id="FZw-EG-HYl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eWy-JZ-lq0">
                                         <rect key="frame" x="152" y="0.0" width="70" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="회원가입"/>
                                         <connections>
-                                            <segue destination="k72-CT-Zpz" kind="show" id="rPK-KC-8FD"/>
+                                            <segue destination="k72-CT-Zpz" kind="show" identifier="showIssueListViewController" id="rPK-KC-8FD"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -540,7 +543,9 @@ G0Rlc2NyaXB0aW9uA
                     </view>
                     <navigationItem key="navigationItem" id="Ajb-jV-fn9"/>
                     <connections>
+                        <outlet property="idTextField" destination="pcl-Mw-rCR" id="hdV-zV-zUx"/>
                         <outlet property="loginStackView" destination="QNL-1s-snx" id="m1T-Vk-VGd"/>
+                        <outlet property="passwordTextField" destination="9U5-nY-qiE" id="0Ja-ea-TD3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBJ-Kg-peE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

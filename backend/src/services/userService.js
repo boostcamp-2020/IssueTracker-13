@@ -1,6 +1,5 @@
 const { User } = require('../db/models');
 
-
 const getUsers = async () => {
   const users = await User.findAll({
     attributes: {
@@ -24,9 +23,12 @@ const updateUser = async (modifiedContents) => {
 };
 
 const deleteUser = async (id) => {
-  const [affectedRowCount] = await User.update({ isDeleted: true }, {
-    where: { id, isDeleted: false },
-  });
+  const [affectedRowCount] = await User.update(
+    { isDeleted: true },
+    {
+      where: { id, isDeleted: false },
+    }
+  );
   if (affectedRowCount === 0) {
     throw new Error('No rows deleted');
   }

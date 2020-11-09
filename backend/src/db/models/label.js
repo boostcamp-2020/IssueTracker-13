@@ -1,7 +1,5 @@
 'use strict';
-const {
-  Model,
-} = require('sequelize');
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Label extends Model {
@@ -11,15 +9,18 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  Label.init({
-    title: DataTypes.STRING,
-    description: DataTypes.STRING,
-    color: DataTypes.STRING,
-    backgroundColor: DataTypes.STRING,
-    isDeleted: DataTypes.BOOLEAN,
-  }, {
-    sequelize,
-    modelName: 'Label',
-  });
+  Label.init(
+    {
+      title: DataTypes.STRING,
+      description: DataTypes.STRING,
+      color: DataTypes.STRING,
+      backgroundColor: DataTypes.STRING,
+      isDeleted: DataTypes.BOOLEAN,
+    },
+    {
+      sequelize,
+      modelName: 'Label',
+    }
+  );
   return Label;
 };

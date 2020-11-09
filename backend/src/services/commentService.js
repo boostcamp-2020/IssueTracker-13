@@ -14,10 +14,7 @@ const addComment = async (newComment) => {
 const updateComment = async (modifiedComment) => {
   const { id, ...modifiedTarget } = modifiedComment;
 
-  return await Comment.update(
-    modifiedTarget,
-    { where: { id: id } },
-  );
+  return await Comment.update(modifiedTarget, { where: { id: id } });
 };
 
 module.exports = {

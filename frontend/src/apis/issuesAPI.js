@@ -1,7 +1,14 @@
-import { issues } from '../mocks/issues.json';
+import axios from 'axios';
 
-const getIssues = () => {
-  return issues;
+const getIssues = async () => {
+  const { data } = await axios.get('/api/issues', { withCredentials: true });
+  return data.map(issue => {
+    return { ...issue,
+      author: issue.author.userName,
+      labels: issue.Labels,
+      milestone: issue.Milestone.title,
+    };
+  });
 };
 
 export {

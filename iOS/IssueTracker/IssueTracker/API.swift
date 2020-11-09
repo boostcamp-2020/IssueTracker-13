@@ -26,14 +26,16 @@ class API {
             }
     }
     
-    func post<T: Codable>(data: T, to endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
+    func post<T: Codable, U: Codable>(data: T, to endpoint: EndPoint, completion : @escaping (Result<U, Error>) -> Void) {
         AF.request(endpoint.path, method: .post, parameters: data)
             .validate()
-            .responseDecodable(of: Response.self) { (response) in
+            .responseDecodable(of: U.self) { (response) in
                 switch response.result {
                 case .success(let result):
-                    completion(.success(result.message))
+                    print(result)
+                    completion(.success(result))
                 case .failure(let error):
+                    print(error)
                     completion(.failure(error))
                 }
             }

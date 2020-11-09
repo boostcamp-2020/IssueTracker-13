@@ -28,9 +28,6 @@ module.exports = {
     overlay: true,
     stats: 'errors-only',
     historyApiFallback: true,
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
   },
   devtool: 'cheap-eval-source-map',
   plugins: [

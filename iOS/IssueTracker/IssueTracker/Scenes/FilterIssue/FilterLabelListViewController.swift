@@ -38,7 +38,7 @@ class FilterLabelListViewController: BaseCollectionViewController<FilterLabelInt
             let rect = CGRect(origin: .zero, size: CGSize(width: 10, height: 10))
             content.imageProperties.cornerRadius = 20.0
             UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
-            UIColor.black.setFill()
+            UIColor(hexString: label.backgroundColor ?? "#000000").setFill()
             UIRectFill(rect)
             let image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()

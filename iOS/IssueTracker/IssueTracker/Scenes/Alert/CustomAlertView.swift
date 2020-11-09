@@ -40,6 +40,7 @@ class CustomAlertView: UIView {
         view.frame = self.bounds
         self.addSubview(view)
         contentView = view
+        saveButton.setBackgroundColor(#colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), for: .disabled)
     }
     
     func loadViewFromNib() -> UIView? {

@@ -47,6 +47,13 @@ class MilestoneAlertViewController: BaseAlertViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         let touch = touches.first
+         if touch?.view != alertView {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
     @objc func didTouchCloseButton() {
         dismiss(animated: true, completion: nil)
     }

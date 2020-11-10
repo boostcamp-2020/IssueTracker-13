@@ -36,6 +36,13 @@ class LabelAlertViewController: BaseAlertViewController {
         colorTextField.addTarget(self, action: #selector(didTextFieldChange(_:)), for: .editingChanged)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+         let touch = touches.first
+         if touch?.view != alertView {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func configure(_ mode: AlertMode, label: Label?) {
         interactor.mode = mode
         switch mode {

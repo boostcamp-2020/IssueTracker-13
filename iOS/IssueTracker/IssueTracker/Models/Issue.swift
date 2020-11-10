@@ -11,12 +11,19 @@ struct Issue: Codable {
     let id: Int
     let title: String
     let preview: String
-    let milestone: String
+    let milestone: Milestone
     let labels: [Label]
-    let author: String
+    let author: User
     let assignees: [User]
     var isOpen: Bool
-    let createAt: String
+    let createAt: String?
+    
+    enum CodingKeys : String, CodingKey{
+        case id, title, preview, author, isOpen, createAt
+        case milestone = "Milestone"
+        case assignees = "Assignee"
+        case labels = "Labels"
+    }
 }
 
 extension Issue: Hashable {

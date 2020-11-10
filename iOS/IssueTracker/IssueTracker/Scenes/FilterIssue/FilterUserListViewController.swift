@@ -34,7 +34,7 @@ class FilterUserListViewController: BaseCollectionViewController<FilterUserListI
     private func configureCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, User> {
         return UICollectionView.CellRegistration<UICollectionViewListCell, User> { (cell, _, user) in
             var content = cell.defaultContentConfiguration()
-            content.text = user.name
+            content.text = user.userName
             content.imageProperties.cornerRadius = 3.0
             content.image = UIImage(systemName: "person.circle") //우선 아무 image나 넣었습니다
             cell.contentConfiguration = content

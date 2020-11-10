@@ -40,7 +40,7 @@ class MilestoneAlertViewController: BaseAlertViewController {
             id = milestone?.id
             alertView.titleTextField.text = milestone?.title
             alertView.descriptionTextField.text = milestone?.description
-            guard let date = milestone?.dueDate.toDate() else { return }
+            guard let date = milestone?.dueDate?.toDate() else { return }
             datePicker.setDate(date, animated: true)
         default:
             break

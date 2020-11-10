@@ -38,6 +38,11 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             let viewController = segue.destination as? IssueDetailViewController
             guard let issue = sender as? Issue else { return }
             viewController?.issue = issue
+        } else if segue.identifier == "showFilterIssueViewController" {
+            let navigationViewController = segue.destination as? UINavigationController
+            let viewController = navigationViewController?.viewControllers.first as? FilterIssueViewController
+            viewController?.interactor.delegate = self.interactor
+            viewController?.interactor.filter = self.interactor.filter
         }
         
     }
@@ -62,7 +67,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         
         switch issueCollectionView.isEditing {
         case true:
-            leftTitle = isSelectedAll() ? "Deelect All" : "Select All"
+            leftTitle = isSelectedAll() ? "Deselect All" : "Select All"
             rightTitle = "Cancel"
         case false:
             leftTitle = "Filter"
@@ -196,6 +201,7 @@ extension IssueListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView.isEditing {
             setNavigationTitle()
+            updateBarButtonItems()
         }
     }
     

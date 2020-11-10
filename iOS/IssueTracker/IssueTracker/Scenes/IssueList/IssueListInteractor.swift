@@ -7,8 +7,8 @@
 
 import Foundation
 
-protocol IssueListBusinessLogic: IssueDataSourceProtocol {
-    func fetchIssues()
+protocol IssueListBusinessLogic: class, IssueDataSourceProtocol {
+    func fetchIssues(with: Filter?)
 }
 
 class IssueListInteractor {
@@ -16,12 +16,14 @@ class IssueListInteractor {
     weak var viewController: IssueListDisplayLogic?
     var issueDataSource: IssueDataSource?
     var worker = IssueWorker()
+    var filter: Filter? =  Filter(isOpen: true)
 }
 
 extension IssueListInteractor: IssueListBusinessLogic {
 
-    func fetchIssues() {
-        worker.fetchIssues { (dataSource) in
+    func fetchIssues(with filter: Filter? = Filter(isOpen: true)) {
+        self.filter = filter
+        worker.fetchIssues(with: filter?.query ?? "") { (dataSource) in
             self.issueDataSource = dataSource
             self.viewController?.displayIssueList(with: dataSource.issues, at: .main)
         }

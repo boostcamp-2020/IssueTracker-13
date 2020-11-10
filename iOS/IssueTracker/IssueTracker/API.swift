@@ -12,7 +12,9 @@ class API {
     static let shared: API = API()
     
     func get<T: Codable>(with query: String = "", from endpoint: EndPoint, completion : @escaping (Result<[T], Error>) -> Void) {
-        AF.request(endpoint.path + query, method: .get)
+        guard let encoded = (endpoint.path + query).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
+        guard let url = URL(string: encoded) else { return }
+        AF.request(url, method: .get)
             .validate()
             .responseDecodable(of: [T].self) { (response) in
                 switch response.result {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+import MilestoneListNav from '../components/MilestoneListNav';
 import MilestoneList from '../components/MilestoneList';
 
 import { getMilestones } from '../apis/milestonesAPI';
@@ -20,7 +21,7 @@ export default function MilestonesPage() {
   return (
     <Page>
       {/* <MilestoneHeader/> */}
-      {/* <MilestoneListNav openCount={milestones.length} closedCount={0}/> */}
+      <MilestoneListNav milestones={ milestones }/>
       <MilestoneList milestones={ milestones }/>
     </Page>
   );

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import FilterModal from './FilterModal';
 
+import { SEARCH_INPUT_FILTER } from '../assets/filter';
+
 const Input = styled.input`
   padding: 5px 12px;
   width: 85%;
@@ -27,28 +29,6 @@ const FilterButton = styled.button`
 export default function SearchInput() {
   const [isShowModal, setIsShowModal] = useState(false);
   const title = 'Filter Issues';
-  const contents = [
-    {
-      title: 'Open issues',
-      query: 'isOpen=true',
-    },
-    {
-      title: 'Your issues',
-      query: 'author=parkdit94',
-    },
-    {
-      title: 'Everything assigned to you',
-      query: 'isOpen=true',
-    },
-    {
-      title: 'Everythong mentioning you',
-      query: 'isOpen=true',
-    },
-    {
-      title: 'Closed issues',
-      query: 'isOpen=false',
-    },
-  ];
 
   return (
     <SearchInputDiv>
@@ -56,7 +36,7 @@ export default function SearchInput() {
       {isShowModal &&
         <FilterModal
           title={title}
-          contents={contents}
+          contents={SEARCH_INPUT_FILTER}
           setIsShowModal={setIsShowModal}
         />}
       <Input placeholder="Search all issues" />

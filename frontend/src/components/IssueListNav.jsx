@@ -5,7 +5,10 @@ import styled from 'styled-components';
 import IssueListNavButton from './IssueListNavButton';
 import IssueListCheckBox from './IssueListCheckBox';
 import FilterModal from './FilterModal';
+
 import { IssuesContext } from '../pages/IssueListPage';
+
+import { getFilterListOfIssueList } from '../assets/filter';
 
 const Nav = styled.nav`
 	background-color: #f6f8fa;
@@ -39,34 +42,7 @@ export default function IssueListNav() {
     }
   }, [isShowModal]);
 
-  const menuTypes = [
-    {
-      title: 'Author',
-      contents: [...users],
-    },
-    {
-      title: 'Label',
-      contents: [
-        { id: 0, title: 'Unabled' },
-        ...labels,
-      ],
-    },
-    {
-      title: 'Milestones',
-      contents: [
-        { id: 0, title: 'Issues with no milestone' },
-        ...milestones,
-      ],
-    },
-    {
-      title: 'Assignee',
-      contents: [
-        { id: 0, userName: 'Assigned to nobody' },
-        ...users,
-      ],
-    },
-  ];
-
+  const menuTypes = getFilterListOfIssueList(users, labels, milestones);
   return (
     <Nav>
       <IssueListCheckBox />

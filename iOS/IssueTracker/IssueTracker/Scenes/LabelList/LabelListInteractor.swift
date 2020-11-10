@@ -46,7 +46,7 @@ extension LabelListInteractor: LabelAlertDelegate {
         case .add:
             guard let label = label as? PostLabel else { return }
 
-            API.shared.post(data: label, to: .labels, completion: { (result) in
+            API.shared.post(data: label, to: .labels, completion: { (result: Result<String, Error>) in
                 switch result {
                 case .success:
                     self.add(label: label)

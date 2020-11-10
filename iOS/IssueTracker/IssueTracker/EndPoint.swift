@@ -16,7 +16,7 @@ enum EndPoint: String {
     case signIn = "auth/signIn"
     
     var baseURL: String {
-        "http://27.96.130.188:3000/api/"
+        "http://27.96.130.188:3000/api/" //배포용 : http://101.101.210.228
     }
     
     var path: String {

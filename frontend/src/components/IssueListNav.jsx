@@ -21,9 +21,11 @@ const Buttons = styled.div`
 
 export default function IssueListNav() {
   const [clickedProperty, setClickedProperty] = useState('');
+  const [isShowModal, setIsShowModal] = useState(false);
   const { labels, milestones, users } = useContext(IssuesContext);
 
   const handleClick = (title) => {
+    setIsShowModal(true);
     if (title === clickedProperty) {
       setClickedProperty('');
       return;
@@ -48,10 +50,11 @@ export default function IssueListNav() {
               title={title}
               handleClick={handleClick}
             />
-            {title === clickedProperty &&
+            {title === clickedProperty && isShowModal &&
             <FilterModal
               title={title}
               contents={contents}
+              setIsShowModal={setIsShowModal}
             />}
           </div>
         ))}

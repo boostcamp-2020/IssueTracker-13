@@ -40,7 +40,7 @@ export default function FilterModal ({ title: modalTitle, contents = [], setIsSh
 
   const addFilterQuery = (query, key) => {
     dispatch({ type: 'addFilterQuery', query, key });
-    // setIsShowModal(false);
+    setIsShowModal(false);
   };
 
   return (

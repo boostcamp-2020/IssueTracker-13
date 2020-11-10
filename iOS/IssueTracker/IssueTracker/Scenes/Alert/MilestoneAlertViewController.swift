@@ -22,12 +22,16 @@ class MilestoneAlertViewController: BaseAlertViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        datePicker.backgroundColor = .none
-        datePicker.tintColor = .black
         addInputAccessoryForTextFields(textFields: [alertView.titleTextField,
                                                     alertView.descriptionTextField],
                                        previousNextable: true)
         alertView.stackView.addArrangedSubview(dateView)
+        configureTargets()
+        configure(datePicker: datePicker)
+    }
+    
+    func configureTargets() {
+        alertView.titleTextField.addTarget(self, action: #selector(didTitleTextFieldChange), for: .editingChanged)
         alertView.closeButton.addTarget(self, action: #selector(didTouchCloseButton), for: .touchUpInside)
         alertView.resetButton.addTarget(self, action: #selector(didTouchResetButton), for: .touchUpInside)
         alertView.saveButton.addTarget(self, action: #selector(didTouchSaveButton), for: .touchUpInside)
@@ -42,16 +46,19 @@ class MilestoneAlertViewController: BaseAlertViewController {
             alertView.descriptionTextField.text = milestone?.description
             guard let date = milestone?.dueDate?.toDate() else { return }
             datePicker.setDate(date, animated: true)
-        default:
-            break
+        case .add:
+            alertView.saveButton.isEnabled = false
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-         let touch = touches.first
-         if touch?.view != alertView {
-            dismiss(animated: true, completion: nil)
-        }
+    func configure(datePicker :UIDatePicker){
+        datePicker.backgroundColor = .none
+        datePicker.tintColor = .black
+    }
+    
+    @objc func didTitleTextFieldChange(_ textField: UITextField) {
+        guard let titleText = textField.text else { return }
+        alertView.saveButton.isEnabled = !titleText.isEmpty
     }
     
     @objc func didTouchCloseButton() {

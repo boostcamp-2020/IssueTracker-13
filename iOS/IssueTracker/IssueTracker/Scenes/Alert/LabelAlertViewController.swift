@@ -30,17 +30,15 @@ class LabelAlertViewController: BaseAlertViewController {
                                                     colorTextField],
                                        previousNextable: true)
         alertView.stackView.addArrangedSubview(colorView)
+        configureTargets()
+    }
+    
+    func configureTargets() {
+        alertView.titleTextField.addTarget(self, action: #selector(didTitleTextFieldChange(_:)), for: .editingChanged)
         alertView.closeButton.addTarget(self, action: #selector(didTouchCloseButton), for: .touchUpInside)
         alertView.resetButton.addTarget(self, action: #selector(didTouchResetButton), for: .touchUpInside)
         alertView.saveButton.addTarget(self, action: #selector(didTouchSaveButton), for: .touchUpInside)
-        colorTextField.addTarget(self, action: #selector(didTextFieldChange(_:)), for: .editingChanged)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-         let touch = touches.first
-         if touch?.view != alertView {
-            dismiss(animated: true, completion: nil)
-        }
+        colorTextField.addTarget(self, action: #selector(didColorTextFieldChange(_:)), for: .editingChanged)
     }
     
     func configure(_ mode: AlertMode, label: Label?) {
@@ -56,6 +54,7 @@ class LabelAlertViewController: BaseAlertViewController {
             colorPickerView.backgroundColor = UIColor(hexString: backgroundColorString)
         case .add:
             interactor.randomizeColor()
+            alertView.saveButton.isEnabled = false
         }
     }
     
@@ -63,7 +62,12 @@ class LabelAlertViewController: BaseAlertViewController {
         interactor.randomizeColor()
     }
     
-    @objc func didTextFieldChange(_ textField: UITextView) {
+    @objc func didTitleTextFieldChange(_ textField: UITextField) {
+        guard let titleText = textField.text else { return }
+        alertView.saveButton.isEnabled = !titleText.isEmpty
+    }
+    
+    @objc func didColorTextFieldChange(_ textField: UITextView) {
         guard let colorString = textField.text else { return }
         interactor.didTextFieldChange(as: colorString)
     }

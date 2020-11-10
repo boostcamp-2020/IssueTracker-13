@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useReducer } from 'react';
 
 import styled from 'styled-components';
 
@@ -8,7 +8,6 @@ import IssueList from '../components/IssueList';
 
 import { getLabels } from '../apis/labelsAPI';
 import { getMilestones } from '../apis/milestonesAPI';
-import { getIssues } from '../apis/issuesAPI';
 
 const Page = styled.div`
   padding: 48px 200px;
@@ -18,24 +17,27 @@ const Page = styled.div`
 
 export const IssuesContext = createContext([]);
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'setFilterQuery':
+      return action.query;
+    case 'addFilterQuery':
+      return state + action.query;
+    default:
+      console.log('unknown dispatch action');
+      return state;
+  }
+};
+
 export default function IssueListPage() {
-  const [issues, setIssues] = useState([]);
+  const [query, dispatch] = useReducer(reducer, []);
 
   const labels = getLabels();
   const milestones = getMilestones();
 
-  const fetchIssues = async () => {
-    const newIssues = await getIssues();
-    setIssues(newIssues);
-  };
-
-  useEffect(() => {
-    fetchIssues();
-  }, []);
-
   return (
     <Page>
-      <IssuesContext.Provider value={ issues }>
+      <IssuesContext.Provider value={ { query, dispatch } }>
         <SearchBar labelCount={labels.length} milestoneCount={milestones.length} />
         <IssueListNav />
         <IssueList />

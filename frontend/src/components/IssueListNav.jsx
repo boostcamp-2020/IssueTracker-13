@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import styled from 'styled-components';
 
@@ -25,7 +25,6 @@ export default function IssueListNav() {
   const { labels, milestones, users } = useContext(IssuesContext);
 
   const handleClick = (title) => {
-    setIsShowModal(true);
     if (title === clickedProperty) {
       setClickedProperty('');
       return;
@@ -33,11 +32,18 @@ export default function IssueListNav() {
     setClickedProperty(title);
   };
 
+  useEffect(() => {
+    if (!isShowModal) {
+      setClickedProperty('');
+      setIsShowModal(true);
+    }
+  }, [isShowModal]);
+
   const menuTypes = [
-    { title: 'Author', contents: users },
-    { title: 'Label', contents: labels },
-    { title: 'Milestones', contents: milestones },
-    { title: 'Assignee', contents: users },
+    { title: 'Author', contents: [...users] },
+    { title: 'Label', contents: [{ id: 0, title: 'Unabled' }, ...labels] },
+    { title: 'Milestones', contents: [{ id: 0, title: 'Issues with no milestone' }, ...milestones] },
+    { title: 'Assignee', contents: [{ id: 0, userName: 'Assigned to nobody' }, ...users] },
   ];
 
   return (

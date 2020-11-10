@@ -5,11 +5,15 @@ import styled from 'styled-components';
 const ListItem = styled.div`
   display: flex;
   flex-flow: row nowrap;
+  border: 1px solid #e1e4e8;
 `;
 
 const InlineBox = styled.div`
   display: flex;
   flex-flow: column;
+  flex: 1;
+  padding: 15px 20px;
+  gap: 5px;
 `;
 
 const Title = styled.div`
@@ -19,26 +23,47 @@ const Title = styled.div`
 `;
 
 const DueDate = styled.div`
+  color: #6A737D;
   font-size: 14px;
 `;
 
 const Description = styled.div`
+  color: #6A737D;
   font-size: 16px;
 `;
 
 const ProgressBar = styled.svg`
+  height: 30px;
 `;
 
 const BarContainer = styled.div`
+  color: #586069;
   display: flex;
   flex-flow: row nowrap;
-`;
-
-const NumberAndDesc = styled.span`
+  gap: 20px;
 `;
 
 const Button = styled.button`
+  padding: 0;
+  border: none;
+  font-size: 14px;
+  background-color: transparent;
+  color: #0366D6;
+  cursor: pointer;
+
+  ${props => props.isDelete && `
+    color: #CB2431;
+  `}
 `;
+
+function NumberAndDesc({ number, desc }) {
+  return (
+    <span>
+      <strong>{number}</strong>
+      {' ' + desc}
+    </span>
+  );
+}
 
 export default function MilestoneListItem({ milestone }) {
   const { closedIssueCount, allIssueCount } = milestone;
@@ -56,14 +81,14 @@ export default function MilestoneListItem({ milestone }) {
       <InlineBox>
         <ProgressBar></ProgressBar>
         <BarContainer>
-          <NumberAndDesc>{completionRate}% completed</NumberAndDesc>
-          <NumberAndDesc>{openIssueCount} open</NumberAndDesc>
-          <NumberAndDesc>{closedIssueCount} closed</NumberAndDesc>
+          <NumberAndDesc number={`${completionRate}%`} desc='Complete' />
+          <NumberAndDesc number={openIssueCount} desc='Open' />
+          <NumberAndDesc number={closedIssueCount} desc='Closed' />
         </BarContainer>
         <BarContainer>
           <Button>Edit</Button>
           <Button>Close</Button>
-          <Button>Delete</Button>
+          <Button isDelete>Delete</Button>
         </BarContainer>
       </InlineBox>
     </ListItem>

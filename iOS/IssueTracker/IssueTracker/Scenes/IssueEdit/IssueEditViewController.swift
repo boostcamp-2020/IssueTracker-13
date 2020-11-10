@@ -20,8 +20,10 @@ class IssueEditViewController: UIViewController {
     @IBOutlet weak var textViewBottom: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIBarButtonItem!
     var issue: Issue?
+    let toolbar: UIToolbar = UIToolbar()
     let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: CGFloat(17)))
     var markdownString = ""
+    let myAttribute = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: CGFloat(17)) ]
     weak var delegate: IssueEditDelegate?
     
     override func viewDidLoad() {
@@ -57,12 +59,16 @@ class IssueEditViewController: UIViewController {
     @IBAction func didSegmentedControlChangeValue(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            previewTextView.text = markdownString
+            let newAttributedString = NSAttributedString(string: markdownString,
+                                                         attributes: myAttribute)
+            previewTextView.attributedText = newAttributedString
             previewTextView.isEditable = true
+            previewTextView.inputAccessoryView = toolbar
         case 1:
             markdownString = previewTextView.text
             previewTextView.attributedText = markdownParser.parse(markdownString)
             previewTextView.isEditable = false
+            previewTextView.inputAccessoryView = nil
         default:
             break
         }
@@ -121,7 +127,6 @@ extension IssueEditViewController: UITextViewDelegate {
 extension IssueEditViewController {
     
     func configureToolbar() {
-        let toolbar: UIToolbar = UIToolbar()
         toolbar.sizeToFit()
         let boldButton = UIBarButtonItem(image: UIImage(systemName: "bold"),
                                          style: .plain,

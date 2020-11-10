@@ -32,7 +32,7 @@ class LabelListViewController: BaseCollectionViewController<LabelDataSource.Sect
     @IBAction func didTouchAddLabelButton(_ sender: Any) {
         guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LabelAlertViewController") as? LabelAlertViewController else { return }
         present(alert, animated: true, completion: nil)
-//        alert.delegate = self
+        alert.interactor.delegate = self.interactor
         alert.configure(.add, label: nil)
     }
     
@@ -81,7 +81,7 @@ extension LabelListViewController: UICollectionViewDelegate {
         let label = dataSource.itemIdentifier(for: indexPath)
         guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LabelAlertViewController") as? LabelAlertViewController else { return }
         present(alert, animated: true, completion: nil)
-//        alert.interactor.delegate = self
+        alert.interactor.delegate = self.interactor
         alert.configure(.edit, label: label)
     }
 }

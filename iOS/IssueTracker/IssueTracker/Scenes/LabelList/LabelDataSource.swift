@@ -17,4 +17,15 @@ class LabelDataSource {
     init(with labels: [Label]) {
         self.labels = labels
     }
+    
+    func add(label: Label) {
+        labels.append(label)
+    }
+    
+    func update(label: Label) {
+        guard let index = labels.firstIndex(where: {$0.id == label.id}) else { return }
+        let newLabel = label
+        labels[index] = newLabel
+    }
+    
 }

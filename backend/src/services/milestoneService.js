@@ -48,7 +48,7 @@ const getMilestones = async () => {
     where: {
       isDeleted: false,
     },
-    attributes: ['id', 'title', 'description', 'dueDate'],
+    attributes: ['id', 'title', 'description', 'dueDate', 'isOpen'],
   });
 
   return await addIssueInfoInMilestone(milestones);

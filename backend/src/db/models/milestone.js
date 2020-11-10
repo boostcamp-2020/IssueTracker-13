@@ -9,10 +9,21 @@ module.exports = (sequelize, DataTypes) => {
   }
   Milestone.init(
     {
-      title: DataTypes.STRING,
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
       description: DataTypes.STRING,
       dueDate: DataTypes.DATE,
-      isDeleted: DataTypes.BOOLEAN,
+      isOpen: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
+      isDeleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       sequelize,

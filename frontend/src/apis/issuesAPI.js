@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const getIssues = async () => {
-  const { data } = await axios.get('/api/issues');
+const getIssues = async (query) => {
+  const { data } = await axios.get(`/api/issues${query}`);
   return data.map(issue => {
     return { ...issue,
       author: issue.author.userName,

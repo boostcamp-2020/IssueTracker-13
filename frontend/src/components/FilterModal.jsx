@@ -34,26 +34,44 @@ export default function FilterModal ({ title: modalTitle, contents = [], setIsSh
   const { dispatch } = useContext(IssuesContext);
 
   const setFilterQuery = (query) => {
-    dispatch({ type: 'setFilterQuery', query });
+    dispatch({ type: 'refresh', query });
     setIsShowModal(false);
   };
 
   const addFilterQuery = (query, key) => {
-    dispatch({ type: 'addFilterQuery', query, key });
+    dispatch({ type: 'add', query, key });
     setIsShowModal(false);
+  };
+
+  const deleteFilterQuery = (key) => {
+    dispatch({ type: 'delete', key });
+    setIsShowModal(false);
+  };
+
+  const clickHandler = (event, query) => {
+    const id = event.target.dataset.id;
+
+    if (modalTitle === 'Filter Issues') {
+      return setFilterQuery(query);
+    }
+    if (id === '0') {
+      return deleteFilterQuery(modalTitle.toLowerCase());
+    }
+    return addFilterQuery(query, modalTitle.toLowerCase());
   };
 
   return (
     <Modal>
       <Title>{modalTitle}</Title>
       <ContentsList>
-        {contents.map(({ userName, title, query }, i) => {
+        {contents.map(({ id, userName, title, query }, i) => {
           query = query || `${modalTitle.toLowerCase()}=${title || userName}`;
 
           return (
             <Content
               key={i}
-              onClick={() => modalTitle === 'Filter Issues' ? setFilterQuery(query) : addFilterQuery(query, modalTitle.toLowerCase())}>
+              data-id={id}
+              onClick={(e) => clickHandler(e, query)}>
               {title || userName}
             </Content>
           );

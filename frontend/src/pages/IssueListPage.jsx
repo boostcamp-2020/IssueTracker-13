@@ -18,15 +18,19 @@ const Page = styled.div`
 
 export const IssuesContext = createContext([]);
 
-const filterUsedQuery = (state, key) => state.length > 0 ? state.split('&').filter(queryParam => queryParam.split('=')[0] !== key).join('&') : state;
+const filterUsedQuery = (state, modalTitle) => state.length > 0 ? state.split('&').filter(queryParam => queryParam.split('=')[0] !== modalTitle).join('&') : state;
 
 const reducer = (state, { type, query, key }) => {
-  if (type === 'setFilterQuery') {
+  if (type === 'refresh') {
     return query;
   }
-  if (type === 'addFilterQuery') {
+  if (type === 'add') {
     const originState = filterUsedQuery(state, key);
     return `${originState}&${query}`;
+  }
+  if (type === 'delete') {
+    const originState = filterUsedQuery(state, key);
+    return originState;
   }
   console.log('unknown dispatch action');
   return state;

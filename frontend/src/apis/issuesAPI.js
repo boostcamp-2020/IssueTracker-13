@@ -3,11 +3,17 @@ import axios from 'axios';
 const getIssues = async (query) => {
   const { data } = await axios.get(`/api/issues?${query}`);
   console.log('query : ', query);
-  return data.map(issue => {
-    return { ...issue,
-      author: issue.author.userName,
-      labels: issue.Labels,
-      milestone: issue.Milestone.title,
+  return data.map(({ id, isOpen, preview, title, createdAt, Assignee, Labels, Milestone, author }) => {
+    return {
+      id,
+      isOpen,
+      preview,
+      title,
+      createdAt,
+      assignee: Assignee,
+      author: author.userName,
+      labels: Labels,
+      milestone: Milestone.title,
     };
   });
 };

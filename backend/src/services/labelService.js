@@ -27,9 +27,12 @@ const updateLabel = async (modifiedContents) => {
 };
 
 const deleteLabel = async (id) => {
-  const [affectedRowCount] = await Label.update({ isDeleted: true }, {
-    where: { id, isDeleted: false },
-  });
+  const [affectedRowCount] = await Label.update(
+    { isDeleted: true },
+    {
+      where: { id, isDeleted: false },
+    }
+  );
   if (affectedRowCount === 0) {
     throw new Error('No rows deleted');
   }

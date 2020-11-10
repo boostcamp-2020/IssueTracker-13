@@ -66,7 +66,7 @@ extension LabelListViewController: UICollectionViewDelegate {
         let label = dataSource.itemIdentifier(for: indexPath)
         guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LabelAlertViewController") as? LabelAlertViewController else { return }
         present(alert, animated: true, completion: nil)
-//        alert.delegate = self
+//        alert.interactor.delegate = self
         alert.configure(.edit, label: label)
     }
 }

@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 const createError = require('http-errors');
 
-const { getLabels, addLabel, updateLabel, deleteLabel } = require('../services/labelService');
+const {
+  getLabels,
+  addLabel,
+  updateLabel,
+  deleteLabel,
+} = require('../services/labelService');
 
 const SUCCESS_MESSAGE = { message: 'success' };
 

@@ -1,8 +1,15 @@
-const { Comment } = require('../db/models');
+const { Comment, User } = require('../db/models');
 
 const getComments = async (issueId) => {
   const comments = await Comment.findAll({
-    where: { issueId: issueId },
+    attributes: {
+      exclude: ['UserId', 'IssueId', 'updatedAt'],
+    },
+    include: {
+      model: User,
+      attributes: ['userName', 'profile'],
+    },
+    where: { issueId },
   });
   return comments;
 };
@@ -14,10 +21,7 @@ const addComment = async (newComment) => {
 const updateComment = async (modifiedComment) => {
   const { id, ...modifiedTarget } = modifiedComment;
 
-  return await Comment.update(
-    modifiedTarget,
-    { where: { id: id } },
-  );
+  return await Comment.update(modifiedTarget, { where: { id: id } });
 };
 
 module.exports = {

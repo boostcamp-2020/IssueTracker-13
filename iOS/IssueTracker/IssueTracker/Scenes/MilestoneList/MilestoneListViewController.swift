@@ -21,13 +21,15 @@ class MilestoneListViewController: BaseCollectionViewController<MilestoneDataSou
         interactor.viewController = self
         interactor.fetchMilestoneList()
     }
-
+    
     @IBAction func didTouchAddMilestoneButton(_ sender: Any) {
-        guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MilestoneAlertViewController") as? MilestoneAlertViewController else { return }
+        guard let alert = UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "MilestoneAlertViewController")
+                as? MilestoneAlertViewController else { return }
         present(alert, animated: true, completion: nil)
-        //        alert.delegate = self
+        alert.delegate = self.interactor
         alert.configure(.add, milestone: nil)
-
+        
     }
     
 }
@@ -65,7 +67,7 @@ extension MilestoneListViewController: UICollectionViewDelegate {
         let milestone = dataSource.itemIdentifier(for: indexPath)
         guard let alert = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MilestoneAlertViewController") as? MilestoneAlertViewController else { return }
         present(alert, animated: true, completion: nil)
-//        alert.delegate = self.interactor
+        alert.delegate = self.interactor
         alert.configure(.edit, milestone: milestone)
     }
 }

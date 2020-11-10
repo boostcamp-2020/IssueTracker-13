@@ -14,8 +14,8 @@ class LabelCollectionViewCell: UICollectionViewListCell {
     
     
     func configure(with label: Label) {
-        titleLabel.text = label.title
-        descriptionLabel.text = label.description
+        titleLabel.configure(with: label)
+        descriptionLabel.text = label.description ?? "empty"
         accessories = [.disclosureIndicator()]
     }
 }

@@ -38,13 +38,21 @@
 		51A9F610255274180004FB52 /* FilterMilestoneListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F60F255274180004FB52 /* FilterMilestoneListInteractor.swift */; };
 		51A9F62B2552A8240004FB52 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F62A2552A8240004FB52 /* SignInViewController.swift */; };
 		51A9F6302552A84C0004FB52 /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F62F2552A84C0004FB52 /* SignInInteractor.swift */; };
+		51B6D5E32556E00B00325952 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5E02556E00B00325952 /* String+Date.swift */; };
+		51B6D5E42556E00B00325952 /* UIColor+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5E12556E00B00325952 /* UIColor+hexString.swift */; };
+		51B6D5E52556E00B00325952 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5E22556E00B00325952 /* Date+String.swift */; };
+		51B6D5EA2556EE0000325952 /* UIButton+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5E92556EE0000325952 /* UIButton+UIColor.swift */; };
+		51B6D5F225577B4D00325952 /* LabelAlertInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5F125577B4D00325952 /* LabelAlertInteractor.swift */; };
 		51C95CD22553CFDB00EACB1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CD12553CFDB00EACB1C /* API.swift */; };
 		51C95CD72553D14F00EACB1C /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CD62553D14F00EACB1C /* Milestone.swift */; };
-		51C95CDF2553DE9E00EACB1C /* ReponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */; };
+		51C95CDF2553DE9E00EACB1C /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CDE2553DE9D00EACB1C /* Response.swift */; };
 		51DE98F62551898100A2E2C8 /* FilterWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98F52551898100A2E2C8 /* FilterWorker.swift */; };
 		51DE98FE25518DF000A2E2C8 /* FilterUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE98FD25518DEF00A2E2C8 /* FilterUserListViewController.swift */; };
 		51DE99032551940700A2E2C8 /* FilterUserListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DE99022551940700A2E2C8 /* FilterUserListInteractor.swift */; };
 		51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FBF8EB255047F000F38CCC /* FloatingButton.swift */; };
+		820B6323255911A0003FDB5B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B6322255911A0003FDB5B /* EndPoint.swift */; };
+		820B633825593238003FDB5B /* IssueEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B633725593238003FDB5B /* IssueEditViewController.swift */; };
+		820B633E25593E57003FDB5B /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B633D25593E57003FDB5B /* IssueDetailViewController.swift */; };
 		826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F6306255154E80005D669 /* FilterIssueViewController.swift */; };
 		826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */; };
 		8298BD642552758400BE3623 /* FilterMilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8298BD622552758400BE3623 /* FilterMilestoneListViewController.swift */; };
@@ -120,13 +128,21 @@
 		51A9F62A2552A8240004FB52 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		51A9F62F2552A84C0004FB52 /* SignInInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
 		51A9F6382552CFE70004FB52 /* IssueTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IssueTracker.entitlements; sourceTree = "<group>"; };
+		51B6D5E02556E00B00325952 /* String+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		51B6D5E12556E00B00325952 /* UIColor+hexString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hexString.swift"; sourceTree = "<group>"; };
+		51B6D5E22556E00B00325952 /* Date+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
+		51B6D5E92556EE0000325952 /* UIButton+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+UIColor.swift"; sourceTree = "<group>"; };
+		51B6D5F125577B4D00325952 /* LabelAlertInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlertInteractor.swift; sourceTree = "<group>"; };
 		51C95CD12553CFDB00EACB1C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		51C95CD62553D14F00EACB1C /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
-		51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReponseMessage.swift; sourceTree = "<group>"; };
+		51C95CDE2553DE9D00EACB1C /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		51DE98F52551898100A2E2C8 /* FilterWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWorker.swift; sourceTree = "<group>"; };
 		51DE98FD25518DEF00A2E2C8 /* FilterUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterUserListViewController.swift; sourceTree = "<group>"; };
 		51DE99022551940700A2E2C8 /* FilterUserListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterUserListInteractor.swift; sourceTree = "<group>"; };
 		51FBF8EB255047F000F38CCC /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
+		820B6322255911A0003FDB5B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		820B633725593238003FDB5B /* IssueEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEditViewController.swift; sourceTree = "<group>"; };
+		820B633D25593E57003FDB5B /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
 		826F6306255154E80005D669 /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
 		826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueInteractor.swift; sourceTree = "<group>"; };
 		8298BD612552758400BE3623 /* FilterLabelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterLabelListViewController.swift; sourceTree = "<group>"; };
@@ -223,8 +239,11 @@
 				51326E7F25492F3A00C0C273 /* AppDelegate.swift */,
 				51326E8125492F3A00C0C273 /* SceneDelegate.swift */,
 				51445A9E254A609500875BA5 /* BaseCollectionViewController.swift */,
+				820B6322255911A0003FDB5B /* EndPoint.swift */,
 				51C95CD12553CFDB00EACB1C /* API.swift */,
-				51C95CDE2553DE9D00EACB1C /* ReponseMessage.swift */,
+				51B6D5DF2556DFF300325952 /* Extensions */,
+				51C95CDE2553DE9D00EACB1C /* Response.swift */,
+				51326F12254971E300C0C273 /* Models */,
 				51326EC325493DCF00C0C273 /* Scenes */,
 				51326E8525492F3A00C0C273 /* Main.storyboard */,
 				51326E8825492F3E00C0C273 /* Assets.xcassets */,
@@ -255,6 +274,8 @@
 		51326EC325493DCF00C0C273 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				820B633C25593E49003FDB5B /* IssueDetail */,
+				820B633325593201003FDB5B /* IssueEdit */,
 				51A9F6262552A6700004FB52 /* SignIn */,
 				826F6305255154AB0005D669 /* FilterIssue */,
 				51326EE125493FA900C0C273 /* IssueList */,
@@ -301,7 +322,7 @@
 		51326EE125493FA900C0C273 /* IssueList */ = {
 			isa = PBXGroup;
 			children = (
-				51326F12254971E300C0C273 /* Models */,
+				51326F1B2549723000C0C273 /* IssueDataSource.swift */,
 				51326EE22549407C00C0C273 /* IssueListViewController.swift */,
 				82CF7CC7254AA4FD0061121C /* IssueWorker.swift */,
 				51326F0825494E0500C0C273 /* IssueListInteractor.swift */,
@@ -314,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				51326F13254971FF00C0C273 /* Issue.swift */,
-				51326F1B2549723000C0C273 /* IssueDataSource.swift */,
 				51C95CD62553D14F00EACB1C /* Milestone.swift */,
 				82CF7CB1254A8B3E0061121C /* Label.swift */,
 				82CF7CB6254A8B500061121C /* User.swift */,
@@ -342,6 +362,7 @@
 				516BB59B25542C3E0030AFDD /* CustomAlertView.xib */,
 				516BB57125540A530030AFDD /* BaseAlertViewController.swift */,
 				516BB58925541E0E0030AFDD /* LabelAlertViewController.swift */,
+				51B6D5F125577B4D00325952 /* LabelAlertInteractor.swift */,
 				516BB58E25541E180030AFDD /* MilestoneAlertViewController.swift */,
 			);
 			path = Alert;
@@ -354,6 +375,33 @@
 				51A9F62F2552A84C0004FB52 /* SignInInteractor.swift */,
 			);
 			path = SignIn;
+			sourceTree = "<group>";
+		};
+		51B6D5DF2556DFF300325952 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51B6D5E22556E00B00325952 /* Date+String.swift */,
+				51B6D5E02556E00B00325952 /* String+Date.swift */,
+				51B6D5E12556E00B00325952 /* UIColor+hexString.swift */,
+				51B6D5E92556EE0000325952 /* UIButton+UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		820B633325593201003FDB5B /* IssueEdit */ = {
+			isa = PBXGroup;
+			children = (
+				820B633725593238003FDB5B /* IssueEditViewController.swift */,
+			);
+			path = IssueEdit;
+			sourceTree = "<group>";
+		};
+		820B633C25593E49003FDB5B /* IssueDetail */ = {
+			isa = PBXGroup;
+			children = (
+				820B633D25593E57003FDB5B /* IssueDetailViewController.swift */,
+			);
+			path = IssueDetail;
 			sourceTree = "<group>";
 		};
 		826F6305255154AB0005D669 /* FilterIssue */ = {
@@ -643,10 +691,13 @@
 			files = (
 				8298BD6C255276B800BE3623 /* FitlterLabelInteractor.swift in Sources */,
 				826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */,
+				820B6323255911A0003FDB5B /* EndPoint.swift in Sources */,
 				51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */,
 				51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */,
 				51326EE32549407C00C0C273 /* IssueListViewController.swift in Sources */,
+				51B6D5EA2556EE0000325952 /* UIButton+UIColor.swift in Sources */,
 				516BB57225540A530030AFDD /* BaseAlertViewController.swift in Sources */,
+				51B6D5E42556E00B00325952 /* UIColor+hexString.swift in Sources */,
 				51DE98F62551898100A2E2C8 /* FilterWorker.swift in Sources */,
 				516BB57A255418690030AFDD /* AlertDisplayable.swift in Sources */,
 				51A9F6032552715E0004FB52 /* FilterMilestoneListViewController.swift in Sources */,
@@ -654,17 +705,22 @@
 				516BB58F25541E180030AFDD /* MilestoneAlertViewController.swift in Sources */,
 				51326EEB2549408A00C0C273 /* LabelListViewController.swift in Sources */,
 				51326E8025492F3A00C0C273 /* AppDelegate.swift in Sources */,
+				51B6D5E52556E00B00325952 /* Date+String.swift in Sources */,
+				51B6D5F225577B4D00325952 /* LabelAlertInteractor.swift in Sources */,
 				82B3DC262554524E00245FCD /* MilestoneDataSource.swift in Sources */,
 				82B3DC212554520700245FCD /* MilestoneListWorker.swift in Sources */,
 				51A9F62B2552A8240004FB52 /* SignInViewController.swift in Sources */,
 				516BB59725542C270030AFDD /* CustomAlertView.swift in Sources */,
 				82CF7CB7254A8B500061121C /* User.swift in Sources */,
-				51C95CDF2553DE9E00EACB1C /* ReponseMessage.swift in Sources */,
+				51B6D5E32556E00B00325952 /* String+Date.swift in Sources */,
+				51C95CDF2553DE9E00EACB1C /* Response.swift in Sources */,
 				82B3DC032554197600245FCD /* LabelDataSource.swift in Sources */,
 				51445AAF254AA11B00875BA5 /* MilestoneBadgeLabel.swift in Sources */,
 				826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */,
 				82B3DC0825541D5D00245FCD /* LabelCollectionViewCell.swift in Sources */,
+				820B633E25593E57003FDB5B /* IssueDetailViewController.swift in Sources */,
 				51326E8225492F3A00C0C273 /* SceneDelegate.swift in Sources */,
+				820B633825593238003FDB5B /* IssueEditViewController.swift in Sources */,
 				51326F0925494E0500C0C273 /* IssueListInteractor.swift in Sources */,
 				51DE98FE25518DF000A2E2C8 /* FilterUserListViewController.swift in Sources */,
 				516BB58A25541E0E0030AFDD /* LabelAlertViewController.swift in Sources */,

@@ -17,27 +17,29 @@ afterAll(() => {
   db.sequelize.close();
 });
 
-const originalLabels = [{
-  id: 1,
-  title: 'enhancement',
-  description: 'New feature or request',
-  color: '#000000',
-  backgroundColor: '#a2eeef',
-},
-{
-  id: 2,
-  title: 'bug',
-  description: 'Something isn\'t working',
-  color: '#FFFFFF',
-  backgroundColor: '#d73a4a',
-},
-{
-  id: 3,
-  title: 'documentation',
-  description: 'Improvements or additions to documentation',
-  color: '#FFFFFF',
-  backgroundColor: '#0075ca',
-}];
+const originalLabels = [
+  {
+    id: 1,
+    title: 'enhancement',
+    description: 'New feature or request',
+    color: '#000000',
+    backgroundColor: '#a2eeef',
+  },
+  {
+    id: 2,
+    title: 'bug',
+    description: "Something isn't working",
+    color: '#FFFFFF',
+    backgroundColor: '#d73a4a',
+  },
+  {
+    id: 3,
+    title: 'documentation',
+    description: 'Improvements or additions to documentation',
+    color: '#FFFFFF',
+    backgroundColor: '#0075ca',
+  },
+];
 
 const newLabel = {
   title: 'BE',
@@ -63,7 +65,6 @@ const successResponse = {
 };
 
 describe('test labels API CRUD', () => {
-
   describe('when sending GET request to /api/labels', () => {
     let response, status, body;
 
@@ -82,7 +83,6 @@ describe('test labels API CRUD', () => {
   });
 
   describe('when sending POST request to /api/labels', () => {
-
     describe('on initial POST request', () => {
       let response, status, body;
 
@@ -119,7 +119,6 @@ describe('test labels API CRUD', () => {
   });
 
   describe('when sending PUT request to /api/labels', () => {
-
     describe('on initial PUT request', () => {
       let response, status, body;
 
@@ -156,7 +155,6 @@ describe('test labels API CRUD', () => {
   });
 
   describe('when sending DELETE request to /api/labels', () => {
-
     describe('on initial DELETE request', () => {
       let response, status, body;
 

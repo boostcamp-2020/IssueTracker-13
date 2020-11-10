@@ -39,7 +39,7 @@ class FilterWorker {
     func fetchLables(handler: @escaping ([Label]) -> Void) {
         let labels = [Label(id: 1, title: "라벨1", description: "라벨1입니다", color: "", backgroundColor: ""),
                       Label(id: 2, title: "라벨2", description: "라벨2입니다", color: "", backgroundColor: ""),
-                      Label(id: 3, title: "라벨3", description: "라벨3입니다", color: "", backgroundColor: ""),]
+                      Label(id: 3, title: "라벨3", description: "라벨3입니다", color: "", backgroundColor: "")]
         handler(labels)
     }
 

@@ -31,7 +31,10 @@ const applyOptionInQuery = (query) => {
 };
 
 const getFilteredIssueIds = async (query) => {
-  const [finalOption, { milestone, author, assignee, label }] = applyOptionInQuery(query);
+  const [
+    finalOption,
+    { milestone, author, assignee, label },
+  ] = applyOptionInQuery(query);
 
   const issueIds = await Issue.findAll({
     include: [milestone, author, assignee, label],
@@ -43,7 +46,9 @@ const getFilteredIssueIds = async (query) => {
 };
 
 const getIssues = async (query) => {
-  const issueIds = [...await getFilteredIssueIds(query)].map(issueId => issueId.id);
+  const issueIds = [...(await getFilteredIssueIds(query))].map(
+    (issueId) => issueId.id
+  );
 
   const SEARCH_OPTION = {
     milestone: {
@@ -91,17 +96,13 @@ const updateIssues = async (modifiedContents) => {
 
   delete modifiedContents.id;
 
-  return await Issue.update(
-    modifiedContents,
-    { where: { id: ids, isDeleted: false } },
-  );
+  return await Issue.update(modifiedContents, {
+    where: { id: ids, isDeleted: false },
+  });
 };
 
 const deleteIssues = async (id) => {
-  return await Issue.update(
-    { isDeleted: true },
-    { where: { id: id } },
-  );
+  return await Issue.update({ isDeleted: true }, { where: { id: id } });
 };
 
 module.exports = {

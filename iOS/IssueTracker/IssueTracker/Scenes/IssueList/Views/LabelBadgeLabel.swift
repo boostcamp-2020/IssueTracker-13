@@ -9,8 +9,10 @@ import UIKit
 
 class LabelBadgeLabel: InsetLabel {
     
-    func configure(with text: String, color: String, backgroundColor: String) {
-        self.text = text
+    func configure(with label: Label) {
+        self.text = label.title
+        self.backgroundColor = UIColor(hexString: label.backgroundColor ?? "#000000")
+        self.textColor = UIColor(hexString: label.color ?? "#FFFFFF")
         //이 뒤는 color 설정하기
     }
     

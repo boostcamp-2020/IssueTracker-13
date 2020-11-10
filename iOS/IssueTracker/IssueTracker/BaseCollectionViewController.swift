@@ -9,12 +9,15 @@ import UIKit
 
 class BaseCollectionViewController<T: Hashable, U: Hashable>: UIViewController {
 
+    let refreshControl = UIRefreshControl()
+    
     var dataSource: UICollectionViewDiffableDataSource<T, U>! = nil
     typealias DataSource = UICollectionViewDiffableDataSource<T, U>
     typealias Snapshot = NSDiffableDataSourceSnapshot<T, U>
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        extendedLayoutIncludesOpaqueBars = true
     }
 
     func createLayout(using configuration: UICollectionLayoutListConfiguration) -> UICollectionViewLayout {

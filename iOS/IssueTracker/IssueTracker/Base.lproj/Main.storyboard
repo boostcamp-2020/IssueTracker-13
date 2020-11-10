@@ -614,6 +614,9 @@ G0Rlc2NyaXB0aW9uA
                                     <segment title="마크다운"/>
                                     <segment title="미리보기"/>
                                 </segments>
+                                <connections>
+                                    <action selector="didSegmentedControlChangeValue:" destination="XKJ-ov-kud" eventType="valueChanged" id="qcn-k2-qx2"/>
+                                </connections>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-oB-Okw">
                                 <rect key="frame" x="20" y="232" width="374" height="576"/>
@@ -650,11 +653,17 @@ G0Rlc2NyaXB0aW9uA
                                 <action selector="didTouchCancelButton:" destination="XKJ-ov-kud" id="gKi-b7-L0j"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="arrow.up" catalog="system" id="wc4-Ao-wyw"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="arrow.up" catalog="system" id="wc4-Ao-wyw">
+                            <connections>
+                                <action selector="didTouchSendButton:" destination="XKJ-ov-kud" id="ubr-ah-6nf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="textView" destination="xaM-oB-Okw" id="881-Y7-G6M"/>
+                        <outlet property="previewTextView" destination="xaM-oB-Okw" id="881-Y7-G6M"/>
+                        <outlet property="sendButton" destination="wc4-Ao-wyw" id="YMF-Ya-Nui"/>
                         <outlet property="textViewBottom" destination="cff-Th-Ebu" id="nnR-PK-JrY"/>
+                        <outlet property="titleTextField" destination="TqX-nA-gwX" id="8bZ-2A-YeH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXL-uo-kzR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

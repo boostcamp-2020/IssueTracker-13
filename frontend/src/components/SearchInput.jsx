@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import styled from 'styled-components';
 
 import FilterModal from './FilterModal';
+
+import { IssuesContext } from '../pages/IssueListPage';
 
 import { SEARCH_INPUT_FILTER } from '../assets/filter';
 
@@ -28,7 +30,11 @@ const FilterButton = styled.button`
 
 export default function SearchInput() {
   const [isShowModal, setIsShowModal] = useState(false);
+  const { query } = useContext(IssuesContext);
+
   const title = 'Filter Issues';
+
+  const inputQuery = query.length > 0 ? query.split('&').join(' ').split('=').join(':') : '';
 
   return (
     <SearchInputDiv>
@@ -39,7 +45,7 @@ export default function SearchInput() {
           contents={SEARCH_INPUT_FILTER}
           setIsShowModal={setIsShowModal}
         />}
-      <Input placeholder="Search all issues" />
+      <Input placeholder="Search all issues" value={inputQuery}/>
     </SearchInputDiv>
   );
 }

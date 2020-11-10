@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol RefreshDisplayable {
+    func configureRefreshControl(with collectionview: UICollectionView)
+}
+
 class BaseCollectionViewController<T: Hashable, U: Hashable>: UIViewController {
 
     let refreshControl = UIRefreshControl()

@@ -10,6 +10,7 @@ import UIKit
 class BaseCollectionViewController<T: Hashable, U: Hashable>: UIViewController {
 
     let refreshControl = UIRefreshControl()
+    var didBeginRefresh: (() -> Void)?
     
     var dataSource: UICollectionViewDiffableDataSource<T, U>! = nil
     typealias DataSource = UICollectionViewDiffableDataSource<T, U>
@@ -27,6 +28,12 @@ class BaseCollectionViewController<T: Hashable, U: Hashable>: UIViewController {
     func configureDataSource(collectionView: UICollectionView,
                              cellProvider: @escaping (UICollectionView, IndexPath, U) -> UICollectionViewListCell?) {
         dataSource = DataSource(collectionView: collectionView, cellProvider: cellProvider)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if refreshControl.isRefreshing == true {
+            didBeginRefresh?()
+        }
     }
 
 }

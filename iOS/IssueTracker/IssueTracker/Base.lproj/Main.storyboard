@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9XJ-8C-1o0">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -178,7 +178,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Rvm-2G-U5B">
-                                                    <rect key="frame" x="10" y="10" width="356" height="76"/>
+                                                    <rect key="frame" x="10" y="10" width="318" height="76"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vB-f8-N1v" customClass="LabelBadgeLabel" customModule="IssueTracker" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="33" height="35.5"/>
@@ -197,7 +197,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Rvm-2G-U5B" secondAttribute="bottom" constant="10" id="2FA-SW-NMT"/>
-                                                <constraint firstAttribute="trailing" secondItem="Rvm-2G-U5B" secondAttribute="trailing" constant="10" id="Wg7-ki-h6U"/>
+                                                <constraint firstAttribute="trailing" secondItem="Rvm-2G-U5B" secondAttribute="trailing" constant="48" id="Wg7-ki-h6U"/>
                                                 <constraint firstItem="Rvm-2G-U5B" firstAttribute="leading" secondItem="utv-0j-doL" secondAttribute="leading" constant="10" id="dDc-XU-eLl"/>
                                                 <constraint firstItem="Rvm-2G-U5B" firstAttribute="top" secondItem="utv-0j-doL" secondAttribute="top" constant="10" id="tGh-Pp-fpi"/>
                                             </constraints>
@@ -1271,7 +1271,7 @@ G0Rlc2NyaXB0aW9uA
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="dPZ-La-Utc"/>
+        <segue reference="Gq2-Tn-Cta"/>
         <segue reference="mTX-Lq-j4E"/>
     </inferredMetricsTieBreakers>
     <resources>

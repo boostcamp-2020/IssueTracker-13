@@ -21,6 +21,7 @@ const SearchInputDiv = styled.div`
 
 const FilterButton = styled.button`
   padding: 4px 8px;
+  cursor: pointer;
 `;
 
 export default function SearchInput() {
@@ -29,30 +30,35 @@ export default function SearchInput() {
   const contents = [
     {
       title: 'Open issues',
-      url: '?isOpen=true',
+      query: 'isOpen=true',
     },
     {
       title: 'Your issues',
-      url: '?author=junsu',
+      query: 'author=parkdit94',
     },
     {
       title: 'Everything assigned to you',
-      url: '/',
+      query: 'isOpen=true',
     },
     {
       title: 'Everythong mentioning you',
-      url: '/',
+      query: 'isOpen=true',
     },
     {
       title: 'Closed issues',
-      url: '?isOpen=false',
+      query: 'isOpen=false',
     },
   ];
 
   return (
     <SearchInputDiv>
       <FilterButton onClick={() => setIsShowModal(!isShowModal)}>Filters</FilterButton>
-      {isShowModal && <FilterModal title={title} contents={contents}/>}
+      {isShowModal &&
+        <FilterModal
+          title={title}
+          contents={contents}
+          setIsShowModal={setIsShowModal}
+        />}
       <Input placeholder="Search all issues" />
     </SearchInputDiv>
   );

@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import styled from 'styled-components';
+
+import { IssuesContext } from '../pages/IssueListPage';
 
 const Modal = styled.div`
   position: fixed;
@@ -19,6 +21,7 @@ const Title = styled.div`
 const ContentsList = styled.ul`
   padding: 0;
   margin: 0;
+  cursor: pointer;
 `;
 
 const Content = styled.li`
@@ -27,21 +30,35 @@ const Content = styled.li`
   border: 1px solid #e1e4e8;
 `;
 
-export default function FilterModal ({ title, contents }) {
-  const filterIssues = (url) => {
-    console.log(url);
+export default function FilterModal ({ title: modalTitle, contents = [], setIsShowModal }) {
+  const { dispatch } = useContext(IssuesContext);
+
+  const setFilterQuery = (query) => {
+    dispatch({ type: 'setFilterQuery', query });
+    setIsShowModal(false);
+  };
+
+  const addFilterQuery = (query, key) => {
+    dispatch({ type: 'addFilterQuery', query, key });
+    // setIsShowModal(false);
   };
 
   return (
     <Modal>
-      <Title>{title}</Title>
+      <Title>{modalTitle}</Title>
       <ContentsList>
-        {contents.map((content, i) =>
-          <Content
-            key={i}
-            onClick={() => filterIssues(content.url)}>
-            {content.title}
-          </Content>)}
+        {contents.map(({ userName, title, query }, i) => {
+          query = query || `${modalTitle.toLowerCase()}=${title || userName}`;
+
+          return (
+            <Content
+              key={i}
+              onClick={() => modalTitle === 'Filter Issues' ? setFilterQuery(query) : addFilterQuery(query, modalTitle.toLowerCase())}>
+              {title || userName}
+            </Content>
+          );
+        })
+        }
       </ContentsList>
     </Modal>
   );

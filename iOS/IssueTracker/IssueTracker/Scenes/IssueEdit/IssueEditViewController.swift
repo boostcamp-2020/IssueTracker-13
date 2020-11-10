@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MarkdownKit
 
 protocol IssueEditDelegate: class {
     //issue 추가/수정 여부는 delegate에서 처리
@@ -19,6 +20,8 @@ class IssueEditViewController: UIViewController {
     @IBOutlet weak var textViewBottom: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIBarButtonItem!
     var issue: Issue?
+    let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: CGFloat(17)))
+    var markdownString = ""
     weak var delegate: IssueEditDelegate?
     
     override func viewDidLoad() {
@@ -48,6 +51,20 @@ class IssueEditViewController: UIViewController {
     func configureNavigtaionBarTitle() {
         if let issue = issue {
             title = "#\(issue.id)"
+        }
+    }
+    
+    @IBAction func didSegmentedControlChangeValue(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            previewTextView.text = markdownString
+            previewTextView.isEditable = true
+        case 1:
+            markdownString = previewTextView.text
+            previewTextView.attributedText = markdownParser.parse(markdownString)
+            previewTextView.isEditable = false
+        default:
+            break
         }
     }
     

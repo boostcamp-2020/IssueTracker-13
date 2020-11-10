@@ -614,6 +614,9 @@ G0Rlc2NyaXB0aW9uA
                                     <segment title="마크다운"/>
                                     <segment title="미리보기"/>
                                 </segments>
+                                <connections>
+                                    <action selector="didSegmentedControlChangeValue:" destination="XKJ-ov-kud" eventType="valueChanged" id="qcn-k2-qx2"/>
+                                </connections>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xaM-oB-Okw">
                                 <rect key="frame" x="20" y="232" width="374" height="576"/>

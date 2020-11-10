@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IssueListDisplayLogic: class {
+protocol IssueListDisplayLogic: class, RefreshDisplayable {
     func displayIssueList(with issues: [Issue], at section: IssueDataSource.Section)
 }
 
@@ -24,6 +24,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         interactor.viewController = self
         interactor.fetchIssues()
         updateBarButtonItems()
+        configureRefreshControl(with: issueCollectionView)
         //tabBarController?.navigationController?.viewControllers.remove(at: 0)
     }
 
@@ -45,6 +46,10 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             viewController?.interactor.filter = self.interactor.filter
         }
         
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        super.scrollViewDidEndDecelerating(scrollView)
     }
     
     @IBAction func didTouchToolbarButton(_ sender: UIBarButtonItem) {
@@ -214,6 +219,14 @@ extension IssueListViewController: IssueListDisplayLogic {
         snapshot.appendSections([section])
         snapshot.appendItems(issues, toSection: section)
         dataSource.apply(snapshot)
+        refreshControl.endRefreshing()
+    }
+    
+    func configureRefreshControl(with collectionview: UICollectionView) {
+        collectionview.refreshControl = refreshControl
+        didBeginRefresh = {
+            self.interactor.fetchIssues()
+        }
     }
     
 }

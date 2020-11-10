@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LabelListDisplayLogic: class {
+protocol LabelListDisplayLogic: class, RefreshDisplayable {
     func displayLabelList(with labels: [Label], at section: LabelDataSource.Section)
 }
 
@@ -22,6 +22,11 @@ class LabelListViewController: BaseCollectionViewController<LabelDataSource.Sect
         configureCollectionView()
         interactor.viewController = self
         interactor.fetchLabelList()
+        configureRefreshControl(with: labelCollectionView)
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        super.scrollViewDidEndDecelerating(scrollView)
     }
 
     @IBAction func didTouchAddLabelButton(_ sender: Any) {
@@ -53,12 +58,22 @@ extension LabelListViewController {
 }
 
 extension LabelListViewController: LabelListDisplayLogic {
+    
     func displayLabelList(with labels: [Label], at section: LabelDataSource.Section) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(labels, toSection: section)
         dataSource.apply(snapshot)
+        refreshControl.endRefreshing()
     }
+    
+    func configureRefreshControl(with collectionview: UICollectionView) {
+        collectionview.refreshControl = refreshControl
+        didBeginRefresh = {
+            self.interactor.fetchLabelList()
+        }
+    }
+    
 }
 
 extension LabelListViewController: UICollectionViewDelegate {

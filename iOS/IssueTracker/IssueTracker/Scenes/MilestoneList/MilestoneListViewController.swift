@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MilestoneListDisplayLogic: class {
+protocol MilestoneListDisplayLogic: class, RefreshDisplayable {
     func displayMilestoneList(with milestones: [Milestone], at section: MilestoneDataSource.Section)
 }
 
@@ -20,6 +20,11 @@ class MilestoneListViewController: BaseCollectionViewController<MilestoneDataSou
         configureCollectionView()
         interactor.viewController = self
         interactor.fetchMilestoneList()
+        configureRefreshControl(with: milestoneCollectionView)
+    }
+
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        super.scrollViewDidEndDecelerating(scrollView)
     }
     
     @IBAction func didTouchAddMilestoneButton(_ sender: Any) {
@@ -54,12 +59,22 @@ extension MilestoneListViewController {
 }
 
 extension MilestoneListViewController: MilestoneListDisplayLogic {
+    
     func displayMilestoneList(with milestones: [Milestone], at section: MilestoneDataSource.Section) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(milestones, toSection: section)
         dataSource.apply(snapshot)
+        refreshControl.endRefreshing()
     }
+    
+    func configureRefreshControl(with collectionview: UICollectionView) {
+        collectionview.refreshControl = refreshControl
+        didBeginRefresh = {
+            self.interactor.fetchMilestoneList()
+        }
+    }
+    
 }
 
 extension MilestoneListViewController: UICollectionViewDelegate {

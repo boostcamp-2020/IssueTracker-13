@@ -11,9 +11,10 @@ protocol Milestonable {
 }
 
 struct Milestone: Codable, Hashable {
-    let id: Int
-    let title, description, dueDate: String
-    let allIssueCount, closedIssueCount: Int
+    let id: Int?
+    let description, dueDate: String?
+    let title: String
+    let allIssueCount, closedIssueCount: Int?
     
     init (postMileStone: PostMilestone, id: Int) {
         self.id = id

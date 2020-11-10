@@ -11,11 +11,11 @@ protocol Labelable {
 }
 
 struct Label: Codable, Hashable, Labelable {
-    let id: Int
-    let title: String
-    let description: String
-    let color: String
-    let backgroundColor: String
+    let id: Int?
+    let title: String?
+    let description: String?
+    let color: String?
+    let backgroundColor: String?
 }
 
 extension Label {

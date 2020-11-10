@@ -45,7 +45,7 @@ export default function SearchInput() {
           contents={SEARCH_INPUT_FILTER}
           setIsShowModal={setIsShowModal}
         />}
-      <Input placeholder="Search all issues" value={inputQuery}/>
+      <Input placeholder="Search all issues" value={inputQuery} readOnly/>
     </SearchInputDiv>
   );
 }

@@ -13,7 +13,7 @@ protocol LabelAlertDelegate: class {
 
 protocol LabelAlertBuisnessLogic {
     func randomizeColor()
-    func save(title: String?, description: String?, backgroundColor: UIColor?)
+    func save(title: String, description: String, backgroundColor: UIColor)
     func didTextFieldChange(as hexString: String)
 }
 
@@ -53,11 +53,10 @@ extension LabelAlertInteractor: LabelAlertBuisnessLogic {
         viewController?.displayColorTextField(with: randomColor.toHexString())
     }
     
-    func save(title: String?, description: String?, backgroundColor: UIColor?) {
-        guard let backgroundColor = backgroundColor else { return }
+    func save(title: String, description: String, backgroundColor: UIColor) {
         guard let mode = mode else { return }
         let textColorString = generateTextColor(from: backgroundColor)
-        let backgroundColorString = backgroundColor.toHexString()// TODO: toHexString 변경시 항상 #FFFFFF반환.... 고치기
+        let backgroundColorString = backgroundColor.toHexString()
         let label: Labelable
         switch mode {
         case .add:
@@ -67,7 +66,7 @@ extension LabelAlertInteractor: LabelAlertBuisnessLogic {
                               backgroundColor: backgroundColorString)
         case .edit:
             guard let id = id else { return }
-            label = PutLabel(id: id,
+            label = Label(id: id,
                              title: title,
                              description: description,
                              color: textColorString,

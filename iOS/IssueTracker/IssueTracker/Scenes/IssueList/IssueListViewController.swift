@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol IssueListDisplayLogic: class {
+protocol IssueListDisplayLogic: class, RefreshDisplayable {
     func displayIssueList(with issues: [Issue], at section: IssueDataSource.Section)
 }
 
@@ -24,6 +24,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         interactor.viewController = self
         interactor.fetchIssues()
         updateBarButtonItems()
+        configureRefreshControl(with: issueCollectionView)
         //tabBarController?.navigationController?.viewControllers.remove(at: 0)
     }
 
@@ -38,8 +39,17 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             let viewController = segue.destination as? IssueDetailViewController
             guard let issue = sender as? Issue else { return }
             viewController?.issue = issue
+        } else if segue.identifier == "showFilterIssueViewController" {
+            let navigationViewController = segue.destination as? UINavigationController
+            let viewController = navigationViewController?.viewControllers.first as? FilterIssueViewController
+            viewController?.interactor.delegate = self.interactor
+            viewController?.interactor.filter = self.interactor.filter
         }
         
+    }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        super.scrollViewDidEndDecelerating(scrollView)
     }
     
     @IBAction func didTouchToolbarButton(_ sender: UIBarButtonItem) {
@@ -62,7 +72,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         
         switch issueCollectionView.isEditing {
         case true:
-            leftTitle = isSelectedAll() ? "Deelect All" : "Select All"
+            leftTitle = isSelectedAll() ? "Deselect All" : "Select All"
             rightTitle = "Cancel"
         case false:
             leftTitle = "Filter"
@@ -196,6 +206,7 @@ extension IssueListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView.isEditing {
             setNavigationTitle()
+            updateBarButtonItems()
         }
     }
     
@@ -208,6 +219,14 @@ extension IssueListViewController: IssueListDisplayLogic {
         snapshot.appendSections([section])
         snapshot.appendItems(issues, toSection: section)
         dataSource.apply(snapshot)
+        refreshControl.endRefreshing()
+    }
+    
+    func configureRefreshControl(with collectionview: UICollectionView) {
+        collectionview.refreshControl = refreshControl
+        didBeginRefresh = {
+            self.interactor.fetchIssues()
+        }
     }
     
 }

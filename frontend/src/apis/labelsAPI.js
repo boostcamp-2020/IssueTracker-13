@@ -1,7 +1,8 @@
-import { labels } from '../mocks/labels.json';
+import axios from 'axios';
 
-const getLabels = () => {
-  return labels;
+const getLabels = async () => {
+  const { data } = await axios.get('/api/labels');
+  return data;
 };
 
 export {

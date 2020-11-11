@@ -7,6 +7,7 @@
 
 import Foundation
 import AuthenticationServices
+import Alamofire
 
 protocol SignInBuisnessLogic {
     func signInWithGitHub()
@@ -27,6 +28,36 @@ extension SignInInteractor: SignInBuisnessLogic {
     
     func signInWithApple() {
         
+    }
+    
+    func login(id: String, password: String) {
+        let testRequest = SignInRequest(authType: "local",
+                                        email: id,
+                                        password: password)
+
+        API.shared.post(data: testRequest, to: .signIn) { (result: Result<SignInResponse, Error>) in
+            switch result {
+            case .success(let result):
+                var userToken = UserToken()
+                userToken.name = result.name
+                userToken.token = result.token
+                self.viewController?.displayIssueViewController()
+            case .failure(let error):
+                self.viewController?.displayAlert()
+            }
+
+        }
+
+//        API.shared.signIn(data: testRequest, to: .signIn) { (result : ) in
+//
+//            switch result {
+//            case .success(let response):
+//                print("\(response.userName), \(response.token)")
+//            case .failure:
+//                print("fail to login!!!!")
+//            }
+//
+//        }
     }
     
     func registerNewAccount(credential : ASAuthorizationAppleIDCredential) {

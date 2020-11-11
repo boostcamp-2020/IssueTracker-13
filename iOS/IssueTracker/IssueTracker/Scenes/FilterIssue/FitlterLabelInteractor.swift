@@ -27,11 +27,10 @@ class FilterLabelInteractor: FilterLabelListBusinessLogic {
     var labels: [Label]?
     
     func fetchLabels() {
-        worker.fetchLables { (labels) in
-            self.labels = labels
+        worker.fetchLables { [weak self](datasource) in
+            self?.labels = datasource.labels
+            self?.viewController?.displayLabelList(with: self?.labels ?? [], at: .main)
         }
-        guard let labels = self.labels else { return }
-        viewController?.displayLabelList(with: labels, at: .main)
     }
     
     func select(label: Label) {

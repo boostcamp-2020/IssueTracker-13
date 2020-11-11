@@ -2,9 +2,7 @@ const { User } = require('../db/models');
 
 const getUsers = async () => {
   const users = await User.findAll({
-    attributes: {
-      exclude: ['isDeleted', 'createdAt', 'updatedAt'],
-    },
+    attributes: ['userName', 'profile'],
     where: {
       isDeleted: false,
     },

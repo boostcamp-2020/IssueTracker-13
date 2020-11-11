@@ -14,8 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
-        let tabBarBC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController
-        window?.rootViewController = tabBarBC
+//        let tabBarBC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController
+//        window?.rootViewController = tabBarBC
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

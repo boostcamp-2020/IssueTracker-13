@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState, useReducer } from 'react';
 
 import styled from 'styled-components';
 
@@ -10,15 +10,55 @@ import { getLabels } from '../../apis/labelsAPI';
 import { getMilestones } from '../../apis/milestonesAPI';
 import { getUsers } from '../../apis/usersAPI';
 
+export const IssueContext = createContext();
+
 const Sidebar = styled.div`
   width: 400px;
   border: 1px solid gray;
 `;
 
-const IssueDetailSidebar = ({ issue, dispatch }) => {
+const callbackReducer = (callback) => (issue, { type, key, data }) => {
+  let newIssue = { ...issue };
+
+  switch (type) {
+    case 'setIssue':
+      newIssue = data;
+      break;
+    case 'toggleAssignee':
+      if (issue.Assignee.some((user) => user.id === key)) {
+        newIssue.Assignee = issue.Assignee.filter((user) => user.id !== key);
+      } else {
+        newIssue.Assignee = [...issue.Assignee, data];
+      }
+      break;
+    case 'toggleLabel':
+      if (issue.Labels.some((label) => label.id === key)) {
+        newIssue.Labels = issue.Labels.filter((label) => label.id !== key);
+      } else {
+        newIssue.Labels = [...issue.Labels, data];
+      }
+      break;
+    case 'toggleMilestone':
+      if (issue.Milestone.id === key) {
+        newIssue.Milestone = undefined;
+      } else {
+        newIssue.Milestone = data;
+      }
+      break;
+    default:
+      console.log('unknown dispatch action', { type, key, data });
+  }
+
+  // callback(newIssue);
+  console.log('new issue: ', newIssue);
+  return newIssue;
+};
+
+const SelectSidebar = ({ initIssue, reducerCallback }) => {
   const [allUsers, setUsers] = useState([]);
   const [allLabels, setLabels] = useState([]);
   const [allMilestones, setMilestones] = useState([]);
+  const [issue, dispatch] = useReducer(callbackReducer(reducerCallback), initIssue);
 
   const fetchItems = async (getItems, setItems) => {
     setItems(await getItems());
@@ -28,15 +68,18 @@ const IssueDetailSidebar = ({ issue, dispatch }) => {
     fetchItems(getUsers, setUsers);
     fetchItems(getLabels, setLabels);
     fetchItems(getMilestones, setMilestones);
-  }, []);
+    dispatch({ type: 'setIssue', data: initIssue });
+  }, [initIssue]);
 
   return (
-    <Sidebar>
-      <SelectAssigneesBox title='Assignees' assignees={issue.Assignee} allUsers={allUsers} dispatch={dispatch}/>
-      <SelectLabelsBox title='Lables' labels={issue.Labels} allLabels={allLabels} dispatch={dispatch}/>
-      <SelectMilestoneBox title='Milestone' milestone={issue.Milestone} allMilestones={allMilestones} dispatch={dispatch}/>
-    </Sidebar>
+    <IssueContext.Provider value={ { issue, dispatch } }>
+      <Sidebar>
+        <SelectAssigneesBox title='Assignees' assignees={issue.Assignee} allUsers={allUsers} />
+        <SelectLabelsBox title='Lables' labels={issue.Labels} allLabels={allLabels} />
+        <SelectMilestoneBox title='Milestone' milestone={issue.Milestone} allMilestones={allMilestones} />
+      </Sidebar>
+    </IssueContext.Provider>
   );
 };
 
-export default IssueDetailSidebar;
+export default SelectSidebar;

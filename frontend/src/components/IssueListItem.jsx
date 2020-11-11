@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -22,7 +23,8 @@ const Svg = styled.span`
 const Title = styled.span`
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
+  text-decoration: none;
+  outline: none;
 `;
 
 const Label = styled.span`
@@ -39,6 +41,14 @@ const Milestone = styled.span`
   font-size: 12px;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`;
+
 export default function IssueListItem({ issue }) {
   const { id, title, milestone, labels, author, createdAt } = issue;
 
@@ -50,7 +60,11 @@ export default function IssueListItem({ issue }) {
       </Svg>
       <div>
         <div>
-          <Title>{title}</Title>
+          <StyledLink to={`/issues/${id}`}>
+            <Title>
+              {title}
+            </Title>
+          </StyledLink>
           <Label>{labels.map(label => label.title)}</Label>
         </div>
         <div>

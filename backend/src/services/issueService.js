@@ -8,7 +8,7 @@ const SEARCH_OPTION = {
   author: {
     model: User,
     as: 'author',
-    attributes: ['userName'],
+    attributes: ['userName', 'profile'],
   },
   assignee: {
     model: User,
@@ -123,7 +123,8 @@ const getIssue = async (id) => {
       SEARCH_OPTION.comment,
     ],
     where: { id, isDeleted: false },
-    attributes: ['id', 'title', 'isOpen', 'preview', 'createdAt'] });
+    attributes: ['id', 'title', 'isOpen', 'preview', 'createdAt'],
+  });
 };
 
 module.exports = {

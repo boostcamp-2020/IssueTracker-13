@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { IssueDetailContext } from '../pages/IssueDetailPage';
 
+import { warningIcon } from '../assets/icons';
+
 const MainTitle = styled.div`
   margin-bottom: 10px;
 `;
@@ -43,10 +45,13 @@ const OpenCloseButton = styled.button`
   padding: 5px 12px;
   font-size: 14px;
   font-weight: 500;
-  line-height: 20px;
-  text-align: center;
-  white-space: nowrap;
   border-radius: 2em;
+`;
+
+const Svg = styled.div`
+  fill: #fff;
+  padding: 3px;
+  font-size: 14px;
 `;
 
 const Author = styled.span`
@@ -84,7 +89,10 @@ const IssueDetailHeader = () => {
       </MainTitle>
       <SubTitle>
         <OpenCloseButton>
-          {!isEmpty(issueDetail) && issueDetail.isOpen && 'Open' || 'Closed'}
+          <Svg>
+            {warningIcon}
+            {!isEmpty(issueDetail) && issueDetail.isOpen && 'Open' || 'Closed'}
+          </Svg>
         </OpenCloseButton>
         <Author>
           {!isEmpty(issueDetail) && issueDetail.author.userName}

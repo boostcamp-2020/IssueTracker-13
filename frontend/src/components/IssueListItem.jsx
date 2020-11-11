@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { warningIcon } from '../assets/icons';
+import { labelImgPath, milestoneImgPath } from '../assets/icons';
 
 const ListItem = styled.li`
   list-style: none;
   display: flex;
-  padding: 16px;
+  padding: 16px 0px 8px 16px;
   border: 1px solid #eaecef;
 `;
 
@@ -17,6 +18,7 @@ const CheckBox = styled.input`
 `;
 
 const Svg = styled.span`
+  fill: #28a745;
   padding: 3px;
 `;
 
@@ -29,8 +31,16 @@ const Title = styled.span`
 
 const Label = styled.span`
   border: 1px solid #000000;
-  padding: 1px 4px;
+  padding: 3px 6px;
   margin: 0 5px;
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
+  border: 1px solid transparent;
+  border-radius: 10px;
+`;
+
+const SubTitle = styled.div`
+  margin-top: 10px;
 `;
 
 const Description = styled.span`
@@ -51,7 +61,6 @@ const StyledLink = styled(Link)`
 
 export default function IssueListItem({ issue }) {
   const { id, title, milestone, labels, author, createdAt } = issue;
-
   return (
     <ListItem>
       <CheckBox type='checkbox' />
@@ -65,12 +74,28 @@ export default function IssueListItem({ issue }) {
               {title}
             </Title>
           </StyledLink>
-          <Label>{labels.map(label => label.title)}</Label>
+          {
+            labels.length > 0 &&
+            labels.map((label, i) =>
+              <Label
+                key={i}
+                backgroundColor={label.backgroundColor}
+                color={label.color}
+              >
+                {label.title}
+              </Label>,
+            )
+          }
         </div>
-        <div>
-          <Description>#{id} opened{createdAt} by {author}</Description>
-          <Milestone>milestone{milestone}</Milestone>
-        </div>
+        <SubTitle>
+          <Description>#{id} opened {createdAt.split('T')[0]} by {author}  </Description>
+          <Milestone>
+            <svg viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+              <path fillRule="evenodd" d={milestoneImgPath} />
+            </svg>
+            {milestone}
+          </Milestone>
+        </SubTitle>
       </div>
     </ListItem>
   );

@@ -19,6 +19,5 @@ export const getIssues = async (query) => {
 
 export const getIssueDetail = async (id) => {
   const { data } = await axios.get(`/api/issues/${id}`);
-  console.log('data : ', data);
   return data;
 };

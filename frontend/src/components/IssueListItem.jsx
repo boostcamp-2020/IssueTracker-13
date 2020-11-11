@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { warningIcon } from '../assets/icons';
-import { labelImgPath, milestoneImgPath } from '../assets/icons';
+import { milestoneImgPath } from '../assets/icons';
 
 const ListItem = styled.li`
   list-style: none;
@@ -39,8 +39,12 @@ const Label = styled.span`
   border-radius: 10px;
 `;
 
+const Content = styled.div`
+  width: 100%;
+`;
+
 const SubTitle = styled.div`
-  margin-top: 10px;
+  margin-top: 5px;
 `;
 
 const Description = styled.span`
@@ -51,6 +55,16 @@ const Milestone = styled.span`
   font-size: 12px;
 `;
 
+const MainTitle = styled.div`
+  display: flex;
+  position: relative;
+`;
+
+const Assignees = styled.span`
+  position: absolute;
+  right: 50px;
+`;
+
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: #000;
@@ -59,16 +73,21 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const Assignee = styled.img`
+  width: 20px;
+  margin: 2px;
+`;
+
 export default function IssueListItem({ issue }) {
-  const { id, title, milestone, labels, author, createdAt } = issue;
+  const { id, title, milestone, labels, author, createdAt, assignee } = issue;
   return (
     <ListItem>
       <CheckBox type='checkbox' />
       <Svg>
         {warningIcon}
       </Svg>
-      <div>
-        <div>
+      <Content>
+        <MainTitle>
           <StyledLink to={`/issues/${id}`}>
             <Title>
               {title}
@@ -86,7 +105,17 @@ export default function IssueListItem({ issue }) {
               </Label>,
             )
           }
-        </div>
+          <Assignees>
+            {
+              assignee.length > 0 &&
+              assignee.map(({ profile }, i) =>
+                <Assignee
+                  key={i}
+                  src={profile}
+                />)
+            }
+          </Assignees>
+        </MainTitle>
         <SubTitle>
           <Description>#{id} opened {createdAt.split('T')[0]} by {author}  </Description>
           <Milestone>
@@ -96,7 +125,7 @@ export default function IssueListItem({ issue }) {
             {milestone}
           </Milestone>
         </SubTitle>
-      </div>
+      </Content>
     </ListItem>
   );
 }

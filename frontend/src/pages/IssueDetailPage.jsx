@@ -12,14 +12,14 @@ export const IssueDetailContext = createContext();
 
 const reducer = (state, { type, payload }) => {
   if (type === 'reLoad') {
-    return { ...state, payload };
+    return { payload };
   }
   console.log('unknown dispatch action');
   return state;
 };
 
 const IssueDetailPage = () => {
-  const [issueDetail, dispatch] = useReducer(reducer, {});
+  const [issueDetail, dispatch] = useReducer(reducer, { payload: {} });
   const { id } = useParams();
 
   const fetchIssueDetail = async (id) => {

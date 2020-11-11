@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -12,8 +13,10 @@ const HeaderDiv = styled.header`
 export default function Header() {
 
   return (
-    <HeaderDiv>
-      ISSUES
-    </HeaderDiv>
+    <Link to ='/'>
+      <HeaderDiv>
+        ISSUES
+      </HeaderDiv>
+    </Link>
   );
 }

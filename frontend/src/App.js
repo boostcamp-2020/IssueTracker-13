@@ -12,8 +12,8 @@ import Header from './components/Header';
 const App = () => {
   return (
     <div>
-      <Header />
       <Router>
+        <Header />
         <Switch>
           <Route path='/new'>
             <NewIssuePage />

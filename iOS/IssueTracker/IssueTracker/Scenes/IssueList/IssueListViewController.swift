@@ -38,7 +38,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
         if segue.identifier == "ShowIssueDetailViewController" {
             let viewController = segue.destination as? IssueDetailViewController
             guard let issue = sender as? Issue else { return }
-            viewController?.issue = issue
+            viewController?.interactor.issue = issue
         } else if segue.identifier == "showFilterIssueViewController" {
             let navigationViewController = segue.destination as? UINavigationController
             let viewController = navigationViewController?.viewControllers.first as? FilterIssueViewController

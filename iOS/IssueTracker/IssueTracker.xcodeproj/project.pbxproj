@@ -56,6 +56,9 @@
 		51FB615B255B81F9009701A0 /* IssueDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FB615A255B81F9009701A0 /* IssueDetailWorker.swift */; };
 		51FB6160255B8226009701A0 /* IssueDetailDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FB615F255B8226009701A0 /* IssueDetailDataSource.swift */; };
 		51FB6165255B83E8009701A0 /* IssueDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FB6164255B83E8009701A0 /* IssueDetailInteractor.swift */; };
+		51FB616E255BC43F009701A0 /* CommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FB616D255BC43F009701A0 /* CommentCollectionViewCell.swift */; };
+		51FB6173255BC475009701A0 /* CommentCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FB6172255BC475009701A0 /* CommentCollectionReusableView.swift */; };
+		51FB6179255C1837009701A0 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FB6178255C1836009701A0 /* UIImageView+Extension.swift */; };
 		51FBF8EC255047F000F38CCC /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FBF8EB255047F000F38CCC /* FloatingButton.swift */; };
 		820B6323255911A0003FDB5B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B6322255911A0003FDB5B /* EndPoint.swift */; };
 		820B633825593238003FDB5B /* IssueEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B633725593238003FDB5B /* IssueEditViewController.swift */; };
@@ -156,6 +159,9 @@
 		51FB615A255B81F9009701A0 /* IssueDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailWorker.swift; sourceTree = "<group>"; };
 		51FB615F255B8226009701A0 /* IssueDetailDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailDataSource.swift; sourceTree = "<group>"; };
 		51FB6164255B83E8009701A0 /* IssueDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailInteractor.swift; sourceTree = "<group>"; };
+		51FB616D255BC43F009701A0 /* CommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		51FB6172255BC475009701A0 /* CommentCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCollectionReusableView.swift; sourceTree = "<group>"; };
+		51FB6178255C1836009701A0 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		51FBF8EB255047F000F38CCC /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		820B6322255911A0003FDB5B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		820B633725593238003FDB5B /* IssueEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEditViewController.swift; sourceTree = "<group>"; };
@@ -409,8 +415,18 @@
 				51B6D5E02556E00B00325952 /* String+Date.swift */,
 				51B6D5E12556E00B00325952 /* UIColor+hexString.swift */,
 				51B6D5E92556EE0000325952 /* UIButton+UIColor.swift */,
+				51FB6178255C1836009701A0 /* UIImageView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		51FB616C255BC41C009701A0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51FB616D255BC43F009701A0 /* CommentCollectionViewCell.swift */,
+				51FB6172255BC475009701A0 /* CommentCollectionReusableView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		820B633325593201003FDB5B /* IssueEdit */ = {
@@ -429,6 +445,7 @@
 				51FB6164255B83E8009701A0 /* IssueDetailInteractor.swift */,
 				51FB615F255B8226009701A0 /* IssueDetailDataSource.swift */,
 				82884CF5255BA69000D51A25 /* IssueBottomSheetViewController.swift */,
+				51FB616C255BC41C009701A0 /* Views */,
 			);
 			path = IssueDetail;
 			sourceTree = "<group>";
@@ -742,6 +759,7 @@
 				51A9F6032552715E0004FB52 /* FilterMilestoneListViewController.swift in Sources */,
 				82CF7CB2254A8B3E0061121C /* Label.swift in Sources */,
 				516BB58F25541E180030AFDD /* MilestoneAlertViewController.swift in Sources */,
+				51FB6179255C1837009701A0 /* UIImageView+Extension.swift in Sources */,
 				51326EEB2549408A00C0C273 /* LabelListViewController.swift in Sources */,
 				51326E8025492F3A00C0C273 /* AppDelegate.swift in Sources */,
 				51FB6156255B7FF7009701A0 /* Comment.swift in Sources */,
@@ -763,6 +781,7 @@
 				51326E8225492F3A00C0C273 /* SceneDelegate.swift in Sources */,
 				820B633825593238003FDB5B /* IssueEditViewController.swift in Sources */,
 				51326F0925494E0500C0C273 /* IssueListInteractor.swift in Sources */,
+				51FB6173255BC475009701A0 /* CommentCollectionReusableView.swift in Sources */,
 				51DE98FE25518DF000A2E2C8 /* FilterUserListViewController.swift in Sources */,
 				516BB58A25541E0E0030AFDD /* LabelAlertViewController.swift in Sources */,
 				51A9F610255274180004FB52 /* FilterMilestoneListInteractor.swift in Sources */,
@@ -776,6 +795,7 @@
 				82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */,
 				51C95CD22553CFDB00EACB1C /* API.swift in Sources */,
 				51326EF5254940A000C0C273 /* SettingViewController.swift in Sources */,
+				51FB616E255BC43F009701A0 /* CommentCollectionViewCell.swift in Sources */,
 				51445A9F254A609500875BA5 /* BaseCollectionViewController.swift in Sources */,
 				8284626A255A5E6D001F37B7 /* Filter.swift in Sources */,
 				51C95CD72553D14F00EACB1C /* Milestone.swift in Sources */,

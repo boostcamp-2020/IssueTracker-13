@@ -63,6 +63,7 @@ const MainTitle = styled.div`
 const Assignees = styled.span`
   position: absolute;
   right: 50px;
+  z-index: -1;
 `;
 
 const StyledLink = styled(Link)`

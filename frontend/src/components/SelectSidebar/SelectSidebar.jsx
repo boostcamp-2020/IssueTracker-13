@@ -14,7 +14,6 @@ export const IssueContext = createContext();
 
 const Sidebar = styled.div`
   width: 400px;
-  border: 1px solid gray;
 `;
 
 const callbackReducer = (callback) => (issue, { type, key, data }) => {

@@ -5,9 +5,16 @@ import styled from 'styled-components';
 const Button = styled.button`
   width: 100%;
   position: relative;
+  padding: 5px 10px;
   text-align: left;
   color: #586069;
+  background-color: transparent;
   border: 0;
+  cursor: pointer;
+  &:focus {
+    color: #0366D6;
+    outline: none;
+  }
 `;
 
 const Title = styled.span``;

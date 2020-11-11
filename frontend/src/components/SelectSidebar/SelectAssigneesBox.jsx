@@ -6,7 +6,11 @@ import SelectBoxHeader from './SelectBoxHeader';
 import SelectAssigneesContents from './SelectAssigneesContents';
 import SidebarModal from './SidebarModal';
 
-const Box = styled.div``;
+const Box = styled.div`
+  margin: 10px 10px;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #DDDDDD;
+`;
 
 export default function SelectAssigneesBox({ title, assignees, allUsers }) {
   const [isShowModal, setIsShowModal] = useState(false);

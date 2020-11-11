@@ -42,8 +42,8 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/', async (req, res, next) => {
   try {
-    const { title } = req.body;
-    await deleteMilestone(title);
+    const { id } = req.body;
+    await deleteMilestone(id);
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(500));

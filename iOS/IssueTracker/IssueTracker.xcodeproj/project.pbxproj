@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -63,6 +63,7 @@
 		826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F6306255154E80005D669 /* FilterIssueViewController.swift */; };
 		826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */; };
 		8284626A255A5E6D001F37B7 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82846269255A5E6D001F37B7 /* Filter.swift */; };
+		82884CF6255BA69000D51A25 /* IssueBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82884CF5255BA69000D51A25 /* IssueBottomSheetViewController.swift */; };
 		8298BD642552758400BE3623 /* FilterMilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8298BD622552758400BE3623 /* FilterMilestoneListViewController.swift */; };
 		8298BD6C255276B800BE3623 /* FitlterLabelInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8298BD6B255276B800BE3623 /* FitlterLabelInteractor.swift */; };
 		82B3DC032554197600245FCD /* LabelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3DC022554197600245FCD /* LabelDataSource.swift */; };
@@ -73,6 +74,7 @@
 		82B3DC1C2554514000245FCD /* MilestoneListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3DC1B2554514000245FCD /* MilestoneListInteractor.swift */; };
 		82B3DC212554520700245FCD /* MilestoneListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3DC202554520700245FCD /* MilestoneListWorker.swift */; };
 		82B3DC262554524E00245FCD /* MilestoneDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3DC252554524E00245FCD /* MilestoneDataSource.swift */; };
+		82B797A1255BA4F200928A35 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 82B797A0255BA4F200928A35 /* FloatingPanel */; };
 		82CF7CB2254A8B3E0061121C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB1254A8B3E0061121C /* Label.swift */; };
 		82CF7CB7254A8B500061121C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB6254A8B500061121C /* User.swift */; };
 		82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CC7254AA4FD0061121C /* IssueWorker.swift */; };
@@ -161,6 +163,7 @@
 		826F6306255154E80005D669 /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
 		826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueInteractor.swift; sourceTree = "<group>"; };
 		82846269255A5E6D001F37B7 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		82884CF5255BA69000D51A25 /* IssueBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueBottomSheetViewController.swift; sourceTree = "<group>"; };
 		8298BD612552758400BE3623 /* FilterLabelListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterLabelListViewController.swift; sourceTree = "<group>"; };
 		8298BD622552758400BE3623 /* FilterMilestoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterMilestoneListViewController.swift; sourceTree = "<group>"; };
 		8298BD6B255276B800BE3623 /* FitlterLabelInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitlterLabelInteractor.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB34BCA23808D41DE61545BE /* Pods_IssueTracker.framework in Frameworks */,
+				82B797A1255BA4F200928A35 /* FloatingPanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +428,7 @@
 				51FB615A255B81F9009701A0 /* IssueDetailWorker.swift */,
 				51FB6164255B83E8009701A0 /* IssueDetailInteractor.swift */,
 				51FB615F255B8226009701A0 /* IssueDetailDataSource.swift */,
+				82884CF5255BA69000D51A25 /* IssueBottomSheetViewController.swift */,
 			);
 			path = IssueDetail;
 			sourceTree = "<group>";
@@ -475,6 +480,9 @@
 			dependencies = (
 			);
 			name = IssueTracker;
+			packageProductDependencies = (
+				82B797A0255BA4F200928A35 /* FloatingPanel */,
+			);
 			productName = IssueTracker;
 			productReference = 51326E7C25492F3A00C0C273 /* IssueTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -549,6 +557,9 @@
 				Base,
 			);
 			mainGroup = 51326E7325492F3A00C0C273;
+			packageReferences = (
+				82B7979F255BA4F200928A35 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+			);
 			productRefGroup = 51326E7D25492F3A00C0C273 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -721,6 +732,7 @@
 				51FB6160255B8226009701A0 /* IssueDetailDataSource.swift in Sources */,
 				51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */,
 				51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */,
+				82884CF6255BA69000D51A25 /* IssueBottomSheetViewController.swift in Sources */,
 				51326EE32549407C00C0C273 /* IssueListViewController.swift in Sources */,
 				51B6D5EA2556EE0000325952 /* UIButton+UIColor.swift in Sources */,
 				516BB57225540A530030AFDD /* BaseAlertViewController.swift in Sources */,
@@ -1115,6 +1127,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		82B7979F255BA4F200928A35 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SCENEE/FloatingPanel.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		82B797A0255BA4F200928A35 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82B7979F255BA4F200928A35 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 51326E7425492F3A00C0C273 /* Project object */;
 }

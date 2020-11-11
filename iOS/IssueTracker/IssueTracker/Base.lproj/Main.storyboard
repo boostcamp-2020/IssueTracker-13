@@ -1094,7 +1094,7 @@ G0Rlc2NyaXB0aW9uA
         <!--Label Alert View Controller-->
         <scene sceneID="TcE-QP-1nQ">
             <objects>
-                <viewController storyboardIdentifier="LabelAlertViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="36N-M6-hCC" customClass="LabelAlertViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LabelAlertViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="36N-M6-hCC" customClass="LabelAlertViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wJO-nM-k5Z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1188,7 +1188,7 @@ G0Rlc2NyaXB0aW9uA
         <!--Milestone Alert View Controller-->
         <scene sceneID="myO-fS-o5x">
             <objects>
-                <viewController storyboardIdentifier="MilestoneAlertViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U7B-2H-jue" customClass="MilestoneAlertViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MilestoneAlertViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="U7B-2H-jue" customClass="MilestoneAlertViewController" customModule="IssueTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="96b-1y-xEt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

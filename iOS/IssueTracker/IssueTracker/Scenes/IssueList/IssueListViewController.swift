@@ -225,7 +225,7 @@ extension IssueListViewController: IssueListDisplayLogic {
     func configureRefreshControl(with collectionview: UICollectionView) {
         collectionview.refreshControl = refreshControl
         didBeginRefresh = {
-            self.interactor.fetchIssues()
+            self.interactor.fetchIssues(with: self.interactor.filter)
         }
     }
     

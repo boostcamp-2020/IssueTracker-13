@@ -7,28 +7,14 @@
 
 import Foundation
 
-struct Comment: Codable {
+struct Comment: Codable, Hashable {
     let id: Int
-    let description, createdAt, updatedAt: String
+    let description, createdAt: String
     let user: User
 
     enum CodingKeys: String, CodingKey {
         case id
-        case description, createdAt, updatedAt
+        case description, createdAt
         case user = "User"
     }
-}
-
-class IssueDetailDataSource {
-    
-    enum Section {
-        case main
-    }
-    
-    private(set) var comments: [Comment]
-    
-    init(comments: [Comment]) {
-        self.comments = comments
-    }
-    
 }

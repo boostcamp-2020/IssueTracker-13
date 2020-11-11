@@ -20,10 +20,12 @@ const Sidebar = styled.div`
 const callbackReducer = (callback) => (issue, { type, key, data }) => {
   let newIssue = { ...issue };
 
+  console.log({ type, key, data });
+
   switch (type) {
     case 'setIssue':
       newIssue = data;
-      break;
+      return newIssue;
     case 'toggleAssignee':
       if (issue.Assignee.some((user) => user.id === key)) {
         newIssue.Assignee = issue.Assignee.filter((user) => user.id !== key);
@@ -49,7 +51,7 @@ const callbackReducer = (callback) => (issue, { type, key, data }) => {
       console.log('unknown dispatch action', { type, key, data });
   }
 
-  // callback(newIssue);
+  callback(newIssue);
   console.log('new issue: ', newIssue);
   return newIssue;
 };
@@ -75,7 +77,7 @@ const SelectSidebar = ({ initIssue, reducerCallback }) => {
     <IssueContext.Provider value={ { issue, dispatch } }>
       <Sidebar>
         <SelectAssigneesBox title='Assignees' assignees={issue.Assignee} allUsers={allUsers} />
-        <SelectLabelsBox title='Lables' labels={issue.Labels} allLabels={allLabels} />
+        <SelectLabelsBox title='Labels' labels={issue.Labels} allLabels={allLabels} />
         <SelectMilestoneBox title='Milestone' milestone={issue.Milestone} allMilestones={allMilestones} />
       </Sidebar>
     </IssueContext.Provider>

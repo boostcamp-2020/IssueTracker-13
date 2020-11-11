@@ -14,10 +14,14 @@ const Page = styled.div`
 export default function MilestonesPage() {
   const [milestones, setMilestones] = useState([]);
 
-  useEffect(async () => {
-    const newMilestones = await getMilestones();
-    setMilestones(newMilestones);
-  });
+  useEffect(() => {
+    const fetchSetMilestones = async () => {
+      const newMilestones = await getMilestones();
+      setMilestones(newMilestones);
+    };
+
+    fetchSetMilestones();
+  }, []);
 
   return (
     <Page>

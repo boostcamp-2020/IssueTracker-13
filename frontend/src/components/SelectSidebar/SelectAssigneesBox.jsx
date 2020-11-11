@@ -4,20 +4,20 @@ import styled from 'styled-components';
 
 import SelectBoxHeader from './SelectBoxHeader';
 import SelectAssigneesContents from './SelectAssigneesContents';
-import FilterModal from '../FilterModal';
+import SidebarModal from './SidebarModal';
 
 const Box = styled.div``;
 
 export default function SelectAssigneesBox({ title, assignees, allUsers }) {
   const [isShowModal, setIsShowModal] = useState(false);
 
-  const openModal = () => setIsShowModal(true);
+  const toggleModal = () => setIsShowModal(!isShowModal);
   const closeModal = () => setIsShowModal(false);
 
   return (
-    <Box onBlur={closeModal} onFocus={openModal}>
-      <SelectBoxHeader title={title} />
-      {isShowModal && <FilterModal title='Assign up to 10 people to this issue' contents={allUsers} setIsShowModal={setIsShowModal} />}
+    <Box>
+      <SelectBoxHeader title={title} callback={toggleModal} />
+      {isShowModal && <SidebarModal title='Assign up to 10 people to this issue' modalType='Assignees' contents={allUsers} closeModal={closeModal} />}
       <SelectAssigneesContents assignees={assignees} />
     </Box>
   );

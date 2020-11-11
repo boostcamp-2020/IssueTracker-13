@@ -3,14 +3,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ContentContainer = styled.div`
-  height: 50px;
-
+  padding: 5px 10px;
 `;
 
 const RowContainer = styled.div`
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
+  margin: 5px 0;
+  gap: 10px;
 `;
 
 const Img = styled.img`

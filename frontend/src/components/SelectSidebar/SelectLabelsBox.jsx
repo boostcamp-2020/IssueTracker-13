@@ -4,20 +4,20 @@ import styled from 'styled-components';
 
 import SelectBoxHeader from './SelectBoxHeader';
 import SelectLabelsContents from './SelectLabelsContents';
-import FilterModal from '../FilterModal';
+import SidebarModal from './SidebarModal';
 
 const Box = styled.div``;
 
 export default function IssueDetailLabelsBox({ title, labels, allLabels }) {
   const [isShowModal, setIsShowModal] = useState(false);
 
-  const openModal = () => setIsShowModal(true);
+  const toggleModal = () => setIsShowModal(!isShowModal);
   const closeModal = () => setIsShowModal(false);
 
   return (
-    <Box onBlur={closeModal} onFocus={openModal}>
-      <SelectBoxHeader title={title} callback={() => setIsShowModal}/>
-      {isShowModal && <FilterModal title='Apply labels to this issue' contents={allLabels} setIsShowModal={setIsShowModal}/>}
+    <Box>
+      <SelectBoxHeader title={title} callback={toggleModal}/>
+      {isShowModal && <SidebarModal title='Apply labels to this issue' modalType='Labels' contents={allLabels} closeModal={closeModal} />}
       <SelectLabelsContents labels={labels} />
     </Box>
   );

@@ -7,9 +7,19 @@ const {
   addIssue,
   updateIssues,
   deleteIssues,
+  getIssue,
 } = require('../services/issueService');
 
 const SUCCESS_MESSAGE = { message: 'success' };
+
+router.get('/:id', async (req, res, next) => {
+  try {
+    const issue = await getIssue(req.params.id);
+    res.status(200).send(issue);
+  } catch (error) {
+    next(createError(500));
+  }
+});
 
 router.get('/', async (req, res, next) => {
   try {

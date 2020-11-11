@@ -3,7 +3,7 @@ const { Issue, User, Label, Milestone, Comment } = require('../db/models');
 const SEARCH_OPTION = {
   milestone: {
     model: Milestone,
-    attributes: ['title'],
+    attributes: ['id', 'title'],
   },
   author: {
     model: User,
@@ -13,12 +13,12 @@ const SEARCH_OPTION = {
   assignee: {
     model: User,
     as: 'Assignee',
-    attributes: ['userName', 'profile'],
+    attributes: ['id', 'userName', 'profile'],
     through: { attributes: [] },
   },
   label: {
     model: Label,
-    attributes: ['title', 'color', 'backgroundColor'],
+    attributes: ['id', 'title', 'color', 'backgroundColor'],
     through: { attributes: [] },
   },
   comment: {
@@ -123,7 +123,8 @@ const getIssue = async (id) => {
       SEARCH_OPTION.comment,
     ],
     where: { id, isDeleted: false },
-    attributes: ['id', 'title', 'isOpen', 'preview', 'createdAt'] });
+    attributes: ['id', 'title', 'isOpen', 'preview', 'createdAt'],
+  });
 };
 
 module.exports = {

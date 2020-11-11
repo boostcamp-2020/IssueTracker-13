@@ -109,6 +109,27 @@ const updateIssues = async (modifiedContents) => {
   });
 };
 
+const updateIssue = async (modifiedContents) => {
+  const id = modifiedContents.id;
+
+  const issue = await Issue.findOne({ where: { id } });
+
+  const assigneeIds = modifiedContents.Assignee.map((user) => user.id);
+  const assignees = await User.findAll({ where: { id: assigneeIds } });
+  await issue.setAssignee(assignees);
+
+  const labelIds = modifiedContents.Labels.map((label) => label.id);
+  const labels = await Label.findAll({ where: { id: labelIds } });
+  await issue.setLabels(labels);
+
+  const milestoneId = modifiedContents.Milestone.id;
+  const milestone = await Milestone.findOne({ where: { id: milestoneId } });
+  await issue.setMilestone(milestone);
+
+  issue.isOpen = modifiedContents.isOpen;
+  await issue.save();
+};
+
 const deleteIssues = async (id) => {
   return await Issue.update({ isDeleted: true }, { where: { id: id } });
 };
@@ -133,4 +154,5 @@ module.exports = {
   updateIssues,
   deleteIssues,
   getIssue,
+  updateIssue,
 };

@@ -7,6 +7,7 @@ const Button = styled.button`
   border: none;
   background-color: transparent;
   margin: 0 10px;
+  cursor: pointer;
 `;
 
 const DropDown = styled.img`

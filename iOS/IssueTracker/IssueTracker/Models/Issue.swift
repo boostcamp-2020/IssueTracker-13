@@ -12,7 +12,7 @@ struct Issue: Codable {
     let title: String
     let preview: String
     let milestone: Milestone
-    let labels: [Label]
+    var labels: [Label]
     let author: User
     let assignees: [User]
     var isOpen: Bool

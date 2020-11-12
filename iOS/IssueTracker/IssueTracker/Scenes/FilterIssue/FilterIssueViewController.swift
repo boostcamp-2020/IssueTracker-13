@@ -46,6 +46,9 @@ class FilterIssueViewController: UITableViewController {
         case "showFilterLabelList":
             guard let vc = segue.destination as? FilterLabelListViewController else { return }
             vc.interactor.delegate = interactor
+            vc.mode = .filter
+            guard let label = interactor.filter?.label else { return }
+            vc.labels = [label]
         default:
             break
         }

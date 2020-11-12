@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useParams } from 'react';
 import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import TranslateMarkdown from './TranslateMarkdown';
+import { addComment } from '../apis/commentsAPI';
 
 const Page = styled.div`
   display: flex;
@@ -78,7 +79,7 @@ const Tabs = styled.div`
   margin: 4px;
 `;
 
-export default function CommentInput() {
+export default function CommentInput({ id }) {
   const [text, setText] = useState('');
   const [currentTab, setCurrentTab] = useState('write');
 
@@ -104,6 +105,10 @@ export default function CommentInput() {
     setCurrentTab(tabs[i].title);
   };
 
+  const postComment = async () => {
+    await addComment({ description: text, issueId: id });
+  };
+
   return (
     <Page>
       <InputBox>
@@ -118,7 +123,7 @@ export default function CommentInput() {
           <div>{tabs.filter(tab => tab.title === currentTab)[0].content}</div>
         </HeaderBar>
         <Buttons>
-          <CommentButton>
+          <CommentButton onClick={() => postComment()}>
               Comment
           </CommentButton>
           <Link to='/'>

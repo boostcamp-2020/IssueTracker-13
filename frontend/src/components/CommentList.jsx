@@ -10,7 +10,7 @@ const List = styled.div`
   padding: 16px;
 `;
 
-export default function CommentList() {
+export default function CommentList({ id }) {
   const { issueDetail } = useContext(IssueDetailContext);
   return (
     <List>
@@ -23,8 +23,7 @@ export default function CommentList() {
           />
         );
       })}
-      <CommentInput />
-
+      <CommentInput id={id}/>
     </List>
   );
 }

@@ -1,5 +1,4 @@
 import React, { createContext, useReducer, useState } from 'react';
-import { Redirect, Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -96,9 +95,11 @@ export default function NewIssuePage() {
     const message = await addIssue({ ...issue, title, comment });
 
     if (message === 'fail') {
-      return alert('이슈등록에 실패했습니다');
+      alert('이슈등록에 실패했습니다');
+      return;
     }
-    return alert('이슈가 등록되었습니다');
+    alert('이슈가 등록되었습니다');
+    return;
   };
 
   const handleTitleChange = (e) => {
@@ -126,11 +127,9 @@ export default function NewIssuePage() {
               onChange={handleCommentChange}
             />
             <BoxFooter>
-              <Link to='/'>
-                <SubmitButton onClick={() => postIssue(issueDetail, title, comment)}>
+              <SubmitButton onClick={() => postIssue(issueDetail, title, comment)}>
                   Submit new issue
-                </SubmitButton>
-              </Link>
+              </SubmitButton>
             </BoxFooter>
           </InputBox>
         </Box>

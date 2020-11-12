@@ -1723,13 +1723,12 @@ G0Rlc2NyaXB0aW9uA
             <point key="canvasLocation" x="4440.579710144928" y="835.71428571428567"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="dPZ-La-Utc"/>
-        <segue reference="6iA-XM-8b2"/>
+    <inferredMetricsTieBreakers>        
         <segue reference="Gq2-Tn-Cta"/>
         <segue reference="v4V-NR-Ugl"/>
         <segue reference="rZY-Rf-pLE"/>
         <segue reference="mTX-Lq-j4E"/>
+        
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.circle" catalog="system" width="128" height="121"/>

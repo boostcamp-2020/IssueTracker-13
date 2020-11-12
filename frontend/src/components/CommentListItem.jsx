@@ -10,7 +10,7 @@ const Box = styled.div`
 
 const User = styled.div`
   border: 1px solid #dfe2e5;
-  background-color: #fff8f2;
+  background-color: #f0f0f0;
   padding: 16px;
 `;
 

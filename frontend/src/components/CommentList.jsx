@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import CommentListItem from '../components/CommentListItem';
+import CommentInput from '../components/CommentInput';
 import { IssueDetailContext } from '../pages/IssueDetailPage';
 
 const List = styled.div`
@@ -22,6 +23,8 @@ export default function CommentList() {
           />
         );
       })}
+      <CommentInput />
+
     </List>
   );
 }

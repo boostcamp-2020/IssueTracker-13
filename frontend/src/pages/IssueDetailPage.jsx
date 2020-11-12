@@ -5,7 +5,6 @@ import styled from 'styled-components';
 
 import IssueDetailHeader from '../components/IssueDetailHeader';
 import IssueDetailSidebar from '../components/IssueDetailSidebar';
-import CommentInput from '../components/CommentInput';
 import CommentList from '../components/CommentList';
 
 import { getIssueDetail } from '../apis/issuesAPI';
@@ -52,7 +51,6 @@ const IssueDetailPage = () => {
         <Div>
           <Comments>
             <CommentList />
-            <CommentInput />
           </Comments>
           <div>
             <IssueDetailSidebar />

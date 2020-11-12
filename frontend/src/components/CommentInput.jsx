@@ -43,6 +43,7 @@ const Buttons = styled.div`
 const CommentButton = styled.button`
   float:right;
   background-color:#28a745; 
+  font-size: 16px;
   border-radius:5px;
   color:white;
   border-width : 1px;
@@ -52,6 +53,7 @@ const CommentButton = styled.button`
 
 const CloseissueButton = styled.button`
   float:right;
+  font-size: 16px;
   background-color:white;
   border-radius:5px;
   border-width : 1px;
@@ -114,10 +116,10 @@ export default function CommentInput() {
           <div>{tabs.filter(tab => tab.title === currentTab)[0].content}</div>
         </HeaderBar>
         <Buttons>
-          <Link to='/'>
-            <CommentButton>
+          <CommentButton>
               Comment
-            </CommentButton>
+          </CommentButton>
+          <Link to='/'>
             <CloseissueButton>
               Close issue
             </CloseissueButton>

@@ -14,7 +14,7 @@ export const getIssues = async (query) => {
       assignee: Assignee,
       author: author.userName,
       labels: Labels,
-      milestone: Milestone.title,
+      milestone: Milestone && Milestone.title,
     };
   });
 };

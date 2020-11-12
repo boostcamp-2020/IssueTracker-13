@@ -78,8 +78,8 @@ class API {
             }
     }
     
-    func delete(at id: Int, from endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
-        let parameters: [String: Int] = [
+    func delete(at id: [Int], from endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
+        let parameters: [String: [Int]] = [
             "id": id
         ]
         AF.request(endpoint.path, method: .delete, parameters: parameters, headers: headers)

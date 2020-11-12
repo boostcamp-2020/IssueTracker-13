@@ -51,12 +51,18 @@ extension IssueListInteractor: IssueListBusinessLogic {
         guard let dataSource = issueDataSource else { return }
         dataSource.close(issue: issue)
         viewController?.displayIssueList(with: dataSource.openedIssues, at: .main)
+        API.shared.put(data: ["id": [issue.id], "isOpen": false], to: .issues) { (result) in
+            print(result)
+        }
     }
 
     func close(issues: [Issue]) {
         guard let dataSource = issueDataSource else { return }
         dataSource.close(issues: issues)
         viewController?.displayIssueList(with: dataSource.openedIssues, at: .main)
+        API.shared.put(data: ["id": issues.map({ $0.id }), "isOpen": false], to: .issues) { (result) in
+            print(result)
+        }
     }
 
 }

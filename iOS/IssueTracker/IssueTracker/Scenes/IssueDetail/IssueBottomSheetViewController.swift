@@ -30,6 +30,14 @@ class IssueBottomSheetViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @IBAction func didTouchCloseButton(_ sender: UIButton) {
+        API.shared.put(data: ["id": [interactor?.issue?.id], "isOpen": false], to: .issues) { (result) in
+            print(result)
+        }
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.interactor?.vc = self

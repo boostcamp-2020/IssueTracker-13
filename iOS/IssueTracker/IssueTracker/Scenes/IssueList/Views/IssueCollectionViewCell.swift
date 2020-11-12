@@ -18,7 +18,7 @@ class IssueCollectionViewCell: UICollectionViewListCell {
     func configure(with issue: Issue) {
         titleLabel.text = issue.title
         previewLabel.text = issue.preview.isEmpty ? " " : issue.preview
-        milestoneBadgeLabel.configure(with: issue.milestone.title)
+        milestoneBadgeLabel.configure(with: issue.milestone?.title ?? "")
 //        if let firstLabel = issue.labels.first {
 //            labelBadgeLabel.configure(with: firstLabel)
 //        }

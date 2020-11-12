@@ -111,7 +111,7 @@ extension FilterLabelListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let label = dataSource.itemIdentifier(for: indexPath) else { return }
         let section = indexPath.section == 1 ? 0 : 1
-        let row = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
+        var row = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
         
         switch self.mode {
         case .filter:
@@ -126,6 +126,7 @@ extension FilterLabelListViewController: UICollectionViewDelegate {
         case .none:
             break
         }
+        row = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
         dataSource.collectionView(collectionView, moveItemAt: indexPath, to: IndexPath(row: row, section: section))
 
 //        navigationController?.popViewController(animated: true)

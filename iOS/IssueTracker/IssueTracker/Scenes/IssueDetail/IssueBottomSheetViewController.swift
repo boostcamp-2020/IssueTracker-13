@@ -42,8 +42,12 @@ class IssueBottomSheetViewController: UIViewController {
         if segue.identifier == "showLabelEdit" {
             guard let vc = segue.destination as? FilterLabelListViewController else { return }
             vc.mode = .edit
-//            vc.interactor =
             vc.labels = self.interactor?.issue?.labels
+            vc.interactor.delegate = self.interactor
+        } else if segue.identifier == "showMilestoneEdit" {
+            guard let vc = segue.destination as? FilterMilestoneListViewController else { return }
+//            vc.mode = .edit
+//            vc.labels = self.interactor ?.issue?.labels
             vc.interactor.delegate = self.interactor
         }
     }
@@ -56,7 +60,7 @@ extension IssueBottomSheetViewController: IssueBottomSheetDisplayLogic {
     func configureBottomSheet(issue: Issue) {
         self.userNameLabel.text = issue.author.userName
         self.userProfileImageView.loadImageUsingCache(with: issue.author.profile)
-        self.milestone.configure(with: issue.milestone.title)
+        self.milestone.configure(with: issue.milestone?.title ?? "")
         self.labelStackView.subviews.forEach({$0.removeFromSuperview()})
         issue.labels.forEach { (label) in
             let newLabel = LabelBadgeLabel()

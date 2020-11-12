@@ -148,6 +148,7 @@ extension IssueDetailViewController: FloatingPanelControllerDelegate {
 
         // Add and show the views managed by the `FloatingPanelController` object to self.view.
         bottomSheet.addPanel(toParent: self)
+        bottomSheet.move(to: .tip, animated: false)
     }
     
 

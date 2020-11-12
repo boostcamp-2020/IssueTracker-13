@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import SelectSidebar from './SelectSidebar/SelectSidebar';
 
@@ -10,12 +10,17 @@ const updateAndDispatch = (dispatch) => async (issue) => {
   dispatch({ type: 'reLoad', payload: issue });
 };
 
-const IssueDetailSidebar = () => {
+function IssueDetailSidebar () {
+  const { issueDetail, dispatch } = useContext(IssueDetailContext);
+
   return (
-    <IssueDetailContext.Consumer>
-      {value => <SelectSidebar initIssue={value.issueDetail.payload} reducerCallback={updateAndDispatch(value.dispatch)} />}
-    </IssueDetailContext.Consumer>
+    <>
+      <SelectSidebar
+        initIssue={issueDetail}
+        reducerCallback={updateAndDispatch(dispatch)}
+      />
+    </>
   );
-};
+}
 
 export default IssueDetailSidebar;

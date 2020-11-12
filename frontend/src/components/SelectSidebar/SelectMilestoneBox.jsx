@@ -14,7 +14,6 @@ const Box = styled.div`
 
 export default function IssueDetailMilestoneBox({ title, milestone, allMilestones }) {
   const [isShowModal, setIsShowModal] = useState(false);
-
   const toggleModal = () => setIsShowModal(!isShowModal);
   const closeModal = () => setIsShowModal(false);
 

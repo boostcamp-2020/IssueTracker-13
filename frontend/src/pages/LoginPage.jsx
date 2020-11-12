@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
 
-import { signInWithLocal, signUpWithLocal, signInWithGitHub } from '../apis/authAPI';
 import { useAuth } from '../App';
 
 const Page = styled.div`
@@ -78,7 +77,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const clickHandler = (type) => async (event) => {
+  const clickHandler = (type) => async () => {
     if (type === 'SignIn') {
       auth.signIn({ email, password }, () => history.push('/'));
     }

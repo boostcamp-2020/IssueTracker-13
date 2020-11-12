@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const getIssues = async (query) => {
+export const getIssues = async (query) => {
   const { data } = await axios.get(`/api/issues?${query}`);
   return data.map(({ id, isOpen, preview, title, createdAt, Assignee, Labels, Milestone, author }) => {
     return {
@@ -17,6 +17,7 @@ const getIssues = async (query) => {
   });
 };
 
-export {
-  getIssues,
+export const getIssueDetail = async (id) => {
+  const { data } = await axios.get(`/api/issues/${id}`);
+  return data;
 };

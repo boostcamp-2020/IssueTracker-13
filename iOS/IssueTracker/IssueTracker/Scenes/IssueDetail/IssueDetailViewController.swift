@@ -16,11 +16,11 @@ protocol IssueDetailDisplayLogic: class {
 class IssueDetailViewController: BaseCollectionViewController<IssueDetailDataSource.Section, Comment> {
     
     @IBOutlet weak var commentCollectionView: UICollectionView!
-    
-    var bottomSheet: FloatingPanelController {
-        return FloatingPanelController()
-    }
+
     let interactor = IssueDetailInteractor()
+
+    var issue: Issue?
+    var bottomSheet = FloatingPanelController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -121,7 +121,9 @@ extension IssueDetailViewController: FloatingPanelControllerDelegate {
         bottomSheet.delegate = self // Optional
 
         // Set a content view controller.
-        let contentVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "IssueBottomSheetViewController") as? IssueBottomSheetViewController
+        guard let contentVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "IssueBottomSheetViewController", creator: { (coder) in
+            return IssueBottomSheetViewController(coder: coder, issue: self.issue)
+        }) as? IssueBottomSheetViewController else { return }
         bottomSheet.set(contentViewController: contentVC)
 
         // Track a scroll view(or the siblings) in the content view controller.

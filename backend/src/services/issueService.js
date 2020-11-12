@@ -1,4 +1,35 @@
-const { Issue, User, Label, Milestone } = require('../db/models');
+const { Issue, User, Label, Milestone, Comment } = require('../db/models');
+
+const SEARCH_OPTION = {
+  milestone: {
+    model: Milestone,
+    attributes: ['title'],
+  },
+  author: {
+    model: User,
+    as: 'author',
+    attributes: ['userName', 'profile'],
+  },
+  assignee: {
+    model: User,
+    as: 'Assignee',
+    attributes: ['userName', 'profile'],
+    through: { attributes: [] },
+  },
+  label: {
+    model: Label,
+    attributes: ['title', 'color', 'backgroundColor'],
+    through: { attributes: [] },
+  },
+  comment: {
+    model: Comment,
+    attributes: ['id', 'description', 'createdAt'],
+    include: {
+      model: User,
+      attributes: ['userName', 'profile'],
+    },
+  },
+};
 
 const applyOptionInQuery = (query) => {
   const finalOption = { isDeleted: false };
@@ -50,29 +81,6 @@ const getIssues = async (query) => {
     (issueId) => issueId.id
   );
 
-  const SEARCH_OPTION = {
-    milestone: {
-      model: Milestone,
-      attributes: ['title'],
-    },
-    author: {
-      model: User,
-      as: 'author',
-      attributes: ['userName'],
-    },
-    assignee: {
-      model: User,
-      as: 'Assignee',
-      attributes: ['userName', 'profile'],
-      through: { attributes: [] },
-    },
-    label: {
-      model: Label,
-      attributes: ['title', 'color', 'backgroundColor'],
-      through: { attributes: [] },
-    },
-  };
-
   const issues = await Issue.findAll({
     include: [
       SEARCH_OPTION.milestone,
@@ -105,9 +113,24 @@ const deleteIssues = async (id) => {
   return await Issue.update({ isDeleted: true }, { where: { id: id } });
 };
 
+const getIssue = async (id) => {
+  return await Issue.findOne({
+    include: [
+      SEARCH_OPTION.milestone,
+      SEARCH_OPTION.author,
+      SEARCH_OPTION.assignee,
+      SEARCH_OPTION.label,
+      SEARCH_OPTION.comment,
+    ],
+    where: { id, isDeleted: false },
+    attributes: ['id', 'title', 'isOpen', 'preview', 'createdAt'],
+  });
+};
+
 module.exports = {
   getIssues,
   addIssue,
   updateIssues,
   deleteIssues,
+  getIssue,
 };

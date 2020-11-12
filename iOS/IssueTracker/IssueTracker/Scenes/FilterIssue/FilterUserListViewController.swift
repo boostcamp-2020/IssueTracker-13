@@ -61,7 +61,7 @@ extension FilterUserListViewController: FilterUserListDisplayLogic {
 }
 
 extension FilterUserListViewController: UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let selectedUser = dataSource.itemIdentifier(for: indexPath) else { return }
         interactor.select(user: selectedUser)

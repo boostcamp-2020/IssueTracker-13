@@ -96,7 +96,24 @@ const getIssues = async (query) => {
 };
 
 const addIssue = async (newIssue) => {
-  await Issue.create(newIssue);
+  const issue = await Issue.create({
+    ...newIssue,
+    preview: newIssue.comment,
+    isOpen: true,
+    isDeleted: false,
+  });
+
+  const assigneeIds = newIssue.Assignee.map((user) => user.id);
+  const assignees = await User.findAll({ where: { id: assigneeIds } });
+  await issue.setAssignee(assignees);
+
+  const labelIds = newIssue.Labels.map((label) => label.id);
+  const labels = await Label.findAll({ where: { id: labelIds } });
+  await issue.setLabels(labels);
+
+  const milestoneId = newIssue.Milestone.id;
+  const milestone = await Milestone.findOne({ where: { id: milestoneId } });
+  await issue.setMilestone(milestone);
 };
 
 const updateIssues = async (modifiedContents) => {
@@ -126,6 +143,7 @@ const updateIssue = async (modifiedContents) => {
   const milestone = await Milestone.findOne({ where: { id: milestoneId } });
   await issue.setMilestone(milestone);
 
+  issue.title = modifiedContents.title;
   issue.isOpen = modifiedContents.isOpen;
   await issue.save();
 };

@@ -7,15 +7,19 @@
 
 import UIKit
 
+protocol IssueBottomSheetDisplayLogic: class {
+    func configureBottomSheet(issue: Issue)
+}
+
 class IssueBottomSheetViewController: UIViewController {
-    @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var label: LabelBadgeLabel!
-    
+    @IBOutlet weak var userNameLabel: UILabel!    
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var milestone: MilestoneBadgeLabel!
-    var issue: Issue?
+    @IBOutlet weak var labelStackView: UIStackView!
+    var interactor: IssueBottomSheetInteractor?
+    
     init?(coder: NSCoder, issue: Issue?) {
-        self.issue = issue
+        self.interactor = IssueBottomSheetInteractor(with: issue)
         super.init(coder: coder)
     }   
     
@@ -25,14 +29,33 @@ class IssueBottomSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configure()
+        self.interactor?.vc = self
+        guard let issue = interactor?.issue else { return }
+        configureBottomSheet(issue: issue)
     }
     
-    func configure() {
-        self.userNameLabel.text = issue?.author.userName
-        guard let label = issue?.labels.first else { return }
-        self.label.configure(with: label)
-        guard let milestone = issue?.milestone else { return }
-        self.milestone.configure(with: milestone.title)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "showLabelEdit" {
+            guard let vc = segue.destination as? FilterLabelListViewController else { return }
+            vc.mode = .edit
+//            vc.interactor =
+            vc.labels = self.interactor?.issue?.labels
+            vc.interactor.delegate = self.interactor
+        }
+    }
+}
+
+extension IssueBottomSheetViewController: IssueBottomSheetDisplayLogic {
+    func configureBottomSheet(issue: Issue) {
+        self.userNameLabel.text = issue.author.userName
+        self.userProfileImageView.loadImageUsingCache(with: issue.author.profile)
+        self.milestone.configure(with: issue.milestone.title)
+        self.labelStackView.subviews.forEach({$0.removeFromSuperview()})
+        issue.labels.forEach { (label) in
+            let newLabel = LabelBadgeLabel()
+            newLabel.configure(with: label)
+            labelStackView.addArrangedSubview(newLabel)
+        }
     }
 }

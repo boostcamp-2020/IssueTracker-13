@@ -18,3 +18,7 @@ struct Comment: Codable, Hashable {
         case user = "User"
     }
 }
+struct PostComment: Codable{
+    let issueID: Int
+    let description: String
+}

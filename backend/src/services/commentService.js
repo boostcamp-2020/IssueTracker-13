@@ -1,4 +1,4 @@
-const { Comment, User } = require('../db/models');
+const { Comment, User, Issue } = require('../db/models');
 
 const getComments = async (issueId) => {
   const comments = await Comment.findAll({
@@ -15,7 +15,11 @@ const getComments = async (issueId) => {
 };
 
 const addComment = async (newComment) => {
-  await Comment.create(newComment);
+  const issue = await Issue.findOne({ where: { id: newComment.issueId } });
+  const user = await User.findOne({ where: { id: newComment.userId } });
+  const comment = await Comment.create(newComment);
+  await comment.setUser(user);
+  await comment.setIssue(issue);
 };
 
 const updateComment = async (modifiedComment) => {

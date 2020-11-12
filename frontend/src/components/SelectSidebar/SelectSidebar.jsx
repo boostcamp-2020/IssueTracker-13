@@ -37,7 +37,7 @@ const callbackReducer = (callback) => (issue, { type, key, data }) => {
       }
       break;
     case 'toggleMilestone':
-      if (issue.Milestone.id === key) {
+      if (issue.Milestone && issue.Milestone.id === key) {
         newIssue.Milestone = {};
       } else {
         newIssue.Milestone = data;

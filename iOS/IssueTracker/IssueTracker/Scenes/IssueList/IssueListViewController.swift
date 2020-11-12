@@ -31,6 +31,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
+        interactor.fetchIssues(with: interactor.filter)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -218,7 +219,7 @@ extension IssueListViewController: IssueListDisplayLogic {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(issues, toSection: section)
-        dataSource.apply(snapshot)
+        dataSource.apply(snapshot, animatingDifferences: false)
         refreshControl.endRefreshing()
     }
     

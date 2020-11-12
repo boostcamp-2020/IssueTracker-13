@@ -31,11 +31,11 @@ class FilterWorker {
         }
     }
     
-    func fetchMilestones(handler: @escaping ([String]) -> Void) {
+    func fetchMilestones(handler: @escaping ([Milestone]) -> Void) {
         API.shared.get(from: .milestones) { (result: Result<[Milestone], Error>) in
             switch result {
             case .success(let milestones):
-                handler(milestones.map({$0.title}))
+                handler(milestones)
             case .failure:
                 break
             }

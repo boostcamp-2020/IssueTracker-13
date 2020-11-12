@@ -16,12 +16,12 @@ class IssueListInteractor {
     weak var viewController: IssueListDisplayLogic?
     var issueDataSource: IssueDataSource?
     var worker = IssueWorker()
-    var filter: Filter? =  Filter(isOpen: true)
+    var filter: Filter? =  Filter()
 }
 
 extension IssueListInteractor: IssueListBusinessLogic {
 
-    func fetchIssues(with filter: Filter? = Filter(isOpen: true)) {
+    func fetchIssues(with filter: Filter? = Filter()) {
         self.filter = filter
         worker.fetchIssues(with: filter?.query ?? "") { (dataSource) in
             self.issueDataSource = dataSource

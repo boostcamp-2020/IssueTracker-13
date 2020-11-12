@@ -43,6 +43,7 @@ class FilterIssueViewController: UITableViewController {
         case "showFilterMilestoneList":
             guard let filterMilestoneVC = segue.destination as? FilterMilestoneListViewController else { return }
             filterMilestoneVC.interactor.delegate = interactor
+            filterMilestoneVC.milestone = interactor.filter?.milestone
         case "showFilterLabelList":
             guard let vc = segue.destination as? FilterLabelListViewController else { return }
             vc.interactor.delegate = interactor
@@ -56,18 +57,16 @@ class FilterIssueViewController: UITableViewController {
     }
 
     func confignureFilter() {
-        guard let filter = interactor.filter else { return }
-        if filter.isOpen {
-            tableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .bottom)
-            tableView(tableView, didSelectRowAt: IndexPath(row: 0, section: 0))
-        } else {
-            tableView.selectRow(at: IndexPath(row: 4, section: 0), animated: true, scrollPosition: .bottom)
-            tableView(tableView, didSelectRowAt: IndexPath(row: 4, section: 0))
-        }
-        didSelectDetailCondition(at: IndexPath(row: 0, section: 1), with: filter.author?.userName ?? "")
+        guard let filter = interactor.filter,
+              let indexPath = filter.selectedIndexPath else { return }
+        let row = indexPath.row
+        tableView.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .bottom)
+        tableView(tableView, didSelectRowAt: IndexPath(row: row, section: 0))
+
+        didSelectDetailCondition(at: IndexPath(row: 0, section: 1), with: filter.author ?? "")
         didSelectDetailCondition(at: IndexPath(row: 1, section: 1), with: filter.label?.title ?? "")
-        didSelectDetailCondition(at: IndexPath(row: 2, section: 1), with: filter.milestone ?? "")
-        didSelectDetailCondition(at: IndexPath(row: 3, section: 1), with: filter.assignee?.userName ?? "")
+        didSelectDetailCondition(at: IndexPath(row: 2, section: 1), with: filter.milestone?.title ?? "")
+        didSelectDetailCondition(at: IndexPath(row: 3, section: 1), with: filter.assignee ?? "")
     }
     
     @IBAction func didTouchBarButton(_ sender: UIBarButtonItem) {
@@ -82,13 +81,8 @@ class FilterIssueViewController: UITableViewController {
         cell?.selectionStyle = .none
         if indexPath.section == 1 {
             return
-        }
-        if indexPath.row == 0 {
-            interactor.filter?.isOpen = true
-        } else if indexPath.row == 2 {
-//                interactor.filter?.author = ""
-        } else if indexPath.row == 4 {
-            interactor.filter?.isOpen = false
+        } else {
+            interactor.filter?.chagne(indexPath: indexPath)
         }
         interactor.selectedFilterIndexPath = indexPath
         cell?.accessoryType = .checkmark

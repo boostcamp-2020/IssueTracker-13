@@ -26,7 +26,7 @@ export const getIssueDetail = async (id) => {
 
 export const addIssue = async (issue) => {
   try {
-    const { data } = await axios.post('/api/issues', issue);
+    const { data } = await axios.post('/api/issues', issue, getAuthConfig());
     return data;
   } catch (error) {
     return 'fail';

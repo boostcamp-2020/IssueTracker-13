@@ -18,7 +18,6 @@ const Sidebar = styled.div`
 
 const callbackReducer = (callback) => (issue, { type, key, data }) => {
   let newIssue = { ...issue };
-
   switch (type) {
     case 'setIssue':
       newIssue = data;

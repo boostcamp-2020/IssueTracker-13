@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { createContext, useReducer, useState } from 'react';
 
 import styled from 'styled-components';
+
+import { addIssue } from '../apis/issuesAPI';
+
+import NewIssueSidebar from '../components/NewIssueSidebar';
 
 const Page = styled.div`
   padding: 48px 400px;
@@ -33,9 +37,6 @@ const InputComment = styled.textarea`
   font-size: 16px;
 `;
 
-const SideBar = styled.div`
-
-`;
 
 const Buttons = styled.div`
   position: relative;
@@ -55,30 +56,70 @@ const WriteBar = styled.div`
 
 `;
 
+const reducer = (state, { type, payload }) => {
+  if (type === 'add') {
+    return payload;
+  }
+  console.log('unknown dispatch action');
+  return state;
+};
+
+const initIssue = {
+  title: '',
+  comment: '',
+  Assignee: [],
+  Labels: [],
+  Milestone: '',
+};
+
+export const NewIssueContext = createContext([]);
+
 export default function NewIssuePage() {
+  const [issueDetail, dispatch] = useReducer(reducer, initIssue);
+  const [title, setTitle] = useState('');
+  const [comment, setComment] = useState('');
+
+  const postIssue = async (issue, title, comment) => {
+    await addIssue({ ...issue, title, comment });
+  };
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleCommentChange = (e) => {
+    setComment(e.target.value);
+  };
+
   return (
     <Page>
-      <Profile>
-        <img src='https://avatars1.githubusercontent.com/u/52442237?s=80&v=4'/>
-      </Profile>
-      <InputBox>
-        <InputTitle placeholder='Title' />
-        <WriteBar>
+      <NewIssueContext.Provider value={ { issueDetail, dispatch }}>
+        <Profile>
+          <img src='https://avatars1.githubusercontent.com/u/52442237?s=80&v=4'/>
+        </Profile>
+        <InputBox>
+          <InputTitle
+            placeholder='Title'
+            onChange={handleTitleChange}
+          />
+          <WriteBar>
           Write
-        </WriteBar>
-        <InputComment placeholder='Leave a comment'/>
-        <Buttons>
-          <CancelButton>
+          </WriteBar>
+          <InputComment
+            placeholder='Leave a comment'
+            onChange={handleCommentChange}
+          />
+          <Buttons>
+            <CancelButton>
             Cancel
-          </CancelButton>
-          <SubmitButton>
+            </CancelButton>
+            <SubmitButton onClick={() => postIssue(issueDetail, title, comment)}>
             Submit new issue
-          </SubmitButton>
-        </Buttons>
-      </InputBox>
-      <SideBar>
-        사이드바
-      </SideBar>
+            </SubmitButton>
+          </Buttons>
+        </InputBox>
+        <NewIssueSidebar />
+      </NewIssueContext.Provider>
     </Page>
   );
 }

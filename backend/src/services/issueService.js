@@ -148,7 +148,7 @@ const updateIssue = async (modifiedContents) => {
     await issue.setAssignee(assignees);
   }
 
-  if (modifiedContents.Lables !== undefined) {
+  if (modifiedContents.Labels !== undefined) {
     const labelIds = modifiedContents.Labels.map((label) => label.id);
     const labels = await Label.findAll({ where: { id: labelIds } });
     await issue.setLabels(labels);

@@ -47,7 +47,7 @@ extension MilestoneListInteractor: MilestoneAlertDelegate {
         case .add:
             guard let milestone = milestone as? PostMilestone else { return }
 
-            API.shared.post(data: milestone, to: .milestones, completion: { (result: Result<String, Error>) in
+            API.shared.post(data: milestone, to: .milestones, completion: { (result: Result<Response, Error>) in
                 switch result {
                 case .success:
                     self.addMilestone(milestone)

@@ -3,7 +3,7 @@ const { Issue, User, Label, Milestone, Comment } = require('../db/models');
 const SEARCH_OPTION = {
   milestone: {
     model: Milestone,
-    attributes: ['title'],
+    attributes: ['id', 'title'],
   },
   author: {
     model: User,
@@ -13,12 +13,12 @@ const SEARCH_OPTION = {
   assignee: {
     model: User,
     as: 'Assignee',
-    attributes: ['userName', 'profile'],
+    attributes: ['id', 'userName', 'profile'],
     through: { attributes: [] },
   },
   label: {
     model: Label,
-    attributes: ['title', 'color', 'backgroundColor'],
+    attributes: ['id', 'title', 'color', 'backgroundColor'],
     through: { attributes: [] },
   },
   comment: {
@@ -109,6 +109,27 @@ const updateIssues = async (modifiedContents) => {
   });
 };
 
+const updateIssue = async (modifiedContents) => {
+  const id = modifiedContents.id;
+
+  const issue = await Issue.findOne({ where: { id } });
+
+  const assigneeIds = modifiedContents.Assignee.map((user) => user.id);
+  const assignees = await User.findAll({ where: { id: assigneeIds } });
+  await issue.setAssignee(assignees);
+
+  const labelIds = modifiedContents.Labels.map((label) => label.id);
+  const labels = await Label.findAll({ where: { id: labelIds } });
+  await issue.setLabels(labels);
+
+  const milestoneId = modifiedContents.Milestone.id;
+  const milestone = await Milestone.findOne({ where: { id: milestoneId } });
+  await issue.setMilestone(milestone);
+
+  issue.isOpen = modifiedContents.isOpen;
+  await issue.save();
+};
+
 const deleteIssues = async (id) => {
   return await Issue.update({ isDeleted: true }, { where: { id: id } });
 };
@@ -133,4 +154,5 @@ module.exports = {
   updateIssues,
   deleteIssues,
   getIssue,
+  updateIssue,
 };

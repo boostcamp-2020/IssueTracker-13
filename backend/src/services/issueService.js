@@ -126,6 +126,7 @@ const updateIssue = async (modifiedContents) => {
   const milestone = await Milestone.findOne({ where: { id: milestoneId } });
   await issue.setMilestone(milestone);
 
+  issue.title = modifiedContents.title;
   issue.isOpen = modifiedContents.isOpen;
   await issue.save();
 };

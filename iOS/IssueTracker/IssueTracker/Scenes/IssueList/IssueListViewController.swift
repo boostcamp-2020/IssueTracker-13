@@ -45,11 +45,11 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             let viewController = navigationViewController?.viewControllers.first as? FilterIssueViewController
             viewController?.interactor.delegate = self.interactor
             viewController?.interactor.filter = self.interactor.filter
-        } else if segue.identifier == "ShowIssueEditViewController" {
+        } else if segue.identifier == "showEditViewController" {
             let navigationViewController = segue.destination as? UINavigationController
             let viewController = navigationViewController?.viewControllers.first as? IssueEditViewController
-            viewController?.isComment = true
-//            viewController?.delegate = interactor
+            viewController?.isComment = false
+            viewController?.delegate = interactor
         }
         
     }
@@ -70,6 +70,10 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             break
         }
         changeEditingMode()
+    }
+    
+    @IBAction func didTouchAddIssueButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "showEditViewController", sender: nil)
     }
     
     private func updateBarButtonItems() {

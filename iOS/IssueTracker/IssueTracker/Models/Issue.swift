@@ -39,7 +39,7 @@ extension Issue: Hashable {
     
 }
 
-struct PostIssue {
+struct PostIssue: Codable{
     let title: String
     let comment: String
 }

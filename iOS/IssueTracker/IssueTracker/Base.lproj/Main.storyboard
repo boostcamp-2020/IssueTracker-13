@@ -135,7 +135,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0la-zU-iAv" kind="presentation" identifier="" id="Gq2-Tn-Cta"/>
+                                    <action selector="didTouchAddIssueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5d9-dk-LkO"/>
+                                    <segue destination="0la-zU-iAv" kind="presentation" identifier="showEditViewController" id="Gq2-Tn-Cta"/>
                                 </connections>
                             </button>
                         </subviews>

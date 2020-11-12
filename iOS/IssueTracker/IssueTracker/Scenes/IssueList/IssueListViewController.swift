@@ -44,6 +44,11 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             let viewController = navigationViewController?.viewControllers.first as? FilterIssueViewController
             viewController?.interactor.delegate = self.interactor
             viewController?.interactor.filter = self.interactor.filter
+        } else if segue.identifier == "ShowIssueEditViewController" {
+            let navigationViewController = segue.destination as? UINavigationController
+            let viewController = navigationViewController?.viewControllers.first as? IssueEditViewController
+            viewController?.isComment = true
+//            viewController?.delegate = interactor
         }
         
     }

@@ -25,6 +25,7 @@ class CommentCollectionViewCell: UICollectionViewListCell {
         userNameLabel.text = comment.user.userName
         descriptionLabel.attributedText = markdownParser.parse(comment.description)
         commentID = comment.id
+        configureButton(with: comment)
     }
     
     @IBAction func didTouchMenuButton(_ sender: Any) {
@@ -38,10 +39,10 @@ class CommentCollectionViewCell: UICollectionViewListCell {
         let relativeDate = formatter.localizedString(for: from, relativeTo: Date())
         return relativeDate
     }
-    
+
     func configureButton(with comment: Comment) {
         let userToken = UserToken()
-        if comment.user.userName == userToken.name{
+        if comment.user.userName == userToken.name {
             moreButton.isHidden = false
         } else {
             moreButton.isHidden = true

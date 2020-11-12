@@ -69,7 +69,7 @@ extension IssueDetailInteractor: IssueEditDelegate {
                 }
             })
         } else { // 추가할떄
-            let postComment = PostComment(description: description, issueID: issueID)
+            let postComment = PostComment(description: description, issueId: issueID)
             API.shared.post(data: postComment, to: .comments, completion: { (result: Result<Response, Error>) in
                 switch result {
                 case .success:

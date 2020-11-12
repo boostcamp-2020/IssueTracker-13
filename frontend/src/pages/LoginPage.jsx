@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
+
+import { signInWithLocal, signUpWithLocal, signInWithGitHub } from '../apis/authAPI';
+import { useAuth } from '../App';
 
 const Page = styled.div`
   padding: 48px 200px;
@@ -15,6 +19,7 @@ const LoginBox = styled.div`
   margin: 40px auto;
   width: 500px;
   box-shadow: 0 0 3px gray;
+  font-size: 16px;
 `;
 
 const LabelInputContainer = styled.label`
@@ -33,10 +38,12 @@ const InputLabel = styled.label`
 
 const EmailInput = styled.input`
   height: 30px;
+  font-size: 16px;
 `;
 
 const PasswordInput = styled.input`
-height: 30px;
+  height: 30px;
+  font-size: 16px;
 `;
 
 const RowContainer = styled.div`
@@ -65,22 +72,73 @@ const GitHubButton = styled.button`
   cursor: pointer;
 `;
 
+function SignInButton() {
+  let history = useHistory();
+  let auth = useAuth();
+
+  return (
+    <Button onClick={() => {
+      auth.signIn(() => history.push('/'));
+    }}>Sign In</Button>
+  );
+}
+
+function SignUpButton() {
+  let history = useHistory();
+  let auth = useAuth();
+
+  return (
+    <Button onClick={() => {
+      auth.signIn(() => history.push('/'));
+    }}>Sign In</Button>
+  );
+}
+
 export default function LoginPage() {
+  const [redirect, setRedirect] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const clickHandler = (type) => async (event) => {
+    console.log(type);
+    console.log(event.target);
+    if (type === 'SignIn') {
+      await signInWithLocal({ email, password });
+      setRedirect('/go');
+    }
+    if (type === 'SignUp') {
+      await signUpWithLocal({ email, password });
+      setRedirect('/go');
+    }
+  };
+
+  const changeHandler = (type) => (event) => {
+    if (type === 'Email') {
+      setEmail(event.target.value);
+      return;
+    }
+    if (type === 'Password') {
+      setPassword(event.target.value);
+      return;
+    }
+  };
+
   return (
     <Page>
+      {redirect && <Redirect to={redirect} />}
       <Title>이슈 트래커</Title>
       <LoginBox>
         <LabelInputContainer>
           <InputLabel>아이디</InputLabel>
-          <EmailInput></EmailInput>
+          <EmailInput type='email' id='email' value={email} onChange={changeHandler('Email')}></EmailInput>
         </LabelInputContainer>
         <LabelInputContainer>
           <InputLabel>비밀번호</InputLabel>
-          <PasswordInput></PasswordInput>
+          <PasswordInput type='password' id='password' value={password} onChange={changeHandler('Password')}></PasswordInput>
         </LabelInputContainer>
         <RowContainer>
-          <Button>로그인</Button>
-          <Button>회원가입</Button>
+          <SignInButton>로그인</SignInButton>
+          <SignUpButton>회원가입</SignUpButton>
         </RowContainer>
         <GitHubButton>Sign in with GitHub</GitHubButton>
       </LoginBox>

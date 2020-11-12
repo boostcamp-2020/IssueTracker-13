@@ -14,6 +14,14 @@ const Page = styled.div`
   padding: 48px 200px;
 `;
 
+const Div = styled.div`
+  display: flex;
+`;
+
+const Comments = styled.div`
+  width: 100%;
+`;
+
 export const IssueDetailContext = createContext();
 
 const reducer = (state, { type, payload }) => {
@@ -41,9 +49,15 @@ const IssueDetailPage = () => {
     <Page>
       <IssueDetailContext.Provider value={ { issueDetail, dispatch } }>
         <IssueDetailHeader />
-        <IssueDetailSidebar />
-        <CommentList />
-        <CommentInput />
+        <Div>
+          <Comments>
+            <CommentList />
+            <CommentInput />
+          </Comments>
+          <div>
+            <IssueDetailSidebar />
+          </div>
+        </Div>
       </IssueDetailContext.Provider>
     </Page>
   );

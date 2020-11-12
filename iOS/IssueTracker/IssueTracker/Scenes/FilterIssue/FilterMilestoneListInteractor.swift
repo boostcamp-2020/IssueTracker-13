@@ -8,12 +8,12 @@
 import Foundation
 
 protocol FilterMilestoneListDelegate: class {
-    func didSelect(milestone: String)
+    func didSelect(milestone: Milestone)
 }
 
 protocol FilterMilestoneListBusinessLogic {
     func fetchMilestones()
-    func select(milestone: String)
+    func select(milestone: Milestone)
 }
 
 class FilterMilestoneListInteractor {
@@ -25,7 +25,7 @@ class FilterMilestoneListInteractor {
     weak var delegate: FilterMilestoneListDelegate?
     weak var viewController: FilterMilestoneDisplayLogic?
     
-    var milestones: [String]?
+    var milestones: [Milestone]?
     var worker = FilterWorker()
     
 }
@@ -39,7 +39,7 @@ extension FilterMilestoneListInteractor: FilterMilestoneListBusinessLogic {
         }
     }
     
-    func select(milestone: String) {
+    func select(milestone: Milestone) {
         delegate?.didSelect(milestone: milestone)
     }
 

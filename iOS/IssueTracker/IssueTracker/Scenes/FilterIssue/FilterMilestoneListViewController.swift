@@ -8,10 +8,10 @@
 import UIKit
 
 protocol FilterMilestoneDisplayLogic: class {
-    func displayMilestoneList(with: [String], at: FilterMilestoneListInteractor.MilestoneSection)
+    func displayMilestoneList(with: [Milestone], at: FilterMilestoneListInteractor.MilestoneSection)
 }
 
-class FilterMilestoneListViewController: BaseCollectionViewController<FilterMilestoneListInteractor.MilestoneSection, String> {
+class FilterMilestoneListViewController: BaseCollectionViewController<FilterMilestoneListInteractor.MilestoneSection, Milestone> {
 
     @IBOutlet weak var milestoneCollectionView: UICollectionView!
     
@@ -42,8 +42,8 @@ class FilterMilestoneListViewController: BaseCollectionViewController<FilterMile
 
     private func cellProvider(collectionView: UICollectionView,
                               indexPath: IndexPath,
-                              milestone: String) -> UICollectionViewListCell? {
-        let cell = collectionView.dequeueConfiguredReusableCell(using: configureCell(), for: indexPath, item: milestone)
+                              milestone: Milestone) -> UICollectionViewListCell? {
+        let cell = collectionView.dequeueConfiguredReusableCell(using: configureCell(), for: indexPath, item: milestone.title)
         return cell
     }
 
@@ -51,7 +51,7 @@ class FilterMilestoneListViewController: BaseCollectionViewController<FilterMile
 
 extension FilterMilestoneListViewController: FilterMilestoneDisplayLogic {
     
-    func displayMilestoneList(with milestone: [String], at section: FilterMilestoneListInteractor.MilestoneSection) {
+    func displayMilestoneList(with milestone: [Milestone], at section: FilterMilestoneListInteractor.MilestoneSection) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(milestone, toSection: section)

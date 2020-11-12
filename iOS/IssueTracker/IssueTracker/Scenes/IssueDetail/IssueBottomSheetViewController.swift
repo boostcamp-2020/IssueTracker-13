@@ -39,8 +39,12 @@ class IssueBottomSheetViewController: UIViewController {
         if segue.identifier == "showLabelEdit" {
             guard let vc = segue.destination as? FilterLabelListViewController else { return }
             vc.mode = .edit
-//            vc.interactor =
             vc.labels = self.interactor?.issue?.labels
+            vc.interactor.delegate = self.interactor
+        } else if segue.identifier == "showMilestoneEdit" {
+            guard let vc = segue.destination as? FilterMilestoneListViewController else { return }
+//            vc.mode = .edit
+//            vc.labels = self.interactor ?.issue?.labels
             vc.interactor.delegate = self.interactor
         }
     }

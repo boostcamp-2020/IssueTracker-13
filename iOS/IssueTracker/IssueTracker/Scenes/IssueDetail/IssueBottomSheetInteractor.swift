@@ -29,3 +29,13 @@ extension IssueBottomSheetInteractor: FilterLabelListDelegate {
         worker?.update(issue: issue)
     }
 }
+
+extension IssueBottomSheetInteractor: FilterMilestoneListDelegate {
+    func didSelect(milestone: Milestone) {
+        issue?.milestone = milestone
+        issue?.milestone = milestone
+        guard let issue = self.issue else { return }
+        vc?.configureBottomSheet(issue: issue)
+        worker?.update(issue: issue)
+    }
+}

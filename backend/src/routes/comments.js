@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
     await addComment(newComment);
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
-    next(createError(400));
+    next(createError(500));
   }
 });
 

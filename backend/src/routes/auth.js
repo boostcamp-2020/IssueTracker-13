@@ -1,7 +1,10 @@
 const express = require('express');
 const passport = require('passport');
 const router = express.Router();
-const { loginAsLocal: signInAsLocal } = require('../services/authService');
+const {
+  loginAsLocal: signInAsLocal,
+  signUpAsLocal,
+} = require('../services/authService');
 require('../services/passportServices');
 
 router.post('/signIn', async (req, res) => {
@@ -15,8 +18,10 @@ router.post('/signIn', async (req, res) => {
   }
 });
 
-router.post('/signUp', (req, res) => {
-  res.json();
+router.post('/signUp', async (req, res) => {
+  const { email, password } = req.body;
+  const signUpResponse = await signUpAsLocal(email, password);
+  res.json(signUpResponse);
 });
 
 router.get(

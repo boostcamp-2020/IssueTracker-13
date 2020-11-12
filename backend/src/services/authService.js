@@ -47,4 +47,25 @@ const signInAsLocal = async (email, password) => {
   return { name: userName, profile, token };
 };
 
-module.exports = { loginAsLocal: signInAsLocal };
+const signUpAsLocal = async (email, password) => {
+  const newUserName = email.slice(0, email.search('@'));
+  const defaultProfile =
+    'https://avatars0.githubusercontent.com/u/68668924?s=400&v=4';
+  const user = await User.create({
+    email,
+    password,
+    userName: newUserName,
+    profile: defaultProfile,
+    authType: 'local',
+    isDeleted: false,
+  });
+
+  if (!user) {
+    return { message: 'signUp failed' };
+  }
+  const { id, userName, profile } = user;
+  const token = createToken(id);
+  return { name: userName, profile, token };
+};
+
+module.exports = { loginAsLocal: signInAsLocal, signUpAsLocal };

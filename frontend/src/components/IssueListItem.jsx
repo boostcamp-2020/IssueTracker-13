@@ -1,11 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
+
+import { warningIcon } from '../assets/icons';
+import { milestoneImgPath } from '../assets/icons';
 
 const ListItem = styled.li`
   list-style: none;
   display: flex;
-  padding: 16px;
+  padding: 16px 0px 8px 16px;
   border: 1px solid #eaecef;
 `;
 
@@ -13,20 +17,34 @@ const CheckBox = styled.input`
   margin-right: 20px;
 `;
 
-const Svg = styled.svg`
+const Svg = styled.span`
+  fill: #28a745;
   padding: 3px;
 `;
 
 const Title = styled.span`
   font-size: 16px;
   font-weight: 600;
-  cursor: pointer;
+  text-decoration: none;
+  outline: none;
 `;
 
 const Label = styled.span`
   border: 1px solid #000000;
-  padding: 1px 4px;
+  padding: 3px 6px;
   margin: 0 5px;
+  background-color: ${props => props.backgroundColor};
+  color: ${props => props.color};
+  border: 1px solid transparent;
+  border-radius: 10px;
+`;
+
+const Content = styled.div`
+  width: 100%;
+`;
+
+const SubTitle = styled.div`
+  margin-top: 5px;
 `;
 
 const Description = styled.span`
@@ -37,27 +55,78 @@ const Milestone = styled.span`
   font-size: 12px;
 `;
 
+const MainTitle = styled.div`
+  display: flex;
+  position: relative;
+`;
+
+const Assignees = styled.span`
+  position: absolute;
+  right: 50px;
+  z-index: -1;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #000;
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`;
+
+const Assignee = styled.img`
+  width: 20px;
+  margin: 2px;
+`;
+
 export default function IssueListItem({ issue }) {
-  const { id, title, milestone, labels, author, createdAt } = issue;
-
-  const warningIcon = <path fillRule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm9 3a1 1 0 11-2 0 1 1 0 012 0zm-.25-6.25a.75.75 0 00-1.5 0v3.5a.75.75 0 001.5 0v-3.5z"></path>;
-
+  const { id, title, milestone, labels, author, createdAt, assignee } = issue;
   return (
     <ListItem>
       <CheckBox type='checkbox' />
-      <Svg viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+      <Svg>
         {warningIcon}
       </Svg>
-      <div>
-        <div>
-          <Title>{title}</Title>
-          <Label>{labels.map(label => label.title)}</Label>
-        </div>
-        <div>
-          <Description>#{id} opened{createdAt} by {author}</Description>
-          <Milestone>milestone{milestone}</Milestone>
-        </div>
-      </div>
+      <Content>
+        <MainTitle>
+          <StyledLink to={`/issues/${id}`}>
+            <Title>
+              {title}
+            </Title>
+          </StyledLink>
+          {
+            labels.length > 0 &&
+            labels.map((label, i) =>
+              <Label
+                key={i}
+                backgroundColor={label.backgroundColor}
+                color={label.color}
+              >
+                {label.title}
+              </Label>,
+            )
+          }
+          <Assignees>
+            {
+              assignee.length > 0 &&
+              assignee.map(({ profile }, i) =>
+                <Assignee
+                  key={i}
+                  src={profile}
+                />)
+            }
+          </Assignees>
+        </MainTitle>
+        <SubTitle>
+          <Description>#{id} opened {createdAt.split('T')[0]} by {author}  </Description>
+          <Milestone>
+            <svg viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+              <path fillRule="evenodd" d={milestoneImgPath} />
+            </svg>
+            {milestone}
+          </Milestone>
+        </SubTitle>
+      </Content>
     </ListItem>
   );
 }

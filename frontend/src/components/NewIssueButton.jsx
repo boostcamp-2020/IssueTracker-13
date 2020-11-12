@@ -11,6 +11,7 @@ const Button = styled.button`
   border: 1px solid #e1e4e8;
   border-radius: 5px;
   font-size: 14px;
+  cursor: pointer;
 `;
 
 export default function NewIssueButton() {

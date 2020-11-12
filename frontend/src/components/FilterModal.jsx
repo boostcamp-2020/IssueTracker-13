@@ -9,7 +9,7 @@ const Modal = styled.div`
   background-color: #fff;
   width: 300px;
   border: 1px solid #e1e4e8;
-  z-index: 1; 
+  z-index: 100;
 `;
 
 const Title = styled.div`

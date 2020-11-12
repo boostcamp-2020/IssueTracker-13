@@ -12,7 +12,7 @@ const Bar = styled.div`
   position: relative;
 `;
 
-export default function LabelMilestoneHeader() {
+export default function LabelMilestoneHeader({ type }) {
   const currentPath = window.location.pathname;
 
   return (
@@ -28,8 +28,8 @@ export default function LabelMilestoneHeader() {
         imgPath={milestoneImgPath}
         selected={currentPath === '/milestones'} />
       <NewButton
-        route='/milestones/new'
-        text='milestone'
+        route={`/${type}/new`}
+        text={type}
       />
     </Bar>
   );

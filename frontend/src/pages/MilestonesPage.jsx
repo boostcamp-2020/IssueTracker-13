@@ -25,7 +25,7 @@ export default function MilestonesPage() {
 
   return (
     <Page>
-      <LabelMilestoneHeader/>
+      <LabelMilestoneHeader type='milestone'/>
       <MilestoneListNav milestones={ milestones }/>
       <MilestoneList milestones={ milestones }/>
     </Page>

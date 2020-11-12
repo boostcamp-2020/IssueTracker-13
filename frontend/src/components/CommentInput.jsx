@@ -1,10 +1,14 @@
-import React, { useState, useParams } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 import TranslateMarkdown from './TranslateMarkdown';
+
+import { IssueDetailContext } from '../pages/IssueDetailPage';
+
 import { addComment } from '../apis/commentsAPI';
+import { getIssueDetail } from '../apis/issuesAPI';
 
 const Page = styled.div`
   display: flex;
@@ -82,6 +86,7 @@ const Tabs = styled.div`
 export default function CommentInput({ id }) {
   const [text, setText] = useState('');
   const [currentTab, setCurrentTab] = useState('write');
+  const { dispatch } = useContext(IssueDetailContext);
 
   const placeholder = 'Leave a comment';
 
@@ -107,6 +112,9 @@ export default function CommentInput({ id }) {
 
   const postComment = async () => {
     await addComment({ description: text, issueId: id });
+    const newIssue = await getIssueDetail(id);
+    dispatch({ type: 'reLoad', payload: newIssue });
+    setText('');
   };
 
   return (

@@ -53,9 +53,9 @@ extension FilterIssueInteractor: FilterMilestoneListDelegate {
 }
 
 extension FilterIssueInteractor: FilterLabelListDelegate {
-    func didSelect(label: Label) {
+    func didSelect(labels: [Label]) {
+        let label = labels.first
         self.filter?.label = label
-        viewController?.didSelectDetailCondition(at: IndexPath(row: 1, section: 1), with: label.title ?? "")
-
+        viewController?.didSelectDetailCondition(at: IndexPath(row: 1, section: 1), with: label?.title ?? "")
     }
 }

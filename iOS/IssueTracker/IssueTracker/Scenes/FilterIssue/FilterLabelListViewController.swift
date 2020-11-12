@@ -23,8 +23,11 @@ class FilterLabelListViewController: BaseCollectionViewController<FilterLabelInt
         if mode == .edit {
             interactor.select(labels: labels)
         } else {
-            guard let label = labels.first else { return }
-            interactor.select(label: label)
+            if let label = labels.first {
+                interactor.select(label: label)
+            } else {
+                interactor.reset()
+            }
         }
         navigationController?.popViewController(animated: true)
     }
@@ -52,20 +55,9 @@ class FilterLabelListViewController: BaseCollectionViewController<FilterLabelInt
         let headerRegistration = UICollectionView.SupplementaryRegistration
         <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) {
             [unowned self] (headerView, elementKind, indexPath) in
-            
-            // Obtain header item using index path
             let headerItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            
-            // Configure header view content based on headerItem
             var configuration = headerView.defaultContentConfiguration()
             configuration.text = headerItem.rawValue
-            
-            // Customize header appearance to make it more eye-catching
-//            configuration.textProperties.font = .boldSystemFont(ofSize: 16)
-//            configuration.textProperties.color = .systemBlue
-//            configuration.directionalLayoutMargins = .init(top: 20.0, leading: 0.0, bottom: 10.0, trailing: 0.0)
-            
-            // Apply the configuration to header view
             headerView.contentConfiguration = configuration
         }
         dataSource.supplementaryViewProvider = { [unowned self]
@@ -134,7 +126,7 @@ extension FilterLabelListViewController: UICollectionViewDelegate {
         case .none:
             break
         }
-        dataSource.collectionView(collectionView, moveItemAt: indexPath, to: IndexPath(row: row - 1, section: section))
+        dataSource.collectionView(collectionView, moveItemAt: indexPath, to: IndexPath(row: row, section: section))
 
 //        navigationController?.popViewController(animated: true)
     }

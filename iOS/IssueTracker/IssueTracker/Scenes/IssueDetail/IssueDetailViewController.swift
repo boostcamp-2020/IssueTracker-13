@@ -49,7 +49,7 @@ class IssueDetailViewController: BaseCollectionViewController<IssueDetailDataSou
 extension IssueDetailViewController {
     
     private func configureNavigationBar() {
-        navigationController?.title = interactor.issue?.title
+        title = interactor.issue?.title
     }
 
     private func configureCollectionView() {
@@ -122,7 +122,7 @@ extension IssueDetailViewController: FloatingPanelControllerDelegate {
 
         // Set a content view controller.
         guard let contentVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "IssueBottomSheetViewController", creator: { (coder) in
-            return IssueBottomSheetViewController(coder: coder, issue: self.issue)
+            return IssueBottomSheetViewController(coder: coder, issue: self.interactor.issue)
         }) as? IssueBottomSheetViewController else { return }
         bottomSheet.set(contentViewController: contentVC)
 

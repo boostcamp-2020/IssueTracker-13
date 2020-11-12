@@ -8,13 +8,14 @@
 import Foundation
 
 protocol FilterLabelListDelegate: class {
-    func didSelect(label: Label)
+    func didSelect(labels: [Label])
 }
 
 protocol FilterLabelListBusinessLogic {
     func fetchLabels(with: [Label])
     func select(label: Label)
     func select(labels: [Label])
+    func reset()
 }
 
 class FilterLabelInteractor: FilterLabelListBusinessLogic {
@@ -35,16 +36,23 @@ class FilterLabelInteractor: FilterLabelListBusinessLogic {
             with.forEach({(label) in
                 self?.labels?.removeAll(where: {$0.title == label.title})
             })
-            self?.viewController?.displayLabelList(with: [.main: self?.labels ?? [], .selected: with])
+            self?.viewController?.displayLabelList(with: [.main: self?.labels?.sorted(by: ({ $0.title ?? "" < $1.title ?? "" })) ?? [],
+                                                          .selected: with.sorted(by: ({ $0.title ?? "" < $1.title ?? "" }))])
         }
     }
     
     func select(label: Label) {
-        delegate?.didSelect(label: label)
+        delegate?.didSelect(labels: [label])
         self.selectedLabels?.append(label)
     }
     
     func select(labels: [Label]) {
-        
+        delegate?.didSelect(labels: labels)
+        labels.forEach({self.selectedLabels?.append($0)})
+    }
+    
+    func reset() {
+        delegate?.didSelect(labels: [])
+        self.selectedLabels = []
     }
 }

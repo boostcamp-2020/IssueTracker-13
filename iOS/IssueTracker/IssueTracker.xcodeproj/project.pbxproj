@@ -34,6 +34,8 @@
 		516BB58F25541E180030AFDD /* MilestoneAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516BB58E25541E180030AFDD /* MilestoneAlertViewController.swift */; };
 		516BB59725542C270030AFDD /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516BB59625542C260030AFDD /* CustomAlertView.swift */; };
 		516BB59C25542C3F0030AFDD /* CustomAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 516BB59B25542C3E0030AFDD /* CustomAlertView.xib */; };
+		51A8053D255CFD130026F050 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8053C255CFD130026F050 /* ButtonWithShadow.swift */; };
+		51A9F6032552715E0004FB52 /* FilterMilestoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F6022552715E0004FB52 /* FilterMilestoneListViewController.swift */; };
 		51A9F608255271990004FB52 /* FilterLabelListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F607255271980004FB52 /* FilterLabelListViewController.swift */; };
 		51A9F610255274180004FB52 /* FilterMilestoneListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F60F255274180004FB52 /* FilterMilestoneListInteractor.swift */; };
 		51A9F62B2552A8240004FB52 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9F62A2552A8240004FB52 /* SignInViewController.swift */; };
@@ -139,6 +141,8 @@
 		516BB58E25541E180030AFDD /* MilestoneAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneAlertViewController.swift; sourceTree = "<group>"; };
 		516BB59625542C260030AFDD /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		516BB59B25542C3E0030AFDD /* CustomAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomAlertView.xib; sourceTree = "<group>"; };
+		51A8053C255CFD130026F050 /* ButtonWithShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithShadow.swift; sourceTree = "<group>"; };
+		51A9F6022552715E0004FB52 /* FilterMilestoneListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMilestoneListViewController.swift; sourceTree = "<group>"; };
 		51A9F607255271980004FB52 /* FilterLabelListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterLabelListViewController.swift; sourceTree = "<group>"; };
 		51A9F60F255274180004FB52 /* FilterMilestoneListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterMilestoneListInteractor.swift; sourceTree = "<group>"; };
 		51A9F62A2552A8240004FB52 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -429,7 +433,7 @@
 		51FB616C255BC41C009701A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				823C10A2255CFCBC00344FB8 /* ButtonWithShadow.swift */,
+				51A8053C255CFD130026F050 /* ButtonWithShadow.swift */,
 				51FB616D255BC43F009701A0 /* CommentCollectionViewCell.swift */,
 				51FB6172255BC475009701A0 /* CommentCollectionReusableView.swift */,
 				51BDC668255CD31D00139FCE /* EditTitleViewController.swift */,

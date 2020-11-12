@@ -38,3 +38,8 @@ extension Issue: Hashable {
     }
     
 }
+
+struct PostIssue {
+    let title: String
+    let comment: String
+}

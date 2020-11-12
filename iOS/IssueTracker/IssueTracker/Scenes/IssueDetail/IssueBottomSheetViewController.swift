@@ -6,7 +6,9 @@
 //
 
 import UIKit
-
+protocol IssueBottomSheetViewControllerDelegate: class {
+    func didTouchAddCommentButton()
+}
 protocol IssueBottomSheetDisplayLogic: class {
     func configureBottomSheet(issue: Issue)
 }
@@ -16,6 +18,7 @@ class IssueBottomSheetViewController: UIViewController {
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var milestone: MilestoneBadgeLabel!
     @IBOutlet weak var labelStackView: UIStackView!
+    weak var delegate: IssueBottomSheetViewControllerDelegate?
     var interactor: IssueBottomSheetInteractor?
     
     init?(coder: NSCoder, issue: Issue?) {
@@ -47,6 +50,9 @@ class IssueBottomSheetViewController: UIViewController {
 //            vc.labels = self.interactor ?.issue?.labels
             vc.interactor.delegate = self.interactor
         }
+    }
+    @IBAction func didTouchAddCommentButton(_ sender: Any) {
+        delegate?.didTouchAddCommentButton()
     }
 }
 

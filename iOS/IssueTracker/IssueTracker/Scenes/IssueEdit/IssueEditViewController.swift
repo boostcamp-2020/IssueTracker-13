@@ -10,7 +10,7 @@ import MarkdownKit
 
 protocol IssueEditDelegate: class {
     //이슈/코멘트 여부는 delegate에서 처리
-    func didTouchSendButton(issueTitleText: String?, issuePreviewText: String?, comment: Comment?)
+    func didTouchSendButton(titleText: String?, previewText: String?, commentID: Int?)
 }
 
 class IssueEditViewController: UIViewController {
@@ -20,8 +20,9 @@ class IssueEditViewController: UIViewController {
     @IBOutlet weak var seperatorView: UIView!
     @IBOutlet weak var textViewBottom: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIBarButtonItem!
-    var issue: Issue?
-    var comment: Comment?
+    var isComment: Bool?
+    var commentDescription: String?
+    var commentID: Int?
     let toolbar: UIToolbar = UIToolbar()
     let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: CGFloat(17)))
     var markdownString = ""
@@ -42,13 +43,15 @@ class IssueEditViewController: UIViewController {
     }
     
     @IBAction func didTouchSendButton(_ sender: Any) {
-        if let comment = comment {
-            delegate?.didTouchSendButton(issueTitleText: nil, issuePreviewText: nil, comment: comment)
-        } else {
+        guard isComment != nil else {
             guard let titleText = titleTextField.text,
                   let previewText = previewTextView.text else { return }
-            delegate?.didTouchSendButton(issueTitleText: titleText, issuePreviewText: previewText, comment: nil)
+            delegate?.didTouchSendButton(titleText: title, previewText: previewText, commentID: nil)
+            dismiss(animated: true, completion: nil)
+            return
         }
+        guard let previewText = previewTextView.text else { return }
+        delegate?.didTouchSendButton(titleText: title, previewText: previewText, commentID: commentID)
         dismiss(animated: true, completion: nil)
     }
     
@@ -58,14 +61,19 @@ class IssueEditViewController: UIViewController {
     }
     
     func configureNavigtaionBarTitle() {
-        if let comment = comment?.description {
-            title = "댓글 수정"
-            titleTextField.isHidden = true
-            seperatorView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
-            sendButton.isEnabled = true
-        } else {
+        guard isComment != nil else {
             title = "새 이슈"
+            return
         }
+        if commentDescription != nil {
+            title = "댓글 수정"
+        } else {
+            title = "댓글 추가"
+        }
+        titleTextField.isHidden = true
+        seperatorView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
+        sendButton.isEnabled = true
+
     }
     
     @IBAction func didSegmentedControlChangeValue(_ sender: UISegmentedControl) {
@@ -118,7 +126,7 @@ class IssueEditViewController: UIViewController {
 
 extension IssueEditViewController: UITextViewDelegate {
     func configureTextViewPlaceholder() {
-        if let comment = comment?.description {
+        if let comment = commentDescription {
             previewTextView.text = comment
             previewTextView.textColor = .label
         } else {

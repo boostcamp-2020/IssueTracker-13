@@ -41,6 +41,7 @@ extension SignInInteractor: SignInBuisnessLogic {
                 var userToken = UserToken()
                 userToken.name = result.name
                 userToken.token = result.token
+                userToken.profile = result.profile
                 self.viewController?.displayIssueViewController()
             case .failure(let error):
                 self.viewController?.displayAlert()

@@ -38,9 +38,11 @@ class IssueDetailViewController: BaseCollectionViewController<IssueDetailDataSou
         if segue.identifier == "ShowIssueEditViewController" {
             let navigationViewController = segue.destination as? UINavigationController
             let viewController = navigationViewController?.viewControllers.first as? IssueEditViewController
+            viewController?.isComment = true
+            viewController?.delegate = interactor
             guard let comment = sender as? Comment else { return }
-            viewController?.comment = comment
-//            viewController?.configure(title: nil, preview: comment.description, mode: .editComment)
+            viewController?.commentDescription = comment.description
+            viewController?.commentID = comment.id
         }
     }
     
@@ -140,11 +142,18 @@ extension IssueDetailViewController: FloatingPanelControllerDelegate {
             return IssueBottomSheetViewController(coder: coder, issue: self.interactor.issue)
         }) as? IssueBottomSheetViewController else { return }
         bottomSheet.set(contentViewController: contentVC)
-
+        contentVC.delegate = self
         // Track a scroll view(or the siblings) in the content view controller.
 //        bottomSheet.track(scrollView: contentVC.tableView)
 
         // Add and show the views managed by the `FloatingPanelController` object to self.view.
         bottomSheet.addPanel(toParent: self)
+    }
+    
+
+}
+extension IssueDetailViewController: IssueBottomSheetViewControllerDelegate {
+    func didTouchAddCommentButton() {
+        self.performSegue(withIdentifier: "ShowIssueEditViewController", sender: nil)
     }
 }

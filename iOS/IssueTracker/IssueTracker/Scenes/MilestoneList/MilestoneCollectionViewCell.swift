@@ -15,14 +15,17 @@ class MilestoneCollectionViewCell: UICollectionViewListCell {
     @IBOutlet weak var closedIssuesLabel: UILabel!
     @IBOutlet weak var percentageLabel: UILabel!
     func configure(with milestone: Milestone) {
+        guard let allIssueCount = milestone.allIssueCount,
+              let closedIssueCount = milestone.closedIssueCount else {return}
         titleLabel.configure(with: milestone.title)
         descriptionLabel.text = milestone.description
         dueDateLabel.text = milestone.dueDate?.toDate()?.toCellString()
-        closedIssuesLabel.text = "\(milestone.allIssueCount ?? 0 - (milestone.closedIssueCount ?? 0)) opened"
-        openedIssuesLabel.text = "\(milestone.closedIssueCount) closed"
-        var percentage = 0
+        
+        closedIssuesLabel.text = "\(allIssueCount - closedIssueCount) opened"
+        openedIssuesLabel.text = "\(closedIssueCount) closed"
+        var percentage: Double = 0
         if milestone.allIssueCount != 0 {
-            percentage = (milestone.closedIssueCount ?? 0) / (milestone.allIssueCount ?? 0) * 100
+            percentage = Double(closedIssueCount) / Double(allIssueCount) * 100.0
         }
         percentageLabel.text = "\(percentage)%"
     }

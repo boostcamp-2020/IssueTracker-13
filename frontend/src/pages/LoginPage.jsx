@@ -72,30 +72,9 @@ const GitHubButton = styled.button`
   cursor: pointer;
 `;
 
-function SignInButton() {
-  let history = useHistory();
-  let auth = useAuth();
-
-  return (
-    <Button onClick={() => {
-      auth.signIn(() => history.push('/'));
-    }}>Sign In</Button>
-  );
-}
-
-function SignUpButton() {
-  let history = useHistory();
-  let auth = useAuth();
-
-  return (
-    <Button onClick={() => {
-      auth.signIn(() => history.push('/'));
-    }}>Sign In</Button>
-  );
-}
-
 export default function LoginPage() {
-  const [redirect, setRedirect] = useState(null);
+  let history = useHistory();
+  let auth = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -103,12 +82,10 @@ export default function LoginPage() {
     console.log(type);
     console.log(event.target);
     if (type === 'SignIn') {
-      await signInWithLocal({ email, password });
-      setRedirect('/go');
+      auth.signIn({ email, password }, () => history.push('/'));
     }
     if (type === 'SignUp') {
-      await signUpWithLocal({ email, password });
-      setRedirect('/go');
+      auth.signUp({ email, password }, () => history.push('/'));
     }
   };
 
@@ -125,7 +102,6 @@ export default function LoginPage() {
 
   return (
     <Page>
-      {redirect && <Redirect to={redirect} />}
       <Title>이슈 트래커</Title>
       <LoginBox>
         <LabelInputContainer>
@@ -137,8 +113,8 @@ export default function LoginPage() {
           <PasswordInput type='password' id='password' value={password} onChange={changeHandler('Password')}></PasswordInput>
         </LabelInputContainer>
         <RowContainer>
-          <SignInButton>로그인</SignInButton>
-          <SignUpButton>회원가입</SignUpButton>
+          <Button onClick={clickHandler('SignIn')}>로그인</Button>
+          <Button onClick={clickHandler('SignUp')}>회원가입</Button>
         </RowContainer>
         <GitHubButton>Sign in with GitHub</GitHubButton>
       </LoginBox>

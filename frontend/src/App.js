@@ -9,6 +9,7 @@ import IssueDetailPage from './pages/IssueDetailPage';
 import LoginPage from './pages/LoginPage';
 
 import Header from './components/Header';
+import { signInWithLocal, signUpWithLocal } from './apis/authAPI';
 
 const authContext = createContext();
 
@@ -18,11 +19,27 @@ export const useAuth = () => {
 
 const jwtAuth = {
   isAuthenticated: false,
-  signIn(callback) {
-    jwtAuth.isAuthenticated = true;
-    setTimeout(callback, 100);
+  async signIn(info, callback) {
+    try {
+      const user = await signInWithLocal(info);
+      jwtAuth.isAuthenticated = true;
+      callback(user);
+    } catch (error) {
+      alert(error);
+      callback(null);
+    }
   },
-  signOut(callback) {
+  async signUp(info, callback) {
+    try {
+      const user = await signUpWithLocal(info);
+      jwtAuth.isAuthenticated = true;
+      callback(user);
+    } catch (error) {
+      alert(error);
+      callback(null);
+    }
+  },
+  async signOut(callback) {
     jwtAuth.isAuthenticated = false;
     setTimeout(callback, 100);
   },
@@ -31,15 +48,15 @@ const jwtAuth = {
 const useProvideAuth = () => {
   const [user, setUser] = useState(null);
 
-  const signIn = (callback) => {
-    return jwtAuth.signIn(() => {
-      setUser('user');
+  const signIn = (info, callback) => {
+    return jwtAuth.signIn(info, (newUser) => {
+      setUser(newUser);
       callback();
     });
   };
 
-  const signOut = (callback) => {
-    return jwtAuth.signOut(() => {
+  const signOut = (info, callback) => {
+    return jwtAuth.signOut(info, () => {
       setUser(null);
       callback();
     });

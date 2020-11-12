@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { Redirect } from 'react-router-dom';
 
 export const signInWithLocal = async ({ email, password }) => {
   const { data } = await axios.post('/api/auth/signIn', { email, password, authType: 'local' });
   if (data.token) {
     storeToken(data.token);
+    return data;
+  } else {
+    throw new Error('login failed');
   }
 };
 
@@ -13,6 +15,7 @@ export const signUpWithLocal = async ({ email, password }) => {
   if (data.token) {
     storeToken(data.token);
   }
+  return data;
 };
 
 export const signInWithGitHub = async () => {

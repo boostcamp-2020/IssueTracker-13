@@ -39,6 +39,9 @@ const signInAsLocal = async (email, password) => {
       isDeleted: false,
     },
   });
+  if (!user) {
+    return { message: 'login failed' };
+  }
   const { id, userName, profile } = user;
   const token = createToken(id);
   return { name: userName, profile, token };

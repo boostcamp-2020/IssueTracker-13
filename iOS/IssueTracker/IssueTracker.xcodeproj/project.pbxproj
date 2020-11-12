@@ -64,6 +64,7 @@
 		820B6323255911A0003FDB5B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B6322255911A0003FDB5B /* EndPoint.swift */; };
 		820B633825593238003FDB5B /* IssueEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B633725593238003FDB5B /* IssueEditViewController.swift */; };
 		820B633E25593E57003FDB5B /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B633D25593E57003FDB5B /* IssueDetailViewController.swift */; };
+		82221DF1255D023500C624DE /* IssueEditWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82221DF0255D023500C624DE /* IssueEditWorker.swift */; };
 		823C10A3255CFCBC00344FB8 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C10A2255CFCBC00344FB8 /* ButtonWithShadow.swift */; };
 		826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F6306255154E80005D669 /* FilterIssueViewController.swift */; };
 		826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */; };
@@ -170,6 +171,7 @@
 		820B6322255911A0003FDB5B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		820B633725593238003FDB5B /* IssueEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEditViewController.swift; sourceTree = "<group>"; };
 		820B633D25593E57003FDB5B /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
+		82221DF0255D023500C624DE /* IssueEditWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEditWorker.swift; sourceTree = "<group>"; };
 		823C10A2255CFCBC00344FB8 /* ButtonWithShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithShadow.swift; sourceTree = "<group>"; };
 		826F6306255154E80005D669 /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
 		826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueInteractor.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				51FB6164255B83E8009701A0 /* IssueDetailInteractor.swift */,
 				51FB615F255B8226009701A0 /* IssueDetailDataSource.swift */,
 				82FA91DC255C4C7900855283 /* IssueBottomSheetInteractor.swift */,
+				82221DF0255D023500C624DE /* IssueEditWorker.swift */,
 				82884CF5255BA69000D51A25 /* IssueBottomSheetViewController.swift */,
 				51FB616C255BC41C009701A0 /* Views */,
 			);
@@ -778,6 +781,7 @@
 				51BDC669255CD31D00139FCE /* EditTitleViewController.swift in Sources */,
 				82B3DC212554520700245FCD /* MilestoneListWorker.swift in Sources */,
 				51A9F62B2552A8240004FB52 /* SignInViewController.swift in Sources */,
+				82221DF1255D023500C624DE /* IssueEditWorker.swift in Sources */,
 				516BB59725542C270030AFDD /* CustomAlertView.swift in Sources */,
 				82CF7CB7254A8B500061121C /* User.swift in Sources */,
 				51C06E09255931F900514696 /* SignInResponse.swift in Sources */,

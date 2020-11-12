@@ -680,6 +680,7 @@ G0Rlc2NyaXB0aW9uA
                     <connections>
                         <outlet property="previewTextView" destination="xaM-oB-Okw" id="881-Y7-G6M"/>
                         <outlet property="sendButton" destination="wc4-Ao-wyw" id="YMF-Ya-Nui"/>
+                        <outlet property="seperatorView" destination="Xyy-xc-8cg" id="btE-ld-Lhz"/>
                         <outlet property="textViewBottom" destination="cff-Th-Ebu" id="nnR-PK-JrY"/>
                         <outlet property="titleTextField" destination="TqX-nA-gwX" id="8bZ-2A-YeH"/>
                     </connections>

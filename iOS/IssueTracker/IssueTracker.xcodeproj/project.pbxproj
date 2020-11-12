@@ -44,6 +44,7 @@
 		51B6D5E52556E00B00325952 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5E22556E00B00325952 /* Date+String.swift */; };
 		51B6D5EA2556EE0000325952 /* UIButton+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5E92556EE0000325952 /* UIButton+UIColor.swift */; };
 		51B6D5F225577B4D00325952 /* LabelAlertInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6D5F125577B4D00325952 /* LabelAlertInteractor.swift */; };
+		51BDC669255CD31D00139FCE /* EditTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDC668255CD31D00139FCE /* EditTitleViewController.swift */; };
 		51C06E042559317400514696 /* SignInRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C06E032559317400514696 /* SignInRequest.swift */; };
 		51C06E09255931F900514696 /* SignInResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C06E08255931F900514696 /* SignInResponse.swift */; };
 		51C95CD22553CFDB00EACB1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C95CD12553CFDB00EACB1C /* API.swift */; };
@@ -149,6 +150,7 @@
 		51B6D5E22556E00B00325952 /* Date+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		51B6D5E92556EE0000325952 /* UIButton+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+UIColor.swift"; sourceTree = "<group>"; };
 		51B6D5F125577B4D00325952 /* LabelAlertInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelAlertInteractor.swift; sourceTree = "<group>"; };
+		51BDC668255CD31D00139FCE /* EditTitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTitleViewController.swift; sourceTree = "<group>"; };
 		51C06E032559317400514696 /* SignInRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInRequest.swift; sourceTree = "<group>"; };
 		51C06E08255931F900514696 /* SignInResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInResponse.swift; sourceTree = "<group>"; };
 		51C95CD12553CFDB00EACB1C /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -430,6 +432,8 @@
 				823C108B255CCB9700344FB8 /* ButtonWithShadow.swift */,
 				51FB616D255BC43F009701A0 /* CommentCollectionViewCell.swift */,
 				51FB6172255BC475009701A0 /* CommentCollectionReusableView.swift */,
+				82884CFA255BB95700D51A25 /* ButtonWithShadow.swift */,
+				51BDC668255CD31D00139FCE /* EditTitleViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -773,6 +777,7 @@
 				51B6D5E52556E00B00325952 /* Date+String.swift in Sources */,
 				51B6D5F225577B4D00325952 /* LabelAlertInteractor.swift in Sources */,
 				82B3DC262554524E00245FCD /* MilestoneDataSource.swift in Sources */,
+				51BDC669255CD31D00139FCE /* EditTitleViewController.swift in Sources */,
 				82B3DC212554520700245FCD /* MilestoneListWorker.swift in Sources */,
 				51A9F62B2552A8240004FB52 /* SignInViewController.swift in Sources */,
 				516BB59725542C270030AFDD /* CustomAlertView.swift in Sources */,

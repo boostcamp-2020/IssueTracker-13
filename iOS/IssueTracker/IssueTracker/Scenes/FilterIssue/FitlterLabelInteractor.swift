@@ -12,28 +12,39 @@ protocol FilterLabelListDelegate: class {
 }
 
 protocol FilterLabelListBusinessLogic {
-    func fetchLabels()
+    func fetchLabels(with: [Label])
     func select(label: Label)
+    func select(labels: [Label])
 }
 
 class FilterLabelInteractor: FilterLabelListBusinessLogic {
-    enum LabelSection {
-        case main
+    enum LabelSection: String {
+        case main = "labels"
+        case selected = "selected"
     }
     
     weak var viewController: FilterLabelListDisplayLogic?
     weak var delegate: FilterLabelListDelegate?
     var worker = FilterWorker()
     var labels: [Label]?
+    var selectedLabels: [Label]?
     
-    func fetchLabels() {
+    func fetchLabels(with: [Label]) {
         worker.fetchLables { [weak self](datasource) in
             self?.labels = datasource.labels
-            self?.viewController?.displayLabelList(with: self?.labels ?? [], at: .main)
+            with.forEach({(label) in
+                self?.labels?.removeAll(where: {$0.title == label.title})
+            })
+            self?.viewController?.displayLabelList(with: [.main: self?.labels ?? [], .selected: with])
         }
     }
     
     func select(label: Label) {
         delegate?.didSelect(label: label)
+        self.selectedLabels?.append(label)
+    }
+    
+    func select(labels: [Label]) {
+        
     }
 }

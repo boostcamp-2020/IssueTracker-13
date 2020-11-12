@@ -82,6 +82,7 @@
 		82CF7CB2254A8B3E0061121C /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB1254A8B3E0061121C /* Label.swift */; };
 		82CF7CB7254A8B500061121C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CB6254A8B500061121C /* User.swift */; };
 		82CF7CC8254AA4FD0061121C /* IssueWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CF7CC7254AA4FD0061121C /* IssueWorker.swift */; };
+		82FA91DD255C4C7900855283 /* IssueBottomSheetInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FA91DC255C4C7900855283 /* IssueBottomSheetInteractor.swift */; };
 		ACFD28902EF2C9069AABC467 /* Pods_IssueTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85C40AA660A2BF0DB0BFF45D /* Pods_IssueTrackerTests.framework */; };
 		FB34BCA23808D41DE61545BE /* Pods_IssueTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFBEEF6F47ED00855F21BFF /* Pods_IssueTracker.framework */; };
 /* End PBXBuildFile section */
@@ -186,6 +187,7 @@
 		82CF7CB1254A8B3E0061121C /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		82CF7CB6254A8B500061121C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		82CF7CC7254AA4FD0061121C /* IssueWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueWorker.swift; sourceTree = "<group>"; };
+		82FA91DC255C4C7900855283 /* IssueBottomSheetInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueBottomSheetInteractor.swift; sourceTree = "<group>"; };
 		85C40AA660A2BF0DB0BFF45D /* Pods_IssueTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5F9DE528E49AF31543BA82 /* Pods-IssueTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker.debug.xcconfig"; path = "Target Support Files/Pods-IssueTracker/Pods-IssueTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		BED7711D8407FDAFD2F3FE3E /* Pods-IssueTracker-IssueTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTracker-IssueTrackerUITests.release.xcconfig"; path = "Target Support Files/Pods-IssueTracker-IssueTrackerUITests/Pods-IssueTracker-IssueTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				51FB615A255B81F9009701A0 /* IssueDetailWorker.swift */,
 				51FB6164255B83E8009701A0 /* IssueDetailInteractor.swift */,
 				51FB615F255B8226009701A0 /* IssueDetailDataSource.swift */,
+				82FA91DC255C4C7900855283 /* IssueBottomSheetInteractor.swift */,
 				82884CF5255BA69000D51A25 /* IssueBottomSheetViewController.swift */,
 				51FB616C255BC41C009701A0 /* Views */,
 			);
@@ -810,6 +813,7 @@
 				8298BD642552758400BE3623 /* FilterMilestoneListViewController.swift in Sources */,
 				51326F14254971FF00C0C273 /* Issue.swift in Sources */,
 				5131B5342559472C003CD741 /* UserInfo.swift in Sources */,
+				82FA91DD255C4C7900855283 /* IssueBottomSheetInteractor.swift in Sources */,
 				82B3DC0D2554209700245FCD /* LabelListInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

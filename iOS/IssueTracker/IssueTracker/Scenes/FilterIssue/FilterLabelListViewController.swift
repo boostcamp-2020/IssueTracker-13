@@ -8,27 +8,74 @@
 import UIKit
 
 protocol FilterLabelListDisplayLogic: class {
-    func displayLabelList(with: [Label], at: FilterLabelInteractor.LabelSection)
+    func displayLabelList(with: [FilterLabelInteractor.LabelSection: [Label]])
 }
 
 class FilterLabelListViewController: BaseCollectionViewController<FilterLabelInteractor.LabelSection, Label> {
-    @IBOutlet weak var labelCollectionView: UICollectionView!
+    enum Mode {
+        case filter
+        case edit
+    }
+    @IBAction func didTouchDoneButton(_ sender: UIBarButtonItem) {
+        let rows = dataSource.collectionView(labelCollectionView, numberOfItemsInSection: 0)
+        let labels = (0...rows).compactMap({dataSource.itemIdentifier(for: IndexPath(row: $0, section: 0))})
+        guard let mode = self.mode else { return }
+        if mode == .edit {
+            interactor.select(labels: labels)
+        } else {
+            guard let label = labels.first else { return }
+            interactor.select(label: label)
+        }
+        navigationController?.popViewController(animated: true)
+    }
     
+    @IBOutlet weak var labelCollectionView: UICollectionView!
+    var labels: [Label]?
     let interactor = FilterLabelInteractor()
-
+    var mode: Mode?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         interactor.viewController = self
-        interactor.fetchLabels()
+        interactor.fetchLabels(with: self.labels ?? [])
     }
 
     private func configureCollectionView() {
         configureDataSource(collectionView: labelCollectionView,
                             cellProvider: cellProvider(collectionView:indexPath:label:))
-        let configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+       
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.headerMode = .supplementary
         labelCollectionView.collectionViewLayout = createLayout(using: configuration)
         labelCollectionView.delegate = self
+        let headerRegistration = UICollectionView.SupplementaryRegistration
+        <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) {
+            [unowned self] (headerView, elementKind, indexPath) in
+            
+            // Obtain header item using index path
+            let headerItem = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            
+            // Configure header view content based on headerItem
+            var configuration = headerView.defaultContentConfiguration()
+            configuration.text = headerItem.rawValue
+            
+            // Customize header appearance to make it more eye-catching
+//            configuration.textProperties.font = .boldSystemFont(ofSize: 16)
+//            configuration.textProperties.color = .systemBlue
+//            configuration.directionalLayoutMargins = .init(top: 20.0, leading: 0.0, bottom: 10.0, trailing: 0.0)
+            
+            // Apply the configuration to header view
+            headerView.contentConfiguration = configuration
+        }
+        dataSource.supplementaryViewProvider = { [unowned self]
+            (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+            if elementKind == UICollectionView.elementKindSectionHeader {
+                return self.labelCollectionView.dequeueConfiguredReusableSupplementary(
+                    using: headerRegistration, for: indexPath)
+            }
+            return nil
+        }
     }
 
     private func configureCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, Label> {
@@ -58,10 +105,11 @@ class FilterLabelListViewController: BaseCollectionViewController<FilterLabelInt
 }
 
 extension FilterLabelListViewController: FilterLabelListDisplayLogic {
-    func displayLabelList(with labels: [Label], at section: FilterLabelInteractor.LabelSection) {
+    func displayLabelList(with sections: [FilterLabelInteractor.LabelSection: [Label]]) {
         var snapshot = Snapshot()
-        snapshot.appendSections([section])
-        snapshot.appendItems(labels, toSection: section)
+        snapshot.appendSections([.selected, .main])
+        snapshot.appendItems(sections[.selected] ?? [], toSection: .selected)
+        snapshot.appendItems(sections[.main] ?? [], toSection: .main)
         dataSource.apply(snapshot)
     }
     
@@ -70,7 +118,24 @@ extension FilterLabelListViewController: FilterLabelListDisplayLogic {
 extension FilterLabelListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let label = dataSource.itemIdentifier(for: indexPath) else { return }
-        interactor.select(label: label)
-        navigationController?.popViewController(animated: true)
+        let section = indexPath.section == 1 ? 0 : 1
+        let row = dataSource.collectionView(collectionView, numberOfItemsInSection: section)
+        
+        switch self.mode {
+        case .filter:
+            if section == 0 && row == 1 {
+                let toRow = dataSource.collectionView(collectionView, numberOfItemsInSection: 1)
+                dataSource.collectionView(collectionView, moveItemAt: IndexPath(row: 0, section: 0), to: IndexPath(row: toRow, section: 1))
+            }
+//            interactor.select(label: label)
+        case .edit:
+            break
+
+        case .none:
+            break
+        }
+        dataSource.collectionView(collectionView, moveItemAt: indexPath, to: IndexPath(row: row - 1, section: section))
+
+//        navigationController?.popViewController(animated: true)
     }
 }

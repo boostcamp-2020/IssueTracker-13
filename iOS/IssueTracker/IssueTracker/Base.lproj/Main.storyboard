@@ -1186,7 +1186,7 @@ G0Rlc2NyaXB0aW9uA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ReW-Pk-Lio">
-                                <rect key="frame" x="0.0" y="108" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u5m-y9-7qn">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1206,7 +1206,13 @@ G0Rlc2NyaXB0aW9uA
                             <constraint firstItem="ReW-Pk-Lio" firstAttribute="top" secondItem="3bD-c1-FfR" secondAttribute="top" id="bsW-GJ-47F"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="레이블" id="iSq-9V-vHg"/>
+                    <navigationItem key="navigationItem" title="레이블" id="iSq-9V-vHg">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="9gC-U4-taE">
+                            <connections>
+                                <action selector="didTouchDoneButton:" destination="qgV-Aj-uCz" id="75F-4c-cIE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="labelCollectionView" destination="ReW-Pk-Lio" id="yUq-q3-seH"/>
                     </connections>
@@ -1281,6 +1287,9 @@ G0Rlc2NyaXB0aW9uA
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CeC-Lw-1rm">
                                 <rect key="frame" x="364" y="364.5" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
+                                <connections>
+                                    <segue destination="qgV-Aj-uCz" kind="show" identifier="showLabelEdit" id="rZY-Rf-pLE"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="WQk-9d-dI8">
                                 <rect key="frame" x="20" y="206" width="80" height="77.5"/>
@@ -1331,6 +1340,9 @@ G0Rlc2NyaXB0aW9uA
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BD7-A4-2HR">
                                 <rect key="frame" x="364" y="462" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
+                                <connections>
+                                    <segue destination="jP9-w6-KkU" kind="show" id="6iA-XM-8b2"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mc0-YG-Fec">
                                 <rect key="frame" x="20" y="578.5" width="374" height="0.5"/>
@@ -1401,7 +1413,7 @@ G0Rlc2NyaXB0aW9uA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AAw-yV-kPc">
-                                <rect key="frame" x="0.0" y="108" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="daG-cY-87Z">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1688,6 +1700,8 @@ G0Rlc2NyaXB0aW9uA
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Gq2-Tn-Cta"/>
+        <segue reference="6iA-XM-8b2"/>
+        <segue reference="rZY-Rf-pLE"/>
         <segue reference="mTX-Lq-j4E"/>
     </inferredMetricsTieBreakers>
     <resources>

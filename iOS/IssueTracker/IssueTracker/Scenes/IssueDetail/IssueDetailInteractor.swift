@@ -48,7 +48,7 @@ extension IssueDetailInteractor: IssueDetailBuisnessLogic {
     
     func getCurrentUser() -> User {
         let userToken = UserToken()
-        return User(userName: userToken.name, profile: userToken.profile)
+        return User(id: nil, userName: userToken.name, profile: userToken.profile)
     }
 }
 

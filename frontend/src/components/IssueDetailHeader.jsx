@@ -70,7 +70,7 @@ const isEmpty = (param) => {
 };
 
 const IssueDetailHeader = () => {
-  const { issueDetail, dispatch } = useContext(IssueDetailContext);
+  const { issueDetail } = useContext(IssueDetailContext);
   const date = !isEmpty(issueDetail) && issueDetail.createdAt.split('T')[0];
   return (
     <>

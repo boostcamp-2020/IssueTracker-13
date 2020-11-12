@@ -31,6 +31,7 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
+        interactor.fetchIssues(with: interactor.filter)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,6 +45,11 @@ class IssueListViewController: BaseCollectionViewController<IssueDataSource.Sect
             let viewController = navigationViewController?.viewControllers.first as? FilterIssueViewController
             viewController?.interactor.delegate = self.interactor
             viewController?.interactor.filter = self.interactor.filter
+        } else if segue.identifier == "ShowIssueEditViewController" {
+            let navigationViewController = segue.destination as? UINavigationController
+            let viewController = navigationViewController?.viewControllers.first as? IssueEditViewController
+            viewController?.isComment = true
+//            viewController?.delegate = interactor
         }
         
     }
@@ -218,7 +224,7 @@ extension IssueListViewController: IssueListDisplayLogic {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
         snapshot.appendItems(issues, toSection: section)
-        dataSource.apply(snapshot)
+        dataSource.apply(snapshot, animatingDifferences: false)
         refreshControl.endRefreshing()
     }
     

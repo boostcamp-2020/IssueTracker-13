@@ -39,6 +39,7 @@ router.post('/', async (req, res, next) => {
     await addIssue(newIssue);
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
+    console.log(error);
     next(createError(400));
   }
 });

@@ -48,8 +48,25 @@ class API {
             }
     }
     
-    func put<T: Codable>(data: T, to endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
-        AF.request(endpoint.path, method: .put, parameters: data, headers: headers)
+    func put<T: Codable>(at id: String = "", data: T, to endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
+        guard let encoded = (endpoint.path + (id.isEmpty ? "" : "/\(id)")).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
+        guard let url = URL(string: encoded) else { return }
+        AF.request(url, method: .put, parameters: data, headers: headers)
+            .validate()
+            .responseDecodable(of: Response.self) { (response) in
+                switch response.result {
+                case .success(let result):
+                    completion(.success(result.message))
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+    }
+    
+    func put<T>(at id: String = "", data: T, to endpoint: EndPoint, completion : @escaping (Result<String, Error>) -> Void) {
+        guard let encoded = (endpoint.path + (id.isEmpty ? "" : "/\(id)")).addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed) else { return }
+        guard let url = URL(string: encoded) else { return }
+        AF.request(url, method: .put, parameters: data as? Parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseDecodable(of: Response.self) { (response) in
                 switch response.result {

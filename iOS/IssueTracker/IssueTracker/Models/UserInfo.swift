@@ -30,4 +30,5 @@ struct UserInfo {
 struct UserToken {
     @UserInfo(key: "name") var name: String
     @UserInfo(key: "token") var token: String
+    @UserInfo(key: "profile") var profile: String
 }

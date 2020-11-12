@@ -21,6 +21,8 @@ class FilterUserListViewController: BaseCollectionViewController<FilterUserListI
         interactor.viewController = self
         configureCollectionView()
         interactor.fetchUsers()
+        guard let userMode = interactor.userMode else { return }
+        title = userMode.rawValue
     }
     
     private func configureCollectionView() {

@@ -103,28 +103,28 @@ const addIssue = async (newIssue) => {
     isDeleted: false,
   });
 
-  const comment = await Comment.create({
-    description: issue.preview,
-    userId: issue.authorId,
-    issueId: issue.id
-  });
-
+  const author = await User.findOne({ where: newIssue.authorId });
+  const comment = await Comment.create({ description: newIssue.comment });
+  await comment.setUser(author);
   await comment.setIssue(issue);
 
-  const user = await User.findOne({ where: { id: issue.authorId } });
-  await comment.setUser(user);
+  if (newIssue.Assignee !== undefined) {
+    const assigneeIds = newIssue.Assignee.map((user) => user.id);
+    const assignees = await User.findAll({ where: { id: assigneeIds } });
+    await issue.setAssignee(assignees);
+  }
 
-  const assigneeIds = newIssue.Assignee.map((user) => user.id);
-  const assignees = await User.findAll({ where: { id: assigneeIds } });
-  await issue.setAssignee(assignees);
+  if (newIssue.Labels !== undefined) {
+    const labelIds = newIssue.Labels.map((label) => label.id);
+    const labels = await Label.findAll({ where: { id: labelIds } });
+    await issue.setLabels(labels);
+  }
 
-  const labelIds = newIssue.Labels.map((label) => label.id);
-  const labels = await Label.findAll({ where: { id: labelIds } });
-  await issue.setLabels(labels);
-
-  const milestoneId = newIssue.Milestone.id;
-  const milestone = await Milestone.findOne({ where: { id: milestoneId } });
-  await issue.setMilestone(milestone);
+  if (newIssue.Milestone !== undefined) {
+    const milestoneId = newIssue.Milestone.id;
+    const milestone = await Milestone.findOne({ where: { id: milestoneId } });
+    await issue.setMilestone(milestone);
+  }
 };
 
 const updateIssues = async (modifiedContents) => {
@@ -142,20 +142,32 @@ const updateIssue = async (modifiedContents) => {
 
   const issue = await Issue.findOne({ where: { id } });
 
-  const assigneeIds = modifiedContents.Assignee.map((user) => user.id);
-  const assignees = await User.findAll({ where: { id: assigneeIds } });
-  await issue.setAssignee(assignees);
+  if (modifiedContents.Assignee !== undefined) {
+    const assigneeIds = modifiedContents.Assignee.map((user) => user.id);
+    const assignees = await User.findAll({ where: { id: assigneeIds } });
+    await issue.setAssignee(assignees);
+  }
 
-  const labelIds = modifiedContents.Labels.map((label) => label.id);
-  const labels = await Label.findAll({ where: { id: labelIds } });
-  await issue.setLabels(labels);
+  if (modifiedContents.Labels !== undefined) {
+    const labelIds = modifiedContents.Labels.map((label) => label.id);
+    const labels = await Label.findAll({ where: { id: labelIds } });
+    await issue.setLabels(labels);
+  }
 
-  const milestoneId = modifiedContents.Milestone.id;
-  const milestone = await Milestone.findOne({ where: { id: milestoneId } });
-  await issue.setMilestone(milestone);
+  if (modifiedContents.Milestone !== undefined) {
+    const milestoneId = modifiedContents.Milestone.id;
+    const milestone = await Milestone.findOne({ where: { id: milestoneId } });
+    await issue.setMilestone(milestone);
+  }
 
-  issue.title = modifiedContents.title;
-  issue.isOpen = modifiedContents.isOpen;
+  if (modifiedContents.title !== undefined) {
+    issue.title = modifiedContents.title;
+  }
+
+  if (modifiedContents.isOpen !== undefined) {
+    issue.isOpen = modifiedContents.isOpen;
+  }
+
   await issue.save();
 };
 

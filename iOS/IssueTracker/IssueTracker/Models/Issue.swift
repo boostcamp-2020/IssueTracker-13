@@ -11,7 +11,7 @@ struct Issue: Codable {
     let id: Int
     let title: String
     let preview: String
-    let milestone: Milestone
+    var milestone: Milestone?
     var labels: [Label]
     let author: User
     let assignees: [User]
@@ -37,4 +37,9 @@ extension Issue: Hashable {
         hasher.combine(preview)
     }
     
+}
+
+struct PostIssue {
+    let title: String
+    let comment: String
 }

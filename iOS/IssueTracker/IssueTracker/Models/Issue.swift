@@ -11,7 +11,7 @@ struct Issue: Codable {
     let id: Int
     let title: String
     let preview: String
-    var milestone: Milestone
+    var milestone: Milestone?
     var labels: [Label]
     let author: User
     let assignees: [User]

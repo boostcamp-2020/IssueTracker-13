@@ -1336,7 +1336,7 @@ G0Rlc2NyaXB0aW9uA
                                 <rect key="frame" x="364" y="415" width="30" height="30"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
-                                    <segue destination="jP9-w6-KkU" kind="show" identifier="showMilestoneEdit" id="6iA-XM-8b2"/>
+                                    <segue destination="jP9-w6-KkU" kind="show" identifier="showMilestoneEdit" id="v4V-NR-Ugl"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mc0-YG-Fec">
@@ -1448,7 +1448,13 @@ G0Rlc2NyaXB0aW9uA
                             <constraint firstItem="AAw-yV-kPc" firstAttribute="top" secondItem="4O8-BU-phr" secondAttribute="top" id="k6m-Jf-mOm"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="마일스톤" id="Eyd-bS-v17"/>
+                    <navigationItem key="navigationItem" title="마일스톤" id="Eyd-bS-v17">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="5UE-S9-kJi">
+                            <connections>
+                                <action selector="didTouchDoneButton:" destination="jP9-w6-KkU" id="0ki-In-aEJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="milestoneCollectionView" destination="AAw-yV-kPc" id="NxH-zI-fsj"/>
                     </connections>
@@ -1715,7 +1721,7 @@ G0Rlc2NyaXB0aW9uA
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Gq2-Tn-Cta"/>
-        <segue reference="6iA-XM-8b2"/>
+        <segue reference="v4V-NR-Ugl"/>
         <segue reference="rZY-Rf-pLE"/>
         <segue reference="mTX-Lq-j4E"/>
     </inferredMetricsTieBreakers>

@@ -43,6 +43,7 @@ class FilterIssueViewController: UITableViewController {
         case "showFilterMilestoneList":
             guard let filterMilestoneVC = segue.destination as? FilterMilestoneListViewController else { return }
             filterMilestoneVC.interactor.delegate = interactor
+            filterMilestoneVC.milestone = interactor.filter?.milestone
         case "showFilterLabelList":
             guard let vc = segue.destination as? FilterLabelListViewController else { return }
             vc.interactor.delegate = interactor
@@ -64,7 +65,7 @@ class FilterIssueViewController: UITableViewController {
 
         didSelectDetailCondition(at: IndexPath(row: 0, section: 1), with: filter.author ?? "")
         didSelectDetailCondition(at: IndexPath(row: 1, section: 1), with: filter.label?.title ?? "")
-        didSelectDetailCondition(at: IndexPath(row: 2, section: 1), with: filter.milestone ?? "")
+        didSelectDetailCondition(at: IndexPath(row: 2, section: 1), with: filter.milestone?.title ?? "")
         didSelectDetailCondition(at: IndexPath(row: 3, section: 1), with: filter.assignee ?? "")
     }
     

@@ -45,9 +45,9 @@ extension FilterIssueInteractor: FilterUserListDelegate {
 
 extension FilterIssueInteractor: FilterMilestoneListDelegate {
     
-    func didSelect(milestone: Milestone) {
-        self.filter?.milestone = milestone.title
-        viewController?.didSelectDetailCondition(at: IndexPath(row: 2, section: 1), with: milestone.title)
+    func didSelect(milestone: Milestone?) {
+        self.filter?.milestone = milestone
+        viewController?.didSelectDetailCondition(at: IndexPath(row: 2, section: 1), with: milestone?.title ?? "")
     }
     
 }

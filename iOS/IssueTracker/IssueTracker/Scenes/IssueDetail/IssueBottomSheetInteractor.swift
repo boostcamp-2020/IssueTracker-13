@@ -31,8 +31,7 @@ extension IssueBottomSheetInteractor: FilterLabelListDelegate {
 }
 
 extension IssueBottomSheetInteractor: FilterMilestoneListDelegate {
-    func didSelect(milestone: Milestone) {
-        issue?.milestone = milestone
+    func didSelect(milestone: Milestone?) {
         issue?.milestone = milestone
         guard let issue = self.issue else { return }
         vc?.configureBottomSheet(issue: issue)

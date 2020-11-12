@@ -54,7 +54,7 @@ extension IssueBottomSheetViewController: IssueBottomSheetDisplayLogic {
     func configureBottomSheet(issue: Issue) {
         self.userNameLabel.text = issue.author.userName
         self.userProfileImageView.loadImageUsingCache(with: issue.author.profile)
-        self.milestone.configure(with: issue.milestone.title)
+        self.milestone.configure(with: issue.milestone?.title ?? "")
         self.labelStackView.subviews.forEach({$0.removeFromSuperview()})
         issue.labels.forEach { (label) in
             let newLabel = LabelBadgeLabel()

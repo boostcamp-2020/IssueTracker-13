@@ -10,7 +10,7 @@ import Foundation
 struct Filter {
     var author: String?
     var assignee: String?
-    var milestone: String?
+    var milestone: Milestone?
     var label: Label?
     var isOpen: Bool
     var commentator: String?
@@ -31,7 +31,7 @@ struct Filter {
             query += "label=\(label.title ?? "")&"
         }
         if let milestone = milestone {
-            query += "milestone=\(milestone)&"
+            query += "milestone=\(milestone.title)&"
         }
         if let commentor = commentator {
             query += "commentator=\(commentor)&"
@@ -45,18 +45,27 @@ struct Filter {
     
     mutating func chagne(indexPath: IndexPath) {
         self.selectedIndexPath = indexPath
-        self.isOpen = true
-        self.author = nil
-        self.assignee = nil
-        self.commentator = nil
+
         switch indexPath.row {
         case 0:
             self.isOpen = true
         case 1:
+            self.isOpen = true
+            self.author = nil
+            self.assignee = nil
+            self.commentator = nil
             self.author = UserToken().name
         case 2:
+            self.isOpen = true
+            self.author = nil
+            self.assignee = nil
+            self.commentator = nil
             self.assignee = UserToken().name
         case 3:
+            self.isOpen = true
+            self.author = nil
+            self.assignee = nil
+            self.commentator = nil
             self.commentator = UserToken().name
         default:
             self.isOpen = false

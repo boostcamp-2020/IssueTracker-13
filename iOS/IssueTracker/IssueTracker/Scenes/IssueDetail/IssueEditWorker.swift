@@ -12,7 +12,7 @@ class IssueEditWorker {
         let data: [String: Any] = ["id": issue.id,
                     "title": issue.title,
                     "isOpen": issue.isOpen,
-                    "Milestone": ["id": issue.milestone.id] ,
+                    "Milestone": ["id": issue.milestone?.id] ,
                     "Assignee": [["id": 1]], // 수정 해야함
                     "Labels": issue.labels.map({ ["id": $0.id] })]
 

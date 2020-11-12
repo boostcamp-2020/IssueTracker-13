@@ -19,8 +19,6 @@ const Sidebar = styled.div`
 const callbackReducer = (callback) => (issue, { type, key, data }) => {
   let newIssue = { ...issue };
 
-  console.log({ type, key, data });
-
   switch (type) {
     case 'setIssue':
       newIssue = data;
@@ -51,7 +49,6 @@ const callbackReducer = (callback) => (issue, { type, key, data }) => {
   }
 
   callback(newIssue);
-  console.log('new issue: ', newIssue);
   return newIssue;
 };
 

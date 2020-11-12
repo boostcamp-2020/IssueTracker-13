@@ -43,15 +43,16 @@ class IssueEditViewController: UIViewController {
     }
     
     @IBAction func didTouchSendButton(_ sender: Any) {
-        guard isComment != nil else {
+        guard let isComment = isComment else { return }
+        if isComment == false {
             guard let titleText = titleTextField.text,
                   let previewText = previewTextView.text else { return }
-            delegate?.didTouchSendButton(titleText: title, previewText: previewText, commentID: nil)
+            delegate?.didTouchSendButton(titleText: titleText, previewText: previewText, commentID: nil)
             dismiss(animated: true, completion: nil)
             return
         }
         guard let previewText = previewTextView.text else { return }
-        delegate?.didTouchSendButton(titleText: title, previewText: previewText, commentID: commentID)
+        delegate?.didTouchSendButton(titleText: nil, previewText: previewText, commentID: commentID)
         dismiss(animated: true, completion: nil)
     }
     
@@ -61,7 +62,8 @@ class IssueEditViewController: UIViewController {
     }
     
     func configureNavigtaionBarTitle() {
-        guard isComment != nil else {
+        guard let isComment = isComment else { return }
+        guard isComment == true else {
             title = "새 이슈"
             return
         }

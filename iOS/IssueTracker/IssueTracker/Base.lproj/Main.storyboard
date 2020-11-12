@@ -135,7 +135,8 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0la-zU-iAv" kind="presentation" identifier="" id="Gq2-Tn-Cta"/>
+                                    <action selector="didTouchAddIssueButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5d9-dk-LkO"/>
+                                    <segue destination="0la-zU-iAv" kind="presentation" identifier="showEditViewController" id="Gq2-Tn-Cta"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1723,12 +1724,11 @@ G0Rlc2NyaXB0aW9uA
             <point key="canvasLocation" x="4440.579710144928" y="835.71428571428567"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>        
+    <inferredMetricsTieBreakers>
         <segue reference="Gq2-Tn-Cta"/>
         <segue reference="v4V-NR-Ugl"/>
         <segue reference="rZY-Rf-pLE"/>
         <segue reference="mTX-Lq-j4E"/>
-        
     </inferredMetricsTieBreakers>
     <resources>
         <image name="1.circle" catalog="system" width="128" height="121"/>

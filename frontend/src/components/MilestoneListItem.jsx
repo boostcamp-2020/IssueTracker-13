@@ -1,6 +1,10 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
+
+import { getMilestones, closeMilestone, deleteMilestone, openMilestone } from '../apis/milestonesAPI';
 
 const ListItem = styled.div`
   display: flex;
@@ -56,6 +60,13 @@ const Button = styled.button`
   `}
 `;
 
+const linkStyle = {
+  fontSize: '14px',
+  backgroundColor: 'transparent',
+  color: '#0366D6',
+  textDecoration: 'none',
+};
+
 function NumberAndDesc({ number, desc }) {
   return (
     <span>
@@ -65,11 +76,26 @@ function NumberAndDesc({ number, desc }) {
   );
 }
 
-export default function MilestoneListItem({ milestone }) {
+export default function MilestoneListItem({ milestone, setMilestones }) {
   const { closedIssueCount, allIssueCount } = milestone;
   const openIssueCount = allIssueCount - closedIssueCount;
-  const completionRate = Math.round(closedIssueCount / allIssueCount * 100);
+  const completionRate = allIssueCount === 0 ? 0 : Math.round(closedIssueCount / allIssueCount * 100);
   const dueBy = new Date(milestone.dueDate).toDateString();
+  const { isOpen } = milestone;
+
+  const clickHandler = (type) => async () => {
+    if (type === 'Open') {
+      await openMilestone(milestone.id);
+    }
+    if (type === 'Close') {
+      await closeMilestone(milestone.id);
+    }
+    if (type === 'Delete') {
+      await deleteMilestone(milestone.id);
+    }
+    const newMilestones = await getMilestones();
+    setMilestones(newMilestones);
+  };
 
   return (
     <ListItem>
@@ -86,9 +112,10 @@ export default function MilestoneListItem({ milestone }) {
           <NumberAndDesc number={closedIssueCount} desc='Closed' />
         </BarContainer>
         <BarContainer>
-          <Button>Edit</Button>
-          <Button>Close</Button>
-          <Button isDelete>Delete</Button>
+          <Button><Link to={`/milestones/${milestone.id}/edit`} style={linkStyle}>Edit</Link></Button>
+          {!isOpen && <Button onClick={clickHandler('Open')}>Open</Button>}
+          {!!isOpen && <Button onClick={clickHandler('Close')}>Close</Button>}
+          <Button isDelete onClick={clickHandler('Delete')}>Delete</Button>
         </BarContainer>
       </InlineBox>
     </ListItem>

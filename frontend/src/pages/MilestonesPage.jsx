@@ -26,7 +26,7 @@ export default function MilestonesPage() {
 
   return (
     <Page>
-      <LabelMilestoneHeader/>
+      <LabelMilestoneHeader type='milestone'/>
       <MilestoneListNav milestones={ milestones } setIsOpen={ setIsOpen }/>
       <MilestoneList milestones={ milestones } setMilestones={ setMilestones } isOpen={ isOpen }/>
     </Page>

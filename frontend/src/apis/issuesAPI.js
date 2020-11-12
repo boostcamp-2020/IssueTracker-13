@@ -23,8 +23,12 @@ export const getIssueDetail = async (id) => {
 };
 
 export const addIssue = async (issue) => {
-  const { data } = await axios.post('/api/issues', issue);
-  return data;
+  try {
+    const { data } = await axios.post('/api/issues', issue);
+    return data;
+  } catch (error) {
+    return 'fail';
+  }
 };
 
 export const updateIssue = async (issue) => {

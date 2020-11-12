@@ -79,8 +79,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
 
   const clickHandler = (type) => async (event) => {
-    console.log(type);
-    console.log(event.target);
     if (type === 'SignIn') {
       auth.signIn({ email, password }, () => history.push('/'));
     }

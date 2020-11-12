@@ -32,10 +32,10 @@ extension FilterIssueInteractor: FilterUserListDelegate {
     func didSelect(user: User, mode: FilterUserListInteractor.UserMode) {
         switch mode {
         case .author:
-            self.filter?.author = user
+            self.filter?.author = user.userName
             viewController?.didSelectDetailCondition(at: IndexPath(row: 0, section: 1), with: user.userName)
         case .assignee:
-            self.filter?.assignee = user
+            self.filter?.assignee = user.userName
             viewController?.didSelectDetailCondition(at: IndexPath(row: 3, section: 1), with: user.userName)
 
         }

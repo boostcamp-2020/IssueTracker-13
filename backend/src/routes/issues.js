@@ -8,6 +8,7 @@ const {
   updateIssues,
   deleteIssues,
   getIssue,
+  updateIssue,
 } = require('../services/issueService');
 
 const SUCCESS_MESSAGE = { message: 'success' };
@@ -38,6 +39,17 @@ router.post('/', async (req, res, next) => {
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
     next(createError(400));
+  }
+});
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const modifiedContents = req.body;
+    await updateIssue(modifiedContents);
+    res.status(200).json(SUCCESS_MESSAGE);
+  } catch (error) {
+    console.log(error);
+    next(createError(500));
   }
 });
 

@@ -21,3 +21,9 @@ export const getIssueDetail = async (id) => {
   const { data } = await axios.get(`/api/issues/${id}`);
   return data;
 };
+
+export const updateIssue = async (issue) => {
+  console.log('updating issue', issue);
+  const { message } = await axios.put(`/api/issues/${issue.id}`, issue);
+  return message;
+};

@@ -2,7 +2,7 @@ const { User } = require('../db/models');
 
 const getUsers = async () => {
   const users = await User.findAll({
-    attributes: ['userName', 'profile'],
+    attributes: ['id', 'userName', 'profile'],
     where: {
       isDeleted: false,
     },

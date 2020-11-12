@@ -103,6 +103,17 @@ const addIssue = async (newIssue) => {
     isDeleted: false,
   });
 
+  const comment = await Comment.create({
+    description: issue.preview,
+    userId: issue.authorId,
+    issueId: issue.id
+  });
+
+  await comment.setIssue(issue);
+
+  const user = await User.findOne({ where: { id: issue.authorId } });
+  await comment.setUser(user);
+
   const assigneeIds = newIssue.Assignee.map((user) => user.id);
   const assignees = await User.findAll({ where: { id: assigneeIds } });
   await issue.setAssignee(assignees);

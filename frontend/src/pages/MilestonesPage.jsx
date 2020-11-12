@@ -12,6 +12,7 @@ const Page = styled.div`
 `;
 
 export default function MilestonesPage() {
+  const [isOpen, setIsOpen] = useState(true);
   const [milestones, setMilestones] = useState([]);
 
   useEffect(() => {
@@ -21,13 +22,13 @@ export default function MilestonesPage() {
     };
 
     fetchSetMilestones();
-  }, []);
+  }, [setIsOpen]);
 
   return (
     <Page>
       <LabelMilestoneHeader/>
-      <MilestoneListNav milestones={ milestones }/>
-      <MilestoneList milestones={ milestones }/>
+      <MilestoneListNav milestones={ milestones } setIsOpen={ setIsOpen }/>
+      <MilestoneList milestones={ milestones } setMilestones={ setMilestones } isOpen={ isOpen }/>
     </Page>
   );
 }

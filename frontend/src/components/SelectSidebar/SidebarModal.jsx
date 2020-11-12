@@ -35,10 +35,7 @@ export default function SidebarModal ({ modalType, title: modalTitle, contents =
   const { dispatch } = useContext(IssueContext);
 
   const toggleAssignee = (id) => {
-    console.log('id: ', id, typeof (id));
-    console.log('assignees: ', contents);
     const data = contents.find((user) => user.id === id);
-    console.log('data', data);
     dispatch({ type: 'toggleAssignee', key: id, data });
   };
 
@@ -53,8 +50,6 @@ export default function SidebarModal ({ modalType, title: modalTitle, contents =
   };
 
   const clickHandler = (event) => {
-    console.log('modalType: ', modalType);
-    console.log('clicked');
     const id = parseInt(event.target.dataset.id);
 
     if (modalType === 'Assignees') {

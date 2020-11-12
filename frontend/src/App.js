@@ -55,6 +55,13 @@ const useProvideAuth = () => {
     });
   };
 
+  const signUp = (info, callback) => {
+    return jwtAuth.signUp(info, (newUser) => {
+      setUser(newUser);
+      callback();
+    });
+  };
+
   const signOut = (info, callback) => {
     return jwtAuth.signOut(info, () => {
       setUser(null);
@@ -62,7 +69,7 @@ const useProvideAuth = () => {
     });
   };
 
-  return { user, signIn, signOut };
+  return { user, signIn, signUp, signOut };
 };
 
 function ProvideAuth({ children }) {

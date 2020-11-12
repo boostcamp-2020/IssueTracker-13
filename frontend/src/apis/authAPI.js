@@ -14,8 +14,10 @@ export const signUpWithLocal = async ({ email, password }) => {
   const { data } = await axios.post('/api/auth/signUp', { email, password, authType: 'local' });
   if (data.token) {
     storeToken(data.token);
+    return data;
+  } else {
+    throw new Error('singUp failed');
   }
-  return data;
 };
 
 export const signInWithGitHub = async () => {

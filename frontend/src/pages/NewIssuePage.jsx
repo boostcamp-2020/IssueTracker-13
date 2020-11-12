@@ -7,18 +7,25 @@ import { addIssue } from '../apis/issuesAPI';
 import NewIssueSidebar from '../components/NewIssueSidebar';
 
 const Page = styled.div`
-  padding: 48px 400px;
+  padding: 100px 400px;
   display: flex;
   position: relative;
 `;
 
-const Profile = styled.div`
+const Box = styled.div`
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5da;
+  border-radius: 5px;
+`;
 
+const Profile = styled.div`
+  padding: 10px;
 `;
 
 const InputBox = styled.div`
   width: 100%;
-  border: 1px solid #000;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
 `;
@@ -27,33 +34,36 @@ const InputTitle = styled.input`
   display: block;
   font-size: 16px;
   padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #d1d5da;
+  border-radius: 5px;
+  background-color: #fff8f2;
 `;
 
 const InputComment = styled.textarea`
-  height: 200px;
-  min-height: 200px;
-  max-height: 500px;
+  height: 350px;
   padding: 8px;
   font-size: 16px;
+  border: 1px solid #d1d5da;
+  border-radius: 5px;
+  background-color: #fff8f2;
 `;
 
-
-const Buttons = styled.div`
+const BoxFooter = styled.div`
   position: relative;
-  padding: 8px;
-`;
-
-const CancelButton = styled.button`
-
+  height: 50px;
 `;
 
 const SubmitButton = styled.button`
   position: absolute;
-  right: 8px;
-`;
-
-const WriteBar = styled.div`
-
+  right: 0px;
+  top: 12px;
+  background-color: #2ea44f;
+  font-size: 14px;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  border-radius: 5px;
 `;
 
 const reducer = (state, { type, payload }) => {
@@ -97,27 +107,23 @@ export default function NewIssuePage() {
         <Profile>
           <img src='https://avatars1.githubusercontent.com/u/52442237?s=80&v=4'/>
         </Profile>
-        <InputBox>
-          <InputTitle
-            placeholder='Title'
-            onChange={handleTitleChange}
-          />
-          <WriteBar>
-          Write
-          </WriteBar>
-          <InputComment
-            placeholder='Leave a comment'
-            onChange={handleCommentChange}
-          />
-          <Buttons>
-            <CancelButton>
-            Cancel
-            </CancelButton>
-            <SubmitButton onClick={() => postIssue(issueDetail, title, comment)}>
+        <Box>
+          <InputBox>
+            <InputTitle
+              placeholder='Title'
+              onChange={handleTitleChange}
+            />
+            <InputComment
+              placeholder='Leave a comment'
+              onChange={handleCommentChange}
+            />
+            <BoxFooter>
+              <SubmitButton onClick={() => postIssue(issueDetail, title, comment)}>
             Submit new issue
-            </SubmitButton>
-          </Buttons>
-        </InputBox>
+              </SubmitButton>
+            </BoxFooter>
+          </InputBox>
+        </Box>
         <NewIssueSidebar />
       </NewIssueContext.Provider>
     </Page>

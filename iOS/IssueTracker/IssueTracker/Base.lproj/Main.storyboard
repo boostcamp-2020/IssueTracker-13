@@ -680,6 +680,7 @@ G0Rlc2NyaXB0aW9uA
                     <connections>
                         <outlet property="previewTextView" destination="xaM-oB-Okw" id="881-Y7-G6M"/>
                         <outlet property="sendButton" destination="wc4-Ao-wyw" id="YMF-Ya-Nui"/>
+                        <outlet property="seperatorView" destination="Xyy-xc-8cg" id="btE-ld-Lhz"/>
                         <outlet property="textViewBottom" destination="cff-Th-Ebu" id="nnR-PK-JrY"/>
                         <outlet property="titleTextField" destination="TqX-nA-gwX" id="8bZ-2A-YeH"/>
                     </connections>
@@ -1701,11 +1702,11 @@ G0Rlc2NyaXB0aW9uA
         <image name="4.circle.fill" catalog="system" width="128" height="121"/>
         <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="arrow.up" catalog="system" width="120" height="128"/>
-        <image name="ellipsis" catalog="system" width="128" height="37"/>
-        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>
         <image name="chevron.up" catalog="system" width="128" height="72"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="person" catalog="system" width="128" height="117"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -6,22 +6,24 @@
 //
 
 import UIKit
+import MarkdownKit
 
 class CommentCollectionViewCell: UICollectionViewListCell {
     
     var didTouchMenuButton: ((Int) -> Void)?
-    var commentID :Int?
-    
+    var commentID: Int?
+    let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: CGFloat(17)))
+
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var updatedTimeLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
+    @IBOutlet weak var moreButton: UIButton!
     func confiugre(with comment: Comment) {
         profileImageView.loadImageUsingCache(with: comment.user.profile)
         updatedTimeLabel.text = timeDifference(from: comment.createdAt.toDate() ?? Date())
         userNameLabel.text = comment.user.userName
-        descriptionLabel.text = comment.description
+        descriptionLabel.attributedText = markdownParser.parse(comment.description)
         commentID = comment.id
     }
     
@@ -37,4 +39,13 @@ class CommentCollectionViewCell: UICollectionViewListCell {
         return relativeDate
     }
     
+    func configureButton(with comment: Comment) {
+        let userToken = UserToken()
+        if comment.user.userName == userToken.name{
+            moreButton.isHidden = false
+        } else {
+            moreButton.isHidden = true
+        }
+    }
+        
 }

@@ -1080,6 +1080,7 @@ G0Rlc2NyaXB0aW9uA
                                         <size key="customSize" width="412" height="155"/>
                                         <connections>
                                             <outlet property="descriptionLabel" destination="6kL-8S-Bas" id="9aC-YD-RJ4"/>
+                                            <outlet property="moreButton" destination="1FE-2F-0Az" id="pCB-pX-ECr"/>
                                             <outlet property="profileImageView" destination="bzD-y8-f1H" id="e1F-dd-Pkx"/>
                                             <outlet property="updatedTimeLabel" destination="bUH-jz-Tb2" id="Wxz-vO-De3"/>
                                             <outlet property="userNameLabel" destination="mgX-17-3mj" id="k1z-u5-fOx"/>
@@ -1717,7 +1718,7 @@ G0Rlc2NyaXB0aW9uA
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gq2-Tn-Cta"/>
+        <segue reference="dPZ-La-Utc"/>
         <segue reference="6iA-XM-8b2"/>
         <segue reference="rZY-Rf-pLE"/>
         <segue reference="mTX-Lq-j4E"/>

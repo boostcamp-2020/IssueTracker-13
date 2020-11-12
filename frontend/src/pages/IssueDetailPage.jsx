@@ -50,7 +50,7 @@ const IssueDetailPage = () => {
         <IssueDetailHeader />
         <Div>
           <Comments>
-            <CommentList />
+            <CommentList id={id} />
           </Comments>
           <div>
             <IssueDetailSidebar />

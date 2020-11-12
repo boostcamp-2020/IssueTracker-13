@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import TranslateMarkdown from './TranslateMarkdown';
+
+import { IssueDetailContext } from '../pages/IssueDetailPage';
+
+import { addComment } from '../apis/commentsAPI';
+import { getIssueDetail } from '../apis/issuesAPI';
 
 const Page = styled.div`
   display: flex;
@@ -67,8 +72,10 @@ const WritePreviewButton = styled.button`
   font-size: 22px;
   margin: 4px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #C8C8C8;
+  color: white;
   padding: 5px;
+  border-radius: 5px;
 `;
 
 const Tabs = styled.div`
@@ -76,9 +83,10 @@ const Tabs = styled.div`
   margin: 4px;
 `;
 
-export default function CommentInput() {
+export default function CommentInput({ id }) {
   const [text, setText] = useState('');
   const [currentTab, setCurrentTab] = useState('write');
+  const { dispatch } = useContext(IssueDetailContext);
 
   const placeholder = 'Leave a comment';
 
@@ -102,6 +110,13 @@ export default function CommentInput() {
     setCurrentTab(tabs[i].title);
   };
 
+  const postComment = async () => {
+    await addComment({ description: text, issueId: id });
+    const newIssue = await getIssueDetail(id);
+    dispatch({ type: 'reLoad', payload: newIssue });
+    setText('');
+  };
+
   return (
     <Page>
       <InputBox>
@@ -116,7 +131,7 @@ export default function CommentInput() {
           <div>{tabs.filter(tab => tab.title === currentTab)[0].content}</div>
         </HeaderBar>
         <Buttons>
-          <CommentButton>
+          <CommentButton onClick={() => postComment()}>
               Comment
           </CommentButton>
           <Link to='/'>

@@ -23,6 +23,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const newComment = req.body;
+    newComment.userId = req.user.id;
     await addComment(newComment);
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {

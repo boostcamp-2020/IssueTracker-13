@@ -98,7 +98,6 @@ const getIssues = async (query) => {
 const addIssue = async (newIssue) => {
   const issue = await Issue.create({
     ...newIssue,
-    authorId: 1,
     preview: newIssue.comment,
     isOpen: true,
     isDeleted: false,

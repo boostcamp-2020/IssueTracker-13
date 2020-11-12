@@ -64,7 +64,7 @@
 		820B6323255911A0003FDB5B /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B6322255911A0003FDB5B /* EndPoint.swift */; };
 		820B633825593238003FDB5B /* IssueEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B633725593238003FDB5B /* IssueEditViewController.swift */; };
 		820B633E25593E57003FDB5B /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820B633D25593E57003FDB5B /* IssueDetailViewController.swift */; };
-		823C108C255CCB9700344FB8 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C108B255CCB9700344FB8 /* ButtonWithShadow.swift */; };
+		823C10A3255CFCBC00344FB8 /* ButtonWithShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C10A2255CFCBC00344FB8 /* ButtonWithShadow.swift */; };
 		826F6307255154E80005D669 /* FilterIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F6306255154E80005D669 /* FilterIssueViewController.swift */; };
 		826F630C25515ADA0005D669 /* FilterIssueInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */; };
 		8284626A255A5E6D001F37B7 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82846269255A5E6D001F37B7 /* Filter.swift */; };
@@ -170,7 +170,7 @@
 		820B6322255911A0003FDB5B /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		820B633725593238003FDB5B /* IssueEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEditViewController.swift; sourceTree = "<group>"; };
 		820B633D25593E57003FDB5B /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
-		823C108B255CCB9700344FB8 /* ButtonWithShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ButtonWithShadow.swift; path = IssueTracker/Scenes/IssueDetail/ButtonWithShadow.swift; sourceTree = SOURCE_ROOT; };
+		823C10A2255CFCBC00344FB8 /* ButtonWithShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonWithShadow.swift; sourceTree = "<group>"; };
 		826F6306255154E80005D669 /* FilterIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueViewController.swift; sourceTree = "<group>"; };
 		826F630B25515ADA0005D669 /* FilterIssueInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueInteractor.swift; sourceTree = "<group>"; };
 		82846269255A5E6D001F37B7 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
@@ -429,10 +429,9 @@
 		51FB616C255BC41C009701A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				823C108B255CCB9700344FB8 /* ButtonWithShadow.swift */,
+				823C10A2255CFCBC00344FB8 /* ButtonWithShadow.swift */,
 				51FB616D255BC43F009701A0 /* CommentCollectionViewCell.swift */,
 				51FB6172255BC475009701A0 /* CommentCollectionReusableView.swift */,
-				82884CFA255BB95700D51A25 /* ButtonWithShadow.swift */,
 				51BDC668255CD31D00139FCE /* EditTitleViewController.swift */,
 			);
 			path = Views;
@@ -758,7 +757,6 @@
 				820B6323255911A0003FDB5B /* EndPoint.swift in Sources */,
 				51FB6160255B8226009701A0 /* IssueDetailDataSource.swift in Sources */,
 				51326F0E2549594F00C0C273 /* IssueCollectionViewCell.swift in Sources */,
-				823C108C255CCB9700344FB8 /* ButtonWithShadow.swift in Sources */,
 				51445AB4254AA13000875BA5 /* LabelBadgeLabel.swift in Sources */,
 				82884CF6255BA69000D51A25 /* IssueBottomSheetViewController.swift in Sources */,
 				51326EE32549407C00C0C273 /* IssueListViewController.swift in Sources */,
@@ -818,6 +816,7 @@
 				8298BD642552758400BE3623 /* FilterMilestoneListViewController.swift in Sources */,
 				51326F14254971FF00C0C273 /* Issue.swift in Sources */,
 				5131B5342559472C003CD741 /* UserInfo.swift in Sources */,
+				823C10A3255CFCBC00344FB8 /* ButtonWithShadow.swift in Sources */,
 				82FA91DD255C4C7900855283 /* IssueBottomSheetInteractor.swift in Sources */,
 				82B3DC0D2554209700245FCD /* LabelListInteractor.swift in Sources */,
 			);

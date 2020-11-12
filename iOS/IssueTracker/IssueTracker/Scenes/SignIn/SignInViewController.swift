@@ -38,6 +38,7 @@ class SignInViewController: UIViewController {
         authorizationButton.addTarget(self,
                                       action: #selector(handleAuthorizationAppleIDButtonPress),
                                       for: .touchUpInside)
+        authorizationButton.isEnabled = false
         self.loginStackView.addArrangedSubview(authorizationButton)
     }
     

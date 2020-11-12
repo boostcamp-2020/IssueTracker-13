@@ -6,6 +6,7 @@ import MilestonesPage from './pages/MilestonesPage';
 import NewIssuePage from './pages/NewIssuePage';
 import LabelsPage from './pages/LabelsPage';
 import IssueDetailPage from './pages/IssueDetailPage';
+import LoginPage from './pages/LoginPage';
 
 import Header from './components/Header';
 
@@ -26,6 +27,9 @@ const App = () => {
           </Route>
           <Route path='/issues/:id'>
             <IssueDetailPage />
+          </Route>
+          <Route path='/login'>
+            <LoginPage />
           </Route>
           <Route path='/'>
             <IssueListPage />

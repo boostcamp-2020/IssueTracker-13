@@ -9,17 +9,19 @@ import UIKit
 import MarkdownKit
 
 protocol IssueEditDelegate: class {
-    //issue 추가/수정 여부는 delegate에서 처리
-    func didTouchSendButton(issueTitle: String, issuePreview: String)
+    //이슈/코멘트 여부는 delegate에서 처리
+    func didTouchSendButton(issueTitleText: String?, issuePreviewText: String?, comment: Comment?)
 }
 
 class IssueEditViewController: UIViewController {
-
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var previewTextView: UITextView!
+    @IBOutlet weak var seperatorView: UIView!
     @IBOutlet weak var textViewBottom: NSLayoutConstraint!
     @IBOutlet weak var sendButton: UIBarButtonItem!
     var issue: Issue?
+    var comment: Comment?
     let toolbar: UIToolbar = UIToolbar()
     let markdownParser = MarkdownParser(font: UIFont.systemFont(ofSize: CGFloat(17)))
     var markdownString = ""
@@ -40,9 +42,14 @@ class IssueEditViewController: UIViewController {
     }
     
     @IBAction func didTouchSendButton(_ sender: Any) {
-        guard let titleText = titleTextField.text,
-              let previewText = previewTextView.text else { return }
-        delegate?.didTouchSendButton(issueTitle: titleText, issuePreview: previewText)
+        if let comment = comment {
+            delegate?.didTouchSendButton(issueTitleText: nil, issuePreviewText: nil, comment: comment)
+        } else {
+            guard let titleText = titleTextField.text,
+                  let previewText = previewTextView.text else { return }
+            delegate?.didTouchSendButton(issueTitleText: titleText, issuePreviewText: previewText, comment: nil)
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     func setupNotification() {
@@ -51,8 +58,13 @@ class IssueEditViewController: UIViewController {
     }
     
     func configureNavigtaionBarTitle() {
-        if let issue = issue {
-            title = "#\(issue.id)"
+        if let comment = comment?.description {
+            title = "댓글 수정"
+            titleTextField.isHidden = true
+            seperatorView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 10).isActive = true
+            sendButton.isEnabled = true
+        } else {
+            title = "새 이슈"
         }
     }
     
@@ -106,8 +118,13 @@ class IssueEditViewController: UIViewController {
 
 extension IssueEditViewController: UITextViewDelegate {
     func configureTextViewPlaceholder() {
-        previewTextView.text = "코멘트는 여기에 작성하세요 (선택 사항)"
-        previewTextView.textColor = .secondaryLabel
+        if let comment = comment?.description {
+            previewTextView.text = comment
+            previewTextView.textColor = .label
+        } else {
+            previewTextView.text = "코멘트는 여기에 작성하세요 (선택 사항)"
+            previewTextView.textColor = .secondaryLabel
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -140,11 +157,11 @@ extension IssueEditViewController {
                                      target: nil,
                                      action: nil)
         let photoButton = UIBarButtonItem(image: UIImage(systemName: "photo.fill.on.rectangle.fill"),
-                                             style: .plain,
-                                             target: self,
-                                             action: #selector(didTouchPhotoButton))
+                                          style: .plain,
+                                          target: self,
+                                          action: #selector(didTouchPhotoButton))
         configure(barButtons: [boldButton, italicButton, photoButton])
-    
+        
         toolbar.items = [boldButton, italicButton, spacer, photoButton]
         previewTextView.inputAccessoryView = toolbar
     }
@@ -155,7 +172,7 @@ extension IssueEditViewController {
             barButton.width = 60
         }
     }
-
+    
     func moveCursorToLeft(by amount: Int) {
         guard let selectedRange = previewTextView.selectedTextRange,
               let newPosition = previewTextView.position(from: selectedRange.start, offset: amount) else { return }

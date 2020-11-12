@@ -9,7 +9,8 @@ import UIKit
 import FloatingPanel
 
 protocol IssueDetailDisplayLogic: class {
-    func displayActionSheet(for :Int)
+    func displayActionSheet(for: Comment)
+    func displayEditMessageViewController(with: String)
     func displayCommentList(with: [Comment], at: IssueDetailDataSource.Section)
     func scrollToComment(at index: Int)
 }
@@ -37,12 +38,14 @@ class IssueDetailViewController: BaseCollectionViewController<IssueDetailDataSou
         if segue.identifier == "ShowIssueEditViewController" {
             let navigationViewController = segue.destination as? UINavigationController
             let viewController = navigationViewController?.viewControllers.first as? IssueEditViewController
-            viewController?.issue = interactor.issue
+            guard let comment = sender as? Comment else { return }
+            viewController?.comment = comment
+//            viewController?.configure(title: nil, preview: comment.description, mode: .editComment)
         }
     }
     
     @IBAction func didTouchEditButton(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: "ShowIssueEditViewController", sender: interactor.issue)
+        displayEditMessageViewController(with: interactor.issue?.title ?? "")
     }
     
 }
@@ -81,7 +84,7 @@ extension IssueDetailViewController {
                                                       for: indexPath) as? CommentCollectionViewCell
         cell?.confiugre(with: comment)
         cell?.didTouchMenuButton = { [weak self] (id) in
-            self?.displayActionSheet(for: id)
+            self?.displayActionSheet(for: comment)
         }
         return cell
     }
@@ -89,6 +92,7 @@ extension IssueDetailViewController {
 }
 
 extension IssueDetailViewController: IssueDetailDisplayLogic {
+    
     func displayCommentList(with comments: [Comment], at section: IssueDetailDataSource.Section) {
         var snapshot = Snapshot()
         snapshot.appendSections([section])
@@ -96,10 +100,10 @@ extension IssueDetailViewController: IssueDetailDisplayLogic {
         dataSource.apply(snapshot)
     }
     
-    func displayActionSheet(for commentID: Int) {
+    func displayActionSheet(for comment: Comment) {
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let editAction = UIAlertAction(title: "수정", style: .default) { (action) in
-            print(commentID)
+            self.performSegue(withIdentifier: "ShowIssueEditViewController", sender: comment)
         }
         let deleteAction = UIAlertAction(title: "삭제", style: .destructive) { (action) in
 
@@ -109,6 +113,17 @@ extension IssueDetailViewController: IssueDetailDisplayLogic {
         alert.addAction(editAction)
         alert.addAction(deleteAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func displayEditMessageViewController(with message: String) {
+        let editVC = EditTitleViewController(title: "이슈 제목을 수정합니다", message: nil, preferredStyle: .alert)
+        editVC.configure(with: message)
+        editVC.didTouchOKButton = { (text: String) in
+            print(text)
+            //이슈 제목 수정하기 (interator에서?)
+        }
+        present(editVC, animated: true, completion: nil)
+
     }
 
     func scrollToComment(at index: Int) {

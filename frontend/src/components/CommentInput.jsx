@@ -67,8 +67,10 @@ const WritePreviewButton = styled.button`
   font-size: 22px;
   margin: 4px;
   cursor: pointer;
-  background-color: #fff;
+  background-color: #C8C8C8;
+  color: white;
   padding: 5px;
+  border-radius: 5px;
 `;
 
 const Tabs = styled.div`

@@ -6,7 +6,7 @@ export const signInWithLocal = async ({ email, password }) => {
     storeToken(data.token);
     return data;
   } else {
-    throw new Error('login failed');
+    throw new Error('로그인을 할 수 없습니다. 아이디와 비밀번호를 확인해주세요');
   }
 };
 

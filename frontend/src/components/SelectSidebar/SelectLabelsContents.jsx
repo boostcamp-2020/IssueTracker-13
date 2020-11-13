@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const ContentContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   padding: 5px;
   gap: 10px;
 `;

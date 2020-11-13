@@ -38,8 +38,15 @@ class FilterUserListViewController: BaseCollectionViewController<FilterUserListI
             var content = cell.defaultContentConfiguration()
             content.text = user.userName
             content.imageProperties.cornerRadius = 3.0
-            content.image = UIImage(systemName: "person.circle") //우선 아무 image나 넣었습니다
             cell.contentConfiguration = content
+            
+            let profileImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+            profileImageView.loadImageUsingCache(with: user.profile)
+            profileImageView.contentMode = .scaleAspectFit
+            cell.accessories = [.customView(configuration: .init(customView: profileImageView, placement: .leading(displayed: .always, at: { (accesory) -> Int in
+                0
+            }), isHidden: false, reservedLayoutWidth: nil, tintColor: nil, maintainsFixedSize: true))]
+            cell.contentView.addSubview(profileImageView)
         }
     }
 

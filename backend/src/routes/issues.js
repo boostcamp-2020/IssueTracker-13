@@ -35,6 +35,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const newIssue = req.body;
+    console.log('authorId : ', req.user.id);
     newIssue.authorId = req.user.id;
     await addIssue(newIssue);
     res.status(200).json(SUCCESS_MESSAGE);

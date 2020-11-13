@@ -980,7 +980,7 @@ G0Rlc2NyaXB0aW9uA
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wrZ-ez-QfL">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aU1-Y0-if8">
                                     <size key="itemSize" width="412" height="155"/>
@@ -1157,12 +1157,12 @@ G0Rlc2NyaXB0aW9uA
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LAW-rG-rIM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.92238587139999995" green="0.94184982780000004" blue="0.96471208330000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LAW-rG-rIM" firstAttribute="trailing" secondItem="wrZ-ez-QfL" secondAttribute="trailing" id="5LZ-DV-gis"/>
                             <constraint firstItem="wrZ-ez-QfL" firstAttribute="leading" secondItem="LAW-rG-rIM" secondAttribute="leading" id="F5g-77-Dtq"/>
                             <constraint firstItem="wrZ-ez-QfL" firstAttribute="top" secondItem="fzL-62-gSv" secondAttribute="top" id="HDg-rn-iLU"/>
-                            <constraint firstItem="LAW-rG-rIM" firstAttribute="bottom" secondItem="wrZ-ez-QfL" secondAttribute="bottom" id="VS4-5g-Ycd"/>
+                            <constraint firstItem="LAW-rG-rIM" firstAttribute="bottom" secondItem="wrZ-ez-QfL" secondAttribute="bottom" constant="60" id="VS4-5g-Ycd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Zx4-aR-duZ">
@@ -1729,7 +1729,7 @@ G0Rlc2NyaXB0aW9uA
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gq2-Tn-Cta"/>
+        <segue reference="dPZ-La-Utc"/>
         <segue reference="v4V-NR-Ugl"/>
         <segue reference="rZY-Rf-pLE"/>
         <segue reference="mTX-Lq-j4E"/>

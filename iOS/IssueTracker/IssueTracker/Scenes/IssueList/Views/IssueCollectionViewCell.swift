@@ -18,15 +18,13 @@ class IssueCollectionViewCell: UICollectionViewListCell {
     func configure(with issue: Issue) {
         titleLabel.text = issue.title
         previewLabel.text = issue.preview.isEmpty ? " " : issue.preview
-        milestoneBadgeLabel.configure(with: issue.milestone?.title ?? "")
-//        if let firstLabel = issue.labels.first {
-//            labelBadgeLabel.configure(with: firstLabel)
-//        }
         configure(labelStackView, with: issue.labels)
         print("\(issue.title) : \(issue.labels.count)")
         
         separatorLayoutGuide.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         accessories = [.multiselect(displayed: .whenEditing, options: .init())]
+        guard let milestoneText = issue.milestone?.title else { return }
+        milestoneBadgeLabel.configure(with: milestoneText)
     }
     
     func configure(_ stackview: UIStackView, with labels: [Label]) {

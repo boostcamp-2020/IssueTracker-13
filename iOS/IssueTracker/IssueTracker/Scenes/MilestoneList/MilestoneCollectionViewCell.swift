@@ -27,6 +27,6 @@ class MilestoneCollectionViewCell: UICollectionViewListCell {
         if milestone.allIssueCount != 0 {
             percentage = Double(closedIssueCount) / Double(allIssueCount) * 100.0
         }
-        percentageLabel.text = "\(percentage)%"
+        percentageLabel.text = "\(Int(percentage))%"
     }
 }

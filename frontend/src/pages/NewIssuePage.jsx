@@ -3,6 +3,7 @@ import React, { createContext, useReducer, useState } from 'react';
 import styled from 'styled-components';
 
 import { addIssue } from '../apis/issuesAPI';
+import { getUserInfo } from '../apis/authAPI';
 
 import NewIssueSidebar from '../components/NewIssueSidebar';
 
@@ -21,6 +22,11 @@ const Box = styled.div`
 
 const Profile = styled.div`
   padding: 10px;
+`;
+
+const ProfileImg = styled.img`
+  width: 80px;
+  height: 80px;
 `;
 
 const InputBox = styled.div`
@@ -114,7 +120,7 @@ export default function NewIssuePage() {
     <Page>
       <NewIssueContext.Provider value={ { issueDetail, dispatch }}>
         <Profile>
-          <img src='https://avatars1.githubusercontent.com/u/52442237?s=80&v=4'/>
+          <ProfileImg src={getUserInfo().profile}/>
         </Profile>
         <Box>
           <InputBox>

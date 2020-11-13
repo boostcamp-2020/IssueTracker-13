@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { IssueContext } from './SelectSidebar';
 
 const Modal = styled.div`
-  position: fixed;
+  position: absolute;
   background-color: #fff;
   width: 300px;
   border: 1px solid #e1e4e8;

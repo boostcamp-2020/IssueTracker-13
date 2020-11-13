@@ -11,7 +11,9 @@ const ShowComment = styled.div`
   background-color:white;
   min-height: 200px;
   max-height: 500px;
+  border: 1px solid #dfe2e5;
   padding: 8px;
+  box-sizing: border-box;
   font-size: 16px;
 `;
 

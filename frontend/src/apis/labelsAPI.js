@@ -1,7 +1,10 @@
-import { labels } from '../mocks/labels.json';
+import axios from 'axios';
 
-const getLabels = () => {
-  return labels;
+import { getAuthConfig } from './authAPI';
+
+const getLabels = async () => {
+  const { data } = await axios.get('/api/labels', getAuthConfig());
+  return data;
 };
 
 export {

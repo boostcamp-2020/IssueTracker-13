@@ -40,12 +40,13 @@ router.put('/', async (req, res, next) => {
   }
 });
 
-router.delete('/', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
   try {
-    const { title } = req.body;
-    await deleteMilestone(title);
+    const id = req.params.id;
+    await deleteMilestone(id);
     res.status(200).json(SUCCESS_MESSAGE);
   } catch (error) {
+    console.log(error);
     next(createError(500));
   }
 });

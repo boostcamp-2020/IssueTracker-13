@@ -21,8 +21,9 @@ class FilterUserListInteractor {
     enum UserSection {
         case main, suggest
     }
-    enum UserMode {
-        case author, assignee
+    enum UserMode: String {
+        case author = "작성자"
+        case assignee = "담당자"
     }
     
     weak var delegate: FilterUserListDelegate?
@@ -41,15 +42,16 @@ extension FilterUserListInteractor: FilterUserListBusinessLogic {
         case .author:
             worker.fetchAuthors { [weak self] (users) in
                 self?.users = users
+                self?.viewController?.displayUserList(with: self?.users ?? [], at: .main)
             }
         case .assignee:
             worker.fetchAssignees { [weak self] (users) in
                 self?.users = users
+                self?.viewController?.displayUserList(with: self?.users ?? [], at: .main)
             }
         case .none:
             break
         }
-        viewController?.displayUserList(with: self.users ?? [], at: .main)
     }
     
     func select(user: User) {

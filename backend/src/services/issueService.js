@@ -1,4 +1,35 @@
-const { Issue, User, Label, Milestone } = require('../db/models');
+const { Issue, User, Label, Milestone, Comment } = require('../db/models');
+
+const SEARCH_OPTION = {
+  milestone: {
+    model: Milestone,
+    attributes: ['id', 'title'],
+  },
+  author: {
+    model: User,
+    as: 'author',
+    attributes: ['userName', 'profile'],
+  },
+  assignee: {
+    model: User,
+    as: 'Assignee',
+    attributes: ['id', 'userName', 'profile'],
+    through: { attributes: [] },
+  },
+  label: {
+    model: Label,
+    attributes: ['id', 'title', 'color', 'backgroundColor'],
+    through: { attributes: [] },
+  },
+  comment: {
+    model: Comment,
+    attributes: ['id', 'description', 'createdAt'],
+    include: {
+      model: User,
+      attributes: ['userName', 'profile'],
+    },
+  },
+};
 
 const applyOptionInQuery = (query) => {
   const finalOption = { isDeleted: false };
@@ -50,29 +81,6 @@ const getIssues = async (query) => {
     (issueId) => issueId.id
   );
 
-  const SEARCH_OPTION = {
-    milestone: {
-      model: Milestone,
-      attributes: ['title'],
-    },
-    author: {
-      model: User,
-      as: 'author',
-      attributes: ['userName'],
-    },
-    assignee: {
-      model: User,
-      as: 'Assignee',
-      attributes: ['userName', 'profile'],
-      through: { attributes: [] },
-    },
-    label: {
-      model: Label,
-      attributes: ['title', 'color', 'backgroundColor'],
-      through: { attributes: [] },
-    },
-  };
-
   const issues = await Issue.findAll({
     include: [
       SEARCH_OPTION.milestone,
@@ -88,7 +96,35 @@ const getIssues = async (query) => {
 };
 
 const addIssue = async (newIssue) => {
-  await Issue.create(newIssue);
+  const issue = await Issue.create({
+    ...newIssue,
+    preview: newIssue.comment,
+    isOpen: true,
+    isDeleted: false,
+  });
+
+  const author = await User.findOne({ where: newIssue.authorId });
+  const comment = await Comment.create({ description: newIssue.comment });
+  await comment.setUser(author);
+  await comment.setIssue(issue);
+
+  if (newIssue.Assignee !== undefined) {
+    const assigneeIds = newIssue.Assignee.map((user) => user.id);
+    const assignees = await User.findAll({ where: { id: assigneeIds } });
+    await issue.setAssignee(assignees);
+  }
+
+  if (newIssue.Labels !== undefined) {
+    const labelIds = newIssue.Labels.map((label) => label.id);
+    const labels = await Label.findAll({ where: { id: labelIds } });
+    await issue.setLabels(labels);
+  }
+
+  if (newIssue.Milestone !== undefined) {
+    const milestoneId = newIssue.Milestone.id;
+    const milestone = await Milestone.findOne({ where: { id: milestoneId } });
+    await issue.setMilestone(milestone);
+  }
 };
 
 const updateIssues = async (modifiedContents) => {
@@ -101,8 +137,56 @@ const updateIssues = async (modifiedContents) => {
   });
 };
 
+const updateIssue = async (modifiedContents) => {
+  const id = modifiedContents.id;
+
+  const issue = await Issue.findOne({ where: { id } });
+
+  if (modifiedContents.Assignee !== undefined) {
+    const assigneeIds = modifiedContents.Assignee.map((user) => user.id);
+    const assignees = await User.findAll({ where: { id: assigneeIds } });
+    await issue.setAssignee(assignees);
+  }
+
+  if (modifiedContents.Labels !== undefined) {
+    const labelIds = modifiedContents.Labels.map((label) => label.id);
+    const labels = await Label.findAll({ where: { id: labelIds } });
+    await issue.setLabels(labels);
+  }
+
+  if (modifiedContents.Milestone !== undefined) {
+    const milestoneId = modifiedContents.Milestone.id;
+    const milestone = await Milestone.findOne({ where: { id: milestoneId } });
+    await issue.setMilestone(milestone);
+  }
+
+  if (modifiedContents.title !== undefined) {
+    issue.title = modifiedContents.title;
+  }
+
+  if (modifiedContents.isOpen !== undefined) {
+    issue.isOpen = modifiedContents.isOpen;
+  }
+
+  await issue.save();
+};
+
 const deleteIssues = async (id) => {
   return await Issue.update({ isDeleted: true }, { where: { id: id } });
+};
+
+const getIssue = async (id) => {
+  return await Issue.findOne({
+    include: [
+      SEARCH_OPTION.milestone,
+      SEARCH_OPTION.author,
+      SEARCH_OPTION.assignee,
+      SEARCH_OPTION.label,
+      SEARCH_OPTION.comment,
+    ],
+    where: { id, isDeleted: false },
+    attributes: ['id', 'title', 'isOpen', 'preview', 'createdAt'],
+  });
 };
 
 module.exports = {
@@ -110,4 +194,6 @@ module.exports = {
   addIssue,
   updateIssues,
   deleteIssues,
+  getIssue,
+  updateIssue,
 };

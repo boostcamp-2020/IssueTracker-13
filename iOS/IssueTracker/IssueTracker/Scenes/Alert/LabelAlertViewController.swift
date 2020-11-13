@@ -25,12 +25,20 @@ class LabelAlertViewController: BaseAlertViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         interactor.viewController = self
-        addInputAccessoryForTextFields(textFields: [alertView.titleTextField, alertView.descriptionTextField, colorTextField], previousNextable: true)
+        addInputAccessoryForTextFields(textFields: [alertView.titleTextField,
+                                                    alertView.descriptionTextField,
+                                                    colorTextField],
+                                       previousNextable: true)
         alertView.stackView.addArrangedSubview(colorView)
+        configureTargets()
+    }
+    
+    func configureTargets() {
+        alertView.titleTextField.addTarget(self, action: #selector(didTitleTextFieldChange(_:)), for: .editingChanged)
         alertView.closeButton.addTarget(self, action: #selector(didTouchCloseButton), for: .touchUpInside)
         alertView.resetButton.addTarget(self, action: #selector(didTouchResetButton), for: .touchUpInside)
         alertView.saveButton.addTarget(self, action: #selector(didTouchSaveButton), for: .touchUpInside)
-        colorTextField.addTarget(self, action: #selector(didTextFieldChange(_:)), for: .editingChanged)
+        colorTextField.addTarget(self, action: #selector(didColorTextFieldChange(_:)), for: .editingChanged)
     }
     
     func configure(_ mode: AlertMode, label: Label?) {
@@ -44,8 +52,9 @@ class LabelAlertViewController: BaseAlertViewController {
             guard let backgroundColorString = label?.backgroundColor else { return }
             colorTextField.text = backgroundColorString
             colorPickerView.backgroundColor = UIColor(hexString: backgroundColorString)
-        default:
-            break
+        case .add:
+            interactor.randomizeColor()
+            alertView.saveButton.isEnabled = false
         }
     }
     
@@ -53,7 +62,12 @@ class LabelAlertViewController: BaseAlertViewController {
         interactor.randomizeColor()
     }
     
-    @objc func didTextFieldChange(_ textField: UITextView) {
+    @objc func didTitleTextFieldChange(_ textField: UITextField) {
+        guard let titleText = textField.text else { return }
+        alertView.saveButton.isEnabled = !titleText.isEmpty
+    }
+    
+    @objc func didColorTextFieldChange(_ textField: UITextView) {
         guard let colorString = textField.text else { return }
         interactor.didTextFieldChange(as: colorString)
     }
@@ -69,9 +83,14 @@ class LabelAlertViewController: BaseAlertViewController {
     }
     
     @objc func didTouchSaveButton() {
-        interactor.save(title: alertView.titleTextField.text,
-                        description: alertView.descriptionTextField.text,
-                        backgroundColor: colorView.backgroundColor)
+        guard let title = alertView.titleTextField.text,
+              let description = alertView.descriptionTextField.text,
+              let backgroundColor = colorPickerView.backgroundColor else { return }
+        
+        interactor.save(title: title,
+                        description: description,
+                        backgroundColor: backgroundColor)
+        dismiss(animated: true, completion: nil)
     }
     
 }

@@ -4,6 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Users', [
       {
+        email: 'junsushin-dev@boostcamp.com',
         userName: 'junsushin-dev',
         password: 'junsushin-devpw',
         profile:
@@ -14,6 +15,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        email: 'parkdit94@boostcamp.com',
         userName: 'parkdit94',
         password: 'parkdit94pw',
         profile:
@@ -24,6 +26,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
+        email: 'passwd10@boostcamp.com',
         userName: 'passwd10',
         password: 'pwsswd10pw',
         profile: 'https://avatars0.githubusercontent.com/u/68668924?s=400&v=4',

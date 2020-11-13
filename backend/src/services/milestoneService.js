@@ -48,7 +48,7 @@ const getMilestones = async () => {
     where: {
       isDeleted: false,
     },
-    attributes: ['id', 'title', 'description', 'dueDate'],
+    attributes: ['id', 'title', 'description', 'dueDate', 'isOpen'],
   });
 
   return await addIssueInfoInMilestone(milestones);
@@ -60,14 +60,14 @@ const addMilestone = async (newMilestone) => {
 
 const updateMilestone = async (modifiedContents) => {
   return await Milestone.update(modifiedContents, {
-    where: { title: modifiedContents.title },
+    where: { id: modifiedContents.id },
   });
 };
 
-const deleteMilestone = async (title) => {
+const deleteMilestone = async (id) => {
   return await Milestone.update(
     { isDeleted: true },
-    { where: { title: title } }
+    { where: { id } }
   );
 };
 

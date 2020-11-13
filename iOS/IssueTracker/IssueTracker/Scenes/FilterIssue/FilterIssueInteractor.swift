@@ -12,16 +12,19 @@ protocol FilterIssueDelegate {
 }
 
 protocol FilterIssueBusinessLogic {
-    
+    func sendQuery()
 }
 
 class FilterIssueInteractor: FilterIssueBusinessLogic {
-    
-    var author: User?
-    var assignee: User?
-    var milestone: String?
-    var label: Label?
+    var filter: Filter?
     var selectedFilterIndexPath: IndexPath?
+    
+    weak var viewController: FilterIssueDisplayLogic?
+    weak var delegate: IssueListBusinessLogic?
+    
+    func sendQuery() {
+        delegate?.fetchIssues(with: filter)
+    }
 }
 
 extension FilterIssueInteractor: FilterUserListDelegate {
@@ -29,9 +32,12 @@ extension FilterIssueInteractor: FilterUserListDelegate {
     func didSelect(user: User, mode: FilterUserListInteractor.UserMode) {
         switch mode {
         case .author:
-            self.author = user
+            self.filter?.author = user.userName
+            viewController?.didSelectDetailCondition(at: IndexPath(row: 0, section: 1), with: user.userName)
         case .assignee:
-            self.assignee = user
+            self.filter?.assignee = user.userName
+            viewController?.didSelectDetailCondition(at: IndexPath(row: 3, section: 1), with: user.userName)
+
         }
     }
     
@@ -39,14 +45,17 @@ extension FilterIssueInteractor: FilterUserListDelegate {
 
 extension FilterIssueInteractor: FilterMilestoneListDelegate {
     
-    func didSelect(milestone: String) {
-        self.milestone = milestone
+    func didSelect(milestone: Milestone?) {
+        self.filter?.milestone = milestone
+        viewController?.didSelectDetailCondition(at: IndexPath(row: 2, section: 1), with: milestone?.title ?? "")
     }
     
 }
 
 extension FilterIssueInteractor: FilterLabelListDelegate {
-    func didSelect(label: Label) {
-        self.label = label
+    func didSelect(labels: [Label]) {
+        let label = labels.first
+        self.filter?.label = label
+        viewController?.didSelectDetailCondition(at: IndexPath(row: 1, section: 1), with: label?.title ?? "")
     }
 }

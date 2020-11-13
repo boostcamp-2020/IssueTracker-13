@@ -374,17 +374,9 @@ G0Rlc2NyaXB0aW9uA
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="마일스톤" largeTitleDisplayMode="always" id="q3b-Cs-vFe">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="Hu6-Hr-kAQ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Kd4-8o-LLR">
-                                <rect key="frame" x="376" y="11" width="18" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="plus" catalog="system"/>
-                                <connections>
-                                    <action selector="didTouchAddMilestoneButton:" destination="pGB-44-GSa" eventType="touchUpInside" id="vPJ-6G-KZY"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="07g-u7-ey1">
                             <connections>
-                                <action selector="didTouchAddMilestoneButton:" destination="pGB-44-GSa" id="cyL-8S-ae7"/>
+                                <action selector="didTouchAddMilestoneButton:" destination="pGB-44-GSa" id="0Uj-D6-92S"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

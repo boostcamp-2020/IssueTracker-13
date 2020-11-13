@@ -30,7 +30,6 @@ const InputComment = styled.textarea`
   padding: 8px;
   font-size: 16px;
   margin:10px;
-  width:96%;
   border: 1px solid #dfe2e5;
 `;
 

@@ -4,6 +4,7 @@ export const signInWithLocal = async ({ email, password }) => {
   const { data } = await axios.post('/api/auth/signIn', { email, password, authType: 'local' });
   if (data.token) {
     storeToken(data.token);
+    storeUserInfo(data);
     return data;
   } else {
     throw new Error('login failed');
@@ -14,6 +15,7 @@ export const signUpWithLocal = async ({ email, password }) => {
   const { data } = await axios.post('/api/auth/signUp', { email, password, authType: 'local' });
   if (data.token) {
     storeToken(data.token);
+    storeUserInfo(data);
     return data;
   } else {
     throw new Error('singUp failed');
@@ -27,6 +29,12 @@ const storeToken = (token) => {
   window.localStorage.setItem('token', token);
 };
 
+const storeUserInfo = (user) => {
+  const { name, profile } = user;
+  window.localStorage.setItem('userName', name);
+  window.localStorage.setItem('profile', profile);
+};
+
 export const getAuthConfig = () => {
   const token = window.localStorage.getItem('token');
   return {
@@ -34,4 +42,10 @@ export const getAuthConfig = () => {
       Authorization: `Bearer ${token}`,
     },
   };
+};
+
+export const getUserInfo = () => {
+  const userName = window.localStorage.getItem('userName');
+  const profile = window.localStorage.getItem('profile');
+  return { userName, profile };
 };

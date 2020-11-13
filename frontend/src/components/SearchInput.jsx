@@ -5,8 +5,9 @@ import styled from 'styled-components';
 import FilterModal from './FilterModal';
 
 import { IssuesContext } from '../pages/IssueListPage';
+import { getUserInfo } from '../apis/authAPI';
 
-import { SEARCH_INPUT_FILTER } from '../assets/filter';
+import { makeSearchInputFilter } from '../assets/filter';
 
 const Input = styled.input`
   padding: 5px 12px;
@@ -36,13 +37,15 @@ export default function SearchInput() {
 
   const inputQuery = query.length > 0 ? query.split('&').join(' ').split('=').join(':') : '';
 
+  const mySearchInputFilter = makeSearchInputFilter(getUserInfo);
+
   return (
     <SearchInputDiv>
       <FilterButton onClick={() => setIsShowModal(!isShowModal)}>Filters</FilterButton>
       {isShowModal &&
         <FilterModal
           title={title}
-          contents={SEARCH_INPUT_FILTER}
+          contents={mySearchInputFilter}
           setIsShowModal={setIsShowModal}
         />}
       <Input placeholder="Search all issues" value={inputQuery} readOnly/>

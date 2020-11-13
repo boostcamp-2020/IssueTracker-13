@@ -30,8 +30,8 @@ const storeToken = (token) => {
 };
 
 const storeUserInfo = (user) => {
-  const { userName, profile } = user;
-  window.localStorage.setItem('userName', userName);
+  const { name, profile } = user;
+  window.localStorage.setItem('userName', name);
   window.localStorage.setItem('profile', profile);
 };
 

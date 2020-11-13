@@ -1,11 +1,12 @@
-export const SEARCH_INPUT_FILTER = [
+
+export const makeSearchInputFilter = (callback) => [
   {
     title: 'Open issues',
     query: 'isOpen=true',
   },
   {
     title: 'Your issues',
-    query: 'author=parkdit94',
+    query: `author=${callback().userName}`,
   },
   {
     title: 'Everything assigned to you',

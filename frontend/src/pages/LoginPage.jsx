@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import styled from 'styled-components';
@@ -38,11 +38,13 @@ const InputLabel = styled.label`
 const EmailInput = styled.input`
   height: 30px;
   font-size: 16px;
+  padding: 3px 3px 3px 10px;
 `;
 
 const PasswordInput = styled.input`
   height: 30px;
   font-size: 16px;
+  padding: 3px 3px 3px 10px;
 `;
 
 const RowContainer = styled.div`
@@ -54,28 +56,37 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: 600;
   border: none;
-  color: #0366D6;
-  background-color: transparent;
+  color: white;
+  padding: 8px 92px;
+  border-radius: 5px;
   cursor: pointer;
+  background-color : ${props => props.disabled ? '#B8B8B8' : '#505050'};
 `;
 
 const GitHubButton = styled.button`
   color: white;
-  height: 40px;
+  padding: 8px 140px;
   font-size: 16px;
   font-weight: 600;
-  margin-top: 30px;
-  width: 100%;
-  background-color: #888888;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #B8B8B8;
   border: none;
-  cursor: pointer;
+`;
+
+const Warning = styled.div`
+  text-align: center;
+  color: red;
 `;
 
 export default function LoginPage() {
-  let history = useHistory();
-  let auth = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailWarning, setEmailWarning] = useState('');
+  const [passwordWarning, setPasswordWarning] = useState('');
+
+  let history = useHistory();
+  let auth = useAuth();
 
   const clickHandler = (type) => async () => {
     if (type === 'SignIn') {
@@ -97,23 +108,55 @@ export default function LoginPage() {
     }
   };
 
+  useEffect(() => {
+    const conditions = ['@', '.', 'com'];
+    const validationEmail = conditions.every(condition => email.includes(condition));
+    if (!validationEmail) {
+      setEmailWarning('잘못된 이메일 형식입니다(ex. test@boostcamp.com)');
+    }
+    if (email.length === 0 || validationEmail) {
+      setEmailWarning('');
+    }
+  }, [email]);
+
+  useEffect(() => {
+    if (password.length < 4) {
+      setPasswordWarning('네자리 이상 입력해주세요');
+    }
+    if (password.length === 0 || password.length >= 4) {
+      setPasswordWarning('');
+    }
+  }, [password]);
+
   return (
     <Page>
       <Title>이슈 트래커</Title>
       <LoginBox>
         <LabelInputContainer>
-          <InputLabel>아이디</InputLabel>
-          <EmailInput type='email' id='email' value={email} onChange={changeHandler('Email')}></EmailInput>
+          <InputLabel>이메일</InputLabel>
+          <EmailInput
+            type='email'
+            id='email'
+            value={email}
+            onChange={changeHandler('Email')}
+            placeholder='test@boostcamp.com'
+          />
+          <Warning>
+            {emailWarning}
+          </Warning>
         </LabelInputContainer>
         <LabelInputContainer>
           <InputLabel>비밀번호</InputLabel>
           <PasswordInput type='password' id='password' value={password} onChange={changeHandler('Password')}></PasswordInput>
+          <Warning>
+            {passwordWarning}
+          </Warning>
         </LabelInputContainer>
         <RowContainer>
           <Button onClick={clickHandler('SignIn')}>로그인</Button>
           <Button onClick={clickHandler('SignUp')}>회원가입</Button>
         </RowContainer>
-        <GitHubButton>Sign in with GitHub</GitHubButton>
+        <GitHubButton disabled>Sign in with GitHub(준비중)</GitHubButton>
       </LoginBox>
     </Page>
   );

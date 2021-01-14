@@ -1,36 +1,36 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Development Server Deployment
+# name: Development Server Deployment
 
-on: 
-  push:
-    branches:
-      - develop
+# on: 
+#   push:
+#     branches:
+#       - develop
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/develop.key
-          chmod 600 ~/.ssh/develop.key
-          cat >>~/.ssh/config <<END
-          Host develop
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/develop.key
-            StrictHostKeyChecking no
-          END
-        env:
-          SSH_USER: ${{ secrets.DEV_USERNAME }}
-          SSH_KEY: ${{ secrets.DEV_PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.DEV_HOST }}
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Configure SSH
+#         run: |
+#           mkdir -p ~/.ssh/
+#           echo "$SSH_KEY" > ~/.ssh/develop.key
+#           chmod 600 ~/.ssh/develop.key
+#           cat >>~/.ssh/config <<END
+#           Host develop
+#             HostName $SSH_HOST
+#             User $SSH_USER
+#             IdentityFile ~/.ssh/develop.key
+#             StrictHostKeyChecking no
+#           END
+#         env:
+#           SSH_USER: ${{ secrets.DEV_USERNAME }}
+#           SSH_KEY: ${{ secrets.DEV_PRIVATE_KEY }}
+#           SSH_HOST: ${{ secrets.DEV_HOST }}
 
-      - name: Run Install & Build
-        run: ssh develop 'cd repos/IssueTracker-13 && git checkout develop && git pull && npm run build'
+#       - name: Run Install & Build
+#         run: ssh develop 'cd repos/IssueTracker-13 && git checkout develop && git pull && npm run build'
         
-      - name: Reload PM2
-        run: ssh develop 'pm2 reload issuetracker-dev'
+#       - name: Reload PM2
+#         run: ssh develop 'pm2 reload issuetracker-dev'

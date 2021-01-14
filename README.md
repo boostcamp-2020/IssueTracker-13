@@ -1,7 +1,7 @@
 # IssueTracker-13
 
 ## :house: Homepage
-[이슈트래커](http://27.96.130.188:3000)
+[이슈트래커](https://issue-tracker-13.herokuapp.com)
 
 ## :checkered_flag: 프로젝트 소개
 GitHub Repository의 Issue Tracker 기능을 cloning 하고 개선하는 프로젝트 입니다. 이슈관리, 라벨링, 마일스톤 기능을 제공합니다. 

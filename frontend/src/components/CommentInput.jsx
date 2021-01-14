@@ -26,10 +26,11 @@ const InputBox = styled.div`
 `;
 
 const InputComment = styled.textarea`
+  width: 100%;
+  box-sizing: border-box;
   height: 200px;
   padding: 8px;
   font-size: 16px;
-  margin:10px;
   border: 1px solid #dfe2e5;
 `;
 
@@ -75,6 +76,10 @@ const WritePreviewButton = styled.button`
   color: white;
   padding: 5px;
   border-radius: 5px;
+`;
+
+const CommentContentContainer = styled.div`
+  margin: 10px;
 `;
 
 const Tabs = styled.div`
@@ -127,7 +132,9 @@ export default function CommentInput({ id }) {
               </WritePreviewButton>
             ))}
           </Tabs>
-          <div>{tabs.filter(tab => tab.title === currentTab)[0].content}</div>
+          <CommentContentContainer>
+            {tabs.filter(tab => tab.title === currentTab)[0].content}
+          </CommentContentContainer>
         </HeaderBar>
         <Buttons>
           <CommentButton onClick={() => postComment()}>

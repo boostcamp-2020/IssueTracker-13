@@ -19,7 +19,6 @@ passport.use(
           id: jwtPayload.id
         },
       });
-      console.log('user', user);
       if (user) {
         done(null, user);
       } else {

@@ -1,7 +1,7 @@
 # IssueTracker-13
 
 ## :house: Homepage
-[이슈트래커](https://kr.object.ncloudstorage.com/issue-tracker-13/index.html)
+[이슈트래커](https://issue-tracker-13.herokuapp.com)
 
 ## :checkered_flag: 프로젝트 소개
 GitHub Repository의 Issue Tracker 기능을 cloning 하고 개선하는 프로젝트 입니다. 이슈관리, 라벨링, 마일스톤 기능을 제공합니다. 
@@ -12,7 +12,41 @@ GitHub Repository의 Issue Tracker 기능을 cloning 하고 개선하는 프로�
 
 ## :arrow_forward: 실행 방법
 
-TBD
+### 설치
+실행 전 각 디렉토리의 sample.env 파일을 참조해서 .env 파일을 생성하시고 올바른 환경변수를 설정해주시기 바랍니다. 
+
+#### Backend
+```bash
+# backend 디렉토리로 이동
+cd backend
+
+# 라이브러리 설치
+npm install
+
+# 데이터베이스 초기화
+npm run initDB
+```
+
+#### Frontend
+```bash
+# frontend 디렉토리로 이동
+cd frontend
+
+# 라이브러리 설치
+npm install
+
+# 빌드파일 생성
+npm run build
+```
+
+### 실행
+```
+# backend 디렉토리로 이동
+cd backend
+
+# 프로젝트 실행
+npm start
+```
 
 ## :family: 멤버 소개
 

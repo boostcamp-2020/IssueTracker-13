@@ -11,7 +11,6 @@ passport.use(
       session: false,
     },
     async (accessToken, refreshToken, profile, callback) => {
-      console.log(profile);
       const user = await User.findOrCreate({
         where: { userName: profile.username },
         defaults: {
